@@ -1,0 +1,17 @@
+{
+  "name": "template-lit-element",
+  "version": "0.1.0",
+  "description": "Template with LitElement",
+  "license": "MIT",
+  "dependencies": {
+    "@webcomponents/webcomponentsjs": "^2.2.0",
+    "lit-element": "^2.2.0"
+  },
+  "devDependencies": {
+    "es-dev-server": "^1.7.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "es-dev-server --app-index index.html --node-resolve --watch --open"
+  }
+}
