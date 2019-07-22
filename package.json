@@ -8,10 +8,35 @@
     "lit-element": "^2.2.0"
   },
   "devDependencies": {
-    "es-dev-server": "^1.7.0"
+    "es-dev-server": "^1.7.0",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-lit": "^1.1.0",
+    "eslint-plugin-wc": "^1.1.0",
+    "husky": "^3.0.0",
+    "lint-staged": "^9.2.0",
+    "prettier": "1.18.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "es-dev-server --app-index index.html --node-resolve --watch --open"
+    "start": "es-dev-server --app-index index.html --node-resolve --watch --open",
+    "lint": "npm run lint:eslint",
+    "lint:eslint": "eslint 'src/**/*.js'",
+    "format:prettier": "prettier --write '**/*.{js,json,md}'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "**/*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }

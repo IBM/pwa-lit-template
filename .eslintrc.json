@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "prettier",
+    "plugin:wc/best-practice",
+    "plugin:lit/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["wc", "lit"],
+  "env": {
+    "browser": true
+  }
+}
