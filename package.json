@@ -1,7 +1,7 @@
 {
-  "name": "template-lit-element",
+  "name": "application-template-lit-element",
   "version": "0.1.0",
-  "description": "Template with LitElement",
+  "description": "A template for building web applications using LitElement",
   "license": "MIT",
   "dependencies": {
     "@webcomponents/webcomponentsjs": "^2.2.0",
