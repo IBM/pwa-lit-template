@@ -7,8 +7,8 @@
     "lit-element": "^2.2.0"
   },
   "devDependencies": {
-    "@open-wc/building-rollup": "^0.8.0",
-    "es-dev-server": "^1.7.0",
+    "@open-wc/building-rollup": "^0.9.0",
+    "es-dev-server": "^1.8.0",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-lit": "^1.1.0",

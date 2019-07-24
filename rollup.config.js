@@ -1,3 +1,3 @@
-import createDefaultConfig from '@open-wc/building-rollup/modern-and-legacy-config';
+import { createCompatibilityConfig } from '@open-wc/building-rollup';
 
-export default createDefaultConfig({ input: './index.html' });
+export default createCompatibilityConfig({ input: './index.html' });
