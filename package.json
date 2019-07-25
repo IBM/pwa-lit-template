@@ -8,6 +8,8 @@
   },
   "devDependencies": {
     "@open-wc/building-rollup": "^0.9.0",
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/parser": "^1.13.0",
     "es-dev-server": "^1.8.0",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.0.0",
@@ -17,12 +19,13 @@
     "lint-staged": "^9.2.0",
     "prettier": "1.18.2",
     "rimraf": "^2.6.0",
-    "rollup": "^1.17.0"
+    "rollup": "^1.17.0",
+    "typescript": "^3.5.0"
   },
   "scripts": {
     "lint": "npm run lint:eslint",
-    "lint:eslint": "eslint 'src/**/*.js'",
-    "format:prettier": "prettier --write '**/*.{js,json,md}'",
+    "lint:eslint": "eslint 'src/**/*.{js,ts}'",
+    "format:prettier": "prettier --write '**/*.{js,json,md,ts}'",
     "serve": "es-dev-server --app-index index.html --node-resolve --watch --open",
     "start": "npm run serve",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -35,11 +38,11 @@
     }
   },
   "lint-staged": {
-    "**/*.{js,json,md}": [
+    "**/*.{js,json,md,ts}": [
       "prettier --write",
       "git add"
     ],
-    "**/*.js": [
+    "**/*.{js,ts}": [
       "eslint --fix",
       "git add"
     ]
