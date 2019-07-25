@@ -5,10 +5,11 @@
  * file in the root directory of this source tree.
  */
 
-import { LitElement, html } from 'lit-element';
+import { LitElement, html, customElement, TemplateResult } from 'lit-element';
 
-class AppShell extends LitElement {
-  render() {
+@customElement('app-shell')
+export class AppShell extends LitElement {
+  protected render(): TemplateResult {
     return html`
       <section>
         <h1>app-shell</h1>
@@ -16,5 +17,3 @@ class AppShell extends LitElement {
     `;
   }
 }
-
-window.customElements.define('app-shell', AppShell);
