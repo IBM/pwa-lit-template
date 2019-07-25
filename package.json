@@ -20,11 +20,12 @@
     "rollup": "^1.17.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "es-dev-server --app-index index.html --node-resolve --watch --open",
     "lint": "npm run lint:eslint",
     "lint:eslint": "eslint 'src/**/*.js'",
     "format:prettier": "prettier --write '**/*.{js,json,md}'",
+    "serve": "es-dev-server --app-index index.html --node-resolve --watch --open",
+    "start": "npm run serve",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf dist && rollup --config",
     "start:build": "es-dev-server --app-index dist/index.html --open"
   },
