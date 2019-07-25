@@ -7,6 +7,9 @@
     "lit-element": "^2.2.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.5.0",
+    "@babel/plugin-proposal-decorators": "^7.4.0",
+    "@babel/preset-typescript": "^7.3.0",
     "@open-wc/building-rollup": "^0.9.0",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
@@ -26,7 +29,7 @@
     "lint": "npm run lint:eslint",
     "lint:eslint": "eslint 'src/**/*.{js,ts}'",
     "format:prettier": "prettier --write '**/*.{js,json,md,ts}'",
-    "serve": "es-dev-server --app-index index.html --node-resolve --watch --open",
+    "serve": "es-dev-server --app-index index.html --file-extensions .ts --node-resolve --babel --watch --open",
     "start": "npm run serve",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf dist && rollup --config",
