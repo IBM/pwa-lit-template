@@ -29,6 +29,7 @@
     "lint": "npm run lint:eslint",
     "lint:eslint": "eslint 'src/**/*.{js,ts}'",
     "format:prettier": "prettier --write '**/*.{js,json,md,ts}'",
+    "type-check": "tsc --noEmit",
     "serve": "es-dev-server --app-index index.html --file-extensions .ts --node-resolve --babel --watch --open",
     "start": "npm run serve",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -37,7 +38,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "tsc --noEmit && lint-staged"
     }
   },
   "lint-staged": {
