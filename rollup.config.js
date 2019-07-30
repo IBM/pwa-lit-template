@@ -1,3 +1,8 @@
 import { createCompatibilityConfig } from '@open-wc/building-rollup';
 
-export default createCompatibilityConfig({ input: './index.html' });
+const configs = createCompatibilityConfig({
+  input: './index.html',
+  extensions: ['.js', '.ts']
+});
+
+export default configs;
