@@ -30,6 +30,7 @@
   "scripts": {
     "lint": "npm run lint:eslint",
     "lint:eslint": "eslint 'src/**/*.{js,ts}'",
+    "format": "npm run format:prettier",
     "format:prettier": "prettier --write '**/*.{js,json,md,ts}'",
     "type-check": "tsc --noEmit",
     "serve": "es-dev-server --app-index index.html --file-extensions .ts --node-resolve --babel --watch --open",
