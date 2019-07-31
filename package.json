@@ -1,7 +1,7 @@
 {
-  "name": "application-template-lit-element",
+  "name": "app-template",
   "version": "0.1.0",
-  "description": "A template for building web applications using LitElement",
+  "description": "A template for building web applications using LitElement and Vaadin Router",
   "license": "MIT",
   "dependencies": {
     "@vaadin/router": "^1.2.0",

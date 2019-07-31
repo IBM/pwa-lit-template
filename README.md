@@ -1,6 +1,6 @@
-# Application template with LitElement
+# app-template
 
-A template for building web applications using LitElement.
+A template for building web applications using [LitElement](https://github.com/Polymer/lit-element) and [Vaadin Router](https://github.com/vaadin/vaadin-router).
 
 ## Prerequisites
 
