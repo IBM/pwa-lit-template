@@ -27,7 +27,7 @@ export default configs.map((config, index) => {
       plugins: [
         ...defaultConfig.plugins,
         copy({
-          files: ['images/**/*'],
+          files: ['images/**/*', 'manifest.json'],
           dest: DIST_FOLDER,
           options: { parents: true }
         })

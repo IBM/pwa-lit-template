@@ -1,0 +1,9 @@
+{
+  "name": "MyApplication",
+  "short_name": "MyApp",
+  "description": "MyApplication description",
+  "start_url": "/?utm_source=web_app_manifest",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
