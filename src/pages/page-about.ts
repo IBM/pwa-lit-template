@@ -7,12 +7,12 @@
 
 import { LitElement, html, customElement, TemplateResult } from 'lit-element';
 
-@customElement('app-shell')
-export class AppShell extends LitElement {
+@customElement('page-about')
+export class PageAbout extends LitElement {
   protected render(): TemplateResult {
     return html`
       <section>
-        <h1>app-shell</h1>
+        <h1>About</h1>
       </section>
     `;
   }
