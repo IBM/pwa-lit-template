@@ -37,7 +37,7 @@
     "start": "npm run serve",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf dist && rollup --config",
-    "start:build": "es-dev-server --app-index --root-dir dist/ index.html --open"
+    "serve:production": "es-dev-server --app-index --root-dir dist/ index.html --open"
   },
   "husky": {
     "hooks": {
