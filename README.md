@@ -16,7 +16,7 @@ This command serves the app at `http://localhost:8080`:
 
     npm start
 
-## Build project for production
+## Build for production
 
 This command use [Rollup](https://github.com/rollup/rollup) to build an optimized version of the application for production.
 
