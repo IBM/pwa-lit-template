@@ -28,7 +28,7 @@ export class AppShell extends LitElement {
   private async initializeRouter(): Promise<void> {
     const router = await import('../router/index');
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const mainElement = this.shadowRoot!.querySelector('main') as HTMLElement;
+    const mainElement = this.shadowRoot!.querySelector('main')!;
 
     router.init(mainElement);
   }
