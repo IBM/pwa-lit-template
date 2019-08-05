@@ -5,4 +5,13 @@
  * file in the root directory of this source tree.
  */
 
-export { default } from './development';
+import config from './development';
+
+const sharedConfig = {
+  name: 'MyApplication'
+};
+
+export default {
+  ...sharedConfig,
+  ...config
+};
