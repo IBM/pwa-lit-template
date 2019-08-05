@@ -7,6 +7,8 @@
 
 import { LitElement, html, customElement, TemplateResult } from 'lit-element';
 
+import config from '../config';
+
 @customElement('app-shell')
 export class AppShell extends LitElement {
   protected render(): TemplateResult {
@@ -17,6 +19,10 @@ export class AppShell extends LitElement {
         <main role="main">
           <!-- added / removed dynamically by the router -->
         </main>
+
+        <footer>
+          <p>Current environment: ${config.environment}</p>
+        </footer>
       </section>
     `;
   }

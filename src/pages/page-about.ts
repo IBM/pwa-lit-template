@@ -13,6 +13,10 @@ export class PageAbout extends LitElement {
     return html`
       <section>
         <h1>About</h1>
+
+        <p>
+          <a href="/">Back to home</a>
+        </p>
       </section>
     `;
   }
