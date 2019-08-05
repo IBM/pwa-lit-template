@@ -8,6 +8,7 @@
 import { LitElement, html, customElement, TemplateResult } from 'lit-element';
 
 import config from '../config';
+import { updateMetadata } from '../helpers';
 
 @customElement('app-shell')
 export class AppShell extends LitElement {
@@ -32,6 +33,17 @@ export class AppShell extends LitElement {
   }
 
   private async initializeRouter(): Promise<void> {
+    window.addEventListener('vaadin-router-location-changed', ((
+      event: CustomEvent
+    ): void => {
+      const { route } = event.detail.location;
+
+      updateMetadata({
+        title: `${route.title} | ${config.name}`,
+        description: route.description
+      });
+    }) as EventListener);
+
     const router = await import('../router/index');
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const mainElement = this.shadowRoot!.querySelector('main')!;
