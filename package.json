@@ -25,6 +25,7 @@
     "rimraf": "^2.6.0",
     "rollup": "^1.18.0",
     "rollup-plugin-cpy": "^2.0.0",
+    "rollup-plugin-replace": "^2.2.0",
     "typescript": "^3.5.0"
   },
   "scripts": {
@@ -36,7 +37,7 @@
     "serve": "es-dev-server --app-index index.html --file-extensions .ts --node-resolve --babel --watch --open",
     "start": "npm run serve",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rimraf dist && rollup --config",
+    "build": "rimraf dist && rollup --config --environment NODE_ENV:production",
     "serve:production": "es-dev-server --app-index --root-dir dist/ index.html --open"
   },
   "husky": {

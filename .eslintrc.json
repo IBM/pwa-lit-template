@@ -16,5 +16,13 @@
   "plugins": ["@typescript-eslint", "wc", "lit"],
   "env": {
     "browser": true
-  }
+  },
+  "overrides": [
+    {
+      "files": "rollup.config.js",
+      "env": {
+        "node": true
+      }
+    }
+  ]
 }
