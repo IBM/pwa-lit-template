@@ -26,11 +26,17 @@ const setMetaTag = (
 interface MetadataOptions {
   title?: string;
   description?: string;
+  image?: {
+    url: string;
+    alt?: string;
+    width?: string;
+    height?: string;
+  };
   url?: string;
 }
 
 export const updateMetadata = (metadataOptions: MetadataOptions): void => {
-  const { title, description, url } = metadataOptions;
+  const { title, description, image, url } = metadataOptions;
 
   if (title) {
     document.title = title;
@@ -40,6 +46,22 @@ export const updateMetadata = (metadataOptions: MetadataOptions): void => {
   if (description) {
     setMetaTag('name', 'description', description);
     setMetaTag('property', 'og:description', description);
+  }
+
+  if (image) {
+    if (image.url) {
+      const imageUrl = `${window.location.origin}/${image.url}`;
+      setMetaTag('property', 'og:image', imageUrl);
+    }
+    if (image.alt) {
+      setMetaTag('property', 'og:image:alt', image.alt);
+    }
+    if (image.width) {
+      setMetaTag('property', 'og:image:width', image.width);
+    }
+    if (image.height) {
+      setMetaTag('property', 'og:image:height', image.height);
+    }
   }
 
   if (url) {
