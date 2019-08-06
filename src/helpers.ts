@@ -26,10 +26,11 @@ const setMetaTag = (
 interface MetadataOptions {
   title?: string;
   description?: string;
+  url?: string;
 }
 
 export const updateMetadata = (metadataOptions: MetadataOptions): void => {
-  const { title, description } = metadataOptions;
+  const { title, description, url } = metadataOptions;
 
   if (title) {
     document.title = title;
@@ -39,5 +40,9 @@ export const updateMetadata = (metadataOptions: MetadataOptions): void => {
   if (description) {
     setMetaTag('name', 'description', description);
     setMetaTag('property', 'og:description', description);
+  }
+
+  if (url) {
+    setMetaTag('property', 'og:url', url);
   }
 };

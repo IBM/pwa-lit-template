@@ -31,10 +31,14 @@ export class AppShell extends LitElement {
   private updateMetadata(event: CustomEvent): void {
     const { route } = event.detail.location;
 
-    updateMetadata({
-      title: `${route.title} | ${config.name}`,
-      description: route.description
-    });
+    // TODO: Remove setTimeout. https://github.com/vaadin/vaadin-router/issues/340
+    setTimeout((): void => {
+      updateMetadata({
+        title: `${route.title} | ${config.name}`,
+        description: route.description,
+        url: window.location.href
+      });
+    }, 0);
   }
 
   private async initializeRouter(): Promise<void> {
