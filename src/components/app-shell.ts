@@ -28,20 +28,20 @@ export class AppShell extends LitElement {
     `;
   }
 
-  protected firstUpdated(): void {
-    this.initializeRouter();
+  private updateMetadata(event: CustomEvent): void {
+    const { route } = event.detail.location;
+
+    updateMetadata({
+      title: `${route.title} | ${config.name}`,
+      description: route.description
+    });
   }
 
   private async initializeRouter(): Promise<void> {
     window.addEventListener('vaadin-router-location-changed', ((
       event: CustomEvent
     ): void => {
-      const { route } = event.detail.location;
-
-      updateMetadata({
-        title: `${route.title} | ${config.name}`,
-        description: route.description
-      });
+      this.updateMetadata(event);
     }) as EventListener);
 
     const router = await import('../router/index');
@@ -49,5 +49,9 @@ export class AppShell extends LitElement {
     const mainElement = this.shadowRoot!.querySelector('main')!;
 
     router.init(mainElement);
+  }
+
+  protected firstUpdated(): void {
+    this.initializeRouter();
   }
 }
