@@ -14,6 +14,7 @@
     "@open-wc/building-rollup": "^0.9.0",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
+    "bundlesize": "^0.18.0",
     "es-dev-server": "^1.10.0",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.0.0",
@@ -34,12 +35,27 @@
     "format": "npm run format:prettier",
     "format:prettier": "prettier --write '**/*.{js,json,md,ts}'",
     "type-check": "tsc --noEmit",
+    "bundle-size-check": "bundlesize",
     "serve": "es-dev-server --app-index index.html --file-extensions .ts --node-resolve --babel --watch --open",
     "start": "npm run serve",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf dist && rollup --config --environment NODE_ENV:production",
     "serve:production": "es-dev-server --app-index --root-dir dist/ index.html --open"
   },
+  "bundlesize": [
+    {
+      "path": "dist/app-shell.js",
+      "maxSize": "800 B"
+    },
+    {
+      "path": "dist/index-*.js",
+      "maxSize": "7.9 kB"
+    },
+    {
+      "path": "dist/page-*.js",
+      "maxSize": "400 B"
+    }
+  ],
   "husky": {
     "hooks": {
       "pre-commit": "tsc --noEmit && lint-staged"
