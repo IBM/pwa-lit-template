@@ -8,6 +8,7 @@
 import { LitElement, html, customElement, TemplateResult } from 'lit-element';
 
 import config from '../config';
+import { updateMetadata } from '../helpers';
 
 @customElement('app-shell')
 export class AppShell extends LitElement {
@@ -27,15 +28,34 @@ export class AppShell extends LitElement {
     `;
   }
 
-  protected firstUpdated(): void {
-    this.initializeRouter();
+  private updateMetadata(event: CustomEvent): void {
+    const { route } = event.detail.location;
+
+    // TODO: Remove setTimeout. https://github.com/vaadin/vaadin-router/issues/340
+    setTimeout((): void => {
+      updateMetadata({
+        title: `${route.title} | ${config.name}`,
+        description: route.description,
+        url: window.location.href
+      });
+    }, 0);
   }
 
   private async initializeRouter(): Promise<void> {
+    window.addEventListener('vaadin-router-location-changed', ((
+      event: CustomEvent
+    ): void => {
+      this.updateMetadata(event);
+    }) as EventListener);
+
     const router = await import('../router/index');
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const mainElement = this.shadowRoot!.querySelector('main')!;
 
     router.init(mainElement);
+  }
+
+  protected firstUpdated(): void {
+    this.initializeRouter();
   }
 }
