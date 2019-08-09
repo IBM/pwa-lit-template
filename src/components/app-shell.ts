@@ -15,15 +15,12 @@ export class AppShell extends LitElement {
   protected render(): TemplateResult {
     return html`
       <section>
-        <h1>app-shell</h1>
+        <h1>Application shell</h1>
+        <p>Current environment: ${config.environment}</p>
 
         <main role="main">
           <!-- added / removed dynamically by the router -->
         </main>
-
-        <footer>
-          <p>Current environment: ${config.environment}</p>
-        </footer>
       </section>
     `;
   }
