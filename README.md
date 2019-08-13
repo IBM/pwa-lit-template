@@ -1,3 +1,7 @@
+> ### 🛠 Status: Experimental
+>
+> `app-template` is currently in development.
+
 # app-template
 
 A template for building web applications using [LitElement](https://github.com/Polymer/lit-element) and [Vaadin Router](https://github.com/vaadin/vaadin-router).
