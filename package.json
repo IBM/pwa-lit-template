@@ -73,6 +73,10 @@
     "**/*.{js,ts}": [
       "eslint --fix",
       "git add"
+    ],
+    "src/{components,pages}/**/*.ts": [
+      "lit-analyzer --strict --quiet",
+      "git add"
     ]
   }
 }
