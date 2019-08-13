@@ -39,3 +39,5 @@ And this command serves the production ready app:
 ### Things to be aware
 
 - There is [a patch](patches/@vaadin+router+1.2.1.patch) that modifies the `@vaadin/router`'s scroll standar behavior to have a more consistent scroll; now when you perform a `click` event, the scroll will be reset to the top position.
+
+  Related issue: [vaadin/router#43: Restore scroll position on navigation](https://github.com/vaadin/vaadin-router/issues/43)
