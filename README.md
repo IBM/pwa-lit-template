@@ -33,3 +33,9 @@ At runtime it is determined which version of your the should be loaded, so that 
 And this command serves the production ready app:
 
     npm run serve:production
+
+---
+
+### Things to be aware
+
+- There is [a patch](patches/@vaadin+router+1.2.1.patch) that modifies the `@vaadin/router`'s scroll standar behavior to have a more consistent scroll; now when you perform a `click` event, the scroll will be reset to the top position.

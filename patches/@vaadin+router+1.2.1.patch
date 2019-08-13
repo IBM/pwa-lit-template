@@ -1,0 +1,15 @@
+diff --git a/node_modules/@vaadin/router/dist/vaadin-router.js b/node_modules/@vaadin/router/dist/vaadin-router.js
+index a98af80..70a0b85 100644
+--- a/node_modules/@vaadin/router/dist/vaadin-router.js
++++ b/node_modules/@vaadin/router/dist/vaadin-router.js
+@@ -239,6 +239,10 @@ function vaadinRouterGlobalClickHandler(event) {
+     return;
+   }
+ 
++  if (event && event.type === 'click') {
++    window.scrollTo(0, 0);
++  }
++
+   // if none of the above, convert the click into a navigation event
+   if (fireRouterEvent('go', {pathname: anchor.pathname})) {
+     event.preventDefault();
