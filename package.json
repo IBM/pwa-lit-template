@@ -34,10 +34,10 @@
   "scripts": {
     "postinstall": "patch-package",
     "lint": "npm run lint:eslint && npm run lint:lit",
-    "lint:eslint": "eslint 'src/**/*.{js,ts}'",
-    "lint:lit": "lit-analyzer \"src/**/*.ts\" --strict --quiet",
+    "lint:eslint": "eslint \"**/*.{js,ts}\"",
+    "lint:lit": "lit-analyzer \"src/{components,pages}/**/*.ts\" --strict --quiet",
     "format": "npm run format:prettier",
-    "format:prettier": "prettier --write '**/*.{js,json,md,ts}'",
+    "format:prettier": "prettier --write \"**/*.{js,json,md,ts}\"",
     "type-check": "tsc --noEmit",
     "bundle-size-check": "bundlesize",
     "serve": "es-dev-server --app-index index.html --file-extensions .ts --node-resolve --babel --watch --open",

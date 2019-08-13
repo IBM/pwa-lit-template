@@ -9,7 +9,7 @@ export interface RouteContext {
   pathname: string;
   params: {};
   route: {};
-  next: () => any;
+  next: () => any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 export interface RouteRedirect {
