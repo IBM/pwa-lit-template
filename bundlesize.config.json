@@ -1,0 +1,16 @@
+{
+  "files": [
+    {
+      "path": "dist/app-shell.js",
+      "maxSize": "1 kB"
+    },
+    {
+      "path": "dist/index-*.js",
+      "maxSize": "7.9 kB"
+    },
+    {
+      "path": "dist/page-*.js",
+      "maxSize": "400 B"
+    }
+  ]
+}

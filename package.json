@@ -46,20 +46,6 @@
     "build": "rimraf dist && rollup --config --environment NODE_ENV:production",
     "serve:production": "es-dev-server --app-index --root-dir dist/ index.html --open"
   },
-  "bundlesize": [
-    {
-      "path": "dist/app-shell.js",
-      "maxSize": "800 B"
-    },
-    {
-      "path": "dist/index-*.js",
-      "maxSize": "7.9 kB"
-    },
-    {
-      "path": "dist/page-*.js",
-      "maxSize": "400 B"
-    }
-  ],
   "husky": {
     "hooks": {
       "pre-commit": "tsc --noEmit && lint-staged"
