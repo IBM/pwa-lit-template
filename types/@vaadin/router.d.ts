@@ -31,7 +31,7 @@ export interface Route {
   action?: (
     context: RouteContext,
     commands: RouteCommands
-  ) => RouteRedirect | void;
+  ) => RouteRedirect | HTMLElement | void;
   redirect?: string;
   bundle?: string;
   component?: string;
