@@ -78,5 +78,8 @@
       "lit-analyzer --strict --quiet",
       "git add"
     ]
+  },
+  "engines": {
+    "node": ">=10.0.0"
   }
 }
