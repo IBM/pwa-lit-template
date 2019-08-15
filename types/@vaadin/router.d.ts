@@ -7,6 +7,8 @@
 
 export interface RouteContext {
   pathname: string;
+  search: string;
+  hash: string;
   params: {};
   route: {};
   next: () => any; // eslint-disable-line @typescript-eslint/no-explicit-any
