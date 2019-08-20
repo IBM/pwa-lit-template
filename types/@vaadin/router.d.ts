@@ -16,16 +16,14 @@ export interface RouteContext {
   next: () => Promise<Route | null>;
 }
 
-export interface RouteRedirect {
-  redirect: {
+export interface RouteCommands {
+  redirect: (
+    path: string
+  ) => {
     pathname: string;
     from: string;
     params: {};
   };
-}
-
-export interface RouteCommands {
-  redirect: (path: string) => RouteRedirect;
   component: (component: string) => HTMLElement;
 }
 
@@ -35,7 +33,13 @@ export interface Route {
   action?: (
     context: RouteContext,
     commands: RouteCommands
-  ) => OptionalPromise<void | HTMLElement | RouteRedirect>;
+  ) => OptionalPromise<
+    | void
+    | HTMLElement
+    | ReturnType<RouteContext['next']>
+    | ReturnType<RouteCommands['component']>
+    | ReturnType<RouteCommands['redirect']>
+  >;
   redirect?: string;
   bundle?: string;
   component?: string;

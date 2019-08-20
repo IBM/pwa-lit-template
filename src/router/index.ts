@@ -5,7 +5,7 @@
  * file in the root directory of this source tree.
  */
 
-import { Router, RouteRedirect } from '@vaadin/router';
+import { Router, RouteCommands } from '@vaadin/router';
 
 import routes from './routes';
 
@@ -16,7 +16,7 @@ export function init(outlet: HTMLElement): void {
     // Redirect to URL without trailing slash
     {
       path: '(.*)/',
-      action: (context, commands): RouteRedirect => {
+      action: (context, commands): ReturnType<RouteCommands['redirect']> => {
         const newPath = context.pathname.slice(0, -1);
         return commands.redirect(newPath);
       }
