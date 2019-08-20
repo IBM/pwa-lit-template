@@ -5,25 +5,25 @@
  * file in the root directory of this source tree.
  */
 
+type OptionalPromise<T> = T | Promise<T>;
+
 export interface RouteContext {
   pathname: string;
   search: string;
   hash: string;
   params: {};
-  route: {};
-  next: () => any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  route: Route;
+  next: () => Promise<Route | null>;
 }
 
-export interface RouteRedirect {
-  redirect: {
+export interface RouteCommands {
+  redirect: (
+    path: string
+  ) => {
     pathname: string;
     from: string;
     params: {};
   };
-}
-
-export interface RouteCommands {
-  redirect: (path: string) => RouteRedirect;
   component: (component: string) => HTMLElement;
 }
 
@@ -33,7 +33,13 @@ export interface Route {
   action?: (
     context: RouteContext,
     commands: RouteCommands
-  ) => RouteRedirect | HTMLElement | void;
+  ) => OptionalPromise<
+    | void
+    | HTMLElement
+    | ReturnType<RouteContext['next']>
+    | ReturnType<RouteCommands['component']>
+    | ReturnType<RouteCommands['redirect']>
+  >;
   redirect?: string;
   bundle?: string;
   component?: string;
