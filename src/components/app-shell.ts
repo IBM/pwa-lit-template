@@ -5,14 +5,14 @@
  * file in the root directory of this source tree.
  */
 
-import { LitElement, html, customElement, TemplateResult } from 'lit-element';
+import { LitElement, html, customElement } from 'lit-element';
 
 import config from '../config';
 import { updateMetadata } from '../helpers';
 
 @customElement('app-shell')
 export class AppShell extends LitElement {
-  protected render(): TemplateResult {
+  protected render() {
     return html`
       <section>
         <h1>Application shell</h1>
@@ -25,11 +25,11 @@ export class AppShell extends LitElement {
     `;
   }
 
-  private updateMetadata(event: CustomEvent): void {
+  private updateMetadata(event: CustomEvent) {
     const { route } = event.detail.location;
 
     // TODO: Remove setTimeout. https://github.com/vaadin/vaadin-router/issues/340
-    setTimeout((): void => {
+    setTimeout(() => {
       updateMetadata({
         title: `${route.title} | ${config.name}`,
         description: route.description,
@@ -41,7 +41,7 @@ export class AppShell extends LitElement {
   private async initializeRouter(): Promise<void> {
     window.addEventListener('vaadin-router-location-changed', ((
       event: CustomEvent
-    ): void => {
+    ) => {
       this.updateMetadata(event);
     }) as EventListener);
 
@@ -52,7 +52,7 @@ export class AppShell extends LitElement {
     router.init(mainElement);
   }
 
-  protected firstUpdated(): void {
+  protected firstUpdated() {
     this.initializeRouter();
   }
 }

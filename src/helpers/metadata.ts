@@ -9,7 +9,7 @@ const setMetaTag = (
   attributeName: string,
   attributeValue: string,
   content: string
-): void => {
+) => {
   let element = document.head.querySelector(
     `meta[${attributeName}="${attributeValue}"]`
   );
@@ -35,7 +35,7 @@ interface MetadataOptions {
   url?: string;
 }
 
-export const updateMetadata = (metadataOptions: MetadataOptions): void => {
+export const updateMetadata = (metadataOptions: MetadataOptions) => {
   const { title, description, image, url } = metadataOptions;
 
   if (title) {

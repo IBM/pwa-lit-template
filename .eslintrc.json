@@ -17,6 +17,9 @@
   "env": {
     "browser": true
   },
+  "rules": {
+    "@typescript-eslint/explicit-function-return-type": "off"
+  },
   "overrides": [
     {
       "files": "rollup.config.js",
