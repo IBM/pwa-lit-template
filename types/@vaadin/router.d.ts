@@ -35,7 +35,7 @@ export interface Route {
   action?: (
     context: RouteContext,
     commands: RouteCommands
-  ) => RouteRedirect | HTMLElement | void;
+  ) => OptionalPromise<void | HTMLElement | RouteRedirect>;
   redirect?: string;
   bundle?: string;
   component?: string;
