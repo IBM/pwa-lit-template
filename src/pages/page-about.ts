@@ -5,11 +5,11 @@
  * file in the root directory of this source tree.
  */
 
-import { LitElement, html, customElement, TemplateResult } from 'lit-element';
+import { LitElement, html, customElement } from 'lit-element';
 
 @customElement('page-about')
 export class PageAbout extends LitElement {
-  protected render(): TemplateResult {
+  protected render() {
     return html`
       <section>
         <h1>About</h1>

@@ -11,7 +11,7 @@ export default [
     component: 'page-home',
     title: 'Home',
     description: 'Home description',
-    action: async (): Promise<void> => {
+    action: async () => {
       await import('../pages/page-home');
     }
   },
@@ -20,7 +20,7 @@ export default [
     component: 'page-about',
     title: 'About',
     description: 'About description',
-    action: async (): Promise<void> => {
+    action: async () => {
       await import('../pages/page-about');
     }
   },
@@ -29,7 +29,7 @@ export default [
     component: 'page-not-found',
     title: 'Page not found',
     description: 'Page not found description',
-    action: async (): Promise<void> => {
+    action: async () => {
       await import('../pages/page-not-found');
     }
   }
