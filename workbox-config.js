@@ -20,5 +20,6 @@ module.exports = {
       }
     }
   ],
+  navigateFallback: 'index.html',
   swDest: 'dist/service-worker.js'
 };
