@@ -7,6 +7,18 @@
 
 module.exports = {
   globDirectory: 'dist/',
-  globPatterns: ['**/*.{js,ico,png,svg,html,json}'],
+  globPatterns: ['index.html', 'manifest.json', '**/*.js'],
+  runtimeCaching: [
+    {
+      urlPattern: /\.(?:ico|png|svg)$/,
+      handler: 'CacheFirst',
+      options: {
+        cacheName: 'images',
+        expiration: {
+          maxEntries: 100
+        }
+      }
+    }
+  ],
   swDest: 'dist/service-worker.js'
 };
