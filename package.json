@@ -4,7 +4,7 @@
   "description": "A template for building web applications using LitElement and Vaadin Router",
   "license": "MIT",
   "dependencies": {
-    "@vaadin/router": "vaadin/vaadin-router#cad0fd6",
+    "@vaadin/router": "vaadin/vaadin-router#9d923d6",
     "lit-element": "^2.2.0"
   },
   "devDependencies": {
