@@ -6,8 +6,10 @@
  */
 
 module.exports = {
+  clientsClaim: true,
   globDirectory: 'dist/',
   globPatterns: ['index.html', 'manifest.json', '**/*.js'],
+  navigateFallback: 'index.html',
   runtimeCaching: [
     {
       urlPattern: /\.(?:ico|png|svg)$/,
@@ -20,6 +22,5 @@ module.exports = {
       }
     }
   ],
-  navigateFallback: 'index.html',
   swDest: 'dist/service-worker.js'
 };
