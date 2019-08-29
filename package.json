@@ -12,6 +12,7 @@
     "@babel/plugin-proposal-decorators": "^7.4.0",
     "@babel/preset-typescript": "^7.3.0",
     "@open-wc/building-rollup": "^0.9.0",
+    "@types/workbox-window": "^4.3.0",
     "@typescript-eslint/eslint-plugin": "^2.0.0",
     "@typescript-eslint/parser": "^2.0.0",
     "bundlesize": "^0.18.0",
@@ -30,7 +31,8 @@
     "rollup-plugin-cpy": "^2.0.0",
     "rollup-plugin-replace": "^2.2.0",
     "typescript": "^3.6.0",
-    "workbox-cli": "^4.3.0"
+    "workbox-cli": "^4.3.0",
+    "workbox-window": "^4.3.0"
   },
   "scripts": {
     "postinstall": "patch-package",
