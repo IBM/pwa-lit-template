@@ -33,13 +33,6 @@ file in the root directory of this source tree.
     <noscript>Please enable JavaScript to view this website.</noscript>
 
     <script type="module" src="src/components/app-shell.ts"></script>
-
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/service-worker.js');
-        });
-      }
-    </script>
+    <script type="module" src="src/register-service-worker.ts"></script>
   </body>
 </html>
