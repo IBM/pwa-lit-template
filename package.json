@@ -3,6 +3,25 @@
   "version": "0.1.0",
   "description": "A template for building web applications using LitElement and Vaadin Router",
   "license": "MIT",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "scripts": {
+    "build": "rimraf dist && rollup --config --environment NODE_ENV:production && npm run build:generate-sw",
+    "build:generate-sw": "workbox generateSW workbox-config.js",
+    "bundle-size-check": "bundlesize",
+    "format": "npm run format:prettier",
+    "format:prettier": "prettier --write \"**/*.{js,json,md,ts}\"",
+    "lint": "npm run lint:eslint && npm run lint:lit",
+    "lint:eslint": "eslint \"**/*.{js,ts}\"",
+    "lint:lit": "lit-analyzer \"src/{components,pages}/**/*.ts\" --strict --quiet",
+    "postinstall": "patch-package",
+    "serve": "es-dev-server --app-index index.html --file-extensions .ts --node-resolve --babel --watch --open",
+    "serve:production": "es-dev-server --app-index --root-dir dist/ index.html --open",
+    "start": "npm run serve",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "type-check": "tsc --noEmit"
+  },
   "dependencies": {
     "@vaadin/router": "^1.4.0",
     "lit-element": "^2.2.0"
@@ -23,9 +42,10 @@
     "eslint-plugin-wc": "^1.2.0",
     "husky": "^3.0.0",
     "lint-staged": "^9.2.0",
-    "patch-package": "^6.2.0",
     "lit-analyzer": "^1.1.0",
+    "patch-package": "^6.2.0",
     "prettier": "1.18.2",
+    "prettier-plugin-package": "^0.3.0",
     "rimraf": "^3.0.0",
     "rollup": "^1.21.0",
     "rollup-plugin-cpy": "^2.0.0",
@@ -33,22 +53,6 @@
     "typescript": "^3.6.0",
     "workbox-cli": "^4.3.0",
     "workbox-window": "^4.3.0"
-  },
-  "scripts": {
-    "postinstall": "patch-package",
-    "lint": "npm run lint:eslint && npm run lint:lit",
-    "lint:eslint": "eslint \"**/*.{js,ts}\"",
-    "lint:lit": "lit-analyzer \"src/{components,pages}/**/*.ts\" --strict --quiet",
-    "format": "npm run format:prettier",
-    "format:prettier": "prettier --write \"**/*.{js,json,md,ts}\"",
-    "type-check": "tsc --noEmit",
-    "bundle-size-check": "bundlesize",
-    "serve": "es-dev-server --app-index index.html --file-extensions .ts --node-resolve --babel --watch --open",
-    "start": "npm run serve",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rimraf dist && rollup --config --environment NODE_ENV:production && npm run build:generate-sw",
-    "build:generate-sw": "workbox generateSW workbox-config.js",
-    "serve:production": "es-dev-server --app-index --root-dir dist/ index.html --open"
   },
   "husky": {
     "hooks": {
@@ -68,8 +72,5 @@
       "lit-analyzer --strict --quiet",
       "git add"
     ]
-  },
-  "engines": {
-    "node": ">=10.0.0"
   }
 }
