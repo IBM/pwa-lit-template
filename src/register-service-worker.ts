@@ -5,6 +5,45 @@
  * file in the root directory of this source tree.
  */
 
+import { LitElement, html, css, customElement } from 'lit-element';
+
+@customElement('app-toast')
+export class AppToast extends LitElement {
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: flex;
+          padding: 1rem;
+          background-color: #dddddd;
+        }
+
+        .message {
+          flex-grow: 1;
+        }
+      `
+    ];
+  }
+
+  protected render() {
+    return html`
+      <div class="message">New version available!</div>
+      <button @click=${this._onAccept}>Update</button>
+      <button @click=${this._onCancel}>Close</button>
+    `;
+  }
+
+  protected _onAccept() {
+    const onAcceptEvent = new CustomEvent('on-accept');
+    this.dispatchEvent(onAcceptEvent);
+  }
+
+  protected _onCancel() {
+    const onCancelEvent = new CustomEvent('on-cancel');
+    this.dispatchEvent(onCancelEvent);
+  }
+}
+
 // TODO: Update with a toast custom element
 const createUIPrompt = ({ onAccept }: { onAccept: Function }) => {
   const toastElement = document.createElement('div');
