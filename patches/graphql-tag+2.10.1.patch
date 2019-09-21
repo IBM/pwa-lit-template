@@ -1,0 +1,31 @@
+diff --git a/node_modules/graphql-tag/src/index.js b/node_modules/graphql-tag/src/index.js
+index f52711e..b4ed593 100644
+--- a/node_modules/graphql-tag/src/index.js
++++ b/node_modules/graphql-tag/src/index.js
+@@ -1,6 +1,4 @@
+-var parser = require('graphql/language/parser');
+-
+-var parse = parser.parse;
++import { parse } from 'graphql/language';
+ 
+ // Strip insignificant whitespace
+ // Note that this could do a lot more, such as reorder fields etc.
+@@ -170,11 +168,10 @@ function gql(/* arguments */) {
+   return parseDocument(result);
+ }
+ 
+-// Support typescript, which isn't as nice as Babel about default exports
+-gql.default = gql;
+-gql.resetCaches = resetCaches;
+-gql.disableFragmentWarnings = disableFragmentWarnings;
+-gql.enableExperimentalFragmentVariables = enableExperimentalFragmentVariables;
+-gql.disableExperimentalFragmentVariables = disableExperimentalFragmentVariables;
+-
+-module.exports = gql;
++export {
++  gql as default,
++  resetCaches,
++  disableFragmentWarnings,
++  enableExperimentalFragmentVariables,
++  disableExperimentalFragmentVariables
++};

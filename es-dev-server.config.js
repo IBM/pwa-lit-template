@@ -5,7 +5,8 @@
  * file in the root directory of this source tree.
  */
 
-export default {
-  environment: 'development',
-  apiUrl: 'http://localhost:1337/graphql'
+module.exports = {
+  babelConfig: {
+    plugins: [['babel-plugin-transform-commonjs']]
+  }
 };

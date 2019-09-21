@@ -24,6 +24,11 @@
   },
   "dependencies": {
     "@vaadin/router": "^1.4.0",
+    "apollo-cache-inmemory": "^1.6.0",
+    "apollo-client": "^2.6.0",
+    "apollo-link-http": "^1.5.10",
+    "graphql": "^14.5.0",
+    "graphql-tag": "^2.10.0",
     "lit-element": "^2.2.0"
   },
   "devDependencies": {
@@ -34,6 +39,7 @@
     "@types/workbox-window": "^4.3.0",
     "@typescript-eslint/eslint-plugin": "^2.3.0",
     "@typescript-eslint/parser": "^2.3.0",
+    "babel-plugin-transform-commonjs": "^1.1.0",
     "bundlesize": "^0.18.0",
     "es-dev-server": "^1.18.0",
     "eslint": "^6.4.0",

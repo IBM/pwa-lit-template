@@ -22,7 +22,11 @@
   },
   "overrides": [
     {
-      "files": ["rollup.config.js", "workbox-config.js"],
+      "files": [
+        "es-dev-server.config.js",
+        "rollup.config.js",
+        "workbox-config.js"
+      ],
       "env": {
         "node": true
       }
