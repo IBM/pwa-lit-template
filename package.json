@@ -24,11 +24,8 @@
   },
   "dependencies": {
     "@vaadin/router": "^1.4.0",
-    "apollo-cache-inmemory": "^1.6.0",
-    "apollo-client": "^2.6.0",
-    "apollo-link-http": "^1.5.10",
+    "apollo-boost": "^0.4.0",
     "graphql": "^14.5.0",
-    "graphql-tag": "^2.10.0",
     "lit-element": "^2.2.0"
   },
   "devDependencies": {

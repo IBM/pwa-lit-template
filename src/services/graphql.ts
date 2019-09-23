@@ -5,15 +5,12 @@
  * file in the root directory of this source tree.
  */
 
-import { ApolloClient } from 'apollo-client';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { HttpLink } from 'apollo-link-http';
-import gql from 'graphql-tag';
+import ApolloClient, { gql } from 'apollo-boost';
 
 import config from '../config';
 
-const cache = new InMemoryCache();
-const link = new HttpLink({ uri: config.apiUrl });
-const client = new ApolloClient({ cache, link });
+const client = new ApolloClient({
+  uri: config.apiUrl
+});
 
 export { client, gql };
