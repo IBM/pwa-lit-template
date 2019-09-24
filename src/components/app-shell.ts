@@ -5,23 +5,64 @@
  * file in the root directory of this source tree.
  */
 
-import { LitElement, html, customElement } from 'lit-element';
+import { LitElement, html, css, customElement } from 'lit-element';
 
 import config from '../config';
 import { updateMetadata } from '../helpers';
 
 @customElement('app-shell')
 export class AppShell extends LitElement {
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: block;
+          padding: 1rem;
+        }
+
+        main > * {
+          display: block;
+        }
+
+        main {
+          margin-bottom: 50px;
+        }
+
+        footer {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 50px;
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          padding: 0 1rem;
+          background-color: #eeeeee;
+        }
+      `
+    ];
+  }
+
   protected render() {
     return html`
-      <section>
-        <h1>Application shell</h1>
-        <p>Current environment: ${config.environment}</p>
+      <header>
+        <nav>
+          <a href="/">Home</a>
+          <span>-</span>
+          <a href="/about">About</a>
+          <span>-</span>
+          <a href="/error">Error</a>
+        </nav>
+      </header>
 
-        <main role="main">
-          <!-- added / removed dynamically by the router -->
-        </main>
-      </section>
+      <main role="main">
+        <!-- added / removed dynamically by the router -->
+      </main>
+
+      <footer>
+        <span>Current environment: ${config.environment}</span>
+      </footer>
     `;
   }
 

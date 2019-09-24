@@ -15,7 +15,10 @@ export class PageAbout extends LitElement {
         <h1>About</h1>
 
         <p>
-          <a href="/">Back to home</a>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi,
+          delectus? Unde, sit. Fuga modi ea praesentium. Nemo dicta qui, magnam
+          cum dolorum excepturi beatae explicabo quidem fugiat ullam blanditiis
+          minima!
         </p>
       </section>
     `;
