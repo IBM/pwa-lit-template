@@ -10,8 +10,12 @@ import { html, customElement } from 'lit-element';
 import { ApolloQueryElement } from '../helpers/apollo-query-element';
 import { gql } from '../graphql-service';
 
+import { client } from '../graphql-service';
+
 @customElement('page-home')
 export class PageHome extends ApolloQueryElement {
+  client = client;
+
   queryVariables = {
     limit: 10
   };

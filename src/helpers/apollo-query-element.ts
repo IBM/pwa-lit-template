@@ -9,13 +9,11 @@ import { LitElement, property } from 'lit-element';
 import { ApolloClient, NetworkStatus } from 'apollo-boost';
 import { GraphQLError } from 'graphql';
 
-import { client } from '../graphql-service';
-
 export class ApolloQueryElement extends LitElement {
-  public client: ApolloClient<unknown> = client;
+  public client: ApolloClient<unknown> | undefined;
 
   @property({ type: Object })
-  public query?: any;
+  public query: any | undefined;
 
   @property({ type: Object })
   public queryVariables?: any;
@@ -44,8 +42,18 @@ export class ApolloQueryElement extends LitElement {
   }
 
   public async requestQuery() {
+    if (!this.client) {
+      console.error('You need to have a client set up.');
+      return;
+    }
+
+    if (!this.query) {
+      console.error('You need to have a query set up.');
+      return;
+    }
+
     try {
-      const queryResult = await client.query({
+      const queryResult = await this.client.query({
         query: this.query,
         ...(this.queryVariables && { variables: this.queryVariables })
       });
