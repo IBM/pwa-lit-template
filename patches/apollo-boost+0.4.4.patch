@@ -1,0 +1,26 @@
+diff --git a/node_modules/apollo-boost/lib/index.d.ts b/node_modules/apollo-boost/lib/index.d.ts
+index 1f58c91..9234caa 100644
+--- a/node_modules/apollo-boost/lib/index.d.ts
++++ b/node_modules/apollo-boost/lib/index.d.ts
+@@ -22,7 +22,7 @@ export interface PresetConfig {
+     uri?: string | UriFunction;
+     credentials?: string;
+     headers?: any;
+-    fetch?: GlobalFetch['fetch'];
++    fetch?: WindowOrWorkerGlobalScope['fetch'];
+     fetchOptions?: HttpLink.Options;
+     clientState?: ClientStateConfig;
+     onError?: ErrorLink.ErrorHandler;
+diff --git a/node_modules/apollo-boost/src/index.ts b/node_modules/apollo-boost/src/index.ts
+index c9f0751..648d1a8 100644
+--- a/node_modules/apollo-boost/src/index.ts
++++ b/node_modules/apollo-boost/src/index.ts
+@@ -31,7 +31,7 @@ export interface PresetConfig {
+   uri?: string | UriFunction;
+   credentials?: string;
+   headers?: any;
+-  fetch?: GlobalFetch['fetch'];
++  fetch?: WindowOrWorkerGlobalScope['fetch'];
+   fetchOptions?: HttpLink.Options;
+   clientState?: ClientStateConfig;
+   onError?: ErrorLink.ErrorHandler;
