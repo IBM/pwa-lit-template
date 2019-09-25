@@ -8,7 +8,7 @@
 import { html, customElement, property } from 'lit-element';
 
 import { ApolloQueryElement } from '../helpers/apollo-query-element';
-import { gql } from '../services/graphql';
+import { gql } from '../graphql-service';
 
 @customElement('page-home')
 export class PageHome extends ApolloQueryElement {

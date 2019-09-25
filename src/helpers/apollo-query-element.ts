@@ -9,7 +9,7 @@ import { LitElement, property } from 'lit-element';
 import { ApolloClient, NetworkStatus } from 'apollo-boost';
 import { GraphQLError } from 'graphql';
 
-import { client } from '../services/graphql';
+import { client } from '../graphql-service';
 
 export class ApolloQueryElement extends LitElement {
   public client: ApolloClient<unknown> = client;
