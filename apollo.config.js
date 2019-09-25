@@ -9,6 +9,7 @@ module.exports = {
   client: {
     service: {
       name: 'graphql-service',
+      // TODO: Can we get this URL from `src/config/`?
       url: 'http://localhost:1337/graphql'
     }
   }
