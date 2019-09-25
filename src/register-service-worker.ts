@@ -7,25 +7,26 @@
 
 import { LitElement, html, css, customElement } from 'lit-element';
 
-@customElement('app-toast')
-export class AppToast extends LitElement {
+@customElement('app-snackbar')
+export class AppSnackbar extends LitElement {
   static get styles() {
     return [
       css`
         :host {
-          position: absolute;
-          bottom: 0;
-          width: 100%;
-        }
-
-        .content {
           display: flex;
-          padding: 1rem;
-          background-color: #dddddd;
+          min-width: 288px;
+          margin: 12px;
+          padding: 14px 16px;
+          box-sizing: border-box;
+          background-color: #333333;
+          border-radius: 4px;
+          position: fixed;
+          bottom: 0;
         }
 
         .message {
           flex-grow: 1;
+          color: #ffffff;
         }
       `
     ];
@@ -33,11 +34,9 @@ export class AppToast extends LitElement {
 
   protected render() {
     return html`
-      <div class="content">
-        <div class="message">New version available!</div>
-        <button @click=${this._onAccept}>Update</button>
-        <button @click=${this._onCancel}>Close</button>
-      </div>
+      <div class="message">New version available!</div>
+      <button @click=${this._onAccept}>Update</button>
+      <button @click=${this._onCancel}>X</button>
     `;
   }
 
@@ -53,17 +52,17 @@ export class AppToast extends LitElement {
 }
 
 const createUIPrompt = ({ onAccept }: { onAccept: Function }) => {
-  const toastElement = document.createElement('app-toast');
+  const snackbarElement = document.createElement('app-snackbar');
 
-  toastElement.addEventListener('on-accept', () => {
+  snackbarElement.addEventListener('on-accept', () => {
     onAccept();
   });
 
-  toastElement.addEventListener('on-cancel', () => {
-    toastElement.remove();
+  snackbarElement.addEventListener('on-cancel', () => {
+    snackbarElement.remove();
   });
 
-  document.body.appendChild(toastElement);
+  document.body.appendChild(snackbarElement);
 };
 
 const registerServiceWorker = async () => {
