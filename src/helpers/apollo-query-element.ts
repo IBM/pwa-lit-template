@@ -18,6 +18,9 @@ export class ApolloQueryElement extends LitElement {
   public query?: any;
 
   @property({ type: Object })
+  public queryVariables?: any;
+
+  @property({ type: Object })
   public data?: any;
 
   @property({ type: Array })
@@ -42,7 +45,10 @@ export class ApolloQueryElement extends LitElement {
 
   public async requestQuery() {
     try {
-      const queryResult = await client.query({ query: this.query });
+      const queryResult = await client.query({
+        query: this.query,
+        ...(this.queryVariables && { variables: this.queryVariables })
+      });
 
       this.data = queryResult.data;
       this.errors = queryResult.errors;

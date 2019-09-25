@@ -5,17 +5,20 @@
  * file in the root directory of this source tree.
  */
 
-import { html, customElement, property } from 'lit-element';
+import { html, customElement } from 'lit-element';
 
 import { ApolloQueryElement } from '../helpers/apollo-query-element';
 import { gql } from '../graphql-service';
 
 @customElement('page-home')
 export class PageHome extends ApolloQueryElement {
-  @property({ type: Object })
+  queryVariables = {
+    limit: 10
+  };
+
   query = gql`
-    query {
-      users(limit: 10) {
+    query GetUsers($limit: Int) {
+      users(limit: $limit) {
         username
       }
     }
