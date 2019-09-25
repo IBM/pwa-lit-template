@@ -13,6 +13,12 @@ export class AppToast extends LitElement {
     return [
       css`
         :host {
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+        }
+
+        .content {
           display: flex;
           padding: 1rem;
           background-color: #dddddd;
@@ -27,9 +33,11 @@ export class AppToast extends LitElement {
 
   protected render() {
     return html`
-      <div class="message">New version available!</div>
-      <button @click=${this._onAccept}>Update</button>
-      <button @click=${this._onCancel}>Close</button>
+      <div class="content">
+        <div class="message">New version available!</div>
+        <button @click=${this._onAccept}>Update</button>
+        <button @click=${this._onCancel}>Close</button>
+      </div>
     `;
   }
 
