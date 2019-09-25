@@ -6,17 +6,15 @@
  */
 
 import { LitElement, property } from 'lit-element';
-import { ApolloClient, NetworkStatus } from 'apollo-boost';
-import { GraphQLError } from 'graphql';
+import { ApolloClient, NetworkStatus, OperationVariables } from 'apollo-boost';
+import { GraphQLError, DocumentNode } from 'graphql';
 
 export class ApolloQueryElement extends LitElement {
   public client: ApolloClient<unknown> | undefined;
 
-  @property({ type: Object })
-  public query: any | undefined;
+  public query: DocumentNode | undefined;
 
-  @property({ type: Object })
-  public queryVariables?: any;
+  public queryVariables?: OperationVariables;
 
   @property({ type: Object })
   public data?: any;

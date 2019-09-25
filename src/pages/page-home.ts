@@ -16,9 +16,7 @@ import { client } from '../graphql-service';
 export class PageHome extends ApolloQueryElement {
   client = client;
 
-  queryVariables = {
-    limit: 10
-  };
+  queryVariables = { limit: 10 };
 
   query = gql`
     query GetUsers($limit: Int) {
