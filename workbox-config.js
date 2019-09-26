@@ -8,7 +8,7 @@
 module.exports = {
   clientsClaim: true,
   globDirectory: 'dist/',
-  globPatterns: ['index.html', 'manifest.json', '**/*.js'],
+  globPatterns: ['index.html', 'manifest.webmanifest', '**/*.js'],
   navigateFallback: 'index.html',
   runtimeCaching: [
     {
