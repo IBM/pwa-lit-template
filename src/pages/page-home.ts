@@ -7,24 +7,23 @@
 
 import { html, customElement } from 'lit-element';
 
-import { ApolloQueryElement } from '../helpers/apollo-query-element';
+import { QueryElement } from '../components/query-element';
 import { gql } from '../graphql-service';
 
-import { client } from '../graphql-service';
-
 @customElement('page-home')
-export class PageHome extends ApolloQueryElement {
-  client = client;
-
-  queryVariables = { limit: 10 };
-
-  query = gql`
-    query GetUsers($limit: Int) {
-      users(limit: $limit) {
-        username
-      }
-    }
-  `;
+export class PageHome extends QueryElement {
+  constructor() {
+    super(
+      gql`
+        query GetUsers($limit: Int) {
+          users(limit: $limit) {
+            username
+          }
+        }
+      `,
+      { limit: 10 }
+    );
+  }
 
   protected render() {
     // prettier-ignore

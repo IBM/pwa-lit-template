@@ -10,11 +10,32 @@ import { ApolloClient, NetworkStatus, OperationVariables } from 'apollo-boost';
 import { GraphQLError, DocumentNode } from 'graphql';
 
 export class ApolloQueryElement extends LitElement {
-  public client: ApolloClient<unknown> | undefined;
+  private __client: ApolloClient<unknown>;
+  public get client(): ApolloClient<unknown> {
+    return this.__client;
+  }
+  public set client(value: ApolloClient<unknown>) {
+    this.__client = value;
+    this.requestQuery();
+  }
 
-  public query: DocumentNode | undefined;
+  private __query: DocumentNode;
+  public get query(): DocumentNode {
+    return this.__query;
+  }
+  public set query(value: DocumentNode) {
+    this.__query = value;
+    this.requestQuery();
+  }
 
-  public queryVariables?: OperationVariables;
+  private __queryVariables: OperationVariables | undefined;
+  public get queryVariables(): OperationVariables | undefined {
+    return this.__queryVariables;
+  }
+  public set queryVariables(value: OperationVariables | undefined) {
+    this.__queryVariables = value;
+    this.requestQuery();
+  }
 
   @property({ type: Object })
   public data?: any;
@@ -31,6 +52,22 @@ export class ApolloQueryElement extends LitElement {
   @property({ type: Boolean })
   public stale?: boolean;
 
+  public constructor(
+    client: ApolloClient<unknown>,
+    query: DocumentNode,
+    queryVariables?: OperationVariables
+  ) {
+    super();
+
+    this.__client = client;
+
+    this.__query = query;
+
+    if (queryVariables) {
+      this.__queryVariables = queryVariables;
+    }
+  }
+
   connectedCallback() {
     if (super.connectedCallback) {
       super.connectedCallback();
@@ -40,16 +77,6 @@ export class ApolloQueryElement extends LitElement {
   }
 
   public async requestQuery() {
-    if (!this.client) {
-      console.error('You need to have a client set up.');
-      return;
-    }
-
-    if (!this.query) {
-      console.error('You need to have a query set up.');
-      return;
-    }
-
     try {
       const queryResult = await this.client.query({
         query: this.query,
