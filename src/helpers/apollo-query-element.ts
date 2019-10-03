@@ -60,13 +60,9 @@ export class ApolloQueryElement extends LitElement {
     this.requestMutation();
   }
 
-  private __observableQuery: ObservableQuery | undefined;
-  public get observableQuery(): ObservableQuery | undefined {
-    return this.__observableQuery;
-  }
-  public set observableQuery(value: ObservableQuery | undefined) {
-    this.__observableQuery = value;
-  }
+  private observableQuery: ObservableQuery | undefined;
+
+  private subscriptionQuery: ZenObservable.Subscription | undefined;
 
   @property({ type: Object })
   public data?: any;
@@ -107,6 +103,14 @@ export class ApolloQueryElement extends LitElement {
     this.requestQuery();
   }
 
+  disconnectedCallback() {
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
+
+    this.subscriptionQuery && this.subscriptionQuery.unsubscribe();
+  }
+
   public async refetch() {
     if (this.observableQuery) {
       await this.observableQuery.refetch();
@@ -120,7 +124,7 @@ export class ApolloQueryElement extends LitElement {
         ...(this.queryVariables && { variables: this.queryVariables })
       });
 
-      await this.observableQuery.subscribe(
+      this.subscriptionQuery = await this.observableQuery.subscribe(
         ({ data, loading, errors, networkStatus, stale }) => {
           this.data = data;
           this.errors = errors;
