@@ -8,24 +8,14 @@
 import { html, customElement } from 'lit-element';
 
 import { QueryElement } from '../components/query-element';
-import { client, gql } from '../graphql-service';
+import { gql } from '../graphql-service';
 
 @customElement('page-about')
 export class PageAbout extends QueryElement {
-  mutation = gql`
-    mutation updateUserMutation($id: ID!, $username: String!) {
-      updateUser(input: { where: { id: $id }, data: { username: $username } }) {
-        user {
-          username
-        }
-      }
-    }
-  `;
-
   constructor() {
     super(
       gql`
-        query {
+        query getUserQuery {
           user(id: 1) {
             username
           }
@@ -70,10 +60,34 @@ export class PageAbout extends QueryElement {
       const formData = new FormData(form);
       const username = formData.get('username');
 
-      await client.mutate({
-        mutation: this.mutation,
-        variables: { id: 1, username }
-      });
+      this.mutationVariables = { id: 1, username };
+      this.mutation = gql`
+        mutation updateUserMutation($id: ID!, $username: String!) {
+          updateUser(
+            input: { where: { id: $id }, data: { username: $username } }
+          ) {
+            user {
+              username
+            }
+          }
+        }
+      `;
+
+      // UPDATE VERSION
+      // await this.client.mutate({
+      //   mutation: this.mutation,
+      //   variables: { id: 1, username }
+      //   update: (store, { data: { updateUser } }) => {
+      //     const data = this.client.readQuery({ query: this.query });
+      //     data.user = { ...data.user, ...updateUser.user };
+      //     store.writeQuery({ query: this.query, data });
+      //     this.requestQuery();
+      //   }
+      // });
+
+      // CLEAR STORE VERSION
+      // await this.client.clearStore();
+      // await this.requestQuery();
     }
   }
 }

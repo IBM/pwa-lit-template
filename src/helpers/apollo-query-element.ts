@@ -6,7 +6,12 @@
  */
 
 import { LitElement, property } from 'lit-element';
-import { ApolloClient, NetworkStatus, OperationVariables } from 'apollo-boost';
+import {
+  ApolloClient,
+  NetworkStatus,
+  OperationVariables,
+  ObservableQuery
+} from 'apollo-boost';
 import { GraphQLError, DocumentNode } from 'graphql';
 
 export class ApolloQueryElement extends LitElement {
@@ -35,6 +40,32 @@ export class ApolloQueryElement extends LitElement {
   public set queryVariables(value: OperationVariables | undefined) {
     this.__queryVariables = value;
     this.requestQuery();
+  }
+
+  private __mutation: DocumentNode | undefined;
+  public get mutation(): DocumentNode | undefined {
+    return this.__mutation;
+  }
+  public set mutation(value: DocumentNode | undefined) {
+    this.__mutation = value;
+    this.requestMutation();
+  }
+
+  private __mutationVariables: OperationVariables | undefined;
+  public get mutationVariables(): OperationVariables | undefined {
+    return this.__mutationVariables;
+  }
+  public set mutationVariables(value: OperationVariables | undefined) {
+    this.__mutationVariables = value;
+    this.requestMutation();
+  }
+
+  private __observableQuery: ObservableQuery | undefined;
+  public get observableQuery(): ObservableQuery | undefined {
+    return this.__observableQuery;
+  }
+  public set observableQuery(value: ObservableQuery | undefined) {
+    this.__observableQuery = value;
   }
 
   @property({ type: Object })
@@ -76,21 +107,46 @@ export class ApolloQueryElement extends LitElement {
     this.requestQuery();
   }
 
+  public async refetch() {
+    if (this.observableQuery) {
+      await this.observableQuery.refetch();
+    }
+  }
+
   public async requestQuery() {
     try {
-      const queryResult = await this.client.query({
+      this.observableQuery = await this.client.watchQuery({
         query: this.query,
         ...(this.queryVariables && { variables: this.queryVariables })
       });
 
-      this.data = queryResult.data;
-      this.errors = queryResult.errors;
-      this.loading = queryResult.loading;
-      this.networkStatus = queryResult.networkStatus;
-      this.stale = queryResult.stale;
+      await this.observableQuery.subscribe(
+        ({ data, loading, errors, networkStatus, stale }) => {
+          this.data = data;
+          this.errors = errors;
+          this.loading = loading;
+          this.networkStatus = networkStatus;
+          this.stale = stale;
+        }
+      );
     } catch (error) {
       // TODO
       console.log(error);
+    }
+  }
+
+  public async requestMutation() {
+    if (!this.mutation || !this.mutationVariables) return;
+    try {
+      await this.client.mutate({
+        mutation: this.mutation,
+        ...(this.mutationVariables && { variables: this.mutationVariables })
+      });
+
+      await this.refetch();
+    } catch (error) {
+      // TODO
+      console.error(error);
     }
   }
 }
