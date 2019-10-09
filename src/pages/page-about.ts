@@ -72,22 +72,7 @@ export class PageAbout extends QueryElement {
           }
         }
       `;
-
-      // UPDATE VERSION
-      // await this.client.mutate({
-      //   mutation: this.mutation,
-      //   variables: { id: 1, username }
-      //   update: (store, { data: { updateUser } }) => {
-      //     const data = this.client.readQuery({ query: this.query });
-      //     data.user = { ...data.user, ...updateUser.user };
-      //     store.writeQuery({ query: this.query, data });
-      //     this.requestQuery();
-      //   }
-      // });
-
-      // CLEAR STORE VERSION
-      // await this.client.clearStore();
-      // await this.requestQuery();
+      await this.requestMutation();
     }
   }
 }

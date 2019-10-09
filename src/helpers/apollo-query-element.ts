@@ -48,7 +48,6 @@ export class ApolloQueryElement extends LitElement {
   }
   public set mutation(value: DocumentNode | undefined) {
     this.__mutation = value;
-    this.requestMutation();
   }
 
   private __mutationVariables: OperationVariables | undefined;
@@ -57,7 +56,6 @@ export class ApolloQueryElement extends LitElement {
   }
   public set mutationVariables(value: OperationVariables | undefined) {
     this.__mutationVariables = value;
-    this.requestMutation();
   }
 
   private observableQuery: ObservableQuery | undefined;
@@ -136,21 +134,30 @@ export class ApolloQueryElement extends LitElement {
     } catch (error) {
       // TODO
       console.log(error);
+      return error;
     }
   }
 
   public async requestMutation() {
-    if (!this.mutation || !this.mutationVariables) return;
     try {
-      await this.client.mutate({
+      // TODO verify that this is the correct way to do this exception
+      if (!this.mutation || !this.mutationVariables) {
+        throw ReferenceError(
+          'mutation and mutationVariables must be specified'
+        );
+      }
+
+      const response = await this.client.mutate({
         mutation: this.mutation,
         ...(this.mutationVariables && { variables: this.mutationVariables })
       });
 
       await this.refetch();
+
+      return response;
     } catch (error) {
       // TODO
-      console.error(error);
+      return error.graphQLErrors || error.networkError;
     }
   }
 }
