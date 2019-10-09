@@ -36,7 +36,7 @@ export default configs.map((config, index) => {
       plugins: [
         ...defaultConfig.plugins,
         copy({
-          files: ['images/**/*', 'manifest.webmanifest'],
+          files: ['images/**/*', 'manifest.webmanifest', 'workbox-inject.js'],
           dest: DIST_FOLDER,
           options: { parents: true }
         })
