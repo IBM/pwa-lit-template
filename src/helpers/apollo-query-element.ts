@@ -157,7 +157,8 @@ export class ApolloQueryElement extends LitElement {
       return response;
     } catch (error) {
       // TODO
-      return error.graphQLErrors || error.networkError;
+      console.log(error);
+      return error;
     }
   }
 }
