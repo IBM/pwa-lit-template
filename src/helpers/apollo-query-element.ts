@@ -109,55 +109,62 @@ export class ApolloQueryElement extends LitElement {
     this.subscriptionQuery && this.subscriptionQuery.unsubscribe();
   }
 
+  private queryHandler({ data, loading, networkStatus, stale }: any) {
+    this.data = data;
+    this.loading = loading;
+    this.networkStatus = networkStatus;
+    this.stale = stale;
+  }
+
+  private errorHandler({ graphQLErrors, networkError }: any) {
+    this.loading = false;
+    console.error(networkError); // TODO handle network error
+    this.errors = graphQLErrors.length ? graphQLErrors : undefined;
+  }
+
+  public async requestQuery() {
+    if (!this.client || !this.query) return;
+
+    this.observableQuery = await this.client.watchQuery({
+      query: this.query,
+      ...(this.queryVariables && { variables: this.queryVariables })
+    });
+
+    this.subscriptionQuery = await this.observableQuery.subscribe({
+      next: this.queryHandler.bind(this),
+      error: this.errorHandler.bind(this)
+    });
+
+    return this.subscriptionQuery;
+  }
+
   public async refetch() {
     if (this.observableQuery) {
       await this.observableQuery.refetch();
     }
   }
 
-  public async requestQuery() {
+  public async requestMutation(
+    {
+      mutation = this.mutation,
+      mutationVariables = this.mutationVariables,
+      ...options
+    } = this
+  ) {
+    if (!mutation || !mutationVariables) return;
+
     try {
-      this.observableQuery = await this.client.watchQuery({
-        query: this.query,
-        ...(this.queryVariables && { variables: this.queryVariables })
-      });
-
-      this.subscriptionQuery = await this.observableQuery.subscribe(
-        ({ data, loading, errors, networkStatus, stale }) => {
-          this.data = data;
-          this.errors = errors;
-          this.loading = loading;
-          this.networkStatus = networkStatus;
-          this.stale = stale;
-        }
-      );
-    } catch (error) {
-      // TODO
-      console.log(error);
-      return error;
-    }
-  }
-
-  public async requestMutation() {
-    try {
-      // TODO verify that this is the correct way to do this exception
-      if (!this.mutation || !this.mutationVariables) {
-        throw ReferenceError(
-          'mutation and mutationVariables must be specified'
-        );
-      }
-
       const response = await this.client.mutate({
-        mutation: this.mutation,
-        ...(this.mutationVariables && { variables: this.mutationVariables })
+        mutation,
+        variables: mutationVariables,
+        ...options
       });
 
       await this.refetch();
 
       return response;
     } catch (error) {
-      // TODO
-      console.log(error);
+      this.errorHandler(error);
       return error;
     }
   }
