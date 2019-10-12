@@ -22,6 +22,5 @@ module.exports = {
       }
     }
   ],
-  importScripts: ['./workbox-inject.js'],
   swDest: 'dist/service-worker.js'
 };
