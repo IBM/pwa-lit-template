@@ -144,20 +144,13 @@ export class ApolloQueryElement extends LitElement {
     }
   }
 
-  public async requestMutation(
-    {
-      mutation = this.mutation,
-      mutationVariables = this.mutationVariables,
-      ...options
-    } = this
-  ) {
-    if (!mutation || !mutationVariables) return;
+  public async requestMutation() {
+    if (!this.mutation || !this.mutationVariables) return;
 
     try {
       const response = await this.client.mutate({
-        mutation,
-        variables: mutationVariables,
-        ...options
+        mutation: this.mutation,
+        variables: this.mutationVariables
       });
 
       await this.refetch();
