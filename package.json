@@ -7,8 +7,7 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "build": "rimraf dist && rollup --config --environment NODE_ENV:production && npm run build:generate-sw",
-    "build:generate-sw": "workbox generateSW workbox-config.js",
+    "build": "rimraf dist && rollup --config --environment NODE_ENV:production",
     "bundle-size-check": "bundlesize",
     "format": "npm run format:prettier",
     "format:prettier": "prettier --write \"**/*.{js,json,md,ts}\"",
@@ -51,7 +50,6 @@
     "rollup-plugin-cpy": "^2.0.0",
     "rollup-plugin-replace": "^2.2.0",
     "typescript": "^3.6.0",
-    "workbox-cli": "^4.3.0",
     "workbox-window": "^4.3.0"
   },
   "husky": {
