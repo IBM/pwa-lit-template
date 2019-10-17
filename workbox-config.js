@@ -5,9 +5,11 @@
  * file in the root directory of this source tree.
  */
 
+const DIST_PATH = 'dist/';
+
 module.exports = {
   clientsClaim: true,
-  globDirectory: 'dist/',
+  globDirectory: DIST_PATH,
   globPatterns: ['index.html', 'manifest.webmanifest', '**/*.js'],
   navigateFallback: 'index.html',
   runtimeCaching: [
@@ -22,5 +24,5 @@ module.exports = {
       }
     }
   ],
-  swDest: 'dist/service-worker.js'
+  swDest: `${DIST_PATH}service-worker.js`
 };
