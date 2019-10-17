@@ -10,7 +10,7 @@ import copy from 'rollup-plugin-cpy';
 import replace from 'rollup-plugin-replace';
 
 const ENVIRONMENT = process.env.NODE_ENV || 'development';
-const DIST_FOLDER = 'dist';
+const DIST_PATH = 'dist/';
 
 const configs = createCompatibilityConfig({
   input: './index.html',
@@ -37,7 +37,7 @@ export default configs.map((config, index) => {
         ...defaultConfig.plugins,
         copy({
           files: ['images/**/*', 'manifest.webmanifest'],
-          dest: DIST_FOLDER,
+          dest: DIST_PATH,
           options: { parents: true }
         })
       ]
