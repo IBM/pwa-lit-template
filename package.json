@@ -23,6 +23,9 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "fast-json-stable-stringify": "abdonrd/fast-json-stable-stringify#es-modules",
+    "graphql-tag": "abdonrd/graphql-tag#es-modules",
+    "zen-observable": "abdonrd/zen-observable#es-modules",
     "@vaadin/router": "^1.5.0",
     "apollo-boost": "^0.4.0",
     "graphql": "^14.5.0",
@@ -36,7 +39,6 @@
     "@types/workbox-window": "^4.3.0",
     "@typescript-eslint/eslint-plugin": "^2.4.0",
     "@typescript-eslint/parser": "^2.4.0",
-    "babel-plugin-transform-commonjs": "^1.1.0",
     "bundlesize": "^0.18.0",
     "es-dev-server": "^1.18.0",
     "eslint": "^6.5.0",

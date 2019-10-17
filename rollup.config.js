@@ -14,7 +14,7 @@ const DIST_FOLDER = 'dist';
 
 const configs = createCompatibilityConfig({
   input: './index.html',
-  extensions: ['.js', '.ts']
+  extensions: ['.mjs', '.js', '.ts']
 });
 
 export default configs.map((config, index) => {
