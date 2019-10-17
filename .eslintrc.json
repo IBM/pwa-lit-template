@@ -22,12 +22,7 @@
   },
   "overrides": [
     {
-      "files": [
-        "apollo.config.js",
-        "es-dev-server.config.js",
-        "rollup.config.js",
-        "workbox-config.js"
-      ],
+      "files": ["apollo.config.js", "rollup.config.js", "workbox-config.js"],
       "env": {
         "node": true
       }
