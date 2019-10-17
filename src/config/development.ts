@@ -6,6 +6,5 @@
  */
 
 export default {
-  environment: 'development',
-  apiUrl: 'http://localhost:1337/graphql'
+  environment: 'development'
 };
