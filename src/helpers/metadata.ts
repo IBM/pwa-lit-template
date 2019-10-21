@@ -23,7 +23,7 @@ const setMetaTag = (
   element.setAttribute('content', content);
 };
 
-interface MetadataOptions {
+export interface MetadataOptions {
   title?: string;
   description?: string;
   image?: {
