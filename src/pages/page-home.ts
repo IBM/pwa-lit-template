@@ -10,19 +10,18 @@ import { html, customElement } from 'lit-element';
 import { QueryElement } from '../components/query-element';
 import { gql } from '../graphql-service';
 
+const GET_USERS = gql`
+  query GetUsers($limit: Int) {
+    users(limit: $limit) {
+      username
+    }
+  }
+`;
+
 @customElement('page-home')
 export class PageHome extends QueryElement {
   constructor() {
-    super(
-      gql`
-        query GetUsers($limit: Int) {
-          users(limit: $limit) {
-            username
-          }
-        }
-      `,
-      { limit: 10 }
-    );
+    super(GET_USERS, { limit: 10 });
   }
 
   protected render() {
