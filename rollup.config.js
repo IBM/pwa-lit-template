@@ -8,7 +8,9 @@
 import { createCompatibilityConfig } from '@open-wc/building-rollup';
 import copy from 'rollup-plugin-cpy';
 import replace from 'rollup-plugin-replace';
-import workbox from 'rollup-plugin-workbox';
+import { generateSW } from 'rollup-plugin-workbox';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const workboxConfig = require('./workbox-config.js');
 
 const ENVIRONMENT = process.env.NODE_ENV || 'development';
 const DIST_PATH = 'dist/';
@@ -49,17 +51,7 @@ configs[0] = {
 // Add plugins to modern config
 configs[1] = {
   ...configs[1],
-  plugins: [
-    ...configs[1].plugins,
-    workbox({
-      mode: 'generateSW',
-      render: ({ swDest, count, size }) => {
-        console.log(`The service worker was written to ${swDest}`);
-        console.log(`${count} files will be precached, totalling ${size} B.`);
-      },
-      workboxConfig: require('./workbox-config.js')
-    })
-  ]
+  plugins: [...configs[1].plugins, generateSW(workboxConfig)]
 };
 
 export default configs;
