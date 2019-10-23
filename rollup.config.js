@@ -8,16 +8,12 @@
 import { createCompatibilityConfig } from '@open-wc/building-rollup';
 import copy from 'rollup-plugin-cpy';
 import replace from 'rollup-plugin-replace';
-import workbox from 'rollup-plugin-workbox';
 
 const ENVIRONMENT = process.env.NODE_ENV || 'development';
 const DIST_PATH = 'dist/';
 
 const configs = createCompatibilityConfig({
   input: './index.html',
-  plugins: {
-    workbox: false
-  },
   extensions: ['.mjs', '.js', '.ts']
 });
 
@@ -42,22 +38,6 @@ configs[0] = {
       files: ['images/**/*', 'manifest.webmanifest'],
       dest: DIST_PATH,
       options: { parents: true }
-    })
-  ]
-};
-
-// Add plugins to modern config
-configs[1] = {
-  ...configs[1],
-  plugins: [
-    ...configs[1].plugins,
-    workbox({
-      mode: 'generateSW',
-      render: ({ swDest, count, size }) => {
-        console.log(`The service worker was written to ${swDest}`);
-        console.log(`${count} files will be precached, totalling ${size} B.`);
-      },
-      workboxConfig: require('./workbox-config.js')
     })
   ]
 };
