@@ -5,10 +5,10 @@
  * file in the root directory of this source tree.
  */
 
-import { html, customElement } from 'lit-element';
+import { html, customElement, LitElement } from 'lit-element';
 
-import { QueryElement } from '../components/query-element';
-import { gql } from '../graphql-service';
+import { gql, client } from '../graphql-service';
+import { connectApollo } from '../helpers/connect-apollo-mixin';
 
 const GET_USERS = gql`
   query GetUsers($limit: Int) {
@@ -19,7 +19,7 @@ const GET_USERS = gql`
 `;
 
 @customElement('page-home')
-export class PageHome extends QueryElement {
+export class PageHome extends connectApollo(client)(LitElement) {
   protected render() {
     // prettier-ignore
     return html`
