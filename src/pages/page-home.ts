@@ -20,10 +20,6 @@ const GET_USERS = gql`
 
 @customElement('page-home')
 export class PageHome extends QueryElement {
-  constructor() {
-    super(GET_USERS, { limit: 10 });
-  }
-
   protected render() {
     // prettier-ignore
     return html`
@@ -57,5 +53,12 @@ export class PageHome extends QueryElement {
         ` : null}
       </section>
     `;
+  }
+
+  protected onAfterEnter() {
+    this.requestQuery({
+      query: GET_USERS,
+      variables: { limit: 10 }
+    });
   }
 }
