@@ -7,15 +7,21 @@
 
 import { LitElement, property } from 'lit-element';
 
-import { updateMetadata } from '../helpers';
 import config from '../config';
-import { MetadataOptions } from './metadata';
+import { updateMetadata } from '../helpers';
+import { MetadataOptions } from '../helpers/metadata';
+
+type MyRoute = Router.Route & {
+  title?: string;
+  description?: string;
+};
 
 export class PageElement extends LitElement {
   @property({ type: Object })
   protected location?: Router.Location;
 
   protected updated() {
+    // TODO: Review this issue https://github.com/vaadin/vaadin-router/issues/404
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const route = this.location!.route!;
 
@@ -23,10 +29,13 @@ export class PageElement extends LitElement {
     updateMetadata(metadata);
   }
 
-  protected updateMetadata(route: Router.Route): MetadataOptions {
+  protected updateMetadata(route: MyRoute): MetadataOptions {
+    const { title, description } = route;
+    const isHomePage = route.component === 'page-home';
+
     return {
-      title: `${route.title} | ${config.name}`,
-      description: route.description,
+      title: isHomePage ? title : `${title} | ${config.name}`,
+      description,
       url: window.location.href
     };
   }
