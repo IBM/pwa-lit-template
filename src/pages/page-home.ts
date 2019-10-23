@@ -48,7 +48,9 @@ export class PageHome extends connectApollo(client)(PageElement) {
         ` : !this.loading && this.data ? html`
           <ul>
             ${this.data.users.map((user: any) => html`
-              <li>${user.username}</li>
+              <li>
+                <a href="/user/${user.username}">${user.username}</a>
+              </li>
             `)}
           </ul>
         ` : null}
