@@ -9,8 +9,8 @@ export default [
   {
     path: '/',
     component: 'page-home',
-    title: 'Home',
-    description: 'Home description',
+    title: 'MyApplication',
+    description: 'MyApplication description',
     action: async () => {
       await import('../pages/page-home');
     }
@@ -19,7 +19,7 @@ export default [
     path: '/about',
     component: 'page-about',
     title: 'About',
-    description: 'About description',
+    description: 'About page description',
     action: async () => {
       await import('../pages/page-about');
     }
@@ -27,8 +27,8 @@ export default [
   {
     path: '(.*)',
     component: 'page-not-found',
-    title: 'Page not found',
-    description: 'Page not found description',
+    title: 'Error',
+    description: '',
     action: async () => {
       await import('../pages/page-not-found');
     }

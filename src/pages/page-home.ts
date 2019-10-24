@@ -5,8 +5,9 @@
  * file in the root directory of this source tree.
  */
 
-import { html, customElement, LitElement } from 'lit-element';
+import { html, customElement } from 'lit-element';
 
+import { PageElement } from './page-element';
 import { gql, client } from '../graphql-service';
 import { connectApollo } from '../helpers/connect-apollo-mixin';
 
@@ -19,7 +20,7 @@ const GET_USERS = gql`
 `;
 
 @customElement('page-home')
-export class PageHome extends connectApollo(client)(LitElement) {
+export class PageHome extends connectApollo(client)(PageElement) {
   protected render() {
     // prettier-ignore
     return html`
