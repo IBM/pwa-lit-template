@@ -42,7 +42,7 @@ export class PageUsers extends connectApollo(client)(PageElement) {
     `;
   }
 
-  protected onAfterEnter() {
+  protected onBeforeEnter() {
     this.requestQuery({
       query: GET_USERS,
       variables: { limit: 10 }

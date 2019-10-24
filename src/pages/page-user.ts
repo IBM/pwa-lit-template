@@ -44,7 +44,7 @@ export class PageUser extends connectApollo(client)(PageElement) {
     `;
   }
 
-  protected onAfterEnter(location: Router.Location) {
+  protected onBeforeEnter(location: Router.Location) {
     this.requestQuery({
       query: GET_USER,
       variables: {
