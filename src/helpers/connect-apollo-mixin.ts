@@ -33,6 +33,7 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
     public stale?: boolean;
 
     public async requestQuery(options: QueryOptions) {
+      // TODO: Manage the errors
       try {
         this.loading = true;
         const queryResult = await client.query(options);
@@ -43,9 +44,7 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
         this.networkStatus = queryResult.networkStatus;
         this.stale = queryResult.stale;
       } catch (error) {
-        // TODO: Manage the errors
         console.error('requestQuery error:', error);
-        this.loading = false;
       }
     }
   }
