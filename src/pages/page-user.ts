@@ -16,10 +16,7 @@ const GET_USER = gql`
   query GetUser($where: JSON) {
     users(where: $where) {
       username
-      name
-      profilePicture {
-        url
-      }
+      fullName
     }
   }
 `;
@@ -38,7 +35,7 @@ export class PageUser extends connectApollo(client)(PageElement) {
           <div>Loading user...</div>
         ` : !this.loading && this.data ? html`
           <p>Username: ${user.username}</p>
-          <p>Name: ${user.name}</p>
+          <p>Full name: ${user.fullName}</p>
         ` : null}
       </section>
     `;
@@ -74,14 +71,8 @@ export class PageUser extends connectApollo(client)(PageElement) {
     }
 
     return {
-      title: `${user.name} (@${user.username}) | ${config.name}`,
-      description: `All the information about ${user.name}.`,
-      image: {
-        url: user.profilePicture && user.profilePicture.url,
-        alt: `${user.name}'s profile picture`,
-        width: '256',
-        height: '256'
-      },
+      title: `${user.fullName} (@${user.username}) | ${config.name}`,
+      description: `All the information about ${user.fullName}.`,
       url: window.location.href
     };
   }
