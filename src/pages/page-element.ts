@@ -26,10 +26,12 @@ export class PageElement extends LitElement {
     const route = this.location!.route!;
 
     const metadata = this.updateMetadata(route);
-    updateMetadata(metadata);
+    if (metadata) {
+      updateMetadata(metadata);
+    }
   }
 
-  protected updateMetadata(route: MyRoute): MetadataOptions {
+  protected updateMetadata(route: MyRoute): MetadataOptions | void {
     const { title, description } = route;
     const isHomePage = route.component === 'page-home';
 

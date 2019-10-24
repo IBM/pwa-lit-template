@@ -8,7 +8,7 @@
 import { html, customElement } from 'lit-element';
 
 import { PageElement } from './page-element';
-import { gql, client } from '../graphql-service';
+import { client, gql } from '../graphql-service';
 import { connectApollo } from '../helpers';
 
 const GET_USERS = gql`
