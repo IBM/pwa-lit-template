@@ -8,21 +8,10 @@
 import { html, customElement } from 'lit-element';
 
 import { PageElement } from './page-element';
-import { client, gql } from '../graphql-service';
-import { connectApollo } from '../helpers';
-
-const GET_USERS = gql`
-  query GetUsers($limit: Int) {
-    users(limit: $limit) {
-      username
-    }
-  }
-`;
 
 @customElement('page-home')
-export class PageHome extends connectApollo(client)(PageElement) {
+export class PageHome extends PageElement {
   protected render() {
-    // prettier-ignore
     return html`
       <section>
         <h1>Home</h1>
@@ -40,28 +29,7 @@ export class PageHome extends connectApollo(client)(PageElement) {
           cum dolorum excepturi beatae explicabo quidem fugiat ullam blanditiis
           minima!
         </p>
-
-        <h2>Users</h2>
-
-        ${this.loading ? html`
-          <div>Loading users...</div>
-        ` : !this.loading && this.data ? html`
-          <ul>
-            ${this.data.users.map((user: any) => html`
-              <li>
-                <a href="/user/${user.username}">${user.username}</a>
-              </li>
-            `)}
-          </ul>
-        ` : null}
       </section>
     `;
-  }
-
-  protected onAfterEnter() {
-    this.requestQuery({
-      query: GET_USERS,
-      variables: { limit: 10 }
-    });
   }
 }

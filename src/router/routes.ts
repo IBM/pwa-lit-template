@@ -25,6 +25,15 @@ export default [
     }
   },
   {
+    path: '/users',
+    component: 'page-users',
+    title: 'Users',
+    description: 'Users page description',
+    action: async () => {
+      await import('../pages/page-users');
+    }
+  },
+  {
     path: '/user/:username',
     component: 'page-user',
     action: async () => {
