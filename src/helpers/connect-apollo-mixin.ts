@@ -44,6 +44,7 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
         this.networkStatus = queryResult.networkStatus;
         this.stale = queryResult.stale;
       } catch (error) {
+        this.loading = false;
         console.error('requestQuery error:', error);
       }
     }
