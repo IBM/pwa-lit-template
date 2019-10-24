@@ -6,3 +6,4 @@
  */
 
 export { updateMetadata } from './metadata';
+export { connectApollo } from './connect-apollo-mixin';
