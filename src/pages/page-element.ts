@@ -17,11 +17,11 @@ type MyRoute = Router.Route & {
 };
 
 export class PageElement extends LitElement {
+  // TODO: Review this issue https://github.com/vaadin/vaadin-router/issues/404
   @property({ type: Object })
   protected location?: Router.Location;
 
   protected updated() {
-    // TODO: Review this issue https://github.com/vaadin/vaadin-router/issues/404
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const route = this.location!.route!;
 

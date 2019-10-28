@@ -43,9 +43,9 @@ export const updateMetadata = (metadataOptions: MetadataOptions) => {
     setMetaTag('property', 'og:title', title);
   }
 
-  if (description) {
-    setMetaTag('name', 'description', description);
-    setMetaTag('property', 'og:description', description);
+  if (description === null || description) {
+    setMetaTag('name', 'description', description || '');
+    setMetaTag('property', 'og:description', description || '');
   }
 
   if (image) {
