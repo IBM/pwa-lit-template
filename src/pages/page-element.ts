@@ -11,10 +11,7 @@ import config from '../config';
 import { updateMetadata } from '../helpers';
 import { MetadataOptions } from '../helpers/metadata';
 
-type MyRoute = Router.Route & {
-  title?: string;
-  description?: string;
-};
+type MyRoute = Router.Route & MetadataOptions;
 
 export class PageElement extends LitElement {
   // TODO: Review this issue https://github.com/vaadin/vaadin-router/issues/404
@@ -32,12 +29,13 @@ export class PageElement extends LitElement {
   }
 
   protected updateMetadata(route: MyRoute): MetadataOptions | void {
-    const { title, description } = route;
+    const { title, description, image } = route;
     const isHomePage = route.component === 'page-home';
 
     return {
       title: isHomePage ? title : `${title} | ${config.name}`,
       description,
+      image,
       url: window.location.href
     };
   }

@@ -62,6 +62,11 @@ export const updateMetadata = (metadataOptions: MetadataOptions) => {
     if (image.height) {
       setMetaTag('property', 'og:image:height', image.height);
     }
+  } else if (image === null) {
+    setMetaTag('property', 'og:image', '');
+    setMetaTag('property', 'og:image:alt', '');
+    setMetaTag('property', 'og:image:width', '');
+    setMetaTag('property', 'og:image:height', '');
   }
 
   if (url) {
