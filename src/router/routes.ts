@@ -44,7 +44,8 @@ export default [
     path: '(.*)',
     component: 'page-not-found',
     title: 'Error',
-    description: '',
+    description: null,
+    image: null,
     action: async () => {
       await import('../pages/page-not-found');
     }
