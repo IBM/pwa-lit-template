@@ -10,7 +10,7 @@ import { html, customElement } from 'lit-element';
 import config from '../config';
 import { PageElement } from './page-element';
 import { client, gql } from '../graphql-service';
-import { connectApollo } from '../helpers';
+import { connectApollo, renderPageNotFound } from '../helpers';
 
 const GET_USER = gql`
   query GetUser($where: JSON) {
@@ -25,6 +25,10 @@ const GET_USER = gql`
 export class PageUser extends connectApollo(client)(PageElement) {
   protected render() {
     const user = this.data && this.data.users[0];
+
+    if (user === undefined && !this.loading) {
+      return renderPageNotFound();
+    }
 
     // prettier-ignore
     return html`
@@ -50,17 +54,6 @@ export class PageUser extends connectApollo(client)(PageElement) {
         }
       }
     });
-  }
-
-  protected shouldUpdate() {
-    const user = this.data && this.data.users[0];
-
-    if (user === undefined && !this.loading) {
-      // TODO: Show page-not-found element
-      return false;
-    }
-
-    return true;
   }
 
   protected updateMetadata() {
