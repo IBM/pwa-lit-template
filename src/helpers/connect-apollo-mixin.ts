@@ -100,6 +100,7 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
         FetchMoreOptions<TData, TVariables>
     ) {
       if (!this._watchQuery) {
+        console.warn('You need to run fetchMore() before running watchQuery()');
         return;
       }
 
