@@ -12,8 +12,8 @@ import { client, gql } from '../graphql-service';
 import { connectApollo } from '../helpers';
 
 const GET_USERS = gql`
-  query GetUsers($limit: Int = 20) {
-    users(limit: $limit) {
+  query GetUsers($limit: Int = 20, $start: Int) {
+    users(limit: $limit, start: $start) {
       username
     }
   }
