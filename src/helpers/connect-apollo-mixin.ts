@@ -6,17 +6,42 @@
  */
 
 import { property } from 'lit-element';
-import { ApolloClient, NetworkStatus, QueryOptions } from 'apollo-boost';
+import {
+  ApolloClient,
+  NetworkStatus,
+  QueryOptions,
+  ObservableQuery,
+  OperationVariables,
+  ApolloQueryResult,
+  FetchMoreQueryOptions,
+  FetchMoreOptions
+} from 'apollo-boost';
 import { GraphQLError } from 'graphql';
 
 type Constructor<T> = new (...args: any[]) => T;
 
+interface CustomElement extends HTMLElement {
+  disconnectedCallback(): void;
+}
+
+type TData = any;
+type TVariables = OperationVariables;
+
 export const connectApollo = (client: ApolloClient<unknown>) => <
-  T extends Constructor<HTMLElement>
+  T extends Constructor<CustomElement>
 >(
   baseElement: T
 ) => {
   class ApolloQueryElement extends baseElement {
+    // TODO: Make protected?
+    _query?: Promise<ApolloQueryResult<any>>;
+
+    // TODO: Make protected?
+    _watchQuery?: ObservableQuery<any, OperationVariables>;
+
+    // TODO: Make protected?
+    _watchQuerySubscription?: ZenObservable.Subscription;
+
     @property({ type: Object })
     public data?: any;
 
@@ -32,21 +57,63 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
     @property({ type: Boolean })
     public stale?: boolean;
 
-    public async requestQuery(options: QueryOptions) {
-      // TODO: Manage the errors
+    // TODO: Make protected?
+    _onSuccessQuery(queryResult: ApolloQueryResult<any>) {
+      this.data = queryResult.data;
+      this.errors = queryResult.errors;
+      this.loading = queryResult.loading;
+      this.networkStatus = queryResult.networkStatus;
+      this.stale = queryResult.stale;
+    }
+
+    // TODO: Make protected?
+    // TODO: Manage the errors
+    _onErrorQuery(error: any) {
+      this.loading = false;
+      console.error('requestQuery error:', error);
+    }
+
+    public async query(options: QueryOptions) {
       try {
         this.loading = true;
-        const queryResult = await client.query(options);
 
-        this.data = queryResult.data;
-        this.errors = queryResult.errors;
-        this.loading = queryResult.loading;
-        this.networkStatus = queryResult.networkStatus;
-        this.stale = queryResult.stale;
+        const queryResult = await client.query(options);
+        this._onSuccessQuery(queryResult);
       } catch (error) {
-        this.loading = false;
-        console.error('requestQuery error:', error);
+        this._onErrorQuery(error);
       }
+    }
+
+    public watchQuery(options: QueryOptions) {
+      this.loading = true;
+
+      this._watchQuery = client.watchQuery(options);
+
+      this._watchQuerySubscription = this._watchQuery.subscribe({
+        next: queryResult => this._onSuccessQuery(queryResult),
+        error: error => this._onErrorQuery(error)
+      });
+    }
+
+    public fetchMore<K extends keyof TVariables>(
+      fetchMoreOptions: FetchMoreQueryOptions<TVariables, K> &
+        FetchMoreOptions<TData, TVariables>
+    ) {
+      if (!this._watchQuery) {
+        console.warn('You need to run fetchMore() before running watchQuery()');
+        return;
+      }
+
+      this.loading = true;
+
+      this._watchQuery.fetchMore(fetchMoreOptions);
+    }
+
+    public disconnectedCallback() {
+      this._watchQuerySubscription &&
+        this._watchQuerySubscription.unsubscribe();
+
+      super.disconnectedCallback();
     }
   }
 

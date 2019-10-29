@@ -40,12 +40,29 @@ export class PageUsers extends connectApollo(client)(PageElement) {
         ${this.loading ? html`
           <div>Loading users...</div>
         ` : null}
+
+        ${this.data && this.data.users ? html`
+          <button @click=${this.loadMoreUsers}>Load more...</button>
+        ` : null}
       </section>
     `;
   }
 
+  protected loadMoreUsers() {
+    const currentUsersCount = this.data.users.length;
+
+    this.fetchMore({
+      variables: { start: currentUsersCount },
+      updateQuery: (previousQueryResult, { fetchMoreResult }) => {
+        return {
+          users: [...previousQueryResult.users, ...fetchMoreResult.users]
+        };
+      }
+    });
+  }
+
   protected onBeforeEnter() {
-    this.requestQuery({
+    this.watchQuery({
       query: GET_USERS
     });
   }
