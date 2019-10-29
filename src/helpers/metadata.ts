@@ -23,7 +23,7 @@ const setMetaTag = (
   element.setAttribute('content', content);
 };
 
-interface MetadataOptions {
+export interface MetadataOptions {
   title?: string;
   description?: string;
   image?: {
@@ -43,9 +43,9 @@ export const updateMetadata = (metadataOptions: MetadataOptions) => {
     setMetaTag('property', 'og:title', title);
   }
 
-  if (description) {
-    setMetaTag('name', 'description', description);
-    setMetaTag('property', 'og:description', description);
+  if (description === null || description) {
+    setMetaTag('name', 'description', description || '');
+    setMetaTag('property', 'og:description', description || '');
   }
 
   if (image) {
@@ -62,6 +62,11 @@ export const updateMetadata = (metadataOptions: MetadataOptions) => {
     if (image.height) {
       setMetaTag('property', 'og:image:height', image.height);
     }
+  } else if (image === null) {
+    setMetaTag('property', 'og:image', '');
+    setMetaTag('property', 'og:image:alt', '');
+    setMetaTag('property', 'og:image:width', '');
+    setMetaTag('property', 'og:image:height', '');
   }
 
   if (url) {

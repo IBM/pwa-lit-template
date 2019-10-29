@@ -1,16 +1,36 @@
 {
   "files": [
     {
-      "path": "dist/app-shell.js",
-      "maxSize": "1.1 kB"
+      "path": "dist/app-shell-*.js",
+      "maxSize": "660 B"
     },
     {
       "path": "dist/index-*.js",
-      "maxSize": "8.4 kB"
+      "maxSize": "8.5 kB"
     },
     {
-      "path": "dist/page-*.js",
-      "maxSize": "420 B"
+      "path": "dist/page-element-*.js",
+      "maxSize": "860 B"
+    },
+    {
+      "path": "dist/page-home-*.js",
+      "maxSize": "460 B"
+    },
+    {
+      "path": "dist/page-about-*.js",
+      "maxSize": "460 B"
+    },
+    {
+      "path": "dist/page-user-*.js",
+      "maxSize": "670 B"
+    },
+    {
+      "path": "dist/page-users-*.js",
+      "maxSize": "540 B"
+    },
+    {
+      "path": "dist/page-not-found-*.js",
+      "maxSize": "350 B"
     }
   ]
 }

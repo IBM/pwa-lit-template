@@ -5,4 +5,6 @@
  * file in the root directory of this source tree.
  */
 
+export { connectApollo } from './connect-apollo-mixin';
+export { renderPageNotFound } from './render-page-not-found';
 export { updateMetadata } from './metadata';

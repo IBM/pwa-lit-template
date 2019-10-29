@@ -7,25 +7,11 @@
 
 import { html, customElement } from 'lit-element';
 
-import { QueryElement } from '../components/query-element';
-import { gql } from '../graphql-service';
-
-const GET_USERS = gql`
-  query GetUsers($limit: Int) {
-    users(limit: $limit) {
-      username
-    }
-  }
-`;
+import { PageElement } from './page-element';
 
 @customElement('page-home')
-export class PageHome extends QueryElement {
-  constructor() {
-    super(GET_USERS, { limit: 10 });
-  }
-
+export class PageHome extends PageElement {
   protected render() {
-    // prettier-ignore
     return html`
       <section>
         <h1>Home</h1>
@@ -43,18 +29,6 @@ export class PageHome extends QueryElement {
           cum dolorum excepturi beatae explicabo quidem fugiat ullam blanditiis
           minima!
         </p>
-
-        <h2>Users</h2>
-
-        ${this.loading ? html`
-          <div>Loading users...</div>
-        ` : !this.loading && this.data ? html`
-          <ul>
-            ${this.data.users.map((user: any) => html`
-              <li>${user.username}</li>
-            `)}
-          </ul>
-        ` : null}
       </section>
     `;
   }

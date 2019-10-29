@@ -7,23 +7,14 @@
 
 import { html, customElement } from 'lit-element';
 
-import { QueryElement } from '../components/query-element';
-import { gql } from '../graphql-service';
+import { PageElement } from './page-element';
+import { client, gql } from '../graphql-service';
+import { connectApollo } from '../helpers';
+
+const USER_ID = 1;
 
 @customElement('page-about')
-export class PageAbout extends QueryElement {
-  constructor() {
-    super(
-      gql`
-        query getUserQuery {
-          user(id: 1) {
-            username
-          }
-        }
-      `
-    );
-  }
-
+export class PageAbout extends connectApollo(client)(PageElement) {
   protected render() {
     return html`
       <section>
@@ -50,6 +41,18 @@ export class PageAbout extends QueryElement {
     `;
   }
 
+  protected onBeforeEnter() {
+    this.watchQuery({
+      query: gql`
+        query GetUser {
+          user(id: "${USER_ID}") {
+            username
+          }
+        }
+      `
+    });
+  }
+
   protected async updateUser(e: Event) {
     e.preventDefault();
 
@@ -60,19 +63,20 @@ export class PageAbout extends QueryElement {
       const formData = new FormData(form);
       const username = formData.get('username');
 
-      this.mutationVariables = { id: 1, username };
-      this.mutation = gql`
-        mutation updateUserMutation($id: ID!, $username: String!) {
-          updateUser(
-            input: { where: { id: $id }, data: { username: $username } }
-          ) {
-            user {
-              username
+      await this.mutate({
+        mutation: gql`
+          mutation updateUserMutation($id: ID!, $username: String!) {
+            updateUser(
+              input: { where: { id: $id }, data: { username: $username } }
+            ) {
+              user {
+                username
+              }
             }
           }
-        }
-      `;
-      await this.requestMutation();
+        `,
+        variables: { id: USER_ID, username }
+      });
     }
   }
 }
