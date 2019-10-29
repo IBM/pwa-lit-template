@@ -35,11 +35,11 @@ export class PageUser extends connectApollo(client)(PageElement) {
       <section>
         <h1>User</h1>
 
+        <p>Username: ${user && user.username}</p>
+        <p>Full name: ${user && user.fullName}</p>
+
         ${this.loading ? html`
           <div>Loading user...</div>
-        ` : !this.loading && this.data ? html`
-          <p>Username: ${user.username}</p>
-          <p>Full name: ${user.fullName}</p>
         ` : null}
       </section>
     `;
