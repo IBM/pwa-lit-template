@@ -6,7 +6,12 @@
  */
 
 import { property } from 'lit-element';
-import { ApolloClient, NetworkStatus, QueryOptions } from 'apollo-boost';
+import {
+  ApolloClient,
+  NetworkStatus,
+  QueryOptions,
+  ApolloQueryResult
+} from 'apollo-boost';
 import { GraphQLError } from 'graphql';
 
 type Constructor<T> = new (...args: any[]) => T;
@@ -17,6 +22,9 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
   baseElement: T
 ) => {
   class ApolloQueryElement extends baseElement {
+    // TODO: Make protected?
+    _query?: Promise<ApolloQueryResult<any>>;
+
     @property({ type: Object })
     public data?: any;
 
@@ -32,20 +40,30 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
     @property({ type: Boolean })
     public stale?: boolean;
 
-    public async requestQuery(options: QueryOptions) {
-      // TODO: Manage the errors
+    // TODO: Make protected?
+    _onSuccessQuery(queryResult: ApolloQueryResult<any>) {
+      this.data = queryResult.data;
+      this.errors = queryResult.errors;
+      this.loading = queryResult.loading;
+      this.networkStatus = queryResult.networkStatus;
+      this.stale = queryResult.stale;
+    }
+
+    // TODO: Make protected?
+    // TODO: Manage the errors
+    _onErrorQuery(error: any) {
+      this.loading = false;
+      console.error('requestQuery error:', error);
+    }
+
+    public async query(options: QueryOptions) {
       try {
         this.loading = true;
-        const queryResult = await client.query(options);
 
-        this.data = queryResult.data;
-        this.errors = queryResult.errors;
-        this.loading = queryResult.loading;
-        this.networkStatus = queryResult.networkStatus;
-        this.stale = queryResult.stale;
+        const queryResult = await client.query(options);
+        this._onSuccessQuery(queryResult);
       } catch (error) {
-        this.loading = false;
-        console.error('requestQuery error:', error);
+        this._onErrorQuery(error);
       }
     }
   }

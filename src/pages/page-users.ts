@@ -45,7 +45,7 @@ export class PageUsers extends connectApollo(client)(PageElement) {
   }
 
   protected onBeforeEnter() {
-    this.requestQuery({
+    this.query({
       query: GET_USERS
     });
   }
