@@ -27,9 +27,7 @@ export class PageUsers extends connectApollo(client)(PageElement) {
       <section>
         <h1>Users</h1>
 
-        ${this.loading ? html`
-          <div>Loading users...</div>
-        ` : !this.loading && this.data ? html`
+        ${this.data && this.data.users ? html`
           <ul>
             ${this.data.users.map((user: any) => html`
               <li>
@@ -37,6 +35,10 @@ export class PageUsers extends connectApollo(client)(PageElement) {
               </li>
             `)}
           </ul>
+        ` : null}
+
+        ${this.loading ? html`
+          <div>Loading users...</div>
         ` : null}
       </section>
     `;
