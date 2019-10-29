@@ -12,7 +12,9 @@ import {
   QueryOptions,
   ObservableQuery,
   OperationVariables,
-  ApolloQueryResult
+  ApolloQueryResult,
+  FetchMoreQueryOptions,
+  FetchMoreOptions
 } from 'apollo-boost';
 import { GraphQLError } from 'graphql';
 
@@ -21,6 +23,9 @@ type Constructor<T> = new (...args: any[]) => T;
 interface CustomElement extends HTMLElement {
   disconnectedCallback(): void;
 }
+
+type TData = any;
+type TVariables = OperationVariables;
 
 export const connectApollo = (client: ApolloClient<unknown>) => <
   T extends Constructor<CustomElement>
@@ -88,6 +93,19 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
         next: queryResult => this._onSuccessQuery(queryResult),
         error: error => this._onErrorQuery(error)
       });
+    }
+
+    public fetchMore<K extends keyof TVariables>(
+      fetchMoreOptions: FetchMoreQueryOptions<TVariables, K> &
+        FetchMoreOptions<TData, TVariables>
+    ) {
+      if (!this._watchQuery) {
+        return;
+      }
+
+      this.loading = true;
+
+      this._watchQuery.fetchMore(fetchMoreOptions);
     }
 
     public disconnectedCallback() {
