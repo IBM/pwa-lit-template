@@ -14,7 +14,9 @@ import {
   OperationVariables,
   ApolloQueryResult,
   FetchMoreQueryOptions,
-  FetchMoreOptions
+  FetchMoreOptions,
+  MutationOptions,
+  FetchResult
 } from 'apollo-boost';
 import { GraphQLError } from 'graphql';
 
@@ -41,6 +43,9 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
 
     // TODO: Make protected?
     _watchQuerySubscription?: ZenObservable.Subscription;
+
+    // TODO: Make protected?
+    _mutation?: FetchResult<any, Record<string, any>, Record<string, any>>;
 
     @property({ type: Object })
     public data?: any;
@@ -114,6 +119,16 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
         this._watchQuerySubscription.unsubscribe();
 
       super.disconnectedCallback();
+    }
+
+    public async mutate(options: MutationOptions<any, OperationVariables>) {
+      try {
+        this.loading = true;
+
+        this._mutation = await client.mutate(options);
+      } catch (error) {
+        this._onErrorQuery(error);
+      }
     }
   }
 
