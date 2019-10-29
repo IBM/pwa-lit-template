@@ -10,20 +10,32 @@ import {
   ApolloClient,
   NetworkStatus,
   QueryOptions,
+  ObservableQuery,
+  OperationVariables,
   ApolloQueryResult
 } from 'apollo-boost';
 import { GraphQLError } from 'graphql';
 
 type Constructor<T> = new (...args: any[]) => T;
 
+interface CustomElement extends HTMLElement {
+  disconnectedCallback(): void;
+}
+
 export const connectApollo = (client: ApolloClient<unknown>) => <
-  T extends Constructor<HTMLElement>
+  T extends Constructor<CustomElement>
 >(
   baseElement: T
 ) => {
   class ApolloQueryElement extends baseElement {
     // TODO: Make protected?
     _query?: Promise<ApolloQueryResult<any>>;
+
+    // TODO: Make protected?
+    _watchQuery?: ObservableQuery<any, OperationVariables>;
+
+    // TODO: Make protected?
+    _watchQuerySubscription?: ZenObservable.Subscription;
 
     @property({ type: Object })
     public data?: any;
@@ -65,6 +77,24 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
       } catch (error) {
         this._onErrorQuery(error);
       }
+    }
+
+    public watchQuery(options: QueryOptions) {
+      this.loading = true;
+
+      this._watchQuery = client.watchQuery(options);
+
+      this._watchQuerySubscription = this._watchQuery.subscribe({
+        next: queryResult => this._onSuccessQuery(queryResult),
+        error: error => this._onErrorQuery(error)
+      });
+    }
+
+    public disconnectedCallback() {
+      this._watchQuerySubscription &&
+        this._watchQuerySubscription.unsubscribe();
+
+      super.disconnectedCallback();
     }
   }
 
