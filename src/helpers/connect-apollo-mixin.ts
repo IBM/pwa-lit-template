@@ -126,10 +126,6 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
         this.loading = true;
 
         this._mutation = await client.mutate(options);
-
-        if (this._watchQuery) {
-          await this._watchQuery.refetch();
-        }
       } catch (error) {
         this._onErrorQuery(error);
       }
