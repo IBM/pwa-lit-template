@@ -8,15 +8,16 @@
 import { property } from 'lit-element';
 import {
   ApolloClient,
+  ApolloQueryResult,
+  FetchMoreOptions,
+  FetchMoreQueryOptions,
+  FetchResult,
+  MutationOptions,
   NetworkStatus,
-  QueryOptions,
   ObservableQuery,
   OperationVariables,
-  ApolloQueryResult,
-  FetchMoreQueryOptions,
-  FetchMoreOptions,
-  MutationOptions,
-  FetchResult
+  QueryOptions,
+  WatchQueryOptions
 } from 'apollo-boost';
 import { GraphQLError } from 'graphql';
 
@@ -26,8 +27,9 @@ interface CustomElement extends HTMLElement {
   disconnectedCallback(): void;
 }
 
-type TData = any;
-type TVariables = OperationVariables;
+type ApolloT = any;
+type ApolloTData = any;
+type ApolloTVariables = OperationVariables;
 
 export const connectApollo = (client: ApolloClient<unknown>) => <
   T extends Constructor<CustomElement>
@@ -36,16 +38,16 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
 ) => {
   class ApolloQueryElement extends baseElement {
     // TODO: Make protected?
-    _query?: ApolloQueryResult<any>;
+    _query?: ApolloQueryResult<ApolloT>;
 
     // TODO: Make protected?
-    _watchQuery?: ObservableQuery<any, OperationVariables>;
+    _watchQuery?: ObservableQuery<ApolloT, ApolloTVariables>;
 
     // TODO: Make protected?
     _watchQuerySubscription?: ZenObservable.Subscription;
 
     // TODO: Make protected?
-    _mutation?: FetchResult<any, Record<string, any>, Record<string, any>>;
+    _mutation?: FetchResult<ApolloT>;
 
     @property({ type: Object })
     public data?: any;
@@ -63,7 +65,7 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
     public stale?: boolean;
 
     // TODO: Make protected?
-    _onSuccessQuery(queryResult: ApolloQueryResult<any>) {
+    _onSuccessQuery(queryResult: ApolloQueryResult<ApolloT>) {
       this.data = queryResult.data;
       this.errors = queryResult.errors;
       this.loading = queryResult.loading;
@@ -78,7 +80,7 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
       console.error('requestQuery error:', error);
     }
 
-    public async query(options: QueryOptions) {
+    public async query(options: QueryOptions<ApolloTVariables>) {
       try {
         this.loading = true;
 
@@ -89,7 +91,7 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
       }
     }
 
-    public watchQuery(options: QueryOptions) {
+    public watchQuery(options: WatchQueryOptions<ApolloTVariables>) {
       this.loading = true;
 
       this._watchQuery = client.watchQuery(options);
@@ -100,9 +102,9 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
       });
     }
 
-    public fetchMore<K extends keyof TVariables>(
-      fetchMoreOptions: FetchMoreQueryOptions<TVariables, K> &
-        FetchMoreOptions<TData, TVariables>
+    public fetchMore<K extends keyof ApolloTVariables>(
+      fetchMoreOptions: FetchMoreQueryOptions<ApolloTVariables, K> &
+        FetchMoreOptions<ApolloTData, ApolloTVariables>
     ) {
       if (!this._watchQuery) {
         console.warn('You need to run fetchMore() before running watchQuery()');
@@ -121,7 +123,7 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
       super.disconnectedCallback();
     }
 
-    public async mutate(options: MutationOptions<any, OperationVariables>) {
+    public async mutate(options: MutationOptions<ApolloT, ApolloTVariables>) {
       try {
         this.loading = true;
 
