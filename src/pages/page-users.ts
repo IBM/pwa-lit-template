@@ -22,14 +22,16 @@ const GET_USERS = gql`
 @customElement('page-users')
 export class PageUsers extends connectApollo(client)(PageElement) {
   protected render() {
+    const users = this.data && this.data.users;
+
     // prettier-ignore
     return html`
       <section>
         <h1>Users</h1>
 
-        ${this.data && this.data.users ? html`
+        ${users ? html`
           <ul>
-            ${this.data.users.map((user: any) => html`
+            ${users.map((user: any) => html`
               <li>
                 <a href="/user/${user.username}">${user.username}</a>
               </li>
@@ -41,7 +43,7 @@ export class PageUsers extends connectApollo(client)(PageElement) {
           <div>Loading users...</div>
         ` : null}
 
-        ${this.data && this.data.users ? html`
+        ${users ? html`
           <button @click=${this.loadMoreUsers}>Load more...</button>
         ` : null}
       </section>
