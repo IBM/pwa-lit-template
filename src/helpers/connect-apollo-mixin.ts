@@ -27,9 +27,12 @@ interface CustomElement extends HTMLElement {
   disconnectedCallback(): void;
 }
 
-type ApolloT = any;
-type ApolloTData = any;
-type ApolloTVariables = OperationVariables;
+// eslint-disable-next-line @typescript-eslint/no-namespace
+declare namespace AC {
+  type T = any;
+  type TData = any;
+  type TVariables = OperationVariables;
+}
 
 export const connectApollo = (client: ApolloClient<unknown>) => <
   T extends Constructor<CustomElement>
@@ -38,16 +41,16 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
 ) => {
   class ApolloQueryElement extends baseElement {
     // TODO: Make protected?
-    _query?: ApolloQueryResult<ApolloT>;
+    _query?: ApolloQueryResult<AC.T>;
 
     // TODO: Make protected?
-    _watchQuery?: ObservableQuery<ApolloT, ApolloTVariables>;
+    _watchQuery?: ObservableQuery<AC.T, AC.TVariables>;
 
     // TODO: Make protected?
     _watchQuerySubscription?: ZenObservable.Subscription;
 
     // TODO: Make protected?
-    _mutation?: FetchResult<ApolloT>;
+    _mutation?: FetchResult<AC.T>;
 
     @property({ type: Object })
     public data?: any;
@@ -65,7 +68,7 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
     public stale?: boolean;
 
     // TODO: Make protected?
-    _onSuccessQuery(queryResult: ApolloQueryResult<ApolloT>) {
+    _onSuccessQuery(queryResult: ApolloQueryResult<AC.T>) {
       this.data = queryResult.data;
       this.errors = queryResult.errors;
       this.loading = queryResult.loading;
@@ -80,7 +83,7 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
       console.error('requestQuery error:', error);
     }
 
-    public async query(options: QueryOptions<ApolloTVariables>) {
+    public async query(options: QueryOptions<AC.TVariables>) {
       try {
         this.loading = true;
 
@@ -91,7 +94,7 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
       }
     }
 
-    public watchQuery(options: WatchQueryOptions<ApolloTVariables>) {
+    public watchQuery(options: WatchQueryOptions<AC.TVariables>) {
       this.loading = true;
 
       this._watchQuery = client.watchQuery(options);
@@ -102,9 +105,9 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
       });
     }
 
-    public fetchMore<K extends keyof ApolloTVariables>(
-      fetchMoreOptions: FetchMoreQueryOptions<ApolloTVariables, K> &
-        FetchMoreOptions<ApolloTData, ApolloTVariables>
+    public fetchMore<K extends keyof AC.TVariables>(
+      fetchMoreOptions: FetchMoreQueryOptions<AC.TVariables, K> &
+        FetchMoreOptions<AC.TData, AC.TVariables>
     ) {
       if (!this._watchQuery) {
         console.warn('You need to run fetchMore() before running watchQuery()');
@@ -123,7 +126,7 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
       super.disconnectedCallback();
     }
 
-    public async mutate(options: MutationOptions<ApolloT, ApolloTVariables>) {
+    public async mutate(options: MutationOptions<AC.T, AC.TVariables>) {
       try {
         this.loading = true;
 
