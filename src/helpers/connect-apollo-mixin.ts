@@ -36,7 +36,7 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
 ) => {
   class ApolloQueryElement extends baseElement {
     // TODO: Make protected?
-    _query?: Promise<ApolloQueryResult<any>>;
+    _query?: ApolloQueryResult<any>;
 
     // TODO: Make protected?
     _watchQuery?: ObservableQuery<any, OperationVariables>;
@@ -82,8 +82,8 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
       try {
         this.loading = true;
 
-        const queryResult = await client.query(options);
-        this._onSuccessQuery(queryResult);
+        this._query = await client.query(options);
+        this._onSuccessQuery(this._query);
       } catch (error) {
         this._onErrorQuery(error);
       }
