@@ -90,21 +90,21 @@ export class PageUser extends connectApollo(client)(PageElement) {
       variables: { id: user.id, fullName: newUsername },
       update: (cache, { data: { updateUser } }) => {
         try {
-          const data = cache.readQuery({
+          const cachedData: any = cache.readQuery({
             query: GET_USER,
             variables: {
               where: { username: user.username }
             }
           });
 
-          data.users[0].fullName = updateUser.user.fullName;
+          cachedData.users[0].fullName = updateUser.user.fullName;
 
           cache.writeQuery({
             query: GET_USER,
             variables: {
               where: { username: user.username }
             },
-            data
+            data: cachedData
           });
         } catch (error) {
           // TODO: Manage the errors
