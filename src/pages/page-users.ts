@@ -12,7 +12,7 @@ import { client, gql } from '../graphql-service';
 import { connectApollo } from '../helpers';
 
 const GET_USERS = gql`
-  query GetUsers($limit: Int = 20, $start: Int) {
+  query GetUsers($limit: Int, $start: Int) {
     users(limit: $limit, start: $start) {
       username
     }
@@ -21,6 +21,15 @@ const GET_USERS = gql`
 
 @customElement('page-users')
 export class PageUsers extends connectApollo(client)(PageElement) {
+  protected onBeforeEnter() {
+    this.watchQuery({
+      query: GET_USERS,
+      variables: {
+        limit: 10
+      }
+    });
+  }
+
   protected render() {
     const users = this.data && this.data.users;
 
@@ -60,12 +69,6 @@ export class PageUsers extends connectApollo(client)(PageElement) {
           users: [...previousQueryResult.users, ...fetchMoreResult.users]
         };
       }
-    });
-  }
-
-  protected onBeforeEnter() {
-    this.watchQuery({
-      query: GET_USERS
     });
   }
 }
