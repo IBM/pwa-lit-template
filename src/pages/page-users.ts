@@ -13,8 +13,13 @@ import { connectApollo } from '../helpers';
 
 const GET_USERS = gql`
   query GetUsers($limit: Int, $start: Int) {
-    users(limit: $limit, start: $start) {
-      username
+    usersConnection(limit: $limit, start: $start) {
+      aggregate {
+        count
+      }
+      values {
+        username
+      }
     }
   }
 `;
@@ -31,7 +36,11 @@ export class PageUsers extends connectApollo(client)(PageElement) {
   }
 
   protected render() {
-    const users = this.data && this.data.users;
+    const users = this.data && this.data.usersConnection.values;
+    const areMoreUsers =
+      this.data &&
+      this.data.usersConnection.values.length <
+        this.data.usersConnection.aggregate.count;
 
     // prettier-ignore
     return html`
@@ -52,7 +61,7 @@ export class PageUsers extends connectApollo(client)(PageElement) {
           <div>Loading users...</div>
         ` : null}
 
-        ${users ? html`
+        ${users && !this.loading && areMoreUsers ? html`
           <button @click=${this.loadMoreUsers}>Load more...</button>
         ` : null}
       </section>
@@ -60,13 +69,23 @@ export class PageUsers extends connectApollo(client)(PageElement) {
   }
 
   protected loadMoreUsers() {
-    const currentUsersCount = this.data.users.length;
+    const currentUsersCount = this.data.usersConnection.values.length;
 
     this.fetchMore({
       variables: { start: currentUsersCount },
       updateQuery: (previousQueryResult, { fetchMoreResult }) => {
         return {
-          users: [...previousQueryResult.users, ...fetchMoreResult.users]
+          usersConnection: {
+            ...previousQueryResult.usersConnection,
+            aggregate: {
+              ...previousQueryResult.usersConnection.aggregate,
+              ...fetchMoreResult.usersConnection.aggregate
+            },
+            values: [
+              ...previousQueryResult.usersConnection.values,
+              ...fetchMoreResult.usersConnection.values
+            ]
+          }
         };
       }
     });
