@@ -34,7 +34,7 @@ export default [
     }
   },
   {
-    path: '/user/:username',
+    path: '/user/:userId',
     component: 'page-user',
     action: async () => {
       await import('../pages/page-user');

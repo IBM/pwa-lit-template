@@ -13,8 +13,8 @@ import { client, gql } from '../graphql-service';
 import { connectApollo, renderPageNotFound } from '../helpers';
 
 const GET_USER = gql`
-  query GetUser($where: JSON) {
-    users(where: $where) {
+  query GetUser($id: ID!) {
+    user(id: $id) {
       id
       username
       fullName
@@ -38,7 +38,7 @@ export class PageUser extends connectApollo(client)(PageElement) {
   private _form?: HTMLFormElement;
 
   protected render() {
-    const user = this.data && this.data.users[0];
+    const user = this.data && this.data.user;
 
     if (user === undefined && !this.loading) {
       return renderPageNotFound();
@@ -49,6 +49,7 @@ export class PageUser extends connectApollo(client)(PageElement) {
       <section>
         <h1>User</h1>
 
+        <p>ID: ${user && user.id}</p>
         <p>Username: ${user && user.username}</p>
         <p>Full name: ${user && user.fullName}</p>
 
@@ -71,9 +72,7 @@ export class PageUser extends connectApollo(client)(PageElement) {
     this.query({
       query: GET_USER,
       variables: {
-        where: {
-          username: location.params.username
-        }
+        id: location.params.userId
       }
     });
   }
@@ -83,26 +82,25 @@ export class PageUser extends connectApollo(client)(PageElement) {
 
     const formData = new FormData(this._form);
     const newUsername = formData.get('fullName');
-    const user = this.data.users[0];
 
     this.mutate({
       mutation: UPDATE_USER_USERNAME,
-      variables: { id: user.id, fullName: newUsername },
+      variables: { id: this.data.user.id, fullName: newUsername },
       update: (cache, { data: { updateUser } }) => {
         try {
           const cachedData: any = cache.readQuery({
             query: GET_USER,
             variables: {
-              where: { username: user.username }
+              id: this.data.user.id
             }
           });
 
-          cachedData.users[0].fullName = updateUser.user.fullName;
+          cachedData.user.fullName = updateUser.user.fullName;
 
           cache.writeQuery({
             query: GET_USER,
             variables: {
-              where: { username: user.username }
+              id: this.data.user.id
             },
             data: cachedData
           });
@@ -118,7 +116,7 @@ export class PageUser extends connectApollo(client)(PageElement) {
   }
 
   protected updateMetadata() {
-    const user = this.data && this.data.users[0];
+    const user = this.data && this.data.user;
 
     if (!user) {
       return;

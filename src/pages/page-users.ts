@@ -18,6 +18,7 @@ const GET_USERS = gql`
         count
       }
       values {
+        id
         username
       }
     }
@@ -51,7 +52,7 @@ export class PageUsers extends connectApollo(client)(PageElement) {
           <ul>
             ${users.map((user: any) => html`
               <li>
-                <a href="/user/${user.username}">${user.username}</a>
+                <a href="/user/${user.id}">${user.username}</a>
               </li>
             `)}
           </ul>
