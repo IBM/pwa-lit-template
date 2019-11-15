@@ -11,7 +11,7 @@ import config from '../config';
 import { updateMetadata } from '../helpers';
 import { MetadataOptions } from '../helpers/metadata';
 
-type MyRoute = Router.Route & MetadataOptions;
+type AppRoute = Router.Route & MetadataOptions;
 
 export class PageElement extends LitElement {
   // TODO: Review this issue https://github.com/vaadin/vaadin-router/issues/404
@@ -28,7 +28,7 @@ export class PageElement extends LitElement {
     }
   }
 
-  protected updateMetadata(route: MyRoute): MetadataOptions | void {
+  protected updateMetadata(route: AppRoute): MetadataOptions | void {
     const { title, description, image } = route;
     const isHomePage = route.component === 'page-home';
 
