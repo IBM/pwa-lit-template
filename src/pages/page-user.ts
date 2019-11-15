@@ -82,16 +82,17 @@ export class PageUser extends connectApollo(client)(PageElement) {
 
     const formData = new FormData(this._form);
     const newUsername = formData.get('fullName');
+    const user = this.data.user;
 
     this.mutate({
       mutation: UPDATE_USER_USERNAME,
-      variables: { id: this.data.user.id, fullName: newUsername },
+      variables: { id: user.id, fullName: newUsername },
       update: (cache, { data: { updateUser } }) => {
         try {
           const cachedData: any = cache.readQuery({
             query: GET_USER,
             variables: {
-              id: this.data.user.id
+              id: user.id
             }
           });
 
@@ -100,7 +101,7 @@ export class PageUser extends connectApollo(client)(PageElement) {
           cache.writeQuery({
             query: GET_USER,
             variables: {
-              id: this.data.user.id
+              id: user.id
             },
             data: cachedData
           });
