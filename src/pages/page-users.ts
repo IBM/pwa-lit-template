@@ -37,7 +37,7 @@ export class PageUsers extends connectApollo(client)(PageElement) {
   }
 
   protected render() {
-    const users = this.data && this.data.usersConnection.values;
+    const users = this.data?.usersConnection.values;
     const areMoreUsers =
       this.data &&
       this.data.usersConnection.values.length <
