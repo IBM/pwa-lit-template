@@ -109,6 +109,9 @@ export class PageUser extends connectApollo(client)(PageElement) {
           console.error(error);
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        this._form!.reset();
+
         // TODO: Can we move this inside the mixin?
         this.loading = false;
       }
