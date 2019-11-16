@@ -80,7 +80,7 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
     // TODO: Manage the errors
     _onErrorQuery(error: any) {
       this.loading = false;
-      console.error('requestQuery error:', error);
+      console.error('query error:', error);
     }
 
     public async query(options: QueryOptions<AC.TVariables>) {
