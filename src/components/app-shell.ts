@@ -5,12 +5,15 @@
  * file in the root directory of this source tree.
  */
 
-import { LitElement, html, css, customElement } from 'lit-element';
+import { LitElement, html, css, customElement, query } from 'lit-element';
 
 import config from '../config';
 
 @customElement('app-shell')
 export class AppShell extends LitElement {
+  @query('main')
+  private main!: HTMLElement;
+
   static get styles() {
     return [
       css`
@@ -69,10 +72,8 @@ export class AppShell extends LitElement {
 
   private async initializeRouter(): Promise<void> {
     const router = await import('../router/index');
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const mainElement = this.shadowRoot!.querySelector('main')!;
 
-    router.init(mainElement);
+    router.init(this.main);
   }
 
   protected firstUpdated() {
