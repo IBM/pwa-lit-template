@@ -16,11 +16,11 @@ type AppRoute = Router.Route & MetadataOptions;
 export class PageElement extends LitElement {
   // TODO: Review this issue https://github.com/vaadin/vaadin-router/issues/404
   @property({ type: Object })
-  protected location?: Router.Location;
+  protected location!: Router.Location;
 
   protected updated() {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const route = this.location!.route!;
+    const route = this.location.route!;
 
     const metadata = this.updateMetadata(route);
     if (metadata) {
