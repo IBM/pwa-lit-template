@@ -35,7 +35,7 @@ const UPDATE_USER_USERNAME = gql`
 @customElement('page-user')
 export class PageUser extends connectApollo(client)(PageElement) {
   @query('#form')
-  private _form?: HTMLFormElement;
+  private form!: HTMLFormElement;
 
   protected render() {
     const user = this.data?.user;
@@ -80,7 +80,7 @@ export class PageUser extends connectApollo(client)(PageElement) {
   protected updateUser(event: Event) {
     event.preventDefault();
 
-    const formData = new FormData(this._form);
+    const formData = new FormData(this.form);
     const newUsername = formData.get('fullName');
     const user = this.data.user;
 
@@ -110,8 +110,7 @@ export class PageUser extends connectApollo(client)(PageElement) {
           console.error(error);
         }
 
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        this._form!.reset();
+        this.form.reset();
 
         // TODO: Can we move this inside the mixin?
         this.loading = false;
