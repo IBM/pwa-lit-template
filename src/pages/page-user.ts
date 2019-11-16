@@ -69,11 +69,11 @@ export class PageUser extends connectApollo(client)(PageElement) {
   }
 
   protected onBeforeEnter(location: Router.Location) {
+    const { userId } = location.params;
+
     this.query({
       query: GET_USER,
-      variables: {
-        id: location.params.userId
-      }
+      variables: { id: userId }
     });
   }
 
@@ -82,27 +82,23 @@ export class PageUser extends connectApollo(client)(PageElement) {
 
     const formData = new FormData(this.form);
     const newUsername = formData.get('fullName');
-    const user = this.data.user;
+    const { id: userId } = this.data.user;
 
     this.mutate({
       mutation: UPDATE_USER_USERNAME,
-      variables: { id: user.id, fullName: newUsername },
+      variables: { id: userId, fullName: newUsername },
       update: (cache, { data: { updateUser } }) => {
         try {
           const cachedData: any = cache.readQuery({
             query: GET_USER,
-            variables: {
-              id: user.id
-            }
+            variables: { id: userId }
           });
 
           cachedData.user.fullName = updateUser.user.fullName;
 
           cache.writeQuery({
             query: GET_USER,
-            variables: {
-              id: user.id
-            },
+            variables: { id: userId },
             data: cachedData
           });
         } catch (error) {
