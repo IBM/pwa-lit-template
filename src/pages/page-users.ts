@@ -7,6 +7,12 @@
 
 import { html, customElement } from 'lit-element';
 
+import {
+  GetUsers,
+  GetUsersVariables,
+  GetUsers_usersConnection_values as GetUsersUsersConnectionValues
+} from '../__generated__/GetUsers';
+
 import { PageElement } from './page-element';
 import { client, gql } from '../graphql-service';
 import { connectApollo } from '../helpers/connect-apollo-mixin';
@@ -26,7 +32,9 @@ const GET_USERS = gql`
 `;
 
 @customElement('page-users')
-export class PageUsers extends connectApollo(client)(PageElement) {
+export class PageUsers extends connectApollo<GetUsers, GetUsersVariables>(
+  client
+)(PageElement) {
   protected onBeforeEnter() {
     this.watchQuery({
       query: GET_USERS,
@@ -41,10 +49,11 @@ export class PageUsers extends connectApollo(client)(PageElement) {
     let areMoreUsers = false;
 
     if (this.data.usersConnection) {
-      users = this.data.usersConnection.values;
+      users = this.data.usersConnection
+        .values as GetUsersUsersConnectionValues[];
 
-      const currentCount = this.data.usersConnection.values.length;
-      const totalCount = this.data.usersConnection.aggregate.count;
+      const currentCount = this.data.usersConnection.values!.length;
+      const totalCount = this.data.usersConnection.aggregate!.count!;
       areMoreUsers = currentCount < totalCount;
     }
 
@@ -55,7 +64,7 @@ export class PageUsers extends connectApollo(client)(PageElement) {
 
         ${users ? html`
           <ul>
-            ${users.map((user: any) => html`
+            ${users.map(user => html`
               <li>
                 <a href="/user/${user.id}">${user.username}</a>
               </li>
@@ -75,7 +84,7 @@ export class PageUsers extends connectApollo(client)(PageElement) {
   }
 
   protected loadMoreUsers() {
-    const currentUsersCount = this.data.usersConnection.values.length;
+    const currentUsersCount = this.data.usersConnection!.values!.length;
 
     this.fetchMore({
       variables: { start: currentUsersCount },
@@ -84,15 +93,15 @@ export class PageUsers extends connectApollo(client)(PageElement) {
           usersConnection: {
             ...previousQueryResult.usersConnection,
             aggregate: {
-              ...previousQueryResult.usersConnection.aggregate,
-              ...fetchMoreResult.usersConnection.aggregate
+              ...previousQueryResult.usersConnection!.aggregate,
+              ...fetchMoreResult!.usersConnection!.aggregate
             },
             values: [
-              ...previousQueryResult.usersConnection.values,
-              ...fetchMoreResult.usersConnection.values
+              ...previousQueryResult.usersConnection!.values!,
+              ...fetchMoreResult!.usersConnection!.values!
             ]
           }
-        };
+        } as GetUsers;
       }
     });
   }
