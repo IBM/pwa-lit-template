@@ -9,7 +9,7 @@ import { html, customElement } from 'lit-element';
 
 import { PageElement } from './page-element';
 import { client, gql } from '../graphql-service';
-import { connectApollo } from '../helpers';
+import { connectApollo } from '../helpers/connect-apollo-mixin';
 
 const GET_USERS = gql`
   query GetUsers($limit: Int, $start: Int) {

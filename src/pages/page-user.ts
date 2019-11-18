@@ -10,7 +10,8 @@ import { html, customElement, query } from 'lit-element';
 import config from '../config';
 import { PageElement } from './page-element';
 import { client, gql } from '../graphql-service';
-import { connectApollo, renderPageNotFound } from '../helpers';
+import { connectApollo } from '../helpers/connect-apollo-mixin';
+import { renderPageNotFound } from '../helpers/render-page-not-found';
 
 const GET_USER = gql`
   query GetUser($id: ID!) {
