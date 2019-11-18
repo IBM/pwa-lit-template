@@ -43,9 +43,9 @@ export class PageUsers extends connectApollo(client)(PageElement) {
     if (this.data.usersConnection) {
       users = this.data.usersConnection.values;
 
-      const currentUsersLength = this.data.usersConnection.values.length;
-      const totalUsersLength = this.data.usersConnection.aggregate.count;
-      areMoreUsers = currentUsersLength < totalUsersLength;
+      const currentCount = this.data.usersConnection.values.length;
+      const totalCount = this.data.usersConnection.aggregate.count;
+      areMoreUsers = currentCount < totalCount;
     }
 
     // prettier-ignore
