@@ -8,8 +8,7 @@
 import { LitElement, property } from 'lit-element';
 
 import config from '../config';
-import { updateMetadata } from '../helpers';
-import { MetadataOptions } from '../helpers/metadata';
+import { updateMetadata, MetadataOptions } from '../helpers/metadata';
 
 type AppRoute = Router.Route & MetadataOptions;
 
