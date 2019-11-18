@@ -38,7 +38,7 @@ export class PageUser extends connectApollo(client)(PageElement) {
   private form!: HTMLFormElement;
 
   protected render() {
-    const user = this.data?.user;
+    const user = this.data.user;
 
     if (user === undefined && !this.loading) {
       return renderPageNotFound();
@@ -115,7 +115,7 @@ export class PageUser extends connectApollo(client)(PageElement) {
   }
 
   protected updateMetadata() {
-    const user = this.data?.user;
+    const user = this.data.user;
 
     if (!user) {
       return;

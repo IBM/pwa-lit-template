@@ -53,7 +53,7 @@ export const connectApollo = (client: ApolloClient<unknown>) => <
     _mutation?: FetchResult<AC.T>;
 
     @property({ type: Object })
-    public data?: any;
+    public data: any = {};
 
     @property({ type: Array })
     public errors?: readonly GraphQLError[];

@@ -37,11 +37,16 @@ export class PageUsers extends connectApollo(client)(PageElement) {
   }
 
   protected render() {
-    const users = this.data?.usersConnection.values;
-    const areMoreUsers =
-      this.data &&
-      this.data.usersConnection.values.length <
-        this.data.usersConnection.aggregate.count;
+    let users;
+    let areMoreUsers = false;
+
+    if (this.data.usersConnection) {
+      users = this.data.usersConnection.values;
+
+      const currentUsersLength = this.data.usersConnection.values.length;
+      const totalUsersLength = this.data.usersConnection.aggregate.count;
+      areMoreUsers = currentUsersLength < totalUsersLength;
+    }
 
     // prettier-ignore
     return html`
