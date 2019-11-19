@@ -7,6 +7,12 @@
 
 import { html, customElement, query } from 'lit-element';
 
+import { GetUser, GetUserVariables } from '../__generated__/GetUser';
+import {
+  UpdateUserUsername,
+  UpdateUserUsernameVariables
+} from '../__generated__/UpdateUserUsername';
+
 import config from '../config';
 import { PageElement } from './page-element';
 import { client, gql } from '../graphql-service';
@@ -34,7 +40,12 @@ const UPDATE_USER_USERNAME = gql`
 `;
 
 @customElement('page-user')
-export class PageUser extends connectApollo(client)(PageElement) {
+export class PageUser extends connectApollo<
+  GetUser,
+  GetUserVariables,
+  UpdateUserUsername,
+  UpdateUserUsernameVariables
+>(client)(PageElement) {
   @query('#form')
   private form!: HTMLFormElement;
 
@@ -74,7 +85,7 @@ export class PageUser extends connectApollo(client)(PageElement) {
 
     this.query({
       query: GET_USER,
-      variables: { id: userId }
+      variables: { id: userId as string }
     });
   }
 
@@ -82,20 +93,24 @@ export class PageUser extends connectApollo(client)(PageElement) {
     event.preventDefault();
 
     const formData = new FormData(this.form);
-    const newUsername = formData.get('fullName');
-    const { id: userId } = this.data.user;
+    const newUsername = formData.get('fullName') as string;
+    const userId = this.data.user!.id;
 
     this.mutate({
       mutation: UPDATE_USER_USERNAME,
       variables: { id: userId, fullName: newUsername },
-      update: (cache, { data: { updateUser } }) => {
+      update: (cache, fetchResult) => {
+        const updatedUser = fetchResult.data!.updateUser!.user!;
+
         try {
-          const cachedData: any = cache.readQuery({
+          const cachedData = cache.readQuery<GetUser, GetUserVariables>({
             query: GET_USER,
             variables: { id: userId }
           });
 
-          cachedData.user.fullName = updateUser.user.fullName;
+          if (cachedData?.user) {
+            cachedData.user.fullName = updatedUser.fullName;
+          }
 
           cache.writeQuery({
             query: GET_USER,
