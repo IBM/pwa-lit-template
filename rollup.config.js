@@ -6,6 +6,7 @@
  */
 
 import { createCompatibilityConfig } from '@open-wc/building-rollup';
+import { defaultFileExtensions } from '@open-wc/building-utils';
 import copy from 'rollup-plugin-cpy';
 import replace from 'rollup-plugin-replace';
 
@@ -14,7 +15,7 @@ const DIST_PATH = 'dist/';
 
 const configs = createCompatibilityConfig({
   input: './index.html',
-  extensions: ['.mjs', '.js', '.ts']
+  extensions: [...defaultFileExtensions, '.ts']
 });
 
 // Add plugins to both configs
