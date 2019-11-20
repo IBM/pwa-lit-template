@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "rimraf dist && rollup --config --environment NODE_ENV:production",
-    "bundle-size-check": "bundlesize",
+    "bundle-size-check": "npm run build; bundlesize",
     "format": "npm run format:prettier",
     "format:prettier": "prettier --write \"**/*.{js,json,md,ts}\"",
     "lint": "npm run lint:eslint && npm run lint:lit",
