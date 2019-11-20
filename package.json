@@ -1,7 +1,7 @@
 {
   "name": "app-template",
   "version": "0.1.0",
-  "description": "A template for building web applications using LitElement and Vaadin Router",
+  "description": "A template for building web applications using LitElement, Vaadin Router and Apollo Client",
   "license": "MIT",
   "engines": {
     "node": ">=10.0.0"
@@ -14,15 +14,21 @@
     "lint": "npm run lint:eslint && npm run lint:lit",
     "lint:eslint": "eslint \"**/*.{js,ts}\"",
     "lint:lit": "lit-analyzer \"src/{components,pages}/**/*.ts\" --strict --quiet",
-    "postinstall": "patch-package",
+    "postinstall": "patch-package; npm run types:generate",
     "serve": "es-dev-server --app-index index.html --file-extensions .ts --node-resolve --babel --watch",
     "serve:production": "es-dev-server --app-index --root-dir dist/ index.html",
     "start": "npm run serve",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "type-check": "tsc --noEmit"
+    "types:check": "tsc --noEmit",
+    "types:generate": "apollo client:codegen --target typescript --outputFlat src/__generated__/"
   },
   "dependencies": {
+    "fast-json-stable-stringify": "abdonrd/fast-json-stable-stringify#es-modules",
+    "graphql-tag": "abdonrd/graphql-tag#es-modules",
+    "zen-observable": "abdonrd/zen-observable#es-modules",
     "@vaadin/router": "^1.5.0",
+    "apollo-boost": "^0.4.0",
+    "graphql": "^14.5.0",
     "lit-element": "^2.2.0"
   },
   "devDependencies": {
@@ -35,6 +41,7 @@
     "@types/workbox-window": "^4.3.0",
     "@typescript-eslint/eslint-plugin": "^2.8.0",
     "@typescript-eslint/parser": "^2.8.0",
+    "apollo": "^2.21.0",
     "bundlesize": "^0.18.0",
     "es-dev-server": "^1.24.0",
     "eslint": "^6.6.0",

@@ -5,14 +5,12 @@
  * file in the root directory of this source tree.
  */
 
-import config from './development';
-
-const sharedConfig = {
-  name: 'MyApplication',
-  apiUrl: 'http://localhost:1337/graphql'
-};
-
-export default {
-  ...sharedConfig,
-  ...config
+module.exports = {
+  client: {
+    service: {
+      name: 'graphql-service',
+      // TODO: Can we get this URL from `src/config/`?
+      url: 'http://localhost:1337/graphql'
+    }
+  }
 };

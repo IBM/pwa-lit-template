@@ -14,7 +14,7 @@ const DIST_PATH = 'dist/';
 
 const configs = createCompatibilityConfig({
   input: './index.html',
-  extensions: ['.js', '.ts']
+  extensions: ['.mjs', '.js', '.ts']
 });
 
 // Add plugins to both configs

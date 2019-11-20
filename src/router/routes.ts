@@ -25,6 +25,22 @@ export default [
     }
   },
   {
+    path: '/users',
+    component: 'page-users',
+    title: 'Users',
+    description: 'Users page description',
+    action: async () => {
+      await import('../pages/page-users');
+    }
+  },
+  {
+    path: '/user/:userId',
+    component: 'page-user',
+    action: async () => {
+      await import('../pages/page-user');
+    }
+  },
+  {
     path: '(.*)',
     component: 'page-not-found',
     title: 'Error',

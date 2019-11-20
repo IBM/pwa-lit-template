@@ -5,14 +5,12 @@
  * file in the root directory of this source tree.
  */
 
-import config from './development';
+import ApolloClient, { gql } from 'apollo-boost';
 
-const sharedConfig = {
-  name: 'MyApplication',
-  apiUrl: 'http://localhost:1337/graphql'
-};
+import config from './config';
 
-export default {
-  ...sharedConfig,
-  ...config
-};
+const client = new ApolloClient({
+  uri: config.apiUrl
+});
+
+export { client, gql };
