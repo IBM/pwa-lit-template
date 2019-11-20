@@ -1,7 +1,7 @@
 {
   "name": "app-template",
   "version": "0.1.0",
-  "description": "A template for building web applications using LitElement and Vaadin Router",
+  "description": "A template for building web applications using LitElement, Vaadin Router and Apollo Client",
   "license": "MIT",
   "engines": {
     "node": ">=10.0.0"
