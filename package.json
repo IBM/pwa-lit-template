@@ -43,7 +43,7 @@
     "@typescript-eslint/parser": "^2.8.0",
     "apollo": "^2.21.0",
     "bundlesize": "^0.18.0",
-    "es-dev-server": "^1.25.0",
+    "es-dev-server": "^1.26.0",
     "eslint": "^6.6.0",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-lit": "^1.2.0",
