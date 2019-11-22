@@ -35,17 +35,17 @@ export class AppSnackbar extends LitElement {
   protected render() {
     return html`
       <div class="message">New version available!</div>
-      <button @click=${this._onAccept}>Update</button>
-      <button @click=${this._onCancel}>X</button>
+      <button @click=${this.onAccept}>Update</button>
+      <button @click=${this.onCancel}>X</button>
     `;
   }
 
-  protected _onAccept() {
+  private onAccept() {
     const onAcceptEvent = new CustomEvent('on-accept');
     this.dispatchEvent(onAcceptEvent);
   }
 
-  protected _onCancel() {
+  private onCancel() {
     const onCancelEvent = new CustomEvent('on-cancel');
     this.dispatchEvent(onCancelEvent);
   }

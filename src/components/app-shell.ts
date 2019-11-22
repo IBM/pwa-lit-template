@@ -70,7 +70,7 @@ export class AppShell extends LitElement {
     `;
   }
 
-  private async initializeRouter(): Promise<void> {
+  private async initializeRouter() {
     const router = await import('../router/index');
 
     router.init(this.main);
