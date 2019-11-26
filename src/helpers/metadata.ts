@@ -50,8 +50,7 @@ export const updateMetadata = (metadataOptions: MetadataOptions) => {
 
   if (image) {
     if (image.url) {
-      const imageUrl = `${window.location.origin}/${image.url}`;
-      setMetaTag('property', 'og:image', imageUrl);
+      setMetaTag('property', 'og:image', image.url);
     }
     if (image.alt) {
       setMetaTag('property', 'og:image:alt', image.alt);
