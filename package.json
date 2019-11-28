@@ -4,7 +4,7 @@
   "description": "A template for building web applications using LitElement, Vaadin Router and Apollo Client",
   "license": "MIT",
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=12.0.0"
   },
   "scripts": {
     "build": "rimraf dist && rollup --config --environment NODE_ENV:production",
