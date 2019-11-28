@@ -11,11 +11,12 @@ import copy from 'rollup-plugin-cpy';
 import replace from 'rollup-plugin-replace';
 
 const ENVIRONMENT = process.env.NODE_ENV || 'development';
-const DIST_PATH = 'dist/';
+const DIST_PATH = 'server/dist/';
 
 const configs = createCompatibilityConfig({
   input: './index.html',
-  extensions: [...defaultFileExtensions, '.ts']
+  extensions: [...defaultFileExtensions, '.ts'],
+  outputDir: DIST_PATH
 });
 
 // Add plugins to both configs
