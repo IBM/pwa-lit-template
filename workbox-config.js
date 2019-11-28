@@ -5,7 +5,7 @@
  * file in the root directory of this source tree.
  */
 
-const DIST_PATH = 'dist/';
+const DIST_PATH = 'server/dist/';
 
 module.exports = {
   clientsClaim: true,
