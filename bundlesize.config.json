@@ -1,7 +1,7 @@
 {
   "files": [
     {
-      "path": "sever/dist/app-shell-*.js",
+      "path": "server/dist/app-shell-*.js",
       "maxSize": "670 B"
     },
     {
@@ -10,11 +10,11 @@
     },
     {
       "path": "server/dist/page-element-*.js",
-      "maxSize": "700 B"
+      "maxSize": "670 B"
     },
     {
       "path": "server/dist/page-home-*.js",
-      "maxSize": "450 B"
+      "maxSize": "455 B"
     },
     {
       "path": "server/dist/page-about-*.js",
