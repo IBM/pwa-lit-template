@@ -11,7 +11,7 @@ import {
   GetUsers,
   GetUsersVariables,
   GetUsers_usersConnection_values as GetUsersUsersConnectionValues
-} from '../__generated__/GetUsers';
+} from '@graphql-types/GetUsers';
 
 import { PageElement } from './page-element';
 import { client, gql } from '../graphql-service';

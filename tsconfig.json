@@ -12,7 +12,11 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "baseUrl": "src/",
+    "paths": {
+      "@graphql-types/*": ["__generated__/*"]
+    }
   },
   "include": ["src/**/*.ts"]
 }
