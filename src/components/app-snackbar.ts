@@ -19,6 +19,7 @@ export class AppSnackbar extends LitElement {
           padding: 14px 16px;
           box-sizing: border-box;
           background-color: #333333;
+          color: #ffffff;
           border-radius: 4px;
           position: fixed;
           bottom: 0;
@@ -26,7 +27,10 @@ export class AppSnackbar extends LitElement {
 
         .message {
           flex-grow: 1;
-          color: #ffffff;
+        }
+
+        button {
+          background-color: #ffffff;
         }
       `
     ];
@@ -41,12 +45,11 @@ export class AppSnackbar extends LitElement {
   }
 
   private onAccept() {
-    const onAcceptEvent = new CustomEvent('on-accept');
+    const onAcceptEvent = new CustomEvent('app-snackbar-on-accept');
     this.dispatchEvent(onAcceptEvent);
   }
 
   private onCancel() {
-    const onCancelEvent = new CustomEvent('on-cancel');
-    this.dispatchEvent(onCancelEvent);
+    this.remove();
   }
 }

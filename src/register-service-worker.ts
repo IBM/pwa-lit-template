@@ -10,12 +10,8 @@ import './components/app-snackbar';
 const createUIPrompt = ({ onAccept }: { onAccept: Function }) => {
   const snackbarElement = document.createElement('app-snackbar');
 
-  snackbarElement.addEventListener('on-accept', () => {
+  snackbarElement.addEventListener('app-snackbar-on-accept', () => {
     onAccept();
-  });
-
-  snackbarElement.addEventListener('on-cancel', () => {
-    snackbarElement.remove();
   });
 
   document.body.appendChild(snackbarElement);
