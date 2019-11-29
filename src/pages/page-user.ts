@@ -7,11 +7,11 @@
 
 import { html, customElement, query } from 'lit-element';
 
-import { GetUser, GetUserVariables } from '../__generated__/GetUser';
+import { GetUser, GetUserVariables } from '@graphql-types/GetUser';
 import {
   UpdateUserUsername,
   UpdateUserUsernameVariables
-} from '../__generated__/UpdateUserUsername';
+} from '@graphql-types/UpdateUserUsername';
 
 import config from '../config';
 import { PageElement } from './page-element';
