@@ -18,7 +18,7 @@
     "serve": "es-dev-server --app-index index.html --file-extensions .ts --node-resolve --babel --watch",
     "serve:production": "es-dev-server --app-index --root-dir server/dist/ index.html",
     "start": "npm run serve",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\"",
     "types:check": "tsc --noEmit",
     "types:generate": "rimraf src/__generated__/ &&  apollo client:codegen --target typescript --outputFlat src/__generated__/"
   },
