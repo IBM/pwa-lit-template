@@ -7,8 +7,8 @@
 
 import { createCompatibilityConfig } from '@open-wc/building-rollup';
 import { defaultFileExtensions } from '@open-wc/building-utils';
+import replace from '@rollup/plugin-replace';
 import copy from 'rollup-plugin-cpy';
-import replace from 'rollup-plugin-replace';
 
 const ENVIRONMENT = process.env.NODE_ENV || 'development';
 const DIST_PATH = 'server/dist/';
