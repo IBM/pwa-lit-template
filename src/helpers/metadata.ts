@@ -5,7 +5,7 @@
  * file in the root directory of this source tree.
  */
 
-const setMetaTag = (
+export const setMetaTag = (
   attributeName: string,
   attributeValue: string,
   content: string
@@ -21,6 +21,19 @@ const setMetaTag = (
   }
 
   element.setAttribute('content', content);
+};
+
+export const removeMetaTag = (
+  attributeName: string,
+  attributeValue: string
+) => {
+  const element = document.head.querySelector(
+    `meta[${attributeName}="${attributeValue}"]`
+  );
+
+  if (element) {
+    document.head.removeChild(element);
+  }
 };
 
 export interface MetadataOptions {

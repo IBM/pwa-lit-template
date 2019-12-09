@@ -9,6 +9,8 @@ import { html, customElement } from 'lit-element';
 
 import { PageElement } from './page-element';
 
+import { setMetaTag, removeMetaTag } from '../helpers/metadata';
+
 @customElement('page-not-found')
 export class PageNotFound extends PageElement {
   protected render() {
@@ -21,5 +23,21 @@ export class PageNotFound extends PageElement {
         </p>
       </section>
     `;
+  }
+
+  public connectedCallback() {
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
+
+    setMetaTag('name', 'render:status_code', '404');
+  }
+
+  public disconnectedCallback() {
+    removeMetaTag('name', 'render:status_code');
+
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
   }
 }
