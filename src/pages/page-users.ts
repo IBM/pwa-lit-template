@@ -82,7 +82,7 @@ export class PageUsers extends connectApollo<GetUsers, GetUsersVariables>(
     `;
   }
 
-  protected loadMoreUsers() {
+  private loadMoreUsers() {
     const currentUsersCount = this.data.usersConnection!.values!.length;
 
     this.fetchMore({

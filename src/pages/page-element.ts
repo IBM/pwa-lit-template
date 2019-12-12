@@ -15,7 +15,7 @@ type AppRoute = Router.Route & MetadataOptions;
 export class PageElement extends LitElement {
   // TODO: Review this issue https://github.com/vaadin/vaadin-router/issues/404
   @property({ type: Object })
-  protected location!: Router.Location;
+  private location!: Router.Location;
 
   protected updated() {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion

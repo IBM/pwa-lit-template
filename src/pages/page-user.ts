@@ -49,6 +49,15 @@ export class PageUser extends connectApollo<
   @query('#form')
   private form!: HTMLFormElement;
 
+  protected onBeforeEnter(location: Router.Location) {
+    const { userId } = location.params;
+
+    this.query({
+      query: GET_USER,
+      variables: { id: userId as string }
+    });
+  }
+
   protected render() {
     const user = this.data.user;
 
@@ -80,16 +89,7 @@ export class PageUser extends connectApollo<
     `;
   }
 
-  protected onBeforeEnter(location: Router.Location) {
-    const { userId } = location.params;
-
-    this.query({
-      query: GET_USER,
-      variables: { id: userId as string }
-    });
-  }
-
-  protected updateUser(event: Event) {
+  private updateUser(event: Event) {
     event.preventDefault();
 
     const formData = new FormData(this.form);
