@@ -10,7 +10,7 @@ import { html, customElement } from 'lit-element';
 import {
   GetUsers,
   GetUsersVariables,
-  GetUsers_usersConnection_values as GetUsersUsersConnectionValues
+  GetUsers_usersConnection_values as User
 } from '@graphql-types/GetUsers';
 
 import { PageElement } from './page-element';
@@ -49,8 +49,7 @@ export class PageUsers extends connectApollo<GetUsers, GetUsersVariables>(
     let areMoreUsers = false;
 
     if (this.data.usersConnection) {
-      users = this.data.usersConnection
-        .values as GetUsersUsersConnectionValues[];
+      users = this.data.usersConnection.values as User[];
 
       const currentCount = this.data.usersConnection.values!.length;
       const totalCount = this.data.usersConnection.aggregate!.count!;
