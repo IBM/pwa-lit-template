@@ -41,6 +41,15 @@ export default [
     }
   },
   {
+    path: '/users-pagination',
+    component: 'page-users-pagination',
+    title: 'Users pagination',
+    description: 'Users page pagination description',
+    action: async () => {
+      await import('../pages/page-users-pagination');
+    }
+  },
+  {
     path: '(.*)',
     component: 'page-not-found',
     title: 'Error',

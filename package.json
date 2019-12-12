@@ -29,7 +29,8 @@
     "@vaadin/router": "^1.5.0",
     "apollo-boost": "^0.4.0",
     "graphql": "^14.5.0",
-    "lit-element": "^2.2.0"
+    "lit-element": "^2.2.0",
+    "lodash-es": "^4.17.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.7.0",
@@ -37,6 +38,7 @@
     "@babel/preset-typescript": "^7.7.0",
     "@open-wc/building-rollup": "^0.15.0",
     "@rollup/plugin-replace": "^2.2.0",
+    "@types/lodash-es": "^4.17.0",
     "@types/workbox-window": "^4.3.0",
     "@typescript-eslint/eslint-plugin": "^2.10.0",
     "@typescript-eslint/parser": "^2.10.0",
