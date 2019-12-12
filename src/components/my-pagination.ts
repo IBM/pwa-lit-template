@@ -26,19 +26,12 @@ export class MyPagination extends LitElement {
       css`
         :host {
           display: block;
-          padding: 1rem;
         }
 
-        .buttonDisabled {
-          pointer-events: none;
-          color: #ccc;
-        }
-
-        .activeButton {
-          pointer-events: none;
+        button.active {
           font-weight: bold;
+          color: #ffffff;
           background-color: #0062ff;
-          color: #fff;
           border: 1px solid #0062ff;
         }
       `
@@ -78,11 +71,11 @@ export class MyPagination extends LitElement {
 
   private renderPrevPage() {
     const currentPage = this.getCurrentPage();
-    const disabledButton =
-      currentPage == 1 ? { buttonDisabled: true } : { buttonDisabled: false };
+    const isDisabled = currentPage === 1;
+
     return html`
       <button
-        class=${classMap(disabledButton)}
+        ?disabled=${isDisabled}
         @click=${() => this.goToPage(currentPage - 1)}
       >
         &lt;
@@ -93,27 +86,27 @@ export class MyPagination extends LitElement {
   private renderNextPage() {
     const currentPage = this.getCurrentPage();
     const lastPage = this.getLastPage();
-    const disabledButton =
-      currentPage == lastPage
-        ? { buttonDisabled: true }
-        : { buttonDisabled: false };
+    const isDisabled = currentPage === lastPage;
+
     return html`
       <button
-        class=${classMap(disabledButton)}
+        ?disabled=${isDisabled}
         @click=${() => this.goToPage(currentPage + 1)}
       >
         &gt;
       </button>
     `;
   }
+
   private renderPage(page: number) {
     const currentPage = this.getCurrentPage();
-    const activeButton =
-      currentPage == page ? { activeButton: true } : { activeButton: false };
+    const isActive = currentPage === page;
+    const classes = { active: isActive };
 
     return html`
       <button
-        class=${classMap(activeButton)}
+        ?disabled=${isActive}
+        class=${classMap(classes)}
         @click=${() => this.goToPage(page)}
       >
         ${page}
