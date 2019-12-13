@@ -2,15 +2,19 @@
   "files": [
     {
       "path": "server/dist/app-shell-*.js",
-      "maxSize": "670 B"
+      "maxSize": "680 B"
     },
     {
-      "path": "server/dist/index-*.js",
-      "maxSize": "8.5 kB"
+      "path": "server/dist/connect-apollo-mixin-*.js",
+      "maxSize": "37.3 KB"
+    },
+    {
+      "path": "server/dist/lit-element-*.js",
+      "maxSize": "8.9 KB"
     },
     {
       "path": "server/dist/page-element-*.js",
-      "maxSize": "670 B"
+      "maxSize": "700 B"
     },
     {
       "path": "server/dist/page-home-*.js",
@@ -25,12 +29,24 @@
       "maxSize": "1.1 KB"
     },
     {
-      "path": "server/dist/page-users-*.js",
+      "path": "server/dist/page-users-+([a-z0-9]).js",
       "maxSize": "760 B"
     },
     {
+      "path": "server/dist/page-users-pagination-*.js",
+      "maxSize": "29.2 KB"
+    },
+    {
       "path": "server/dist/page-not-found-*.js",
-      "maxSize": "350 B"
+      "maxSize": "460 B"
+    },
+    {
+      "path": "server/dist/register-service-worker-*.js",
+      "maxSize": "775 B"
+    },
+    {
+      "path": "server/dist/vaadin-router-*.js",
+      "maxSize": "8.2 KB"
     }
   ]
 }
