@@ -9,11 +9,13 @@
   "scripts": {
     "build": "rimraf server/dist/ && rollup --config --environment NODE_ENV:production",
     "bundle-size-check": "npm run build; bundlesize",
-    "format": "npm run format:prettier",
+    "format": "npm run format:prettier && npm run format:stylelint",
     "format:prettier": "prettier --write \"**/*.{js,json,md,ts}\"",
-    "lint": "npm run lint:eslint && npm run lint:lit",
+    "format:stylelint": "stylelint \"src/{components,pages}/**/*.ts\" --fix",
+    "lint": "npm run lint:eslint && npm run lint:lit && npm run lint:stylelint",
     "lint:eslint": "eslint \"**/*.{js,ts}\"",
     "lint:lit": "lit-analyzer \"src/{components,pages}/**/*.ts\" --strict --quiet",
+    "lint:stylelint": "stylelint \"src/{components,pages}/**/*.ts\"",
     "postinstall": "patch-package",
     "serve": "es-dev-server --app-index index.html --file-extensions .ts --node-resolve --babel --watch",
     "serve:production": "es-dev-server --app-index --root-dir server/dist/ index.html",
@@ -58,6 +60,9 @@
     "rimraf": "^3.0.0",
     "rollup": "^1.29.0",
     "rollup-plugin-cpy": "^2.0.0",
+    "stylelint": "^12.0.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-order": "^4.0.0",
     "typescript": "^3.7.0",
     "workbox-window": "^4.3.0"
   },
@@ -74,6 +79,7 @@
       "eslint --fix"
     ],
     "src/{components,pages}/**/*.ts": [
+      "stylelint --fix",
       "lit-analyzer --strict --quiet"
     ]
   }
