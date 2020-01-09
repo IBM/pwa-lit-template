@@ -1,4 +1,7 @@
 {
   "extends": ["stylelint-config-recommended"],
-  "plugins": ["stylelint-order"]
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "order/order": ["custom-properties", "declarations"]
+  }
 }
