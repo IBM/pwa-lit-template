@@ -31,14 +31,14 @@ export class AppShell extends LitElement {
         }
 
         footer {
+          position: fixed;
+          right: 0;
+          bottom: 0;
+          left: 0;
           display: flex;
           align-items: center;
           justify-content: center;
           height: 50px;
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          right: 0;
           padding: 0 1rem;
           background-color: #eeeeee;
         }

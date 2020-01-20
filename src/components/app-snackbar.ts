@@ -13,16 +13,16 @@ export class AppSnackbar extends LitElement {
     return [
       css`
         :host {
+          position: fixed;
+          bottom: 0;
           display: flex;
+          box-sizing: border-box;
           min-width: 288px;
           margin: 12px;
           padding: 14px 16px;
-          box-sizing: border-box;
-          background-color: #333333;
           color: #ffffff;
+          background-color: #333333;
           border-radius: 4px;
-          position: fixed;
-          bottom: 0;
         }
 
         .message {
