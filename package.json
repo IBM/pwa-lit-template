@@ -30,7 +30,7 @@
     "zen-observable": "abdonrd/zen-observable#es-modules",
     "@vaadin/router": "^1.6.0",
     "apollo-boost": "^0.4.0",
-    "graphql": "^14.5.0",
+    "graphql": "^14.6.0",
     "lit-element": "^2.2.0",
     "lodash-es": "^4.17.0"
   },
@@ -58,7 +58,7 @@
     "prettier": "1.19.1",
     "prettier-plugin-package": "^0.3.0",
     "rimraf": "^3.0.0",
-    "rollup": "^1.29.0",
+    "rollup": "^1.30.0",
     "rollup-plugin-cpy": "^2.0.0",
     "stylelint": "^13.0.0",
     "stylelint-config-rational-order": "^0.1.0",
