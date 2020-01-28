@@ -22,7 +22,7 @@
     "start": "npm run serve",
     "test": "echo \"Error: no test specified\"",
     "types:check": "tsc --noEmit",
-    "types:generate": "rimraf src/__generated__/ &&  apollo client:codegen --target typescript --outputFlat src/__generated__/"
+    "types:generate": "rimraf src/__generated__/ && apollo client:codegen --target typescript --outputFlat src/__generated__/"
   },
   "dependencies": {
     "fast-json-stable-stringify": "abdonrd/fast-json-stable-stringify#es-modules",
