@@ -20,8 +20,8 @@ export class AppSnackbar extends LitElement {
           min-width: 288px;
           margin: 12px;
           padding: 14px 16px;
-          color: #ffffff;
-          background-color: #333333;
+          color: #fff;
+          background-color: #333;
           border-radius: 4px;
         }
 
@@ -30,7 +30,7 @@ export class AppSnackbar extends LitElement {
         }
 
         button {
-          background-color: #ffffff;
+          background-color: #fff;
         }
       `
     ];

@@ -29,7 +29,7 @@ export class MyPagination extends LitElement {
         }
 
         button.active {
-          color: #ffffff;
+          color: #fff;
           font-weight: bold;
           background-color: #0062ff;
           border: 1px solid #0062ff;

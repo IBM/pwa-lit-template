@@ -40,7 +40,7 @@ export class AppShell extends LitElement {
           justify-content: center;
           height: 50px;
           padding: 0 1rem;
-          background-color: #eeeeee;
+          background-color: #eee;
         }
       `
     ];
