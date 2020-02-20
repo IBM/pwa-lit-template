@@ -28,7 +28,7 @@
     "fast-json-stable-stringify": "abdonrd/fast-json-stable-stringify#es-modules",
     "graphql-tag": "abdonrd/graphql-tag#es-modules",
     "zen-observable": "abdonrd/zen-observable#es-modules",
-    "@vaadin/router": "^1.6.0",
+    "@vaadin/router": "^1.7.0",
     "apollo-boost": "^0.4.0",
     "graphql": "^14.6.0",
     "lit-element": "^2.2.0",

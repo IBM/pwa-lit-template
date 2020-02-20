@@ -7,6 +7,7 @@
 
 import { html, customElement, query } from 'lit-element';
 
+import { RouterLocation, BeforeEnterObserver } from '@vaadin/router';
 import { GetUser, GetUserVariables } from '@graphql-types/GetUser';
 import {
   UpdateUserUsername,
@@ -40,16 +41,18 @@ const UPDATE_USER_USERNAME = gql`
 `;
 
 @customElement('page-user')
-export class PageUser extends connectApollo<
-  GetUser,
-  GetUserVariables,
-  UpdateUserUsername,
-  UpdateUserUsernameVariables
->(client)(PageElement) {
+export class PageUser
+  extends connectApollo<
+    GetUser,
+    GetUserVariables,
+    UpdateUserUsername,
+    UpdateUserUsernameVariables
+  >(client)(PageElement)
+  implements BeforeEnterObserver {
   @query('#form')
   private form!: HTMLFormElement;
 
-  protected onBeforeEnter(location: Router.Location) {
+  onBeforeEnter(location: RouterLocation) {
     const { userId } = location.params;
 
     this.query({
