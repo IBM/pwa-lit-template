@@ -7,6 +7,7 @@
 
 import { html, customElement, property, css } from 'lit-element';
 
+import { RouterLocation, BeforeEnterObserver } from '@vaadin/router';
 import {
   GetUsersWithPagination,
   GetUsersWithPaginationVariables,
@@ -34,10 +35,12 @@ const GET_USERS_WITH_PAGINATION = gql`
 `;
 
 @customElement('page-users-pagination')
-export class PagePaginationExample extends connectApollo<
-  GetUsersWithPagination,
-  GetUsersWithPaginationVariables
->(client)(PageElement) {
+export class PagePaginationExample
+  extends connectApollo<
+    GetUsersWithPagination,
+    GetUsersWithPaginationVariables
+  >(client)(PageElement)
+  implements BeforeEnterObserver {
   @property({ type: Number })
   public limit = 10;
 
@@ -54,7 +57,7 @@ export class PagePaginationExample extends connectApollo<
     ];
   }
 
-  protected onBeforeEnter(location: Router.Location) {
+  onBeforeEnter(location: RouterLocation) {
     const searchParams = new URLSearchParams(location.search);
     const limitParam = searchParams.get('limit');
     const offsetParam = searchParams.get('offset');

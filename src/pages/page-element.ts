@@ -7,15 +7,16 @@
 
 import { LitElement, property } from 'lit-element';
 
+import { Route, RouterLocation } from '@vaadin/router';
+
 import config from '../config';
 import { updateMetadata, MetadataOptions } from '../helpers/metadata';
 
-type AppRoute = Router.Route & MetadataOptions;
+type AppRoute = Route & MetadataOptions;
 
 export class PageElement extends LitElement {
-  // TODO: Review this issue https://github.com/vaadin/vaadin-router/issues/404
   @property({ type: Object })
-  private location!: Router.Location;
+  private location!: RouterLocation;
 
   protected updated() {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion

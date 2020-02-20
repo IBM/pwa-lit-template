@@ -7,6 +7,7 @@
 
 import { html, customElement } from 'lit-element';
 
+import { BeforeEnterObserver } from '@vaadin/router';
 import {
   GetUsers,
   GetUsersVariables,
@@ -32,10 +33,10 @@ const GET_USERS = gql`
 `;
 
 @customElement('page-users')
-export class PageUsers extends connectApollo<GetUsers, GetUsersVariables>(
-  client
-)(PageElement) {
-  protected onBeforeEnter() {
+export class PageUsers
+  extends connectApollo<GetUsers, GetUsersVariables>(client)(PageElement)
+  implements BeforeEnterObserver {
+  onBeforeEnter() {
     this.watchQuery({
       query: GET_USERS,
       variables: {
