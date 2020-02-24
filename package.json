@@ -44,7 +44,7 @@
     "@types/workbox-window": "^4.3.0",
     "@typescript-eslint/eslint-plugin": "^2.20.0",
     "@typescript-eslint/parser": "^2.20.0",
-    "apollo": "^2.22.0",
+    "apollo": "^2.23.0",
     "bundlesize": "^0.18.0",
     "es-dev-server": "^1.40.0",
     "eslint": "^6.8.0",
@@ -64,7 +64,7 @@
     "stylelint-config-rational-order": "^0.1.0",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.0.0",
-    "typescript": "^3.7.0",
+    "typescript": "^3.8.0",
     "workbox-window": "^4.3.0"
   },
   "husky": {
