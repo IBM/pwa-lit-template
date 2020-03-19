@@ -31,7 +31,7 @@
     "@vaadin/router": "^1.7.0",
     "apollo-boost": "^0.4.0",
     "graphql": "^14.6.0",
-    "lit-element": "^2.2.0",
+    "lit-element": "^2.3.0",
     "lodash-es": "^4.17.0"
   },
   "devDependencies": {
