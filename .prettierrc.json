@@ -1,6 +1,7 @@
 {
   "singleQuote": true,
   "quoteProps": "consistent",
+  "trailingComma": "none",
   "overrides": [
     {
       "files": "*.html",

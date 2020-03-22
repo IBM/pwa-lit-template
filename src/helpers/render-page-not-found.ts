@@ -20,7 +20,5 @@ export const renderPageNotFound = () => {
     }
   };
 
-  return html`
-    <page-not-found .location=${location}></page-not-found>
-  `;
+  return html` <page-not-found .location=${location}></page-not-found> `;
 };

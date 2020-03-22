@@ -20,7 +20,7 @@ const configs = createCompatibilityConfig({
 });
 
 // Add plugins to both configs
-configs.forEach(config => {
+configs.forEach((config) => {
   config.plugins = [
     ...config.plugins,
     replace({

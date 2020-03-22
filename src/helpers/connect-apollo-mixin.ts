@@ -98,8 +98,8 @@ export const connectApollo = <
       this._watchQuery = client.watchQuery<QT, QTVariables>(options);
 
       this._watchQuerySubscription = this._watchQuery.subscribe({
-        next: queryResult => this._onSuccessQuery(queryResult),
-        error: error => this._onErrorQuery(error)
+        next: (queryResult) => this._onSuccessQuery(queryResult),
+        error: (error) => this._onErrorQuery(error)
       });
     }
 

@@ -10,7 +10,7 @@
     "build": "rimraf server/dist/ && rollup --config --environment NODE_ENV:production",
     "bundle-size-check": "npm run build; bundlesize",
     "format": "npm run format:prettier && npm run format:stylelint",
-    "format:prettier": "prettier --write \"**/*.{js,json,md,ts}\"",
+    "format:prettier": "prettier --write .",
     "format:stylelint": "stylelint \"src/{components,pages}/**/*.ts\" --fix",
     "lint": "npm run lint:eslint && npm run lint:lit && npm run lint:stylelint",
     "lint:eslint": "eslint \"**/*.{js,ts}\"",
@@ -55,8 +55,7 @@
     "lint-staged": "^10.0.0",
     "lit-analyzer": "^1.1.0",
     "patch-package": "^6.2.0",
-    "prettier": "1.19.1",
-    "prettier-plugin-package": "^0.3.0",
+    "prettier": "2.0.1",
     "rimraf": "^3.0.0",
     "rollup": "^1.32.0",
     "rollup-plugin-cpy": "^2.0.0",
@@ -73,7 +72,7 @@
     }
   },
   "lint-staged": {
-    "**/*.{js,json,md,ts}": [
+    "**/*": [
       "prettier --write"
     ],
     "**/*.{js,ts}": [

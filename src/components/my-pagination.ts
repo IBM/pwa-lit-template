@@ -115,9 +115,7 @@ export class MyPagination extends LitElement {
   }
 
   private renderEllipsis() {
-    return html`
-      <span>...</span>
-    `;
+    return html` <span>...</span> `;
   }
 
   protected render() {
@@ -130,7 +128,7 @@ export class MyPagination extends LitElement {
 
     const pages = filter(
       range(currentPage - contextPages, currentPage + contextPages + 1),
-      page => page >= 1 && page <= lastPage
+      (page) => page >= 1 && page <= lastPage
     ) as number[];
 
     /* eslint-disable @typescript-eslint/no-non-null-assertion */
@@ -144,7 +142,7 @@ export class MyPagination extends LitElement {
         ${this.renderPrevPage()}
         ${renderInitialPage ? this.renderPage(1) : null}
         ${renderLeftEllipsis ? this.renderEllipsis() : null}
-        ${pages.map(page => this.renderPage(page))}
+        ${pages.map((page) => this.renderPage(page))}
         ${renderRightEllipsis ? this.renderEllipsis() : null}
         ${renderLastPage ? this.renderPage(lastPage) : null}
         ${this.renderNextPage()}
