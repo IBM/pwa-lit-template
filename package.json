@@ -25,14 +25,14 @@
     "types:generate": "rimraf src/__generated__/ && apollo client:codegen --target typescript --outputFlat src/__generated__/"
   },
   "dependencies": {
-    "fast-json-stable-stringify": "abdonrd/fast-json-stable-stringify#es-modules",
-    "graphql-tag": "abdonrd/graphql-tag#es-modules",
-    "zen-observable": "abdonrd/zen-observable#es-modules",
     "@vaadin/router": "^1.7.0",
     "apollo-boost": "^0.4.0",
+    "fast-json-stable-stringify": "abdonrd/fast-json-stable-stringify#es-modules",
     "graphql": "^14.6.0",
+    "graphql-tag": "abdonrd/graphql-tag#es-modules",
     "lit-element": "^2.3.0",
-    "lodash-es": "^4.17.0"
+    "lodash-es": "^4.17.0",
+    "zen-observable": "abdonrd/zen-observable#es-modules"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.8.0",
@@ -56,6 +56,7 @@
     "lit-analyzer": "^1.1.0",
     "patch-package": "^6.2.0",
     "prettier": "2.0.1",
+    "prettier-plugin-package": "^1.0.0",
     "rimraf": "^3.0.0",
     "rollup": "^1.32.0",
     "rollup-plugin-cpy": "^2.0.0",
