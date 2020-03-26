@@ -36,6 +36,18 @@ export const removeMetaTag = (
   }
 };
 
+export const setLinkTag = (rel: string, href: string) => {
+  let element = document.head.querySelector(`link[rel="${rel}"]`);
+
+  if (!element) {
+    element = document.createElement('link');
+    element.setAttribute('rel', rel);
+    document.head.appendChild(element);
+  }
+
+  element.setAttribute('href', href);
+};
+
 export interface MetadataOptions {
   title?: string;
   description?: string;
@@ -82,6 +94,7 @@ export const updateMetadata = (metadataOptions: MetadataOptions) => {
   }
 
   if (url) {
+    setLinkTag('canonical', url);
     setMetaTag('property', 'og:url', url);
   }
 };
