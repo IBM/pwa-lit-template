@@ -8,6 +8,7 @@
 export default [
   {
     path: '/',
+    name: 'home',
     component: 'page-home',
     title: 'MyApplication',
     description: 'MyApplication description',
@@ -17,6 +18,7 @@ export default [
   },
   {
     path: '/about',
+    name: 'about',
     component: 'page-about',
     title: 'About',
     description: 'About page description',
@@ -26,6 +28,7 @@ export default [
   },
   {
     path: '/users',
+    name: 'users',
     component: 'page-users',
     title: 'Users',
     description: 'Users page description',
@@ -35,6 +38,7 @@ export default [
   },
   {
     path: '/user/:userId',
+    name: 'user',
     component: 'page-user',
     action: async () => {
       await import('../pages/page-user');
@@ -42,6 +46,7 @@ export default [
   },
   {
     path: '/users-pagination',
+    name: 'users-pagination',
     component: 'page-users-pagination',
     title: 'Users pagination',
     description: 'Users page pagination description',
