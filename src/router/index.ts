@@ -7,10 +7,11 @@
 
 import { Router } from '@vaadin/router';
 
+import config from '../config';
 import routes from './routes';
 
-export function init(outlet: HTMLElement) {
-  const router = new Router(outlet, { baseUrl: '/' });
+export const init = (outlet: HTMLElement) => {
+  const router = new Router(outlet, { baseUrl: config.routerBaseUrl });
 
   router.setRoutes([
     // Redirect to URL without trailing slash
@@ -23,4 +24,4 @@ export function init(outlet: HTMLElement) {
     },
     ...routes
   ]);
-}
+};
