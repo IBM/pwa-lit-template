@@ -42,15 +42,11 @@
     "@rollup/plugin-replace": "^2.3.0",
     "@types/lodash-es": "^4.17.0",
     "@types/workbox-window": "^4.3.0",
-    "@typescript-eslint/eslint-plugin": "^2.27.0",
-    "@typescript-eslint/parser": "^2.27.0",
     "apollo": "^2.26.0",
     "bundlesize": "^0.18.0",
     "es-dev-server": "^1.46.0",
     "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-lit": "^1.2.0",
-    "eslint-plugin-wc": "^1.2.0",
+    "eslint-config-ibmresearch": "IBMResearch/eslint-config-ibmresearch#master",
     "husky": "^4.2.0",
     "lint-staged": "^10.1.0",
     "lit-analyzer": "^1.1.0",
@@ -64,6 +60,25 @@
     "stylelint-config-ibmresearch": "IBMResearch/stylelint-config-ibmresearch#master",
     "typescript": "^3.8.0",
     "workbox-window": "^4.3.0"
+  },
+  "eslintConfig": {
+    "extends": "ibmresearch/typescript-lit-html",
+    "rules": {
+      "@typescript-eslint/no-non-null-assertion": "off"
+    },
+    "overrides": [
+      {
+        "files": [
+          "apollo.config.js",
+          "rollup.config.js",
+          "workbox-config.js"
+        ],
+        "env": {
+          "node": true,
+          "browser": false
+        }
+      }
+    ]
   },
   "husky": {
     "hooks": {
