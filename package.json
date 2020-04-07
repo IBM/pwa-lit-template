@@ -10,7 +10,7 @@
     "build": "rimraf server/dist/ && rollup --config --environment NODE_ENV:production",
     "bundle-size-check": "npm run build; bundlesize",
     "format": "npm run format:prettier && npm run format:stylelint",
-    "format:prettier": "prettier --write .",
+    "format:prettier": "prettier --write \"**/*{html,js,json,md,ts,webmanifest}\"",
     "format:stylelint": "stylelint \"src/{components,pages}/**/*.ts\" --fix",
     "lint": "npm run lint:eslint && npm run lint:lit && npm run lint:stylelint",
     "lint:eslint": "eslint \"**/*.{js,ts}\"",
@@ -73,7 +73,7 @@
     }
   },
   "lint-staged": {
-    "**/*": [
+    "**/*{html,js,json,md,ts,webmanifest}": [
       "prettier --write"
     ],
     "**/*.{js,ts}": [
@@ -83,5 +83,10 @@
       "stylelint --fix",
       "lit-analyzer --strict --quiet"
     ]
+  },
+  "prettier": {
+    "quoteProps": "consistent",
+    "singleQuote": true,
+    "trailingComma": "none"
   }
 }
