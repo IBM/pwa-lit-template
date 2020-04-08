@@ -27,12 +27,12 @@
   "dependencies": {
     "@vaadin/router": "^1.7.0",
     "apollo-boost": "^0.4.0",
-    "fast-json-stable-stringify": "abdonrd/fast-json-stable-stringify#es-modules",
+    "fast-json-stable-stringify": "github:IBMResearch/fast-json-stable-stringify#es-modules",
     "graphql": "^14.6.0",
-    "graphql-tag": "abdonrd/graphql-tag#es-modules",
+    "graphql-tag": "github:IBMResearch/graphql-tag#es-modules",
     "lit-element": "^2.3.0",
     "lodash-es": "^4.17.0",
-    "zen-observable": "abdonrd/zen-observable#es-modules"
+    "zen-observable": "github:IBMResearch/zen-observable#es-modules"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.8.0",
