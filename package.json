@@ -103,7 +103,6 @@
     ]
   },
   "prettier": {
-    "quoteProps": "consistent",
     "singleQuote": true,
     "trailingComma": "none"
   },
