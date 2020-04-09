@@ -8,6 +8,7 @@
   },
   "scripts": {
     "build": "rimraf server/dist/ && rollup --config --environment NODE_ENV:production",
+    "build:staging": "rimraf server/dist/ && rollup --config --environment NODE_ENV:staging",
     "bundle-size-check": "npm run build; bundlesize",
     "format": "npm-run-all format:*",
     "format:prettier": "prettier --write \"**/*{html,js,json,md,ts,webmanifest}\"",
