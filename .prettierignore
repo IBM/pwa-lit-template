@@ -1,4 +1,4 @@
-dist/
-node_modules/
-src/__generated__/
+/server/dist/
+/server/node_modules/
+/src/__generated__/
 package-lock.json
