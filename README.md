@@ -1,8 +1,8 @@
 > ### 🛠 Status: Experimental
 >
-> `app-template` is currently in development.
+> `pwa-starter` is currently in development.
 
-# app-template
+# pwa-starter
 
 A template for building web applications using [LitElement](https://github.com/Polymer/lit-element), [Vaadin Router](https://github.com/vaadin/vaadin-router) and [Apollo Client](https://github.com/apollographql/apollo-client).
 

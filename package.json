@@ -1,5 +1,5 @@
 {
-  "name": "app-template",
+  "name": "pwa-starter",
   "version": "0.1.0",
   "description": "A template for building web applications using LitElement, Vaadin Router and Apollo Client",
   "license": "MIT",

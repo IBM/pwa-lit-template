@@ -1,12 +1,12 @@
-# Contribute to `app-template`
+# Contribute to `pwa-starter`
 
-`app-template` is an open-source project. We appreciate your interest and efforts to contribute.
+`pwa-starter` is an open-source project. We appreciate your interest and efforts to contribute.
 
 All efforts to contribute are highly appreciated, we recommend you talk to a maintainer prior to spending a lot of time making a pull request that may not align with the project roadmap.
 
 ## Open Development & Community Driven
 
-`app-template` is open-source under the [MIT license](../LICENSE.txt). All the work done is available on GitHub.
+`pwa-starter` is open-source under the [MIT license](../LICENSE.txt). All the work done is available on GitHub.
 
 The core team and the contributors send pull requests which go through the same validation process.
 
