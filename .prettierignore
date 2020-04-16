@@ -1,4 +1,5 @@
 /server/dist/
 /server/node_modules/
 /src/__generated__/
+/src-js/
 package-lock.json

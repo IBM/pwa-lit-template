@@ -6,7 +6,6 @@
  */
 
 import { createCompatibilityConfig } from '@open-wc/building-rollup';
-import { defaultFileExtensions } from '@open-wc/building-utils';
 import replace from '@rollup/plugin-replace';
 import copy from 'rollup-plugin-cpy';
 
@@ -15,7 +14,6 @@ const DIST_PATH = 'server/dist/';
 
 const configs = createCompatibilityConfig({
   input: './index.html',
-  extensions: [...defaultFileExtensions, '.ts'],
   outputDir: DIST_PATH
 });
 
@@ -24,7 +22,7 @@ configs.forEach((config) => {
   config.plugins = [
     ...config.plugins,
     replace({
-      include: 'src/config/index.ts',
+      include: 'src-js/config/index.js',
       development: ENVIRONMENT
     })
   ];
