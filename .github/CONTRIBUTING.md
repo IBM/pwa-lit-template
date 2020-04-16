@@ -6,7 +6,7 @@ All efforts to contribute are highly appreciated, we recommend you talk to a mai
 
 ## Open Development & Community Driven
 
-`pwa-starter` is open-source under the [MIT license](../LICENSE.txt). All the work done is available on GitHub.
+`pwa-starter` is open-source under the [MIT license](../LICENSE). All the work done is available on GitHub.
 
 The core team and the contributors send pull requests which go through the same validation process.
 
