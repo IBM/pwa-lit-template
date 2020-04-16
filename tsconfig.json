@@ -18,5 +18,5 @@
       "@graphql-types/*": ["__generated__/*"]
     }
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*"]
 }
