@@ -9,7 +9,6 @@
   "scripts": {
     "build": "npm run typescript:compile && rimraf server/dist/ && rollup --config --environment NODE_ENV:production",
     "build:staging": "npm run typescript:compile && rimraf server/dist/ && rollup --config --environment NODE_ENV:staging",
-    "bundle-size-check": "npm run build && bundlesize",
     "format": "npm-run-all format:*",
     "format:prettier": "prettier --write \"**/*{html,js,json,md,ts,webmanifest}\"",
     "format:stylelint": "stylelint \"src/{components,pages}/**/*.ts\" --fix",
@@ -40,14 +39,14 @@
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.8.0",
     "@babel/plugin-proposal-decorators": "^7.8.0",
-    "@open-wc/building-rollup": "^0.22.0",
+    "@open-wc/building-rollup": "^1.1.0",
     "@rollup/plugin-replace": "^2.3.0",
     "@types/lodash-es": "^4.17.0",
     "@types/workbox-window": "^4.3.0",
     "@typescript-eslint/eslint-plugin": "^2.28.0",
     "@typescript-eslint/parser": "^2.28.0",
     "apollo": "^2.27.0",
-    "bundlesize": "^0.18.0",
+    "deepmerge": "^4.2.0",
     "es-dev-server": "^1.46.0",
     "eslint": "^6.8.0",
     "eslint-config-ibmresearch": "^0.11.0",
@@ -67,7 +66,7 @@
     "stylelint-config-ibmresearch": "^0.4.0",
     "tslib": "^1.11.0",
     "typescript": "^3.8.0",
-    "workbox-window": "^4.3.0"
+    "workbox-window": "^5.1.0"
   },
   "eslintConfig": {
     "extends": "ibmresearch/typescript-lit-html",
