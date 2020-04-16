@@ -6,6 +6,7 @@
     "lib": ["ES2018", "DOM"],
     "declaration": true,
     "sourceMap": true,
+    "importHelpers": true,
     "inlineSources": true,
     "strict": true,
     "noFallthroughCasesInSwitch": true,
