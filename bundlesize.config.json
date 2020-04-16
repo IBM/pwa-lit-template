@@ -2,7 +2,7 @@
   "files": [
     {
       "path": "server/dist/app-shell-*.js",
-      "maxSize": "765B"
+      "maxSize": "950B"
     },
     {
       "path": "server/dist/connect-apollo-mixin-*.js",
