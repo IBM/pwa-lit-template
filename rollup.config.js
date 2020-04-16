@@ -13,10 +13,31 @@ import merge from 'deepmerge';
 const ENVIRONMENT = process.env.NODE_ENV || 'development';
 const DIST_PATH = 'server/dist/';
 
+const workboxConfig = {
+  skipWaiting: true,
+  clientsClaim: true,
+  globDirectory: DIST_PATH,
+  globPatterns: ['index.html', 'manifest.webmanifest', '**/*.js'],
+  navigateFallback: 'index.html',
+  runtimeCaching: [
+    {
+      urlPattern: /\.(?:ico|png|svg)$/,
+      handler: 'CacheFirst',
+      options: {
+        cacheName: 'images',
+        expiration: {
+          maxEntries: 100
+        }
+      }
+    }
+  ],
+  swDest: `${DIST_PATH}service-worker.js`
+};
+
 const baseConfig = createSpaConfig({
   outputDir: DIST_PATH,
   legacyBuild: true,
-  workbox: require('./workbox-config.js')
+  workbox: workboxConfig
 });
 
 export default merge(baseConfig, {
