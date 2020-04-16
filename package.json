@@ -9,7 +9,6 @@
   "scripts": {
     "build": "npm run typescript:compile && rimraf server/dist/ && rollup --config --environment NODE_ENV:production",
     "build:staging": "npm run typescript:compile && rimraf server/dist/ && rollup --config --environment NODE_ENV:staging",
-    "bundle-size-check": "npm run build && bundlesize",
     "format": "npm-run-all format:*",
     "format:prettier": "prettier --write \"**/*{html,js,json,md,ts,webmanifest}\"",
     "format:stylelint": "stylelint \"src/{components,pages}/**/*.ts\" --fix",
@@ -47,7 +46,6 @@
     "@typescript-eslint/eslint-plugin": "^2.28.0",
     "@typescript-eslint/parser": "^2.28.0",
     "apollo": "^2.27.0",
-    "bundlesize": "^0.18.0",
     "deepmerge": "^4.2.0",
     "es-dev-server": "^1.46.0",
     "eslint": "^6.8.0",
