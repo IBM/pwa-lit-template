@@ -8,6 +8,7 @@
 const DIST_PATH = 'server/dist/';
 
 module.exports = {
+  skipWaiting: true,
   clientsClaim: true,
   globDirectory: DIST_PATH,
   globPatterns: ['index.html', 'manifest.webmanifest', '**/*.js'],
