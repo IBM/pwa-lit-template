@@ -100,8 +100,7 @@
       "eslint --fix"
     ],
     "src/{components,pages}/**/*.ts": [
-      "stylelint --fix",
-      "lit-analyzer --strict --quiet"
+      "stylelint --fix"
     ]
   },
   "prettier": {
