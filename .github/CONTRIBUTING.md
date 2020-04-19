@@ -16,4 +16,4 @@ This project and everyone participating in it are governed by the [Code of Condu
 
 ## Bugs
 
-We are using [GitHub Issues](/issues) to manage our public bugs. We keep a close eye on this so before filing a new issue, try to make sure the problem does not already exist.
+We are using [GitHub Issues](../../../issues) to manage our public bugs. We keep a close eye on this so before filing a new issue, try to make sure the problem does not already exist.
