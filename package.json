@@ -68,6 +68,17 @@
     "typescript": "^3.8.0",
     "workbox-window": "^5.1.0"
   },
+  "babel": {
+    "plugins": [
+      "@babel/plugin-proposal-class-properties",
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "decoratorsBeforeExport": true
+        }
+      ]
+    ]
+  },
   "eslintConfig": {
     "extends": "ibmresearch/typescript-lit-html",
     "rules": {
