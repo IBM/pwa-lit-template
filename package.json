@@ -21,9 +21,9 @@
     "serve:production": "es-dev-server --app-index index.html --root-dir server/dist/",
     "start": "npm-run-all --parallel typescript:compile-watch serve",
     "test": "echo \"Error: no test specified\"",
-    "typescript:check-types": "tsc --noEmit",
-    "typescript:compile": "tsc",
-    "typescript:compile-watch": "tsc --watch",
+    "typescript:check-types": "rimraf src-js/ && tsc --noEmit",
+    "typescript:compile": "rimraf src-js/ && tsc",
+    "typescript:compile-watch": "rimraf src-js/ && tsc --watch",
     "typescript:generate-types": "rimraf src/__generated__/ && apollo client:codegen --target typescript --outputFlat src/__generated__/"
   },
   "dependencies": {
