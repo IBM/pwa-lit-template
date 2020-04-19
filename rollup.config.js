@@ -7,7 +7,7 @@
 
 import { createSpaConfig } from '@open-wc/building-rollup';
 import replace from '@rollup/plugin-replace';
-import copy from 'rollup-plugin-cpy';
+import copy from 'rollup-plugin-copy';
 import merge from 'deepmerge';
 
 const ENVIRONMENT = process.env.NODE_ENV || 'development';
@@ -48,9 +48,17 @@ export default merge(baseConfig, {
       development: ENVIRONMENT
     }),
     copy({
-      files: ['images/**/*', 'manifest.webmanifest'],
-      dest: DIST_PATH,
-      options: { parents: true }
+      targets: [
+        {
+          src: ['images/**/*'],
+          dest: `${DIST_PATH}images/`
+        },
+        {
+          src: ['public/**/*', 'manifest.webmanifest'],
+          dest: DIST_PATH
+        }
+      ],
+      flatten: false
     })
   ]
 });
