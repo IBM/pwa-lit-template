@@ -14,7 +14,7 @@
     "format:stylelint": "stylelint \"src/{components,pages}/**/*.ts\" --fix",
     "lint": "npm-run-all --parallel lint:*",
     "lint:eslint": "eslint \"**/*.{js,ts}\"",
-    "lint:lit": "lit-analyzer \"src/{components,pages}/**/*.ts\" --strict --quiet",
+    "lint:lit": "lit-analyzer \"src/{components,pages}/**/*.ts\" --strict",
     "lint:stylelint": "stylelint \"src/{components,pages}/**/*.ts\"",
     "postinstall": "patch-package",
     "serve": "es-dev-server --app-index index.html --node-resolve --watch",
