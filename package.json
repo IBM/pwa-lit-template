@@ -77,8 +77,7 @@
       {
         "files": [
           "apollo.config.js",
-          "rollup.config.js",
-          "workbox-config.js"
+          "rollup.config.js"
         ],
         "env": {
           "node": true,
