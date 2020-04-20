@@ -50,13 +50,13 @@ export const setLinkTag = (rel: string, href: string) => {
 
 export interface MetadataOptions {
   title?: string;
-  description?: string;
+  description?: string | null;
   image?: {
     url: string;
     alt?: string;
     width?: string;
     height?: string;
-  };
+  } | null;
   url?: string;
 }
 
