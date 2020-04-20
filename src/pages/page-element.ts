@@ -9,10 +9,11 @@ import { LitElement, property } from 'lit-element';
 
 import { Route, RouterLocation } from '@vaadin/router';
 
-import config from '../config';
 import { updateMetadata, MetadataOptions } from '../helpers/metadata';
 
-type AppRoute = Route & MetadataOptions;
+import config from '../config';
+
+export type AppRoute = Route & MetadataOptions;
 
 export class PageElement extends LitElement {
   @property({ type: Object })

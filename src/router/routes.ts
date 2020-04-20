@@ -5,7 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export default [
+import { AppRoute } from '../pages/page-element';
+
+const routes: AppRoute[] = [
   {
     path: '/',
     name: 'home',
@@ -65,3 +67,5 @@ export default [
     }
   }
 ];
+
+export default routes;
