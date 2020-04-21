@@ -17,7 +17,7 @@ export type AppRoute = Route & MetadataOptions;
 
 export class PageElement extends LitElement {
   @property({ type: Object })
-  private location!: RouterLocation;
+  protected location!: RouterLocation;
 
   protected updated() {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
