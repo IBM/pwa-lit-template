@@ -16,15 +16,6 @@ import packageJson from './package.json';
 const ENVIRONMENT = process.env.NODE_ENV || 'development';
 const DIST_PATH = 'server/dist/';
 
-const logBuildInformation = () => {
-  console.log(black.bgWhite(' Build information                           '));
-  console.log();
-  console.log(`${blue('Environment')}\t${ENVIRONMENT}`);
-  console.log(`${blue('Version')}\t\tv${packageJson.version}`);
-};
-
-logBuildInformation();
-
 const workboxConfig = {
   skipWaiting: true,
   clientsClaim: true,
@@ -52,7 +43,7 @@ const baseConfig = createSpaConfig({
   workbox: workboxConfig
 });
 
-export default merge(baseConfig, {
+const config = merge(baseConfig, {
   input: './index.html',
   plugins: [
     replace({
@@ -74,3 +65,10 @@ export default merge(baseConfig, {
     })
   ]
 });
+
+console.log(black.bgWhite(' Build information'.padEnd(60, ' ')));
+console.log();
+console.log(`${blue('Environment')} \t\t ${ENVIRONMENT}`);
+console.log(`${blue('Version')} \t\t v${packageJson.version}`);
+
+export default config;
