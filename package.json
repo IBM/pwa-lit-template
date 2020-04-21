@@ -7,8 +7,7 @@
     "node": ">=12.0.0"
   },
   "scripts": {
-    "build": "npm run typescript:compile && rimraf server/dist/ && rollup --config --environment NODE_ENV:production",
-    "build:staging": "npm run typescript:compile && rimraf server/dist/ && rollup --config --environment NODE_ENV:staging",
+    "build": "npm run typescript:compile && rimraf server/dist/ && rollup --config",
     "format": "npm-run-all format:*",
     "format:prettier": "prettier --write \"**/*{html,js,json,md,ts,webmanifest}\"",
     "format:stylelint": "stylelint \"src/{components,pages}/**/*.ts\" --fix",
