@@ -9,9 +9,21 @@ import { createSpaConfig } from '@open-wc/building-rollup';
 import replace from '@rollup/plugin-replace';
 import copy from 'rollup-plugin-copy';
 import merge from 'deepmerge';
+import { black, blue } from 'chalk';
+
+import packageJson from './package.json';
 
 const ENVIRONMENT = process.env.NODE_ENV || 'development';
 const DIST_PATH = 'server/dist/';
+
+const logBuildInformation = () => {
+  console.log(black.bgWhite(' Build information                           '));
+  console.log();
+  console.log(`${blue('Environment')}\t${ENVIRONMENT}`);
+  console.log(`${blue('Version')}\t\tv${packageJson.version}`);
+};
+
+logBuildInformation();
 
 const workboxConfig = {
   skipWaiting: true,
