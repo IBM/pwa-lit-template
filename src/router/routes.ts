@@ -29,34 +29,6 @@ const routes: AppRoute[] = [
     }
   },
   {
-    path: '/users',
-    name: 'users',
-    component: 'page-users',
-    title: 'Users',
-    description: 'Users page description',
-    action: async () => {
-      await import('../pages/page-users');
-    }
-  },
-  {
-    path: '/user/:userId',
-    name: 'user',
-    component: 'page-user',
-    action: async () => {
-      await import('../pages/page-user');
-    }
-  },
-  {
-    path: '/users-pagination',
-    name: 'users-pagination',
-    component: 'page-users-pagination',
-    title: 'Users pagination',
-    description: 'Users page pagination description',
-    action: async () => {
-      await import('../pages/page-users-pagination');
-    }
-  },
-  {
     path: '(.*)',
     component: 'page-not-found',
     title: 'Error',

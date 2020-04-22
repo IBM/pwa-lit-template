@@ -1,7 +1,7 @@
 {
   "name": "pwa-starter",
   "version": "0.1.0",
-  "description": "A template for building web applications using LitElement, Vaadin Router and Apollo Client",
+  "description": "A template for building web applications using LitElement and Vaadin Router",
   "license": "MIT",
   "engines": {
     "node": ">=12.0.0"
@@ -22,18 +22,11 @@
     "test": "echo \"Error: no test specified\"",
     "typescript:check-types": "rimraf src-js/ && tsc --noEmit",
     "typescript:compile": "rimraf src-js/ && tsc",
-    "typescript:compile-watch": "rimraf src-js/ && tsc --watch",
-    "typescript:generate-types": "rimraf src/__generated__/ && apollo client:codegen --target typescript --outputFlat src/__generated__/"
+    "typescript:compile-watch": "rimraf src-js/ && tsc --watch"
   },
   "dependencies": {
     "@vaadin/router": "^1.7.0",
-    "apollo-boost": "^0.4.0",
-    "fast-json-stable-stringify": "github:IBMResearch/fast-json-stable-stringify#es-modules",
-    "graphql": "^14.6.0",
-    "graphql-tag": "github:IBMResearch/graphql-tag#es-modules",
-    "lit-element": "^2.3.0",
-    "lodash-es": "^4.17.0",
-    "zen-observable": "github:IBMResearch/zen-observable#es-modules"
+    "lit-element": "^2.3.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.8.0",
@@ -44,7 +37,6 @@
     "@types/workbox-window": "^4.3.0",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",
-    "apollo": "^2.27.0",
     "chalk": "^4.0.0",
     "deepmerge": "^4.2.0",
     "es-dev-server": "^1.46.0",
@@ -87,7 +79,6 @@
     "overrides": [
       {
         "files": [
-          "apollo.config.js",
           "rollup.config.js"
         ],
         "env": {

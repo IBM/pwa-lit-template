@@ -4,7 +4,7 @@
 
 # pwa-starter
 
-A template for building web applications using [LitElement](https://github.com/Polymer/lit-element), [Vaadin Router](https://github.com/vaadin/vaadin-router) and [Apollo Client](https://github.com/apollographql/apollo-client).
+A template for building web applications using [LitElement](https://github.com/Polymer/lit-element) and [Vaadin Router](https://github.com/vaadin/vaadin-router).
 
 ## Prerequisites
 
@@ -41,5 +41,3 @@ And this command serves the production ready app:
 - There is [a patch](patches/@vaadin+router+1.7.1.patch) that modifies the `@vaadin/router`'s scroll standar behavior to have a more consistent scroll; now when you perform a `click` event, the scroll will be reset to the top position.
 
   Related issue: [vaadin/router#43: Restore scroll position on navigation](https://github.com/vaadin/vaadin-router/issues/43)
-
-- There are three dependencies manually ported to ES Modules in a fork: `fast-json-stable-stringify`, `graphql-tag`, `zen-observable`. This is to avoid using CommonJS plugins on the development server and in the build process.

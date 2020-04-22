@@ -9,8 +9,7 @@ import config from './development';
 
 const sharedConfig = {
   name: 'MyApplication',
-  routerBaseUrl: '/',
-  apiUrl: 'http://localhost:1337/graphql'
+  routerBaseUrl: '/'
 };
 
 export default {
