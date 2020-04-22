@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { html, customElement } from 'lit-element';
+import { html, css, customElement } from 'lit-element';
 
 import { PageElement } from './page-element';
 
@@ -13,6 +13,18 @@ import { setMetaTag, removeMetaTag } from '../helpers/metadata';
 
 @customElement('page-not-found')
 export class PageNotFound extends PageElement {
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: block;
+          padding: 1rem;
+          text-align: center;
+        }
+      `
+    ];
+  }
+
   protected render() {
     return html`
       <section>

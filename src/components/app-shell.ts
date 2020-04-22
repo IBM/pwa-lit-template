@@ -18,29 +18,35 @@ export class AppShell extends LitElement {
     return [
       css`
         :host {
-          display: block;
-          padding: 1rem;
+          --app-header-size: 50px;
+
+          display: flex;
+          flex-direction: column;
+          min-height: 100vh;
         }
 
-        main > * {
-          display: block;
+        header {
+          display: flex;
+          align-items: center;
+          flex-shrink: 0;
+          height: var(--app-header-size);
+          padding: 0 2rem;
+          background-color: #ddd;
         }
 
         main {
-          margin-bottom: 50px;
+          flex: 1;
+        }
+
+        main:empty {
+          flex: none;
+          height: calc(100vh - var(--app-header-size));
         }
 
         footer {
-          position: fixed;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 50px;
-          padding: 0 1rem;
+          padding: 1rem;
           background-color: #eee;
+          text-align: center;
         }
       `
     ];
@@ -58,12 +64,11 @@ export class AppShell extends LitElement {
         </nav>
       </header>
 
-      <main role="main">
-        <!-- added / removed dynamically by the router -->
-      </main>
+      <!-- The main content is added / removed dynamically by the router -->
+      <main role="main"></main>
 
       <footer>
-        <span>Current environment: ${config.environment}</span>
+        <span>Environment: ${config.environment}</span>
       </footer>
     `;
   }

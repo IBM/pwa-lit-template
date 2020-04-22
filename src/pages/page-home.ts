@@ -5,12 +5,23 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { html, customElement } from 'lit-element';
+import { html, css, customElement } from 'lit-element';
 
 import { PageElement } from './page-element';
 
 @customElement('page-home')
 export class PageHome extends PageElement {
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: block;
+          padding: 1rem;
+        }
+      `
+    ];
+  }
+
   protected render() {
     return html`
       <section>
