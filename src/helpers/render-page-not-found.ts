@@ -12,13 +12,5 @@ import { html } from 'lit-element';
 export const renderPageNotFound = () => {
   import('../pages/page-not-found');
 
-  const location = {
-    route: {
-      title: 'Error',
-      description: null,
-      image: null
-    }
-  };
-
-  return html` <page-not-found .location=${location}></page-not-found> `;
+  return html`<page-not-found></page-not-found>`;
 };

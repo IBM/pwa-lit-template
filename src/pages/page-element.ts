@@ -22,7 +22,7 @@ declare module '@vaadin/router/dist/vaadin-router' {
 
 export class PageElement extends LitElement {
   @property({ type: Object })
-  protected location!: RouterLocation;
+  protected location = {} as RouterLocation;
 
   protected updated() {
     const { route } = this.location;
