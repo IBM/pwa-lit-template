@@ -13,31 +13,46 @@ import { updateMetadata, MetadataOptions } from '../helpers/metadata';
 
 import config from '../config';
 
-export type AppRoute = Route & MetadataOptions;
+// Add metadata options to the @vaadin/router BaseRoute
+declare module '@vaadin/router/dist/vaadin-router' {
+  export interface BaseRoute {
+    metadata?: MetadataOptions;
+  }
+}
 
 export class PageElement extends LitElement {
   @property({ type: Object })
   protected location!: RouterLocation;
 
   protected updated() {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const route = this.location.route!;
+    const { route } = this.location;
+
+    if (!route) {
+      return;
+    }
 
     const metadata = this.updateMetadata(route);
+
     if (metadata) {
       updateMetadata(metadata);
     }
   }
 
-  protected updateMetadata(route: AppRoute): MetadataOptions | void {
-    const { title, description, image } = route;
+  protected updateMetadata(route: Route) {
+    if (!route.metadata) {
+      return null;
+    }
+
+    const { title, description, image } = route.metadata;
     const isHomePage = route.component === 'page-home';
 
-    return {
+    const options: MetadataOptions = {
       title: isHomePage ? title : `${title} | ${config.name}`,
       description,
       image,
       url: window.location.href
     };
+
+    return options;
   }
 }

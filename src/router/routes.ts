@@ -5,15 +5,17 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { AppRoute } from '../pages/page-element';
+import { Route } from '@vaadin/router';
 
-const routes: AppRoute[] = [
+const routes: Route[] = [
   {
     path: '/',
     name: 'home',
     component: 'page-home',
-    title: 'MyApplication',
-    description: 'MyApplication description',
+    metadata: {
+      title: 'MyApplication',
+      description: 'MyApplication description'
+    },
     action: async () => {
       await import('../pages/page-home');
     }
@@ -22,8 +24,10 @@ const routes: AppRoute[] = [
     path: '/about',
     name: 'about',
     component: 'page-about',
-    title: 'About',
-    description: 'About page description',
+    metadata: {
+      title: 'About',
+      description: 'About page description'
+    },
     action: async () => {
       await import('../pages/page-about');
     }
@@ -31,9 +35,11 @@ const routes: AppRoute[] = [
   {
     path: '(.*)',
     component: 'page-not-found',
-    title: 'Error',
-    description: null,
-    image: null,
+    metadata: {
+      title: 'Error',
+      description: null,
+      image: null
+    },
     action: async () => {
       await import('../pages/page-not-found');
     }
