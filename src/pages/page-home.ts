@@ -40,6 +40,11 @@ export class PageHome extends PageElement {
           cum dolorum excepturi beatae explicabo quidem fugiat ullam blanditiis
           minima!
         </p>
+
+        <p>
+          You can <a href="/error">click here</a> to go to a page that does not
+          exist.
+        </p>
       </section>
     `;
   }

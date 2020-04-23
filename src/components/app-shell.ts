@@ -59,8 +59,6 @@ export class AppShell extends LitElement {
           <a href="/">Home</a>
           <span>-</span>
           <a href="/about">About</a>
-          <span>-</span>
-          <a href="/error">Error</a>
         </nav>
       </header>
 
