@@ -38,9 +38,8 @@ export class AppShell extends LitElement {
           flex: 1;
         }
 
-        main:empty {
-          flex: none;
-          height: calc(100vh - var(--app-header-size));
+        main:empty ~ footer {
+          display: none;
         }
 
         footer {
