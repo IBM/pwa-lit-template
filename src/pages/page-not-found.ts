@@ -9,7 +9,7 @@ import { html, css, customElement } from 'lit-element';
 
 import { PageElement } from '../helpers/page-element';
 
-import { setMetaTag, removeMetaTag } from '../helpers/html-meta-manager';
+import { setMetaTag, removeMetaTag } from '../helpers/html-meta-manager/utils';
 
 @customElement('page-not-found')
 export class PageNotFound extends PageElement {

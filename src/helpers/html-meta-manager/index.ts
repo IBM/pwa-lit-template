@@ -5,72 +5,36 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export const setMetaTag = (
-  attributeName: string,
-  attributeValue: string,
-  content: string
-) => {
-  let element = document.head.querySelector(
-    `meta[${attributeName}="${attributeValue}"]`
-  );
+import { setMetaTag, setLinkTag } from './utils';
 
-  if (!element) {
-    element = document.createElement('meta');
-    element.setAttribute(attributeName, attributeValue);
-    document.head.appendChild(element);
-  }
-
-  element.setAttribute('content', content);
-};
-
-export const removeMetaTag = (
-  attributeName: string,
-  attributeValue: string
-) => {
-  const element = document.head.querySelector(
-    `meta[${attributeName}="${attributeValue}"]`
-  );
-
-  if (element) {
-    document.head.removeChild(element);
-  }
-};
-
-export const setLinkTag = (rel: string, href: string) => {
-  let element = document.head.querySelector(`link[rel="${rel}"]`);
-
-  if (!element) {
-    element = document.createElement('link');
-    element.setAttribute('rel', rel);
-    document.head.appendChild(element);
-  }
-
-  element.setAttribute('href', href);
-};
+interface ImageMetadataOptions {
+  url: string;
+  alt?: string;
+  width?: string;
+  height?: string;
+}
 
 export interface MetadataOptions {
   title?: string;
   description?: string | null;
-  image?: {
-    url: string;
-    alt?: string;
-    width?: string;
-    height?: string;
-  } | null;
+  image?: ImageMetadataOptions | null;
   url?: string;
 }
 
-export const updateMetadata = (metadataOptions: MetadataOptions) => {
-  const { title, description, image, url } = metadataOptions;
+export const updateMetadata = (options: MetadataOptions) => {
+  const { title, description, image, url } = options;
 
   if (title) {
     document.title = title;
     setMetaTag('property', 'og:title', title);
   }
 
-  if (description === null || description) {
-    setMetaTag('name', 'description', description || '');
-    setMetaTag('property', 'og:description', description || '');
+  if (description) {
+    setMetaTag('name', 'description', description);
+    setMetaTag('property', 'og:description', description);
+  } else if (description === null) {
+    setMetaTag('name', 'description', '');
+    setMetaTag('property', 'og:description', '');
   }
 
   if (image) {
