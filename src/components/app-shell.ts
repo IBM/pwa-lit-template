@@ -18,8 +18,6 @@ export class AppShell extends LitElement {
     return [
       css`
         :host {
-          --app-header-size: 50px;
-
           display: flex;
           flex-direction: column;
           min-height: 100vh;
@@ -29,7 +27,7 @@ export class AppShell extends LitElement {
           display: flex;
           align-items: center;
           flex-shrink: 0;
-          height: var(--app-header-size);
+          height: 50px;
           padding: 0 1rem;
           background-color: #ddd;
         }
