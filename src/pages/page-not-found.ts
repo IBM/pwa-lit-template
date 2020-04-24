@@ -25,7 +25,7 @@ export class PageNotFound extends PageElement {
     ];
   }
 
-  protected render() {
+  render() {
     return html`
       <section>
         <h1>Page not found</h1>
@@ -37,7 +37,7 @@ export class PageNotFound extends PageElement {
     `;
   }
 
-  public connectedCallback() {
+  connectedCallback() {
     if (super.connectedCallback) {
       super.connectedCallback();
     }
@@ -45,7 +45,7 @@ export class PageNotFound extends PageElement {
     setMetaTag('name', 'render:status_code', '404');
   }
 
-  public disconnectedCallback() {
+  disconnectedCallback() {
     removeMetaTag('name', 'render:status_code');
 
     if (super.disconnectedCallback) {

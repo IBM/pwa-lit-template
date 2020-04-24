@@ -48,7 +48,7 @@ export class AppShell extends LitElement {
     ];
   }
 
-  protected render() {
+  render() {
     return html`
       <header>
         <nav>
@@ -73,7 +73,7 @@ export class AppShell extends LitElement {
     router.init(this.main);
   }
 
-  protected firstUpdated() {
+  firstUpdated() {
     this.initializeRouter();
   }
 }

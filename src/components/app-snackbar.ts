@@ -36,7 +36,7 @@ export class AppSnackbar extends LitElement {
     ];
   }
 
-  protected render() {
+  render() {
     return html`
       <div class="message">New version available!</div>
       <button @click=${this.onAccept}>Update</button>

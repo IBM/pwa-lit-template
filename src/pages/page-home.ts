@@ -22,7 +22,7 @@ export class PageHome extends PageElement {
     ];
   }
 
-  protected render() {
+  render() {
     return html`
       <section>
         <h1>Home</h1>

@@ -22,7 +22,7 @@ export class PageAbout extends PageElement {
     ];
   }
 
-  protected render() {
+  render() {
     return html`
       <section>
         <h1>About</h1>

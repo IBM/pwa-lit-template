@@ -24,7 +24,7 @@ export class PageElement extends LitElement {
   @property({ type: Object })
   protected location = {} as RouterLocation;
 
-  protected updated() {
+  updated() {
     const { route } = this.location;
 
     if (!route) {
