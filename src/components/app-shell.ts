@@ -26,7 +26,6 @@ export class AppShell extends LitElement {
         header {
           display: flex;
           align-items: center;
-          flex-shrink: 0;
           height: 50px;
           padding: 0 1rem;
           background-color: #ddd;
