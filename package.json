@@ -26,7 +26,9 @@
   },
   "dependencies": {
     "@vaadin/router": "^1.7.0",
-    "lit-element": "^2.3.0"
+    "lit-element": "^2.3.0",
+    "tslib": "^1.11.0",
+    "workbox-window": "^5.1.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.8.0",
@@ -56,9 +58,7 @@
     "rollup-plugin-copy": "^3.3.0",
     "stylelint": "^13.3.0",
     "stylelint-config-ibmresearch": "^0.4.0",
-    "tslib": "^1.11.0",
-    "typescript": "^3.8.0",
-    "workbox-window": "^5.1.0"
+    "typescript": "^3.8.0"
   },
   "babel": {
     "plugins": [
