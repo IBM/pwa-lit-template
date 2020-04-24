@@ -31,14 +31,14 @@ export class PageElement extends LitElement {
       return;
     }
 
-    const metadata = this.updateMetadata(route);
+    const metadata = this.metadata(route);
 
     if (metadata) {
       updateMetadata(metadata);
     }
   }
 
-  protected updateMetadata(route: Route) {
+  protected metadata(route: Route) {
     if (!route.metadata) {
       return null;
     }
