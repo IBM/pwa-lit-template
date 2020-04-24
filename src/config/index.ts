@@ -9,6 +9,7 @@ import config from './development';
 
 const sharedConfig = {
   name: 'MyApplication',
+  description: 'MyApplication description',
   routerBaseUrl: '/'
 };
 
