@@ -6,10 +6,9 @@
  */
 
 import { LitElement, property } from 'lit-element';
+import { updateMetadata, MetadataOptions } from './html-meta-manager';
 
 import { Route, RouterLocation } from '@vaadin/router';
-
-import { updateMetadata, MetadataOptions } from './metadata';
 
 import config from '../config';
 
@@ -31,14 +30,14 @@ export class PageElement extends LitElement {
       return;
     }
 
-    const metadata = this.updateMetadata(route);
+    const metadata = this.metadata(route);
 
     if (metadata) {
       updateMetadata(metadata);
     }
   }
 
-  protected updateMetadata(route: Route) {
+  protected metadata(route: Route) {
     if (!route.metadata) {
       return null;
     }
