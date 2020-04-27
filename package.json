@@ -15,7 +15,7 @@
     "lint": "npm-run-all --parallel lint:*",
     "lint:eslint": "eslint \"**/*.{js,ts}\"",
     "lint:stylelint": "stylelint \"src/{components,pages}/**/*.ts\"",
-    "lit:check-types": "lit-analyzer \"src/{components,pages}/**/*.ts\" --strict",
+    "lit:check-types": "lit-analyzer \"src/{components,pages}/**/*.ts\" --strict --maxWarnings 999",
     "postinstall": "patch-package",
     "serve": "es-dev-server --app-index index.html --node-resolve --watch",
     "serve:production": "es-dev-server --root-dir server/dist/ --app-index index.html --compatibility none",
