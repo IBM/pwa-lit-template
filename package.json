@@ -22,7 +22,7 @@
     "test": "echo \"Error: no test specified\"",
     "typescript:check-types": "rimraf src-js/ && tsc --noEmit && npm run lit:check-types",
     "typescript:compile": "rimraf src-js/ && tsc",
-    "typescript:compile-watch": "rimraf src-js/ && tsc --watch"
+    "typescript:compile-watch": "tsc --watch"
   },
   "dependencies": {
     "@vaadin/router": "^1.7.0",
