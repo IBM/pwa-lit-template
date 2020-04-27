@@ -17,11 +17,42 @@ const ENVIRONMENT = process.env.NODE_ENV || 'development';
 const SOURCE_PATH = 'client/';
 const DIST_PATH = 'server/dist/';
 
+const serviceWorkerRegistrationScript = `
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker
+          .register('./service-worker.js')
+          .then(() => {
+            console.log('Service Worker registered');
+          })
+          .catch((registrationError) => {
+            console.log('Service Worker registration failed: ', registrationError);
+          });
+      });
+    }
+  </script>
+`;
+
+const workboxConfig = {
+  globDirectory: DIST_PATH,
+  swDest: `${DIST_PATH}service-worker.js`,
+  skipWaiting: false,
+  clientsClaim: false
+};
+
 const baseConfig = createSpaConfig({
   outputDir: DIST_PATH,
   legacyBuild: true,
   developmentMode: process.env.ROLLUP_WATCH === 'true',
-  workbox: false
+  html: {
+    transform: (html) => {
+      const elementsBeforeBody = [serviceWorkerRegistrationScript].join('');
+
+      return html.replace('</body>', `${elementsBeforeBody}</body>`);
+    }
+  },
+  workbox: workboxConfig
 });
 
 const config = merge(baseConfig, {

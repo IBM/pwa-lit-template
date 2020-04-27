@@ -9,6 +9,9 @@ import { LitElement, html, css, customElement, query } from 'lit-element';
 
 import config from '../config';
 
+import 'pwa-helper-components/pwa-install-button.js';
+import 'pwa-helper-components/pwa-update-available.js';
+
 @customElement('app-shell')
 export class AppShell extends LitElement {
   @query('main')
@@ -29,6 +32,10 @@ export class AppShell extends LitElement {
           height: 50px;
           padding: 0 1rem;
           background-color: #ddd;
+        }
+
+        header nav {
+          flex: 1;
         }
 
         main {
@@ -56,6 +63,14 @@ export class AppShell extends LitElement {
           <span>-</span>
           <a href="/about">About</a>
         </nav>
+
+        <pwa-install-button>
+          <button>Install app</button>
+        </pwa-install-button>
+
+        <pwa-update-available>
+          <button>Update app</button>
+        </pwa-update-available>
       </header>
 
       <!-- The main content is added / removed dynamically by the router -->
