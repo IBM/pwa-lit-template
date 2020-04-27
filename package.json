@@ -17,7 +17,7 @@
     "lit:check-types": "lit-analyzer \"src/{components,pages}/**/*.ts\" --strict",
     "postinstall": "patch-package",
     "serve": "es-dev-server --app-index index.html --node-resolve --watch",
-    "serve:production": "es-dev-server --app-index index.html --root-dir server/dist/",
+    "serve:production": "es-dev-server --root-dir server/dist/ --app-index index.html --compatibility none",
     "start": "npm-run-all --parallel typescript:compile-watch serve",
     "test": "echo \"Error: no test specified\"",
     "typescript:check-types": "rimraf src-js/ && tsc --noEmit && npm run lit:check-types",
