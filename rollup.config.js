@@ -30,6 +30,7 @@ const config = merge(baseConfig, {
       development: ENVIRONMENT
     }),
     copy({
+      hook: 'buildStart',
       targets: [
         {
           src: ['images/**/*'],
