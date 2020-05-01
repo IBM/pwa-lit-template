@@ -17,11 +17,18 @@ const ENVIRONMENT = process.env.NODE_ENV || 'development';
 const SOURCE_PATH = 'client/';
 const DIST_PATH = 'server/dist/';
 
+const workboxConfig = {
+  globDirectory: DIST_PATH,
+  skipWaiting: false,
+  clientsClaim: false
+};
+
 const baseConfig = createSpaConfig({
   outputDir: DIST_PATH,
   legacyBuild: true,
   developmentMode: process.env.ROLLUP_WATCH === 'true',
-  workbox: false
+  workbox: workboxConfig,
+  injectServiceWorker: true
 });
 
 const config = merge(baseConfig, {

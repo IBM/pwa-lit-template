@@ -6,6 +6,7 @@
   "dependencies": {
     "@vaadin/router": "^1.7.0",
     "lit-element": "^2.3.0",
+    "pwa-helper-components": "^0.2.10",
     "tslib": "^1.11.0"
   },
   "devDependencies": {
