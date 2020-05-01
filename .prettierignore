@@ -1,5 +1,4 @@
 /client/node_modules/
-/client/src/__generated__/
 /client/src-js/
 /server/dist/
 /server/node_modules/
