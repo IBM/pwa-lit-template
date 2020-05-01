@@ -19,6 +19,7 @@ const DIST_PATH = 'server/dist/';
 const baseConfig = createSpaConfig({
   outputDir: DIST_PATH,
   legacyBuild: true,
+  developmentMode: process.env.ROLLUP_WATCH === 'true',
   workbox: false
 });
 
