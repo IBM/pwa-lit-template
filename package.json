@@ -22,8 +22,8 @@
     "serve:production": "es-dev-server --root-dir server/dist/ --app-index index.html --compatibility none",
     "start": "npm-run-all --parallel typescript:compile-watch serve",
     "test": "echo \"Error: no test specified\"",
-    "typescript:check-types": "rimraf src-js/ && tsc --noEmit && npm run lit:check-types",
-    "typescript:compile": "rimraf src-js/ && tsc",
+    "typescript:check-types": "rimraf client/src-js/ && tsc --noEmit && npm run lit:check-types",
+    "typescript:compile": "rimraf client/src-js/ && tsc",
     "typescript:compile-watch": "tsc --watch"
   },
   "devDependencies": {
