@@ -14,31 +14,57 @@ import { black, blue } from 'chalk';
 import packageJson from './package.json';
 
 const ENVIRONMENT = process.env.NODE_ENV || 'development';
+const SOURCE_PATH = 'client/';
 const DIST_PATH = 'server/dist/';
+
+const workboxConfig = {
+  skipWaiting: true,
+  clientsClaim: true,
+  globDirectory: DIST_PATH,
+  globPatterns: ['index.html', 'manifest.webmanifest', '**/*.js'],
+  navigateFallback: 'index.html',
+  runtimeCaching: [
+    {
+      urlPattern: /\.(?:ico|png|svg)$/,
+      handler: 'CacheFirst',
+      options: {
+        cacheName: 'images',
+        expiration: {
+          maxEntries: 100
+        }
+      }
+    }
+  ],
+  swDest: `${DIST_PATH}service-worker.js`
+};
 
 const baseConfig = createSpaConfig({
   outputDir: DIST_PATH,
   legacyBuild: true,
   developmentMode: process.env.ROLLUP_WATCH === 'true',
-  workbox: false
+  workbox: workboxConfig
 });
 
 const config = merge(baseConfig, {
-  input: './index.html',
+  input: `${SOURCE_PATH}index.html`,
   plugins: [
     replace({
-      include: 'src-js/config/index.js',
+      include: `${SOURCE_PATH}src-js/config/index.js`,
       development: ENVIRONMENT
     }),
     copy({
-      hook: 'buildStart',
       targets: [
         {
-          src: ['images/**/*'],
-          dest: `${DIST_PATH}images/`
-        },
-        {
-          src: ['public/**/*', 'manifest.webmanifest'],
+          src: [
+            // Copy all client files except the source code
+            `${SOURCE_PATH}**/*`,
+            `!${SOURCE_PATH}node_modules`,
+            `!${SOURCE_PATH}patches`,
+            `!${SOURCE_PATH}src`,
+            `!${SOURCE_PATH}src-js`,
+            `!${SOURCE_PATH}package-lock.json`,
+            `!${SOURCE_PATH}package.json`
+          ],
           dest: DIST_PATH
         }
       ],
