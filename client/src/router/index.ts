@@ -7,8 +7,8 @@
 
 import { Router } from '@vaadin/router';
 
-import config from '../config';
-import routes from './routes';
+import { config } from '../config';
+import { routes } from './routes';
 
 export const init = (outlet: HTMLElement) => {
   const router = new Router(outlet, { baseUrl: config.routerBaseUrl });

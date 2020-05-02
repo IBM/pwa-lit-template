@@ -7,7 +7,7 @@
 
 import { Route } from '@vaadin/router';
 
-const routes: Route[] = [
+export const routes: Route[] = [
   {
     path: '/',
     name: 'home',
@@ -46,5 +46,3 @@ const routes: Route[] = [
     }
   }
 ];
-
-export default routes;

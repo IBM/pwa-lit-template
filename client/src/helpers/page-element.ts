@@ -10,7 +10,7 @@ import { updateMetadata, MetadataOptions } from './html-meta-manager';
 
 import { Route, RouterLocation } from '@vaadin/router';
 
-import config from '../config';
+import { config } from '../config';
 
 // Add metadata options to the @vaadin/router BaseRoute
 declare module '@vaadin/router/dist/vaadin-router' {

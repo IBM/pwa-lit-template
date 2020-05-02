@@ -7,7 +7,7 @@
 
 import { LitElement, html, css, customElement, query } from 'lit-element';
 
-import config from '../config';
+import { config } from '../config';
 
 import 'pwa-helper-components/pwa-install-button.js';
 import 'pwa-helper-components/pwa-update-available.js';

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import config from './development';
+import { config as environmentConfig } from './development';
 
 const sharedConfig = {
   name: 'MyApplication',
@@ -13,7 +13,7 @@ const sharedConfig = {
   routerBaseUrl: '/'
 };
 
-export default {
+export const config = {
   ...sharedConfig,
-  ...config
+  ...environmentConfig
 };
