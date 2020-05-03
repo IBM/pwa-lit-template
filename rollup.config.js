@@ -35,6 +35,9 @@ const config = merge(baseConfig, {
   input: `${SOURCE_PATH}index.html`,
   plugins: [
     replace({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
+    replace({
       include: `${SOURCE_PATH}src-js/config/index.js`,
       development: ENVIRONMENT
     }),
