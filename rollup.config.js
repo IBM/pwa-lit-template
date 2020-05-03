@@ -19,6 +19,7 @@ const DIST_PATH = 'server/dist/';
 
 const workboxConfig = {
   globDirectory: DIST_PATH,
+  navigateFallback: 'index.html',
   skipWaiting: false,
   clientsClaim: false
 };
