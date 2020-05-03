@@ -34,6 +34,7 @@ const routes: Route[] = [
   },
   {
     path: '(.*)',
+    name: 'not-found',
     component: 'page-not-found',
     metadata: {
       title: 'Error',
