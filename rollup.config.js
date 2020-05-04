@@ -18,6 +18,7 @@ const SOURCE_PATH = 'client/';
 const DIST_PATH = 'server/dist/';
 
 const workboxConfig = {
+  mode: 'production',
   globDirectory: DIST_PATH,
   runtimeCaching: [
     {
