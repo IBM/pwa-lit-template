@@ -19,6 +19,19 @@ const DIST_PATH = 'server/dist/';
 
 const workboxConfig = {
   globDirectory: DIST_PATH,
+  runtimeCaching: [
+    {
+      urlPattern: 'images/**/*',
+      handler: 'CacheFirst',
+      options: {
+        cacheName: 'images',
+        expiration: {
+          maxEntries: 60,
+          maxAgeSeconds: 30 * 24 * 60 * 60 // 30 Days
+        }
+      }
+    }
+  ],
   navigateFallback: 'index.html',
   skipWaiting: false,
   clientsClaim: false
