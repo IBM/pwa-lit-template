@@ -12,8 +12,8 @@ import { config } from '../config';
 import 'pwa-helper-components/pwa-install-button.js';
 import 'pwa-helper-components/pwa-update-available.js';
 
-@customElement('app-shell')
-export class AppShell extends LitElement {
+@customElement('app-index')
+export class AppIndex extends LitElement {
   @query('main')
   private main!: HTMLElement;
 
