@@ -1,7 +1,7 @@
 {
   "name": "pwa-lit-template",
   "version": "0.1.0",
-  "description": "A template for building web applications using LitElement and Vaadin Router",
+  "description": "A template for building Progressive Web Applications using LitElement and Vaadin Router",
   "license": "MIT",
   "engines": {
     "node": ">=12.0.0"
