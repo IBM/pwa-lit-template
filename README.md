@@ -1,10 +1,10 @@
 > ### 🛠 Status: Experimental
 >
-> `pwa-starter` is currently in development.
+> `pwa-lit-template` is currently in development.
 
-# pwa-starter
+# pwa-lit-template
 
-A template for building web applications using [LitElement](https://github.com/Polymer/lit-element) and [Vaadin Router](https://github.com/vaadin/vaadin-router).
+A template for building Progressive Web Applications using [LitElement](https://github.com/Polymer/lit-element) and [Vaadin Router](https://github.com/vaadin/vaadin-router).
 
 ## Prerequisites
 
