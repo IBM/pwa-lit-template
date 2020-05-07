@@ -17,43 +17,39 @@ export class AppIndex extends LitElement {
   @query('main')
   private main!: HTMLElement;
 
-  static get styles() {
-    return [
-      css`
-        :host {
-          display: flex;
-          flex-direction: column;
-          min-height: 100vh;
-        }
+  static styles = css`
+    :host {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-        header {
-          display: flex;
-          align-items: center;
-          height: 50px;
-          padding: 0 1rem;
-          background-color: #ddd;
-        }
+    header {
+      display: flex;
+      align-items: center;
+      height: 50px;
+      padding: 0 1rem;
+      background-color: #ddd;
+    }
 
-        header nav {
-          flex: 1;
-        }
+    header nav {
+      flex: 1;
+    }
 
-        main {
-          flex: 1;
-        }
+    main {
+      flex: 1;
+    }
 
-        main:empty ~ footer {
-          display: none;
-        }
+    main:empty ~ footer {
+      display: none;
+    }
 
-        footer {
-          padding: 1rem;
-          background-color: #eee;
-          text-align: center;
-        }
-      `
-    ];
-  }
+    footer {
+      padding: 1rem;
+      background-color: #eee;
+      text-align: center;
+    }
+  `;
 
   render() {
     return html`
