@@ -11,16 +11,12 @@ import { PageElement } from '../helpers/page-element';
 
 @customElement('page-home')
 export class PageHome extends PageElement {
-  static get styles() {
-    return [
-      css`
-        :host {
-          display: block;
-          padding: 1rem;
-        }
-      `
-    ];
-  }
+  static styles = css`
+    :host {
+      display: block;
+      padding: 1rem;
+    }
+  `;
 
   render() {
     return html`
