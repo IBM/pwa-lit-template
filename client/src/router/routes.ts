@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { Route } from '@vaadin/router';
+import type { Route } from '@vaadin/router';
 
 export const routes: Route[] = [
   {
