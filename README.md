@@ -64,6 +64,44 @@ One of the things where we wanted to focus it was in the development process to 
 - `lit-plugin` offers really cool features like syntax highlighting, type checking and code completion for your Web Components.
 - `eslint` and `stylelint` helps you checking your code and your CSS.
 
+## Template structure
+
+```
+pwa-starter
+│   rollup.config.js (OpenWC bundler configuration)
+|   tsconfig.json (TypeScript configuration)
+│
+└───.vscode (VSCode recommended plugins and configuration)
+│
+└───client (main folder where you are going to code mostly)
+│   │
+│   └───images
+│   │
+│   └───patches (folder with the changes to apply to the different packages)
+│   │
+│   └───src
+│   │   │
+│   │   └───components (folder where you store the components that you create)
+│   │   │   │   app-index.ts (your root component)
+│   │   │
+│   │   └───config (folder for your environment configurations)
+│   │   │
+│   │   └───helpers (folder with different utilities)
+│   │   │   │   page-element.ts (component that extends to build your pages)
+│   │   │   │
+│   │   │   └───html-meta-manager (utility that helps you to improve the SEO in your application)
+│   │   │
+│   │   └───pages (folder where you store the pages for your application)
+│   │   │
+│   │   └───router (@vaadin/router configuration)
+│   │   index.html
+│   │   manifest.webmanifest (https://developer.mozilla.org/en-US/docs/Web/Manifest)
+│   │   robots.txt (https://developer.mozilla.org/en-US/docs/Glossary/Robots.txt)
+│
+└───server (folder where you place your dist and serve it with prpl-server)
+│   │   prpl.config.json (prpl-server configuration)
+```
+
 ---
 
 ### Things to be aware
