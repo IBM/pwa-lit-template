@@ -7,7 +7,7 @@
 This template helps you to build Progressive Web Applications following the modern web standards, best practices and providing you tools for that purpose. Part of these tools that will be with you while you develop are:
 
 - [LitElement](https://lit-element.polymer-project.org/) and [lit-html](https://lit-html.polymer-project.org/) provide rich features to create your own Web Components.
-- [@vaadin/router](https://vaadin.com/router) provides you a router for your application with lazy loading.
+- [Vaadin Router](https://vaadin.com/router): small and powerful client-side router for Web Components. Framework-agnostic.
 - [@open-wc](https://open-wc.org/) setup to build your application following the best practices and with a good amount of options to configure it.
 - [Workbox](https://developers.google.com/web/tools/workbox) is de facto library to create and manage service workers for your application.
 - [TypeScript](https://www.typescriptlang.org/) without being indispensable we really trust that using it will improve your developer experience meanwhile you code.
