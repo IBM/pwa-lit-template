@@ -4,7 +4,7 @@
 
 # pwa-lit-template
 
-This template helps you to build [Progressive Web Applications](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps) following best practices, modern web standards and providing you with the best current tools for that purpose. Part of these tools that will be with you while you develop are:
+This template helps you to build Progressive Web Applications following the modern web standards, best practices and providing you tools for that purpose. Part of these tools that will be with you while you develop are:
 
 - [LitElement](https://lit-element.polymer-project.org/) and [lit-html](https://lit-html.polymer-project.org/) provide rich features to create your own Web Components.
 - [@vaadin/router](https://vaadin.com/router) provides you a router for your application with lazy loading.
