@@ -8,7 +8,9 @@ This template helps you to build Progressive Web Applications following the mode
 
 - [LitElement](https://lit-element.polymer-project.org/) and [lit-html](https://lit-html.polymer-project.org/) provide rich features to create your own Web Components.
 - [Vaadin Router](https://vaadin.com/router): small and powerful client-side router for Web Components. Framework-agnostic.
-- [@open-wc](https://open-wc.org/) setup to build your application following the best practices and with a good amount of options to configure it.
+- [@open-wc](https://open-wc.org) tools:
+  - [`es-dev-server`](https://open-wc.org/developing/es-dev-server.html): a web server for development without bundling.
+  - [`building-rollup`](https://open-wc.org/building/building-rollup.html): a Rollup configuration to help you get started building modern web applications.
 - [Workbox](https://developers.google.com/web/tools/workbox) is de facto library to create and manage service workers for your application.
 - [TypeScript](https://www.typescriptlang.org/) without being indispensable we really trust that using it will improve your developer experience meanwhile you code.
 
