@@ -38,6 +38,8 @@ The folder that `es-dev-server` will serve running this command will be `client/
 
 ### Structure
 
+In the root you will see two main folders: `client` and `server`. The first one is where you are going to write most of the code of your application meanwhile, in the second one is where the output of your production build will be stored to serve it.
+
 ```
 ├─ client/
 │  ├─ images/
@@ -65,7 +67,6 @@ The folder that `es-dev-server` will serve running this command will be `client/
 └─ tsconfig.json
 ```
 
-- In the root you will see two main folders, `client` and `server`. The first one is where you are going to write most of the code of your application meanwhile, in the second one is where the output of your build will be stored to serve it.
 - `images` folder is use to store the static resourced used by your application.
 - `patches` folder that contains the patches to apply in the different packages as we mention [here](#things-to-be-aware).
 - the `components` folder is very straight-forward, is the folder that contains your custom Web Components. Inside this folder you will find the `app-index.ts` file, main root of your application following the famous **PRPL patern**.
