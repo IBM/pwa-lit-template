@@ -67,14 +67,14 @@ In the root you will see two main folders: `client` and `server`. The first one 
 └─ tsconfig.json
 ```
 
-- `images` folder is use to store the static resourced used by your application.
-- `patches` folder that contains the patches to apply in the different packages as we mention [here](#things-to-be-aware).
-- the `components` folder is very straight-forward, is the folder that contains your custom Web Components. Inside this folder you will find the `app-index.ts` file, main root of your application following the famous **PRPL patern**.
-- `config` folder handles your environment variables depending of the selected build.
-- the `helpers` folder contains two interesting features: `PageElement` and `html-meta-manager` we go more in-depth with them [here](#create-your-own-page).
-- `pages` is the folder where you create your pages for your application.
-- `routes` stores the main configuration for your application.
-- the `server` folder is very simple, only contains the logic to serve the application using `prpl-server`. And is where you are going to create your `dist/` folder containing the bundle of your application.
+- `images`: is use to store the static resourced used by your application.
+- `patches`: contains the patches to apply in the different packages as we mention [here](#things-to-be-aware).
+- `components`: contains your custom Web Components. Inside this folder you will find the `app-index.ts` file, main root of your application following the famous **PRPL patern**.
+- `config`: handles your environment variables depending of the selected build.
+- `helpers`: contains two interesting features: `PageElement` and `html-meta-manager` we go more in-depth with them [here](#create-your-own-page).
+- `pages`: where you create your pages for your application.
+- `routes`: stores the main configuration for your application.
+- `server`: contains the logic to serve the application using `prpl-server`. And is where you are going to create your `dist/` folder containing the bundle of your application.
 
 ### Supported browsers
 
