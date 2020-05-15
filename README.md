@@ -36,39 +36,33 @@ This command serves the app at `http://localhost:8080`:
 
 The folder that `es-dev-server` will serve running this command will be `client/src-js/`, a compiled version from TypeScript that will output plain JavaScript, without any transformation from the build process.
 
-### Template structure
+### Structure
 
 ```
-pwa-lit-template
-│
-└───client/
-│   │
-│   └───images/
-│   │
-│   └───patches/
-│   │
-│   └───src/
-│   │   │
-│   │   └───components/
-│   │   │   │   app-index.ts
-│   │   │
-│   │   └───config/
-│   │   │
-│   │   └───helpers/
-│   │   │   │
-│   │   │   └───html-meta-manager/
-│   │   │   │
-│   │   │   │   page-element.ts
-│   │   │
-│   │   └───pages/
-│   │   │
-│   │   └───router/
-│   │
-│   │   index.html
-│   │   manifest.webmanifest
-│   │   robots.txt
-│
-└───server/
+├─ client/
+│  ├─ images/
+│  ├─ patches/
+│  ├─ src/
+│  │  ├─ components/
+│  │  │  ├─ app-index.ts
+│  │  │  └─ ···
+│  │  ├─ config/
+│  │  ├─ helpers/
+│  │  │  ├─ html-meta-manager/
+│  │  │  ├─ page-element.ts
+│  │  │  └─ ···
+│  │  ├─ pages/
+│  │  │  ├─ page-home.ts
+│  │  │  └─ ···
+│  │  └─ router/
+│  │     └─ routes.ts
+│  ├─ index.html
+│  ├─ manifest.webmanifest
+│  └─ package.json
+├─ server/
+├─ package.json
+├─ rollup.config.js
+└─ tsconfig.json
 ```
 
 - In the root you will see two main folders, `client` and `server`. The first one is where you are going to write most of the code of your application meanwhile, in the second one is where the output of your build will be stored to serve it.
