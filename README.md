@@ -10,7 +10,7 @@ This template helps you to build Progressive Web Applications following the mode
 - [Vaadin Router](https://vaadin.com/router): small and powerful client-side router for Web Components. Framework-agnostic.
 - [open-wc](https://open-wc.org) tools:
   - [`es-dev-server`](https://open-wc.org/developing/es-dev-server.html): a web server for development without bundling.
-  - [`building-rollup`](https://open-wc.org/building/building-rollup.html): a Rollup configuration to help you get started building modern web applications.
+  - [`@open-wc/building-rollup`](https://open-wc.org/building/building-rollup.html): a Rollup configuration to help you get started building modern web applications.
 - [Workbox](https://developers.google.com/web/tools/workbox): a set of libraries that make it easy to cache assets and take full advantage of features used to build Progressive Web Apps.
 - [TypeScript](https://www.typescriptlang.org): a typed superset of JavaScript that compiles to plain JavaScript.
 We trust that using it will improve your developer experience.
