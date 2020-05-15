@@ -6,7 +6,7 @@
 
 This template helps you to build Progressive Web Applications following the modern web standards, best practices and providing you tools for that purpose. Part of these tools that will be with you while you develop are:
 
-- [LitElement](https://lit-element.polymer-project.org/) and [lit-html](https://lit-html.polymer-project.org/) provide rich features to create your own Web Components.
+- [LitElement](https://lit-element.polymer-project.org): a simple base class for creating fast, lightweight Web Components.
 - [Vaadin Router](https://vaadin.com/router): small and powerful client-side router for Web Components. Framework-agnostic.
 - [@open-wc](https://open-wc.org) tools:
   - [`es-dev-server`](https://open-wc.org/developing/es-dev-server.html): a web server for development without bundling.
