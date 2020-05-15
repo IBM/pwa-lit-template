@@ -16,30 +16,30 @@ This template helps you to build Progressive Web Applications following the mode
 - A very simple build flow thanks to Rollup and [`@open-wc/building-rollup`](https://open-wc.org/building/building-rollup.html) initial configuration.
 - And last but not least a fast web server to serve locally you application without wasting time bundling your code with [`es-dev-server`](https://open-wc.org/developing/es-dev-server.html)
 
-# Getting started
+## Getting started
 
-## Prerequisites
+### Prerequisites
 
 - [node.js](https://nodejs.org)
 
 Furthermore, we use in the template [TypeScript](https://www.typescriptlang.org): a typed superset of JavaScript that compiles to plain JavaScript. With it we really trust that you will can improve your developer experience.
 
-## Install the dependencies
+### Install the dependencies
 
     npm install
 
-## Start the development server
+### Start the development server
 
 This command serves the app at `http://localhost:8080`:
 
     npm start
 
-The folder that `es-dev-server` will serve running this command will be `client/src-js`, a compiled version from TypeScript that will output plain JS without any transformation from the build process.
+The folder that `es-dev-server` will serve running this command will be `client/src-js/`, a compiled version from TypeScript that will output plain JavaScript, without any transformation from the build process.
 
-## Template structure
+### Template structure
 
 ```
-pwa-starter
+pwa-lit-template
 │
 └───client/
 │   │
@@ -81,7 +81,7 @@ pwa-starter
 - `routes` stores the main configuration for your application.
 - the `server` folder is very simple, only contains the logic to serve the application using `prpl-server`. And is where you are going to create your `dist/` folder containing the bundle of your application.
 
-## Supported browsers
+### Supported browsers
 
 Due to the build process the number of the browsers that `pwa-lit-template` can support is quite width in a performant way:
 
@@ -91,9 +91,9 @@ Due to the build process the number of the browsers that `pwa-lit-template` can 
 - Internet Explorer
 - Safari
 
-# Guides
+## Guides
 
-## Build and deploy for production
+### Build and deploy for production
 
 This command use [Rollup](https://github.com/rollup/rollup) to build an optimized version of the application for production:
 
@@ -121,7 +121,7 @@ This will start to serve your application using `prpl-server`. Some of the benef
 
 If you are creating an internal application maybe you are not interested on the second option that's way we offer both point of views.
 
-## Create your own page
+### Create your own page
 
 Something where we wanted to put an eye meanwhile we were creating this template was the SEO. With this in mind `pwa-lit-template` offers you with two tools that will help you to deal with: `PageElement` and `html-tag-manager`.
 
@@ -129,32 +129,32 @@ When you create a new page in the template you are creating a simple Web Compone
 
 Web Component:
 
-```
+```typescript
 @customElement('app-index')
 export class AppIndex extends LitElement { ... }
 ```
 
 Home Page:
 
-```
+```typescript
 @customElement('page-home')
 export class PageHome extends PageElement { ... }
 ```
 
 As you can see, meanwhile the Web Component extends `LitElement` class, the Home Page is extending `PageElement` that is a custom class that you can find inside `client/helpers/` folder. The reason behind this decision is because `PageElement` is optimized for SEO to use inside itself the little library `html-tag-manager` that it will update the metadata of the specific page with the information that you specify in the router:
 
-```
+```typescript
 {
-    path: '/',
-    name: 'home',
-    component: 'page-home',
-    metadata: {
-        title: 'MyApplication',
-        description: 'MyApplication description'
-    },
-    action: async () => {
-        await import('../pages/page-home');
-    }
+  path: '/',
+  name: 'home',
+  component: 'page-home',
+  metadata: {
+    title: 'MyApplication',
+    description: 'MyApplication description'
+  },
+  action: async () => {
+    await import('../pages/page-home');
+  }
 },
 ```
 
