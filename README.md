@@ -4,28 +4,27 @@
 
 # pwa-lit-template
 
-This template helps you to build Progressive Web Applications following the modern web standards, best practices and providing you tools for that purpose. Part of these tools that will be with you while you develop are:
+##### [Getting started](#getting-started) | [Installation](#install-the-dependencies) | [Local development](#start-the-development-server) | [Guides](#guides)
 
-- [LitElement](https://lit-element.polymer-project.org): a simple base class for creating fast, lightweight Web Components.
-- [Vaadin Router](https://vaadin.com/router): small and powerful client-side router for Web Components. Framework-agnostic.
-- [open-wc](https://open-wc.org) tools:
-  - [`es-dev-server`](https://open-wc.org/developing/es-dev-server.html): a web server for development without bundling.
-  - [`@open-wc/building-rollup`](https://open-wc.org/building/building-rollup.html): a Rollup configuration to help you get started building modern web applications.
-- [Workbox](https://developers.google.com/web/tools/workbox): a set of libraries that make it easy to cache assets and take full advantage of features used to build Progressive Web Apps.
-- [TypeScript](https://www.typescriptlang.org): a typed superset of JavaScript that compiles to plain JavaScript.
-We trust that using it will improve your developer experience.
+This template helps you to build Progressive Web Applications following the modern web standards, best practices and providing you with tools for that purpose. Out of the box, this template provides you with the following features:
 
-Furthermore, another part where `pwa-lit-template` focuses is in SEO. Reaching easily to a 100 in [Lighthouse](https://web.dev/measure/) and providing you with a built-in tool to improve it and reach to higher positions in Google.
+- Simple way to create Web Components with [LitElement](https://lit-element.polymer-project.org).
+- Small and powerful client-side router for Web Components with [Vaadin Router](https://vaadin.com/router).
+- All the benefits from a PWA (manifest, service-worker, offline UI) thanks to [Workbox](https://developers.google.com/web/tools/workbox) and [pwa-helpers](https://github.com/thepassle/pwa-helpers).
+- SEO friendly thanks to the Custom Web Component `PageElement` and our `html-meta-manager`.
+- Easy deployment process thanks to [prpl-server](https://github.com/Polymer/prpl-server) or in any static hosting.
+- A very simple build flow thanks to Rollup and [`@open-wc/building-rollup`](https://open-wc.org/building/building-rollup.html) initial configuration.
+- And last but not least a fast web server to serve locally you application without wasting time bundling your code with [`es-dev-server`](https://open-wc.org/developing/es-dev-server.html)
+
+# Getting started
 
 ## Prerequisites
 
-You will need the next things installed on your computer:
-
 - [node.js](https://nodejs.org)
 
-## Install the dependencies
+Furthermore, we use in the template [TypeScript](https://www.typescriptlang.org): a typed superset of JavaScript that compiles to plain JavaScript. With it we really trust that you will can improve your developer experience.
 
-The rest of the dependencies are defined in the `package.json` and you can install them simply typing:
+## Install the dependencies
 
     npm install
 
@@ -35,19 +34,52 @@ This command serves the app at `http://localhost:8080`:
 
     npm start
 
-## Build for production
+The folder that `es-dev-server` will serve running this command will be `client/src-js`, a compiled version from TypeScript that will output plain JS without any transformation from the build process.
 
-This command use [Rollup](https://github.com/rollup/rollup) to build an optimized version of the application for production.
+## Template structure
 
-    npm run build
+```
+pwa-starter
+│
+└───client/
+│   │
+│   └───images/
+│   │
+│   └───patches/
+│   │
+│   └───src/
+│   │   │
+│   │   └───components/
+│   │   │   │   app-index.ts
+│   │   │
+│   │   └───config/
+│   │   │
+│   │   └───helpers/
+│   │   │   │
+│   │   │   └───html-meta-manager/
+│   │   │   │
+│   │   │   │   page-element.ts
+│   │   │
+│   │   └───pages/
+│   │   │
+│   │   └───router/
+│   │
+│   │   index.html
+│   │   manifest.webmanifest
+│   │   robots.txt
+│
+└───server/
+```
 
-It has two outputs: in addition to outputting a regular build, it outputs a legacy build which is compatible with older browsers down to IE11.
-
-At runtime it is determined which version should be loaded, so that legacy browsers don't force to ship more and slower code to most users on modern browsers.
-
-And this command serves the production ready app:
-
-    npm run serve:production
+- In the root you will see two main folders, `client` and `server`. The first one is where you are going to write most of the code of your application meanwhile, in the second one is where the output of your build will be stored to serve it.
+- `images` folder is use to store the static resourced used by your application.
+- `patches` folder that contains the patches to apply in the different packages as we mention [here](#things-to-be-aware).
+- the `components` folder is very straight-forward, is the folder that contains your custom Web Components. Inside this folder you will find the `app-index.ts` file, main root of your application following the famous **PRPL patern**.
+- `config` folder handles your environment variables depending of the selected build.
+- the `helpers` folder contains two interesting features: `PageElement` and `html-meta-manager` we go more in-depth with them [here](#create-your-own-page).
+- `pages` is the folder where you create your pages for your application.
+- `routes` stores the main configuration for your application.
+- the `server` folder is very simple, only contains the logic to serve the application using `prpl-server`. And is where you are going to create your `dist/` folder containing the bundle of your application.
 
 ## Supported browsers
 
@@ -59,56 +91,79 @@ Due to the build process the number of the browsers that `pwa-lit-template` can 
 - Internet Explorer
 - Safari
 
-## Development process setup
+# Guides
 
-One of the things where we wanted to focus it was in the development process to improve the feeling that you have meanwhile you code. You can use whatever editor that you want to build your application but we recommend you [Visual Studio Code](https://code.visualstudio.com/). `pwa-lit-template` provides you the `.vscode` folder with a set of plugins that we recommend you for this editor. We selected them for you because they are plugins that we use daily in our development process and we trust that can improve your developer experience using this template:
+## Build and deploy for production
 
-- `Prettier` extension to apply an opinionated format to the code.
-- `lit-plugin` offers really cool features like syntax highlighting, type checking and code completion for your Web Components.
-- `eslint` and `stylelint` helps you checking your code and your CSS.
+This command use [Rollup](https://github.com/rollup/rollup) to build an optimized version of the application for production:
 
-## Template structure
+    npm run build
+
+It has two outputs: in addition to outputting a regular build, it outputs a legacy build which is compatible with older browsers down to IE11.
+
+At runtime it is determined which version should be loaded, so that legacy browsers don't force to ship more and slower code to most users on modern browsers.
+
+To serve your application is quite easy, you have two differente ways depending of your requirements:
+
+1. Serve your application as a common static website.
+2. Using `prpl-server` and `rendertron` to serve the application.
+
+For the first point the flow is pretty standard. You just need to have a typical Web Server (NGINX, for example) to serve your static files that you built in `server/dist/`.
+
+To go with the second option you need to enter in the `server` folder and run:
+
+    npm start
+
+This will start to serve your application using `prpl-server`. Some of the benefits of this option in conjunction with `rendertron` are:
+
+- Differential serving: you will be able to serve different versions of your application to different browsers by detecting browser capabilities using the user-agent header.
+- Rendering for bots: many bots don't execute JavaScript when processing your application. This can cause your application to not render correctly when crawled by some search engines, social networks, and link rendering bots. So `rendertron` helps you to deal with this.
+
+If you are creating an internal application maybe you are not interested on the second option that's way we offer both point of views.
+
+## Create your own page
+
+Something where we wanted to put an eye meanwhile we were creating this template was the SEO. With this in mind `pwa-lit-template` offers you with two tools that will help you to deal with: `PageElement` and `html-tag-manager`.
+
+When you create a new page in the template you are creating a simple Web Component, the difference between a Page and a typical Web Component in the template is what extends.
+
+Web Component:
 
 ```
-pwa-starter
-│   rollup.config.js (OpenWC bundler configuration)
-|   tsconfig.json (TypeScript configuration)
-│
-└───.vscode (VSCode recommended plugins and configuration)
-│
-└───client (main folder where you are going to code mostly)
-│   │
-│   └───images
-│   │
-│   └───patches (folder with the changes to apply to the different packages)
-│   │
-│   └───src
-│   │   │
-│   │   └───components (folder where you store the components that you create)
-│   │   │   │   app-index.ts (your root component)
-│   │   │
-│   │   └───config (folder for your environment configurations)
-│   │   │
-│   │   └───helpers (folder with different utilities)
-│   │   │   │   page-element.ts (component that extends to build your pages)
-│   │   │   │
-│   │   │   └───html-meta-manager (utility that helps you to improve the SEO in your application)
-│   │   │
-│   │   └───pages (folder where you store the pages for your application)
-│   │   │
-│   │   └───router (@vaadin/router configuration)
-│   │   index.html
-│   │   manifest.webmanifest (https://developer.mozilla.org/en-US/docs/Web/Manifest)
-│   │   robots.txt (https://developer.mozilla.org/en-US/docs/Glossary/Robots.txt)
-│
-└───server (folder where you place your dist and serve it with prpl-server)
-│   │   prpl.config.json (prpl-server configuration)
+@customElement('app-index')
+export class AppIndex extends LitElement { ... }
 ```
+
+Home Page:
+
+```
+@customElement('page-home')
+export class PageHome extends PageElement { ... }
+```
+
+As you can see, meanwhile the Web Component extends `LitElement` class, the Home Page is extending `PageElement` that is a custom class that you can find inside `client/helpers/` folder. The reason behind this decision is because `PageElement` is optimized for SEO to use inside itself the little library `html-tag-manager` that it will update the metadata of the specific page with the information that you specify in the router:
+
+```
+{
+    path: '/',
+    name: 'home',
+    component: 'page-home',
+    metadata: {
+        title: 'MyApplication',
+        description: 'MyApplication description'
+    },
+    action: async () => {
+        await import('../pages/page-home');
+    }
+},
+```
+
+This way your new page will be populated with the metadata provided by the router. Other use case is that if you don't have available in the router that information for the page `html-tag-manager` offers you some utilities like `setMetaTag` or `setLinkTag` to populate that information once time you have it.
 
 ---
 
 ### Things to be aware
 
-- There is [a patch](client/patches/@vaadin+router+1.7.2.patch) that modifies the `@vaadin/router`'s scroll standar behavior to have a more consistent scroll; now when you perform a `click` event, the scroll will be reset to the top position.
+- There is a [patch](client/patches/@vaadin+router+1.7.2.patch) that modifies the `@vaadin/router`'s scroll standard behavior to have a more consistent scroll; now when you perform a `click` event, the scroll will be reset to the top position.
 
   Related issue: [vaadin/router#43: Restore scroll position on navigation](https://github.com/vaadin/vaadin-router/issues/43)
