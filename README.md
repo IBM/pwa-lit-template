@@ -10,11 +10,11 @@ This template helps you to build Progressive Web Applications following the mode
 
 - Simple way to create Web Components with [LitElement](https://lit-element.polymer-project.org).
 - Small and powerful client-side router for Web Components with [Vaadin Router](https://vaadin.com/router).
-- All the benefits from a PWA (manifest, service-worker, offline UI) thanks to [Workbox](https://developers.google.com/web/tools/workbox) and [pwa-helpers](https://github.com/thepassle/pwa-helpers).
-- SEO friendly thanks to the Custom Web Component `PageElement` and our `html-meta-manager`.
-- Easy deployment process thanks to [prpl-server](https://github.com/Polymer/prpl-server) or in any static hosting.
-- A very simple build flow thanks to Rollup and [`@open-wc/building-rollup`](https://open-wc.org/building/building-rollup.html) initial configuration.
-- And last but not least a fast web server to serve locally you application without wasting time bundling your code with [`es-dev-server`](https://open-wc.org/developing/es-dev-server.html)
+- All the benefits from a PWA (manifest, service worker, offline UI) thanks to [Workbox](https://developers.google.com/web/tools/workbox) and [pwa-helpers](https://github.com/thepassle/pwa-helpers).
+- SEO friendly thanks to the `PageElement` custom element and the `html-meta-manager`.
+- Easy deployment over to [prpl-server](https://github.com/Polymer/prpl-server) or any static hosting.
+- Simple build flow thanks to [Rollup](https://rollupjs.org) and [`@open-wc/building-rollup`](https://open-wc.org/building/building-rollup.html) initial configuration.
+- A development server with auto-reload to serve the application without wasting time bundling the code with [`es-dev-server`](https://open-wc.org/developing/es-dev-server.html).
 
 ## Getting started
 
@@ -22,7 +22,7 @@ This template helps you to build Progressive Web Applications following the mode
 
 - [node.js](https://nodejs.org)
 
-Furthermore, we use in the template [TypeScript](https://www.typescriptlang.org): a typed superset of JavaScript that compiles to plain JavaScript. With it we really trust that you will can improve your developer experience.
+Furthermore, this project is built on [TypeScript](https://www.typescriptlang.org) with the intention of improving the developer experience.
 
 ### Install the dependencies
 
