@@ -12,7 +12,8 @@ This template helps you to build Progressive Web Applications following the mode
   - [`es-dev-server`](https://open-wc.org/developing/es-dev-server.html): a web server for development without bundling.
   - [`building-rollup`](https://open-wc.org/building/building-rollup.html): a Rollup configuration to help you get started building modern web applications.
 - [Workbox](https://developers.google.com/web/tools/workbox): a set of libraries that make it easy to cache assets and take full advantage of features used to build Progressive Web Apps.
-- [TypeScript](https://www.typescriptlang.org/) without being indispensable we really trust that using it will improve your developer experience meanwhile you code.
+- [TypeScript](https://www.typescriptlang.org): a typed superset of JavaScript that compiles to plain JavaScript.
+We trust that using it will improve your developer experience.
 
 Furthermore, another part where `pwa-lit-template` focuses is in SEO. Reaching easily to a 100 in [Lighthouse](https://web.dev/measure/) and providing you with a built-in tool to improve it and reach to higher positions in Google.
 
