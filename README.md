@@ -36,9 +36,7 @@ This command serves the app at `http://localhost:8080`:
 
 The folder that `es-dev-server` will serve running this command will be `client/src-js/`, a compiled version from TypeScript that will output plain JavaScript, without any transformation from the build process.
 
-### Structure
-
-In the root you will see two main folders: `client` and `server`. The first one is where you are going to write most of the code of your application meanwhile, in the second one is where the output of your production build will be stored to serve it.
+### Project structure
 
 ```
 ├─ client/
@@ -67,14 +65,17 @@ In the root you will see two main folders: `client` and `server`. The first one 
 └─ tsconfig.json
 ```
 
-- `images`: is use to store the static resourced used by your application.
-- `patches`: contains the patches to apply in the different packages as we mention [here](#things-to-be-aware).
-- `components`: contains your custom Web Components. Inside this folder you will find the `app-index.ts` file, main root of your application following the famous **PRPL patern**.
-- `config`: handles your environment variables depending of the selected build.
-- `helpers`: contains two interesting features: `PageElement` and `html-meta-manager` we go more in-depth with them [here](#create-your-own-page).
-- `pages`: where you create your pages for your application.
-- `routes`: stores the main configuration for your application.
-- `server`: contains the logic to serve the application using `prpl-server`. And is where you are going to create your `dist/` folder containing the bundle of your application.
+- `client`: where you are going to write most of the code of your application.
+
+  - `images`: is use to store the static resourced used by your application.
+  - `patches`: contains the patches to apply in the different packages as we mention [here](#things-to-be-aware).
+  - `components`: contains your custom Web Components. Inside this folder you will find the `app-index.ts` file, main root of your application following the PRPL patern.
+  - `config`: stores the configuration (handles the environment at the build time).
+  - `helpers`: contains two interesting features: `PageElement` and `html-meta-manager`.
+  - `pages`: where you create the pages for your application.
+  - `routes`: where you create the routes for your application.
+
+- `server`: contains the logic to serve the application. And is where you are going to create your `dist/` folder containing the bundle of your application.
 
 ## Guides
 
