@@ -99,7 +99,7 @@ And this command serves the production ready app:
 - Firefox
 - Safari
 
-To run on other browsers, you need to use a combination of polyfills and transpilation. This step is automated for you by the build command.
+To run on other browsers, you need to use a combination of polyfills and transpilation. This step is automated by the [build for production command](#build-for-production).
 
 ---
 
