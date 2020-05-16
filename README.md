@@ -4,7 +4,7 @@
 
 # pwa-lit-template
 
-##### [Getting started](#getting-started) | [Installation](#install-the-dependencies) | [Local development](#start-the-development-server) | [Guides](#guides)
+##### [Getting started](#getting-started) | [Build for production](#build-for-production) | [Browser support](#browser-support)
 
 This template helps you to build Progressive Web Applications following the modern web standards, best practices and providing you with tools for that purpose. Out of the box, this template provides you with the following features:
 
@@ -76,21 +76,11 @@ In the root you will see two main folders: `client` and `server`. The first one 
 - `routes`: stores the main configuration for your application.
 - `server`: contains the logic to serve the application using `prpl-server`. And is where you are going to create your `dist/` folder containing the bundle of your application.
 
-### Supported browsers
-
-Due to the build process the number of the browsers that `pwa-lit-template` can support is quite width in a performant way:
-
-- Chrome
-- Edge
-- Firefox
-- Internet Explorer
-- Safari
-
 ## Guides
 
-### Build and deploy for production
+### Build for production
 
-This command use [Rollup](https://github.com/rollup/rollup) to build an optimized version of the application for production:
+This command use Rollup to build an optimized version of the application for production:
 
     npm run build
 
@@ -98,62 +88,18 @@ It has two outputs: in addition to outputting a regular build, it outputs a lega
 
 At runtime it is determined which version should be loaded, so that legacy browsers don't force to ship more and slower code to most users on modern browsers.
 
-To serve your application is quite easy, you have two differente ways depending of your requirements:
+And this command serves the production ready app:
 
-1. Serve your application as a common static website.
-2. Using `prpl-server` and `rendertron` to serve the application.
+    npm run serve:production
 
-For the first point the flow is pretty standard. You just need to have a typical Web Server (NGINX, for example) to serve your static files that you built in `server/dist/`.
+## Browser support
 
-To go with the second option you need to enter in the `server` folder and run:
+- Chrome
+- Edge
+- Firefox
+- Safari
 
-    npm start
-
-This will start to serve your application using `prpl-server`. Some of the benefits of this option in conjunction with `rendertron` are:
-
-- Differential serving: you will be able to serve different versions of your application to different browsers by detecting browser capabilities using the user-agent header.
-- Rendering for bots: many bots don't execute JavaScript when processing your application. This can cause your application to not render correctly when crawled by some search engines, social networks, and link rendering bots. So `rendertron` helps you to deal with this.
-
-If you are creating an internal application maybe you are not interested on the second option that's way we offer both point of views.
-
-### Create your own page
-
-Something where we wanted to put an eye meanwhile we were creating this template was the SEO. With this in mind `pwa-lit-template` offers you with two tools that will help you to deal with: `PageElement` and `html-tag-manager`.
-
-When you create a new page in the template you are creating a simple Web Component, the difference between a Page and a typical Web Component in the template is what extends.
-
-Web Component:
-
-```typescript
-@customElement('app-index')
-export class AppIndex extends LitElement { ... }
-```
-
-Home Page:
-
-```typescript
-@customElement('page-home')
-export class PageHome extends PageElement { ... }
-```
-
-As you can see, meanwhile the Web Component extends `LitElement` class, the Home Page is extending `PageElement` that is a custom class that you can find inside `client/helpers/` folder. The reason behind this decision is because `PageElement` is optimized for SEO to use inside itself the little library `html-tag-manager` that it will update the metadata of the specific page with the information that you specify in the router:
-
-```typescript
-{
-  path: '/',
-  name: 'home',
-  component: 'page-home',
-  metadata: {
-    title: 'MyApplication',
-    description: 'MyApplication description'
-  },
-  action: async () => {
-    await import('../pages/page-home');
-  }
-},
-```
-
-This way your new page will be populated with the metadata provided by the router. Other use case is that if you don't have available in the router that information for the page `html-tag-manager` offers you some utilities like `setMetaTag` or `setLinkTag` to populate that information once time you have it.
+To run on other browsers, you need to use a combination of polyfills and transpilation. This step is automated for you by the build command.
 
 ---
 
