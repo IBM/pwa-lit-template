@@ -68,12 +68,13 @@ The folder that `es-dev-server` will serve running this command will be `client/
 - `client`: where you are going to write most of the code of your application.
 
   - `images`: is use to store the static resourced used by your application.
-  - `patches`: contains the patches to apply in the different packages as we mention [here](#things-to-be-aware).
-  - `components`: contains your custom Web Components. Inside this folder you will find the `app-index.ts` file, main root of your application following the PRPL patern.
-  - `config`: stores the configuration (handles the environment at the build time).
-  - `helpers`: contains two interesting features: `PageElement` and `html-meta-manager`.
-  - `pages`: where you create the pages for your application.
-  - `routes`: where you create the routes for your application.
+  - `patches`: contains the patches to apply in the different packages mentioned [here](#things-to-be-aware). It will be removed at some point.
+  - `src`
+    - `components`: contains your custom Web Components. Inside this folder you will find the `app-index.ts` file, main root of your application following the PRPL patern.
+    - `config`: stores the configuration (handles the environment at the build time).
+    - `helpers`: contains two interesting features: `PageElement` and `html-meta-manager`.
+    - `pages`: where you create the pages for your application.
+    - `routes`: where you create the routes for your application.
 
 - `server`: contains the logic to serve the application. And is where you are going to create your `dist/` folder containing the bundle of your application.
 
