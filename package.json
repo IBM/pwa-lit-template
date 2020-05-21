@@ -66,18 +66,13 @@
     ]
   },
   "eslintConfig": {
-    "extends": "ibmresearch/typescript-lit-html",
-    "rules": {
-      "@typescript-eslint/no-non-null-assertion": "off"
-    },
+    "extends": "ibmresearch",
     "overrides": [
       {
-        "files": [
-          "rollup.config.js"
-        ],
-        "env": {
-          "node": true,
-          "browser": false
+        "files": "client/**/*",
+        "extends": "ibmresearch/typescript-lit-html",
+        "rules": {
+          "@typescript-eslint/no-non-null-assertion": "off"
         }
       }
     ]
@@ -88,23 +83,15 @@
     }
   },
   "lint-staged": {
-    "**/*{html,js,json,md,ts,webmanifest}": [
-      "prettier --write"
-    ],
-    "**/*.{js,ts}": [
-      "eslint --fix"
-    ],
-    "src/{components,pages}/**/*.ts": [
-      "stylelint --fix"
-    ]
+    "**/*{html,js,json,md,ts,webmanifest}": "prettier --write",
+    "**/*.{js,ts}": "eslint --fix",
+    "src/{components,pages}/**/*.ts": "stylelint --fix"
   },
   "prettier": {
     "singleQuote": true,
     "trailingComma": "none"
   },
   "stylelint": {
-    "extends": [
-      "stylelint-config-ibmresearch"
-    ]
+    "extends": "stylelint-config-ibmresearch"
   }
 }
