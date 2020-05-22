@@ -16,7 +16,7 @@
     "lint": "npm-run-all --parallel lint:*",
     "lint:eslint": "eslint \"**/*.{js,ts}\"",
     "lint:stylelint": "stylelint \"client/src/{components,pages}/**/*.ts\"",
-    "lit:check-types": "lit-analyzer \"client/src/{components,pages}/**/*.ts\" --strict --maxWarnings 999",
+    "lit:check-types": "lit-analyzer \"client/src/{components,pages}/**/*.ts\" --strict",
     "postinstall": "(cd client/ && npm install); (cd server/ && npm install)",
     "regenerate-lock-files": "rimraf \"**/node_modules/\" \"**/package-lock.json\" && npm install",
     "serve": "es-dev-server --root-dir client/ --app-index index.html --node-resolve --watch",
