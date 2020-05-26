@@ -36,7 +36,7 @@
     "@typescript-eslint/parser": "^3.0.0",
     "chalk": "^4.0.0",
     "deepmerge": "^4.2.0",
-    "es-dev-server": "^1.52.0",
+    "es-dev-server": "^1.53.0",
     "eslint": "^7.1.0",
     "eslint-config-ibmresearch": "^0.14.0",
     "eslint-plugin-lit": "^1.2.0",
@@ -57,12 +57,7 @@
   "babel": {
     "plugins": [
       "@babel/plugin-proposal-class-properties",
-      [
-        "@babel/plugin-proposal-decorators",
-        {
-          "decoratorsBeforeExport": true
-        }
-      ]
+      ["@babel/plugin-proposal-decorators", { "decoratorsBeforeExport": true }]
     ]
   },
   "eslintConfig": {
