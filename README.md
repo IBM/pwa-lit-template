@@ -4,7 +4,7 @@
 
 # pwa-lit-template
 
-##### [Getting started](#getting-started) | [Build for production](#build-for-production) | [Browser support](#browser-support)
+##### [Getting started](#getting-started) | [Build for production](#build-for-production) | [Create a new page](#create-a-new-page) | [Browser support](#browser-support)
 
 This project helps you to build Progressive Web Applications following the modern web standards, best practices and providing you with tools for that purpose. Out of the box, provides you with the following features:
 
@@ -72,7 +72,7 @@ The folder that `es-dev-server` will serve running this command will be `client/
   - `src`
     - `components`: contains your custom Web Components. Inside this folder you will find the `app-index.ts` file, main root of your application following the PRPL patern.
     - `config`: stores the configuration (handles the environment at the build time).
-    - `helpers`: contains two interesting features: `PageElement` and `html-meta-manager`.
+    - `helpers`: contains two interesting features: `PageElement` and `html-meta-manager`. Go more in-depth with them [here](#create-a-new-page).
     - `pages`: where you create the pages for your application.
     - `routes`: where you create the routes for your application.
 
@@ -89,6 +89,45 @@ This command use Rollup to build an optimized version of the application for pro
 It has two outputs: in addition to outputting a regular build, it outputs a legacy build which is compatible with older browsers down to IE11.
 
 At runtime it is determined which version should be loaded, so that legacy browsers don't force to ship more and slower code to most users on modern browsers.
+
+### Create a new page
+
+1. Create the new page component (extending from `PageElement` helper) in the `pages` folder. For example a `page-explore.ts`.
+
+   ```typescript
+   import { html, customElement } from 'lit-element';
+
+   import { PageElement } from '../helpers/page-element';
+
+   @customElement('page-explore')
+   export class PageExplore extends PageElement {
+     render() {
+       return html`
+         <h1>Explore</h1>
+         <p>My new explore page!</p>
+       `;
+     }
+   }
+   ```
+
+2. Register the new route in the `routes.ts`:
+
+   ```typescript
+   {
+     path: '/explore',
+     name: 'explore',
+     component: 'page-explore',
+     metadata: {
+       title: 'Explore',
+       description: 'Explore page description'
+     },
+     action: async () => {
+       await import('../pages/page-explore');
+     }
+   },
+   ```
+
+With SEO in mind, this project offers you the `PageElement` base class to help you to deal with it; it has a `metadata()` method that edits the HTML meta tags of the specific page with the `metadata` property defined in the route. And if you need dynamic information, you also can override the `metadata()` method.
 
 ## Browser support
 
