@@ -38,41 +38,42 @@ const workboxConfig = {
   clientsClaim: false
 };
 
-const baseConfig = createSpaConfig({
-  outputDir: DIST_PATH,
-  legacyBuild: true,
-  developmentMode: process.env.ROLLUP_WATCH === 'true',
-  workbox: workboxConfig,
-  injectServiceWorker: true
-});
-
-const config = merge(baseConfig, {
-  input: `${SOURCE_PATH}index.html`,
-  plugins: [
-    replace({
-      'process.env.NODE_ENV': JSON.stringify('production'),
-      'config.development': `config.${ENVIRONMENT}`
-    }),
-    copy({
-      targets: [
-        {
-          src: [
-            // Copy all client files except the source code
-            `${SOURCE_PATH}**/*`,
-            `!${SOURCE_PATH}node_modules`,
-            `!${SOURCE_PATH}patches`,
-            `!${SOURCE_PATH}src`,
-            `!${SOURCE_PATH}src-js`,
-            `!${SOURCE_PATH}package-lock.json`,
-            `!${SOURCE_PATH}package.json`
-          ],
-          dest: DIST_PATH
-        }
-      ],
-      flatten: false
-    })
-  ]
-});
+const config = merge(
+  createSpaConfig({
+    outputDir: DIST_PATH,
+    legacyBuild: true,
+    developmentMode: process.env.ROLLUP_WATCH === 'true',
+    workbox: workboxConfig,
+    injectServiceWorker: true
+  }),
+  {
+    input: `${SOURCE_PATH}index.html`,
+    plugins: [
+      replace({
+        'process.env.NODE_ENV': JSON.stringify('production'),
+        'config.development': `config.${ENVIRONMENT}`
+      }),
+      copy({
+        targets: [
+          {
+            src: [
+              // Copy all client files except the source code
+              `${SOURCE_PATH}**/*`,
+              `!${SOURCE_PATH}node_modules`,
+              `!${SOURCE_PATH}patches`,
+              `!${SOURCE_PATH}src`,
+              `!${SOURCE_PATH}src-js`,
+              `!${SOURCE_PATH}package-lock.json`,
+              `!${SOURCE_PATH}package.json`
+            ],
+            dest: DIST_PATH
+          }
+        ],
+        flatten: false
+      })
+    ]
+  }
+);
 
 console.log(black.bgWhite(' Build information'.padEnd(60, ' ')));
 console.log();
