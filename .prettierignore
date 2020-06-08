@@ -1,4 +1,2 @@
-/client/node_modules/
-/client/src-js/
-/server/dist/
-/server/node_modules/
+server/dist/
+src-js/
