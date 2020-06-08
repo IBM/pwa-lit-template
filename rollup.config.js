@@ -54,6 +54,7 @@ const config = merge(
         'config.development': `config.${ENVIRONMENT}`
       }),
       copy({
+        hook: 'buildStart',
         targets: [
           {
             src: [
