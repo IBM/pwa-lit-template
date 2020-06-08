@@ -6,7 +6,7 @@
 
 ##### [Getting started](#getting-started) | [Build for production](#build-for-production) | [Browser support](#browser-support)
 
-This template helps you to build Progressive Web Applications following the modern web standards, best practices and providing you with tools for that purpose. Out of the box, this template provides you with the following features:
+This project helps you to build Progressive Web Applications following the modern web standards, best practices and providing you with tools for that purpose. Out of the box, provides you with the following features:
 
 - Simple way to create Web Components with [LitElement](https://lit-element.polymer-project.org).
 - Small and powerful client-side router for Web Components with [Vaadin Router](https://vaadin.com/router).
