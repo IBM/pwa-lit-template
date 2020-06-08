@@ -13,8 +13,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "experimentalDecorators": true,
-    "baseUrl": "client/src/",
-    "outDir": "client/src-js/"
+    "baseUrl": "src/",
+    "outDir": "src-js/"
   },
-  "include": ["client/src/**/*"]
+  "include": ["src/**/*"]
 }

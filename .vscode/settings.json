@@ -1,7 +1,7 @@
 {
   "editor.formatOnSave": true,
   "files.exclude": {
-    "client/src-js/": true
+    "src-js/": true
   },
   "lit-plugin.strict": true
 }

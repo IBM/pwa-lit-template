@@ -14,7 +14,6 @@ import { black, blue } from 'chalk';
 import packageJson from './package.json';
 
 const ENVIRONMENT = process.env.NODE_ENV || 'development';
-const SOURCE_PATH = 'client/';
 const DIST_PATH = 'server/dist/';
 
 const workboxConfig = {
@@ -47,25 +46,18 @@ const config = merge(
     injectServiceWorker: true
   }),
   {
-    input: `${SOURCE_PATH}index.html`,
+    input: `index.html`,
     plugins: [
       replace({
         'process.env.NODE_ENV': JSON.stringify('production'),
         'config.development': `config.${ENVIRONMENT}`
       }),
       copy({
+        hook: 'buildStart',
         targets: [
           {
-            src: [
-              // Copy all client files except the source code
-              `${SOURCE_PATH}**/*`,
-              `!${SOURCE_PATH}node_modules`,
-              `!${SOURCE_PATH}patches`,
-              `!${SOURCE_PATH}src`,
-              `!${SOURCE_PATH}src-js`,
-              `!${SOURCE_PATH}package-lock.json`,
-              `!${SOURCE_PATH}package.json`
-            ],
+            // Copy all the static files
+            src: ['images', 'manifest.webmanifest', 'robots.txt'],
             dest: DIST_PATH
           }
         ],

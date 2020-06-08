@@ -34,49 +34,45 @@ This command serves the app at `http://localhost:8080`:
 
     npm start
 
-The folder that `es-dev-server` will serve running this command will be `client/src-js/`, a compiled version from TypeScript that will output plain JavaScript, without any transformation from the build process.
+The folder that `es-dev-server` will serve running this command will be `src-js/`, a compiled version from TypeScript that will output plain JavaScript, without any transformation from the build process.
 
 ### Project structure
 
 ```
-├─ client/
-│  ├─ images/
-│  ├─ patches/
-│  ├─ src/
-│  │  ├─ components/
-│  │  │  ├─ app-index.ts
-│  │  │  └─ ···
-│  │  ├─ config/
-│  │  ├─ helpers/
-│  │  │  ├─ html-meta-manager/
-│  │  │  ├─ page-element.ts
-│  │  │  └─ ···
-│  │  ├─ pages/
-│  │  │  ├─ page-home.ts
-│  │  │  └─ ···
-│  │  └─ router/
-│  │     └─ routes.ts
-│  ├─ index.html
-│  ├─ manifest.webmanifest
-│  └─ package.json
+├─ images/
+├─ patches/
 ├─ server/
+├─ src/
+│  ├─ components/
+│  │  ├─ app-index.ts
+│  │  └─ ···
+│  ├─ config/
+│  ├─ helpers/
+│  │  ├─ page-element.ts
+│  │  └─ ···
+│  ├─ pages/
+│  │  ├─ page-home.ts
+│  │  └─ ···
+│  └─ router/
+│     └─ routes.ts
+├─ index.html
+├─ manifest.webmanifest
 ├─ package.json
+├─ robots.txt
 ├─ rollup.config.js
 └─ tsconfig.json
 ```
 
-- `client`: where you are going to write most of the code of your application.
-
-  - `images`: is use to store the static resourced used by your application.
-  - `patches`: contains the patches to apply in the different packages mentioned [here](#things-to-be-aware). It will be removed at some point.
-  - `src`
-    - `components`: contains your custom Web Components. Inside this folder you will find the `app-index.ts` file, main root of your application following the PRPL patern.
-    - `config`: stores the configuration (handles the environment at the build time).
-    - `helpers`: contains two interesting features: `PageElement` and `html-meta-manager`. Go more in-depth with them [here](#create-a-new-page).
-    - `pages`: where you create the pages for your application.
-    - `routes`: where you create the routes for your application.
-
+- `images`: is use to store the static resourced used by your application.
+- `patches`: contains the patches to apply in the different packages mentioned [here](#things-to-be-aware). It will be removed at some point.
 - `server`: contains the logic to serve the application. And is where you are going to create your `dist/` folder containing the bundle of your application.
+- `src`
+  - `components`: contains your custom Web Components. Inside this folder you will find the `app-index.ts` file, main root of your application following the PRPL patern.
+  - `config`: stores the configuration (handles the environment at the build time).
+  - `helpers`: contains two interesting features: `PageElement` and `html-meta-manager`. Go more in-depth with them [here](#create-a-new-page).
+  - `pages`: where you create the pages for your application.
+  - `router`: where you create the routes for your application.
+- `index.html`: the application entry point.
 
 ## Guides
 
@@ -142,6 +138,6 @@ To run on other browsers, you need to use a combination of polyfills and transpi
 
 ### Things to be aware
 
-- There is a [patch](client/patches/@vaadin+router+1.7.2.patch) that modifies the `@vaadin/router`'s scroll standard behavior to have a more consistent scroll; now when you perform a `click` event, the scroll will be reset to the top position.
+- There is a [patch](patches/@vaadin+router+1.7.2.patch) that modifies the `@vaadin/router`'s scroll standard behavior to have a more consistent scroll; now when you perform a `click` event, the scroll will be reset to the top position.
 
   Related issue: [vaadin/router#43: Restore scroll position on navigation](https://github.com/vaadin/vaadin-router/issues/43)
