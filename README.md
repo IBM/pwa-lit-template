@@ -14,7 +14,7 @@ This project helps you to build Progressive Web Applications following the moder
 - Small and powerful client-side router for Web Components with [Vaadin Router](https://vaadin.com/router).
 - All the benefits from a PWA (manifest, service worker, offline UI) thanks to [Workbox](https://developers.google.com/web/tools/workbox) and [pwa-helpers](https://github.com/thepassle/pwa-helpers).
 - SEO friendly thanks to the `PageElement` custom element and the `html-meta-manager`.
-- A development server with auto-reload to serve the application without wasting time bundling the code with [`es-dev-server`](https://open-wc.org/developing/es-dev-server.html).
+- A development server with auto-reload to serve the application without bundling the code with [`es-dev-server`](https://open-wc.org/developing/es-dev-server.html).
 - Simple build flow thanks to [Rollup](https://rollupjs.org) and [`@open-wc/building-rollup`](https://open-wc.org/building/building-rollup.html) initial configuration.
 - Easy deployment over to [prpl-server](https://github.com/Polymer/prpl-server) or any static hosting.
 
@@ -136,7 +136,8 @@ With SEO in mind, this project offers you the `PageElement` base class to help y
 - Firefox
 - Safari
 
-To run on other browsers, you need to use a combination of polyfills and transpilation. This step is automated by the [build for production command](#build-for-production).
+To run on other browsers, you need to use a combination of polyfills and transpilation.
+This step is automated by the [build for production command](#build-for-production).
 
 ---
 
@@ -144,4 +145,4 @@ To run on other browsers, you need to use a combination of polyfills and transpi
 
 - There is a [patch](patches/@vaadin+router+1.7.2.patch) that modifies the `@vaadin/router`'s scroll standard behavior to have a more consistent scroll; now when you perform a `click` event, the scroll will be reset to the top position.
 
-  Related issue: [vaadin/router#43: Restore scroll position on navigation](https://github.com/vaadin/vaadin-router/issues/43)
+  Related issue: [#1: Remove the Vaadin Router patch](https://github.com/IBM/pwa-lit-template/issues/1)
