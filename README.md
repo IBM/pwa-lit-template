@@ -2,6 +2,8 @@
 >
 > `pwa-lit-template` is currently in development.
 
+[![CI](https://github.com/IBM/pwa-lit-template/workflows/CI/badge.svg)](https://github.com/IBM/pwa-lit-template/actions)
+
 # pwa-lit-template
 
 ##### [Getting started](#getting-started) | [Build for production](#build-for-production) | [Create a new page](#create-a-new-page) | [Browser support](#browser-support)
