@@ -17,14 +17,14 @@
     "lint": "npm-run-all --parallel lint:*",
     "lint:eslint": "eslint \"**/*.{js,ts}\"",
     "lint:stylelint": "stylelint \"src/{components,pages}/**/*.ts\"",
-    "lit:check-types": "lit-analyzer \"src/{components,pages}/**/*.ts\" --strict",
+    "lit:type-checking": "lit-analyzer \"src/{components,pages}/**/*.ts\" --strict",
     "postinstall": "patch-package",
     "serve": "es-dev-server --app-index index.html --node-resolve --watch",
     "start": "npm-run-all --parallel typescript:compile-watch serve",
     "test": "echo \"Error: no test specified\"",
-    "typescript:check-types": "rimraf src-js/ && tsc --noEmit && npm run lit:check-types",
     "typescript:compile": "rimraf src-js/ && tsc",
-    "typescript:compile-watch": "tsc --watch"
+    "typescript:compile-watch": "tsc --watch",
+    "typescript:type-checking": "rimraf src-js/ && tsc --noEmit && npm run lit:type-checking"
   },
   "dependencies": {
     "@vaadin/router": "^1.7.0",
