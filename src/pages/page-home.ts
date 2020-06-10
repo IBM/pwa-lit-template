@@ -37,10 +37,7 @@ export class PageHome extends PageElement {
           minima!
         </p>
 
-        <p>
-          You can <a href="/error">click here</a> to go to a page that does not
-          exist.
-        </p>
+        <p>Here you can see <a href="/error">the not found page</a>.</p>
       </section>
     `;
   }
