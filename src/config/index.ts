@@ -9,8 +9,7 @@ import { config as environmentConfig } from './config.development';
 
 const sharedConfig = {
   name: 'MyApplication',
-  description: 'MyApplication description',
-  routerBaseUrl: '/'
+  description: 'MyApplication description'
 };
 
 export const config = {
