@@ -32,7 +32,7 @@ Furthermore, this project is built on [TypeScript](https://www.typescriptlang.or
 
 ### Start the development server
 
-This command serves the app at `http://localhost:8080`:
+This command serves the app at `http://localhost:8000`:
 
     npm start
 
