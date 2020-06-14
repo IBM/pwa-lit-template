@@ -5,8 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { LitElement, html, css, customElement, query } from 'lit-element';
+import { LitElement, html, css, customElement } from 'lit-element';
 
+import { router } from '../router';
 import { config } from '../config';
 
 import 'pwa-helper-components/pwa-install-button.js';
@@ -14,9 +15,6 @@ import 'pwa-helper-components/pwa-update-available.js';
 
 @customElement('app-index')
 export class AppIndex extends LitElement {
-  @query('main')
-  private main!: HTMLElement;
-
   static styles = css`
     :host {
       display: flex;
@@ -55,9 +53,9 @@ export class AppIndex extends LitElement {
     return html`
       <header>
         <nav>
-          <a href="/">Home</a>
+          <a href="${router.urlForName('home')}">Home</a>
           <span>-</span>
-          <a href="/about">About</a>
+          <a href="${router.urlForName('about')}">About</a>
         </nav>
 
         <pwa-install-button>
@@ -70,21 +68,13 @@ export class AppIndex extends LitElement {
       </header>
 
       <!-- The main content is added / removed dynamically by the router -->
-      <main role="main"></main>
+      <main role="main">
+        <slot></slot>
+      </main>
 
       <footer>
         <span>Environment: ${config.environment}</span>
       </footer>
     `;
-  }
-
-  private async initializeRouter() {
-    const router = await import('../router/index');
-
-    router.init(this.main);
-  }
-
-  firstUpdated() {
-    this.initializeRouter();
   }
 }

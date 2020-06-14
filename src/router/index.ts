@@ -9,7 +9,7 @@ import { Router } from '@vaadin/router';
 
 import { routes } from './routes';
 
-export const init = (outlet: HTMLElement) => {
+const init = (outlet: HTMLElement) => {
   const router = new Router(outlet);
 
   router.setRoutes([
@@ -23,4 +23,10 @@ export const init = (outlet: HTMLElement) => {
     },
     ...routes
   ]);
+
+  return router;
 };
+
+const mainElement = document.getElementById('routerOutlet')!;
+
+export const router = init(mainElement);
