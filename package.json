@@ -84,7 +84,7 @@
     }
   },
   "lint-staged": {
-    "**/*{html,js,json,md,ts,webmanifest}": "prettier --write",
+    "**/*.{html,js,json,md,ts,webmanifest}": "prettier --write",
     "**/*.{js,ts}": "eslint --fix",
     "src/{components,pages}/**/*.ts": "stylelint --fix"
   },
