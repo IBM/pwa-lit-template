@@ -13,7 +13,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "experimentalDecorators": true,
-    "baseUrl": "src/",
     "outDir": "src-js/"
   },
   "include": ["src/**/*"]
