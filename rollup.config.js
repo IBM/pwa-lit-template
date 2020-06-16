@@ -46,7 +46,7 @@ const config = merge(
     injectServiceWorker: true
   }),
   {
-    input: `index.html`,
+    input: 'index.html',
     plugins: [
       replace({
         'process.env.NODE_ENV': JSON.stringify('production'),
