@@ -47,7 +47,7 @@
     "eslint-plugin-lit": "^1.2.0",
     "eslint-plugin-wc": "^1.2.0",
     "husky": "^4.2.0",
-    "lint-staged": "^10.2.11",
+    "lint-staged": "^10.2.0",
     "lit-analyzer": "^1.1.0",
     "npm-run-all": "^4.1.0",
     "patch-package": "^6.2.0",
