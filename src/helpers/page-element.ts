@@ -6,9 +6,10 @@
  */
 
 import { LitElement, property } from 'lit-element';
-import { updateMetadata, MetadataOptions } from './html-meta-manager';
+import { updateMetadata } from './html-meta-manager';
 
 import type { Route, RouterLocation } from '@vaadin/router';
+import type { MetadataOptions } from './html-meta-manager';
 
 import { config } from '../config';
 
