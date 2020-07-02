@@ -58,7 +58,7 @@
     "rollup-plugin-copy": "^3.3.0",
     "stylelint": "^13.6.0",
     "stylelint-config-ibmresearch": "^0.4.0",
-    "typescript": "~3.9.0"
+    "typescript": "~3.9.6"
   },
   "babel": {
     "plugins": [
