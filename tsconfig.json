@@ -13,7 +13,13 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "experimentalDecorators": true,
-    "outDir": "src-js/"
+    "outDir": "src-js/",
+    "plugins": [
+      {
+        "name": "ts-lit-plugin",
+        "strict": true
+      }
+    ]
   },
   "include": ["src/**/*"]
 }
