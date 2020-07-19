@@ -8,6 +8,7 @@
 import { createSpaConfig } from '@open-wc/building-rollup';
 import replace from '@rollup/plugin-replace';
 import copy from 'rollup-plugin-copy';
+import commonjs from '@rollup/plugin-commonjs';
 import merge from 'deepmerge';
 import { black, blue } from 'chalk';
 
@@ -51,6 +52,13 @@ const config = merge(
       replace({
         'process.env.NODE_ENV': JSON.stringify('production'),
         'config.development': `config.${ENVIRONMENT}`
+      }),
+      commonjs({
+        include: [
+          '**/fast-json-stable-stringify/**/*',
+          '**/graphql-tag/**/*',
+          '**/zen-observable/**/*'
+        ]
       }),
       copy({
         hook: 'buildStart',

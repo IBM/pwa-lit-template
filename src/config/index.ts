@@ -9,7 +9,8 @@ import { config as environmentConfig } from './config.development';
 
 const sharedConfig = {
   name: 'MyApplication',
-  description: 'MyApplication description'
+  description: 'MyApplication description',
+  apiUrl: 'http://localhost:1337/graphql'
 };
 
 export const config = {

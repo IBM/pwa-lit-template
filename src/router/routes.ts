@@ -22,6 +22,18 @@ export const routes: Route[] = [
     }
   },
   {
+    path: '/users',
+    name: 'users',
+    component: 'page-users',
+    metadata: {
+      title: 'Users',
+      description: 'Users page description'
+    },
+    action: async () => {
+      await import('../pages/page-users');
+    }
+  },
+  {
     path: '/about',
     name: 'about',
     component: 'page-about',

@@ -1,2 +1,3 @@
 server/dist/
+src/@types/__generated__/
 src-js/
