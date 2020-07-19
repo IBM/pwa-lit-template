@@ -7,11 +7,18 @@
 
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client/core';
 
+import { ConnectApolloMixin } from './helpers/connect-apollo-mixin';
+import type { Constructor } from './helpers/connect-apollo-mixin';
+
 import { config } from './config';
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   uri: config.apiUrl
 });
+
+export const ConnectApollo = <QT, QTVariables>(
+  base: Constructor<HTMLElement>
+) => ConnectApolloMixin<QT, QTVariables>(client)(base);
 
 export { client, gql };

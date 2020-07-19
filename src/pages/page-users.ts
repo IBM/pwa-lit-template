@@ -10,9 +10,8 @@ import { html, css, customElement } from 'lit-element';
 import type { BeforeEnterObserver } from '@vaadin/router';
 import type { GetUsers, GetUsersVariables } from '@types-graphql/GetUsers';
 
-import { client, gql } from '../graphql-service';
+import { ConnectApollo, gql } from '../graphql-service';
 import { PageElement } from '../helpers/page-element';
-import { ConnectApolloMixin } from '../helpers/connect-apollo-mixin';
 
 const GET_USERS = gql`
   query GetUsers($limit: Int, $start: Int) {
@@ -25,7 +24,7 @@ const GET_USERS = gql`
 
 @customElement('page-users')
 export class PageUsers
-  extends ConnectApolloMixin<GetUsers, GetUsersVariables>(client)(PageElement)
+  extends ConnectApollo<GetUsers, GetUsersVariables>(PageElement)
   implements BeforeEnterObserver {
   onBeforeEnter() {
     this.useQuery({
