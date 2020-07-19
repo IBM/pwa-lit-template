@@ -5,14 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { html, css, customElement, property } from 'lit-element';
+import { html, css, customElement } from 'lit-element';
 
 import type { BeforeEnterObserver } from '@vaadin/router';
-import type { QueryOptions, OperationVariables } from '@apollo/client/core';
 import type { GetUsers, GetUsersVariables } from '@types-graphql/GetUsers';
 
 import { client, gql } from '../graphql-service';
 import { PageElement } from '../helpers/page-element';
+import { ConnectApolloMixin } from '../helpers/connect-apollo-mixin';
 
 const GET_USERS = gql`
   query GetUsers($limit: Int, $start: Int) {
@@ -24,31 +24,14 @@ const GET_USERS = gql`
 `;
 
 @customElement('page-users')
-export class PageUsers extends PageElement implements BeforeEnterObserver {
-  @property({ type: Boolean })
-  protected loading = false;
-
-  @property({ type: Object })
-  protected data?: GetUsers;
-
-  protected useQuery<T = any, TVariables = OperationVariables>(
-    options: QueryOptions<TVariables>
-  ) {
-    return client.query<T, TVariables>(options);
-  }
-
+export class PageUsers
+  extends ConnectApolloMixin<GetUsers, GetUsersVariables>(client)(PageElement)
+  implements BeforeEnterObserver {
   onBeforeEnter() {
-    this.queryUsers();
-  }
-
-  private async queryUsers() {
-    const queryResult = await this.useQuery<GetUsers, GetUsersVariables>({
+    this.useQuery({
       query: GET_USERS,
       variables: { limit: 20 }
     });
-
-    this.loading = queryResult.loading;
-    this.data = queryResult.data;
   }
 
   static styles = css`
