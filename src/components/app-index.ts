@@ -8,6 +8,7 @@
 import { LitElement, html, css, customElement, query } from 'lit-element';
 
 import { config } from '../config';
+import { attachRouter, urlForName } from '../router';
 
 import 'pwa-helper-components/pwa-install-button.js';
 import 'pwa-helper-components/pwa-update-available.js';
@@ -55,9 +56,9 @@ export class AppIndex extends LitElement {
     return html`
       <header>
         <nav>
-          <a href="/">Home</a>
+          <a href="${urlForName('home')}">Home</a>
           <span>-</span>
-          <a href="/about">About</a>
+          <a href="${urlForName('about')}">About</a>
         </nav>
 
         <pwa-install-button>
@@ -78,13 +79,7 @@ export class AppIndex extends LitElement {
     `;
   }
 
-  private async initializeRouter() {
-    const router = await import('../router/index');
-
-    router.init(this.main);
-  }
-
   firstUpdated() {
-    this.initializeRouter();
+    attachRouter(this.main);
   }
 }

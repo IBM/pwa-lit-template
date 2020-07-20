@@ -8,6 +8,8 @@
 import { html, css, customElement } from 'lit-element';
 import { setMetaTag, removeMetaTag } from '../helpers/html-meta-manager/utils';
 
+import { urlForName } from '../router';
+
 import { PageElement } from '../helpers/page-element';
 
 @customElement('page-not-found')
@@ -26,7 +28,7 @@ export class PageNotFound extends PageElement {
         <h1>Page not found</h1>
 
         <p>
-          <a href="/">Back to home</a>
+          <a href="${urlForName('home')}">Back to home</a>
         </p>
       </section>
     `;
