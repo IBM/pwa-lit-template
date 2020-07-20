@@ -5,9 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { LitElement, property, PropertyValues } from 'lit-element';
+import { LitElement, property } from 'lit-element';
 import { updateMetadata } from './html-meta-manager';
 
+import type { PropertyValues } from 'lit-element';
 import type { Route, RouterLocation } from '@vaadin/router';
 import type { MetadataOptions } from './html-meta-manager';
 
