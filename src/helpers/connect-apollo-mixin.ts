@@ -21,12 +21,15 @@ export const ConnectApolloMixin = <QT = any, QTVariables = OperationVariables>(
   client: ApolloClient<NormalizedCacheObject>
 ) => <T extends Constructor<HTMLElement>>(base: T) => {
   class ConnectApollo extends base {
+    // TODO: Ideally this should be protected
     @property({ type: Boolean })
     loading = false;
 
+    // TODO: Ideally this should be protected
     @property({ type: Object })
     data?: QT;
 
+    // TODO: Ideally this should be protected
     async useQuery(options: QueryOptions<QTVariables>) {
       this.loading = true;
 
