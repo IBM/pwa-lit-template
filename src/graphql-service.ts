@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ApolloClient, InMemoryCache, gql } from '@apollo/client/core';
+import { ApolloClient, InMemoryCache } from '@apollo/client/core';
+export { gql } from '@apollo/client/core';
 
 import { ConnectApolloMixin } from './helpers/connect-apollo-mixin';
 import type { Constructor } from './helpers/connect-apollo-mixin';
@@ -20,5 +21,3 @@ export const client = new ApolloClient({
 export const ConnectApollo = <QT, QTVariables>(
   base: Constructor<HTMLElement>
 ) => ConnectApolloMixin<QT, QTVariables>(client)(base);
-
-export { gql };
