@@ -6,9 +6,9 @@
  */
 
 import { property } from 'lit-element';
-
 import type {
   ApolloClient,
+  ApolloQueryResult,
   NormalizedCacheObject,
   OperationVariables,
   QueryOptions
@@ -27,7 +27,7 @@ export const ConnectApolloMixin = <QT = any, QTVariables = OperationVariables>(
 
     // TODO: Ideally this should be protected
     @property({ type: Object })
-    data?: QT;
+    data?: ApolloQueryResult<QT>['data'];
 
     // TODO: Ideally this should be protected
     async useQuery(options: QueryOptions<QTVariables>) {
