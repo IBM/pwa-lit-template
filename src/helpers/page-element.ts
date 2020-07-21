@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { LitElement, property } from 'lit-element';
+import { LitElement, internalProperty } from 'lit-element';
 import { updateMetadata } from './html-meta-manager';
 
 import type { PropertyValues } from 'lit-element';
@@ -22,7 +22,7 @@ declare module '@vaadin/router/dist/vaadin-router' {
 }
 
 export class PageElement extends LitElement {
-  @property({ type: Object })
+  @internalProperty()
   protected location = {} as RouterLocation;
 
   updated(_changedProperties: PropertyValues) {
