@@ -13,6 +13,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "experimentalDecorators": true,
+    "allowJs": true,
+    "maxNodeModuleJsDepth": 2,
     "outDir": "src-js/"
   },
   "include": ["src/**/*"]
