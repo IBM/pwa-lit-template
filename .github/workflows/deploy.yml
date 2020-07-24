@@ -1,0 +1,35 @@
+name: Deploy
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    name: Deploy
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typescript:type-checking
+      - run: NODE_ENV=production npm run build
+      - run: npm test
+
+      - name: Deploying to IBM Cloud
+        uses: carbon-design-system/action-ibmcloud-cf@v1.1.0
+        with:
+          cloud-api-key: ${{ secrets.IBMCLOUD_API_KEY }}
+          cf-org: ${{ secrets.IBMCLOUD_CF_ORGANIZATION }}
+          cf-region: us-south
+          cf-space: pwa-lit-template
+          cf-app: pwa-lit-template
+          cf-manifest: manifest.yml
+          deploy-dir: server

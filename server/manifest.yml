@@ -1,0 +1,8 @@
+applications:
+  - name: pwa-lit-template
+    buildpack: https://github.com/cloudfoundry/nodejs-buildpack
+    routes:
+      - route: pwa-lit-template.mybluemix.net
+    env:
+      FORCE_HTTPS: true
+      NODE_ENV: production
