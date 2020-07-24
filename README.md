@@ -18,6 +18,8 @@ This project helps you to build Progressive Web Applications following the moder
 - Simple build flow thanks to [Rollup](https://rollupjs.org) and [`@open-wc/building-rollup`](https://open-wc.org/building/building-rollup.html) initial configuration.
 - Easy deployment over to [prpl-server](https://github.com/Polymer/prpl-server) or any static hosting.
 
+Check out [our roadmap](https://github.com/IBM/pwa-lit-template/projects/1) to get informed of the latest features released and the upcoming ones.
+
 ## Getting started
 
 ### Prerequisites
