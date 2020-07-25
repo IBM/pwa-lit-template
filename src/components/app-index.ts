@@ -27,7 +27,7 @@ export class AppIndex extends LitElement {
 
     header {
       display: flex;
-      align-items: stretch;
+      align-items: center;
       height: 53px;
       padding: 0 1rem;
       background-color: #24292e;
@@ -35,7 +35,8 @@ export class AppIndex extends LitElement {
 
     header nav {
       display: flex;
-      align-items: stretch;
+      flex: 1;
+      align-self: stretch;
     }
 
     header nav a {
