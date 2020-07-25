@@ -27,14 +27,31 @@ export class AppIndex extends LitElement {
 
     header {
       display: flex;
-      align-items: center;
-      height: 50px;
+      align-items: stretch;
+      height: 53px;
       padding: 0 1rem;
-      background-color: #ddd;
+      background-color: #24292e;
     }
 
     header nav {
-      flex: 1;
+      display: flex;
+      align-items: stretch;
+    }
+
+    header nav a {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    header nav a:not(:last-child) {
+      margin-right: 1rem;
+    }
+
+    header nav a:hover {
+      color: #bbb;
     }
 
     main {
@@ -57,7 +74,6 @@ export class AppIndex extends LitElement {
       <header>
         <nav>
           <a href="${urlForName('home')}">Home</a>
-          <span>-</span>
           <a href="${urlForName('about')}">About</a>
         </nav>
 
