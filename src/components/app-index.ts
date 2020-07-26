@@ -8,10 +8,11 @@
 import { LitElement, html, css, customElement, query } from 'lit-element';
 
 import { config } from '../config';
-import { attachRouter, urlForName } from '../router';
+import { attachRouter } from '../router';
 
 import 'pwa-helper-components/pwa-install-button.js';
 import 'pwa-helper-components/pwa-update-available.js';
+import './app-navigation';
 
 @customElement('app-index')
 export class AppIndex extends LitElement {
@@ -32,28 +33,6 @@ export class AppIndex extends LitElement {
       background-color: #24292e;
     }
 
-    header nav {
-      display: flex;
-      flex: 1;
-      align-self: stretch;
-    }
-
-    header nav a {
-      display: flex;
-      align-items: center;
-      color: #fff;
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    header nav a:not(:last-child) {
-      margin-right: 1rem;
-    }
-
-    header nav a:hover {
-      color: #bbb;
-    }
-
     main {
       flex: 1;
     }
@@ -72,10 +51,7 @@ export class AppIndex extends LitElement {
   render() {
     return html`
       <header>
-        <nav>
-          <a href="${urlForName('home')}">Home</a>
-          <a href="${urlForName('about')}">About</a>
-        </nav>
+        <app-navigation></app-navigation>
 
         <pwa-install-button>
           <button>Install app</button>
