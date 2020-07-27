@@ -5,7 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { LitElement, html, css, customElement, query } from 'lit-element';
+import {
+  LitElement,
+  html,
+  css,
+  customElement,
+  query,
+  internalProperty
+} from 'lit-element';
 
 import { config } from '../config';
 import { attachRouter } from '../router';
@@ -18,6 +25,9 @@ import './app-navigation';
 export class AppIndex extends LitElement {
   @query('main')
   private main!: HTMLElement;
+
+  @internalProperty()
+  private routeName?: string;
 
   static styles = css`
     :host {
@@ -51,7 +61,7 @@ export class AppIndex extends LitElement {
   render() {
     return html`
       <header>
-        <app-navigation></app-navigation>
+        <app-navigation .activeMenuItem=${this.routeName}></app-navigation>
 
         <pwa-install-button>
           <button>Install app</button>
@@ -73,5 +83,10 @@ export class AppIndex extends LitElement {
 
   firstUpdated() {
     attachRouter(this.main);
+
+    window.addEventListener('vaadin-router-location-changed', (event) => {
+      const { route } = (<CustomEvent>event).detail.location;
+      this.routeName = route.name;
+    });
   }
 }
