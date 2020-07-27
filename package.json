@@ -44,7 +44,7 @@
     "es-dev-server": "^1.57.0",
     "eslint": "^7.5.0",
     "eslint-config-ibmresearch": "^0.14.0",
-    "eslint-plugin-lit": "^1.2.0",
+    "eslint-plugin-lit": "^1.2.2",
     "eslint-plugin-wc": "^1.2.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
