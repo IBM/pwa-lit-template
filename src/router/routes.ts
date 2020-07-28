@@ -34,6 +34,14 @@ export const routes: Route[] = [
     }
   },
   {
+    path: '/user/:id',
+    name: 'user',
+    component: 'page-user',
+    action: async () => {
+      await import('../pages/page-user');
+    }
+  },
+  {
     path: '/about',
     name: 'about',
     component: 'page-about',

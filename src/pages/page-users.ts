@@ -6,12 +6,13 @@
  */
 
 import { html, css, customElement } from 'lit-element';
-
 import type { BeforeEnterObserver } from '@vaadin/router';
-import type { GetUsers, GetUsersVariables } from '@types-graphql/GetUsers';
 
 import { ConnectApollo, gql } from '../graphql-service';
+import { urlForName } from '../router';
 import { PageElement } from '../helpers/page-element';
+
+import type { GetUsers, GetUsersVariables } from '@types-graphql/GetUsers';
 
 const GET_USERS = gql`
   query GetUsers($limit: Int, $start: Int) {
@@ -67,7 +68,9 @@ export class PageUsers
         ${users.map(
           (user) => html`
             <li>
-              ${user.username}
+              <a href="${urlForName('user', { id: user.id })}">
+                ${user.username}
+              </a>
             </li>
           `
         )}
