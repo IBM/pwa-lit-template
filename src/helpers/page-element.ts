@@ -37,7 +37,10 @@ export class PageElement extends LitElement {
     const metadata = this.metadata(route);
 
     if (metadata) {
-      updateMetadata(metadata);
+      updateMetadata({
+        url: window.location.href,
+        ...metadata
+      });
     }
   }
 
@@ -52,8 +55,7 @@ export class PageElement extends LitElement {
     const options: MetadataOptions = {
       title: isHomePage ? title : `${title} | ${config.name}`,
       description,
-      image,
-      url: window.location.href
+      image
     };
 
     return options;
