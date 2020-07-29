@@ -47,7 +47,7 @@ export class PageElement extends LitElement {
     }
 
     const { title, description, image } = route.metadata;
-    const isHomePage = route.component === 'page-home';
+    const isHomePage = route.name === 'home';
 
     const options: MetadataOptions = {
       title: isHomePage ? title : `${title} | ${config.name}`,
