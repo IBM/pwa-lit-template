@@ -25,6 +25,14 @@ export class PageElement extends LitElement {
   @internalProperty()
   protected location = {} as RouterLocation;
 
+  private defaultTitleTemplate = `%s | ${config.name}`;
+
+  private getTitleTemplate(titleTemplate?: string | null) {
+    return titleTemplate || titleTemplate === null
+      ? titleTemplate
+      : this.defaultTitleTemplate;
+  }
+
   updated(_changedProperties: PropertyValues) {
     super.updated(_changedProperties);
 
@@ -37,27 +45,19 @@ export class PageElement extends LitElement {
     const metadata = this.metadata(route);
 
     if (metadata) {
-      updateMetadata({
+      const defaultMetadata = {
         url: window.location.href,
+        titleTemplate: this.getTitleTemplate(metadata.titleTemplate)
+      };
+
+      updateMetadata({
+        ...defaultMetadata,
         ...metadata
       });
     }
   }
 
   protected metadata(route: Route) {
-    if (!route.metadata) {
-      return null;
-    }
-
-    const { title, description, image } = route.metadata;
-    const isHomePage = route.name === 'home';
-
-    const options: MetadataOptions = {
-      title: isHomePage ? title : `${title} | ${config.name}`,
-      description,
-      image
-    };
-
-    return options;
+    return route.metadata;
   }
 }

@@ -16,17 +16,22 @@ interface ImageMetadataOptions {
 
 export interface MetadataOptions {
   title?: string;
+  titleTemplate?: string | null;
   description?: string | null;
   image?: ImageMetadataOptions | null;
   url?: string;
 }
 
 export const updateMetadata = (options: MetadataOptions) => {
-  const { title, description, image, url } = options;
+  const { title, titleTemplate, description, image, url } = options;
 
   if (title) {
-    document.title = title;
-    setMetaTag('property', 'og:title', title);
+    const finalTitle = titleTemplate
+      ? titleTemplate.replace('%s', title)
+      : title;
+
+    document.title = finalTitle;
+    setMetaTag('property', 'og:title', finalTitle);
   }
 
   if (description) {
