@@ -22,6 +22,9 @@ export const ConnectApolloMixin = <QT = any, QTVariables = OperationVariables>(
 ) => <T extends Constructor<HTMLElement>>(base: T) => {
   class ConnectApollo extends base {
     // TODO: Ideally this should be protected
+    client = client;
+
+    // TODO: Ideally this should be protected
     @property({ type: Boolean })
     loading = false;
 
@@ -33,7 +36,7 @@ export const ConnectApolloMixin = <QT = any, QTVariables = OperationVariables>(
     async useQuery(options: QueryOptions<QTVariables>) {
       this.loading = true;
 
-      const queryResult = await client.query<QT, QTVariables>(options);
+      const queryResult = await this.client.query<QT, QTVariables>(options);
 
       this.loading = queryResult.loading;
       this.data = queryResult.data;
