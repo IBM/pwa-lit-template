@@ -6,13 +6,13 @@
  */
 
 import { LitElement, internalProperty } from 'lit-element';
-import { updateMetadata } from './html-meta-manager';
-
 import type { PropertyValues } from 'lit-element';
 import type { Route, RouterLocation } from '@vaadin/router';
-import type { MetadataOptions } from './html-meta-manager';
 
 import { config } from '../config';
+
+import { updateMetadata } from './html-meta-manager';
+import type { MetadataOptions } from './html-meta-manager';
 
 // Add metadata options to the @vaadin/router BaseRoute
 declare module '@vaadin/router/dist/vaadin-router' {
