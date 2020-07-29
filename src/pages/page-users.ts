@@ -8,7 +8,8 @@
 import { html, css, customElement } from 'lit-element';
 import type { BeforeEnterObserver } from '@vaadin/router';
 
-import { ConnectApollo, gql } from '../graphql-service';
+import { client, gql } from '../graphql-service';
+import { ConnectApolloMixin } from '../helpers/connect-apollo-mixin';
 import { urlForName } from '../router';
 import { PageElement } from '../helpers/page-element';
 
@@ -25,7 +26,7 @@ const GET_USERS = gql`
 
 @customElement('page-users')
 export class PageUsers
-  extends ConnectApollo<GetUsers, GetUsersVariables>(PageElement)
+  extends ConnectApolloMixin<GetUsers, GetUsersVariables>(client)(PageElement)
   implements BeforeEnterObserver {
   onBeforeEnter() {
     this.useQuery({
