@@ -33,9 +33,11 @@ export class PageElement extends LitElement {
       : this.defaultTitleTemplate;
   }
 
-  updated(_changedProperties: PropertyValues) {
-    super.updated(_changedProperties);
+  protected metadata(route: Route) {
+    return route.metadata;
+  }
 
+  private updateMetadata() {
     const { route } = this.location;
 
     if (!route) {
@@ -57,7 +59,9 @@ export class PageElement extends LitElement {
     }
   }
 
-  protected metadata(route: Route) {
-    return route.metadata;
+  updated(_changedProperties: PropertyValues) {
+    super.updated(_changedProperties);
+
+    this.updateMetadata();
   }
 }
