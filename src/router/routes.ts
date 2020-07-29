@@ -14,6 +14,7 @@ export const routes: Route[] = [
     component: 'page-home',
     metadata: {
       title: 'MyApplication',
+      titleTemplate: null,
       description: 'MyApplication description'
     },
     action: async () => {
