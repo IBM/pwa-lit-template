@@ -47,7 +47,7 @@
     "chalk": "^4.1.0",
     "deepmerge": "^4.2.2",
     "es-dev-server": "^1.57.4",
-    "es-dev-server-rollup": "0.0.4",
+    "es-dev-server-rollup": "0.0.6",
     "eslint": "^7.7.0",
     "eslint-config-ibmresearch": "^0.15.0",
     "eslint-plugin-lit": "^1.2.2",
