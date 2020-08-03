@@ -11,8 +11,18 @@ import type {
   ApolloQueryResult,
   NormalizedCacheObject,
   OperationVariables,
-  QueryOptions
+  QueryOptions,
+  WatchQueryOptions,
+  FetchMoreQueryOptions,
+  FetchMoreOptions,
+  ObservableQuery
 } from '@apollo/client/core';
+
+declare global {
+  interface HTMLElement {
+    disconnectedCallback(): void;
+  }
+}
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export type Constructor<T = object> = new (...args: any[]) => T;
@@ -32,16 +42,64 @@ export const ConnectApolloMixin = <TQ = any, TQVariables = OperationVariables>(
     @property({ type: Object })
     data?: ApolloQueryResult<TQ>['data'];
 
+    // TODO: Ideally this should be private
+    watchQuery?: ObservableQuery<TQ, TQVariables>;
+
+    // TODO: Ideally this should be private
+    watchQuerySubscription?: ZenObservable.Subscription;
+
+    processQueryResult(queryResult: ApolloQueryResult<TQ>) {
+      this.loading = queryResult.loading;
+      this.data = queryResult.data;
+    }
+
     // TODO: Ideally this should be protected
     async useQuery(options: QueryOptions<TQVariables>) {
       this.loading = true;
 
       const queryResult = await this.client.query<TQ, TQVariables>(options);
 
-      this.loading = queryResult.loading;
-      this.data = queryResult.data;
+      this.processQueryResult(queryResult);
 
       return queryResult;
+    }
+
+    // TODO: Ideally this should be protected
+    useWatchQuery(options: WatchQueryOptions<TQVariables>) {
+      this.loading = true;
+
+      this.watchQuery = this.client.watchQuery<TQ, TQVariables>(options);
+
+      this.watchQuerySubscription = this.watchQuery.subscribe({
+        next: (queryResult) => {
+          this.processQueryResult(queryResult);
+        }
+      });
+    }
+
+    // TODO: Ideally this should be protected
+    async fetchMore<K extends keyof TQVariables>(
+      fetchMoreOptions: FetchMoreQueryOptions<TQVariables, K> &
+        FetchMoreOptions<TQ, TQVariables>
+    ): Promise<ApolloQueryResult<TQ> | void> {
+      if (!this.watchQuery) {
+        console.warn('You need to run fetchMore() before running watchQuery()');
+        return;
+      }
+
+      this.loading = true;
+
+      const queryResult = await this.watchQuery.fetchMore<K>(fetchMoreOptions);
+
+      this.loading = false;
+
+      return queryResult;
+    }
+
+    disconnectedCallback() {
+      this.watchQuerySubscription?.unsubscribe();
+
+      super.disconnectedCallback();
     }
   }
 
