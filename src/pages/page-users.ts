@@ -16,9 +16,11 @@ import type { GetUsers, GetUsersVariables } from '@types-graphql/GetUsers';
 
 const GET_USERS = gql`
   query GetUsers($limit: Int, $start: Int) {
-    users(limit: $limit, start: $start) {
-      id
-      username
+    usersConnection(limit: $limit, start: $start) {
+      values {
+        id
+        username
+      }
     }
   }
 `;
@@ -54,7 +56,7 @@ export class PageUsers
   }
 
   private renderUsers() {
-    const users = this.data?.users;
+    const users = this.data?.usersConnection.values;
 
     if (!users && this.loading) {
       return this.renderPlaceholder();

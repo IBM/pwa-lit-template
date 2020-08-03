@@ -7,14 +7,19 @@
 // GraphQL query operation: GetUsers
 // ====================================================
 
-export interface GetUsers_users {
+export interface GetUsers_usersConnection_values {
   __typename: "UsersPermissionsUser";
   id: string;
   username: string;
 }
 
+export interface GetUsers_usersConnection {
+  __typename: "UsersPermissionsUserConnection";
+  values: GetUsers_usersConnection_values[];
+}
+
 export interface GetUsers {
-  users: GetUsers_users[];
+  usersConnection: GetUsers_usersConnection;
 }
 
 export interface GetUsersVariables {
