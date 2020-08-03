@@ -14,8 +14,8 @@ import { ConnectApolloMixin } from './helpers/connect-apollo-mixin';
 import type { Constructor } from './helpers/connect-apollo-mixin';
 
 export const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  uri: config.apiUrl
+  uri: config.apiUrl,
+  cache: new InMemoryCache()
 });
 
 export const ConnectApollo = <TQ = any, TQVariables = OperationVariables>() => <
