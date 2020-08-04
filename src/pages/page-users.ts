@@ -17,6 +17,9 @@ import type { GetUsers, GetUsersVariables } from '@types-graphql/GetUsers';
 const GET_USERS = gql`
   query GetUsers($limit: Int, $start: Int) {
     usersConnection(limit: $limit, start: $start) {
+      aggregate {
+        count
+      }
       values {
         id
         username
@@ -30,9 +33,9 @@ export class PageUsers
   extends ConnectApollo<GetUsers, GetUsersVariables>()(PageElement)
   implements BeforeEnterObserver {
   onBeforeEnter() {
-    this.useQuery({
+    this.useWatchQuery({
       query: GET_USERS,
-      variables: { limit: 20 }
+      variables: { limit: 2 }
     });
   }
 
@@ -53,6 +56,30 @@ export class PageUsers
 
   private renderEmpty() {
     return html`<div class="empty">Nothing found!</div>`;
+  }
+
+  private loadMoreUsers() {
+    const start = this.data!.usersConnection.values.length;
+
+    this.fetchMore({
+      variables: { start }
+    });
+  }
+
+  private renderLoadingButton() {
+    const currentCount = this.data!.usersConnection.values.length;
+    const totalCount = this.data!.usersConnection.aggregate.count;
+    const areMoreUsers = currentCount < totalCount;
+
+    if (!this.loading && areMoreUsers) {
+      return html`<button @click=${this.loadMoreUsers}>Load more</button>`;
+    }
+
+    if (this.loading) {
+      return html`<button disabled>Loading...</button>`;
+    }
+
+    return '';
   }
 
   private renderUsers() {
@@ -77,6 +104,8 @@ export class PageUsers
           `
         )}
       </ul>
+
+      ${this.renderLoadingButton()}
     `;
   }
 
