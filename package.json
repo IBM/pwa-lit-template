@@ -28,7 +28,7 @@
     "typescript:type-checking": "rimraf src-js/ && tsc --noEmit && npm run lit:type-checking"
   },
   "dependencies": {
-    "@apollo/client": "^3.1.2",
+    "@apollo/client": "^3.1.3",
     "@vaadin/router": "^1.7.2",
     "graphql": "^15.3.0",
     "lit-element": "^2.4.0",
