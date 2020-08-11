@@ -43,7 +43,7 @@
     "deepmerge": "^4.2.2",
     "es-dev-server": "^1.57.2",
     "eslint": "^7.6.0",
-    "eslint-config-ibmresearch": "^0.14.0",
+    "eslint-config-ibmresearch": "^0.15.0",
     "eslint-plugin-lit": "^1.2.2",
     "eslint-plugin-wc": "^1.2.0",
     "husky": "^4.2.5",
