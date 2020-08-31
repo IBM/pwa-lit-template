@@ -24,7 +24,7 @@ jobs:
       - run: npm test
 
       - name: Deploying to IBM Cloud
-        uses: carbon-design-system/action-ibmcloud-cf@v1.1.0
+        uses: carbon-design-system/action-ibmcloud-cf@v1.2.0
         with:
           cloud-api-key: ${{ secrets.IBMCLOUD_API_KEY }}
           cf-org: ${{ secrets.IBMCLOUD_CF_ORGANIZATION }}
