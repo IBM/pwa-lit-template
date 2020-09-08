@@ -54,7 +54,7 @@
     "prettier": "~2.1.1",
     "prettier-plugin-package": "^1.0.0",
     "rimraf": "^3.0.2",
-    "rollup": "^2.26.10",
+    "rollup": "^2.26.11",
     "rollup-plugin-copy": "^3.3.0",
     "stylelint": "^13.7.0",
     "stylelint-config-ibmresearch": "^0.6.0",
