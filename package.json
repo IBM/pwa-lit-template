@@ -22,9 +22,9 @@
     "serve": "es-dev-server --app-index index.html --node-resolve --watch",
     "start": "npm-run-all --parallel typescript:compile-watch serve",
     "test": "echo \"Error: no test specified\"",
-    "typescript:compile": "rimraf src-js/ && tsc",
+    "typescript:compile": "rimraf \"src/**/*.{d.ts,js,js.map}\" && tsc",
     "typescript:compile-watch": "tsc --watch",
-    "typescript:type-checking": "rimraf src-js/ && tsc --noEmit && npm run lit:type-checking"
+    "typescript:type-checking": "rimraf \"src/**/*.{d.ts,js,js.map}\" && tsc --noEmit && npm run lit:type-checking"
   },
   "dependencies": {
     "@vaadin/router": "^1.7.2",

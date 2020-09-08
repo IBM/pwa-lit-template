@@ -39,8 +39,6 @@ This command serves the app at `http://localhost:8000`:
 
     npm start
 
-The folder that `es-dev-server` will serve running this command will be `src-js/`, a compiled version from TypeScript that will output plain JavaScript, without any transformation from the build process.
-
 ### Project structure
 
 ```
