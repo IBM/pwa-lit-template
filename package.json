@@ -20,10 +20,9 @@
     "lit:type-checking": "lit-analyzer \"src/{components,pages}/**/*.ts\" --strict",
     "postinstall": "patch-package",
     "serve": "web-dev-server --app-index index.html --node-resolve --watch",
-    "start": "npm-run-all --parallel typescript:compile-watch serve",
+    "start": "npm run serve",
     "test": "echo \"Error: no test specified\"",
     "typescript:compile": "rimraf \"src/**/*.{d.ts,js,js.map}\" && tsc",
-    "typescript:compile-watch": "tsc --watch",
     "typescript:type-checking": "rimraf \"src/**/*.{d.ts,js,js.map}\" && tsc --noEmit && npm run lit:type-checking"
   },
   "dependencies": {
@@ -40,6 +39,7 @@
     "@typescript-eslint/eslint-plugin": "^4.2.0",
     "@typescript-eslint/parser": "^4.2.0",
     "@web/dev-server": "~0.0.7",
+    "@web/dev-server-esbuild": "~0.2.4",
     "chalk": "^4.1.0",
     "deepmerge": "^4.2.2",
     "eslint": "^7.10.0",
