@@ -14,8 +14,7 @@
     "noUnusedParameters": true,
     "experimentalDecorators": true,
     "allowJs": true,
-    "maxNodeModuleJsDepth": 2,
-    "outDir": "src-js/"
+    "maxNodeModuleJsDepth": 2
   },
   "include": ["src/**/*"]
 }

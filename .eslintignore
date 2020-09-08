@@ -1,2 +1,4 @@
 server/dist/
-src-js/
+src/**/*.d.ts
+src/**/*.js
+src/**/*.js.map
