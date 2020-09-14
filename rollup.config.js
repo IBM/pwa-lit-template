@@ -6,7 +6,6 @@
  */
 
 import { createSpaConfig } from '@open-wc/building-rollup';
-import esbuild from 'rollup-plugin-esbuild';
 import replace from '@rollup/plugin-replace';
 import copy from 'rollup-plugin-copy';
 import merge from 'deepmerge';
@@ -50,7 +49,6 @@ const config = merge(
   {
     input: 'index.html',
     plugins: [
-      esbuild(),
       replace({
         'process.env.NODE_ENV': JSON.stringify('production'),
         'config.development': `config.${ENVIRONMENT}`

@@ -1,2 +1,5 @@
 node_modules/
 server/dist/
+src/**/*.d.ts
+src/**/*.js
+src/**/*.js.map

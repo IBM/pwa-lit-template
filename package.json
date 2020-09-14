@@ -9,7 +9,8 @@
     "node": ">=12.0.0"
   },
   "scripts": {
-    "build": "rimraf server/dist/ && rollup --config",
+    "build": "npm-run-all typescript:compile build:rollup",
+    "build:rollup": "rimraf server/dist/ && rollup --config",
     "format": "npm-run-all format:*",
     "format:prettier": "prettier --write \"**/*{html,js,json,md,ts,webmanifest}\"",
     "format:stylelint": "stylelint \"src/{components,pages}/**/*.ts\" --fix",
@@ -21,7 +22,8 @@
     "serve": "web-dev-server --app-index index.html --node-resolve --watch",
     "start": "npm run serve",
     "test": "echo \"Error: no test specified\"",
-    "typescript:type-checking": "tsc --noEmit && npm run lit:type-checking"
+    "typescript:compile": "rimraf \"src/**/*.{d.ts,js,js.map}\" && tsc",
+    "typescript:type-checking": "rimraf \"src/**/*.{d.ts,js,js.map}\" && tsc --noEmit && npm run lit:type-checking"
   },
   "dependencies": {
     "@vaadin/router": "^1.7.2",
@@ -54,7 +56,6 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.28.2",
     "rollup-plugin-copy": "^3.3.0",
-    "rollup-plugin-esbuild": "^2.5.0",
     "stylelint": "^13.7.2",
     "stylelint-config-ibmresearch": "^0.6.0",
     "typescript": "~4.0.3"
