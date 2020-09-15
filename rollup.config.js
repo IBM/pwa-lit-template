@@ -50,7 +50,11 @@ const config = merge(
   {
     input: 'index.html',
     plugins: [
-      typescript(),
+      typescript({
+        declaration: false,
+        sourceMap: false,
+        inlineSources: false
+      }),
       replace({
         'process.env.NODE_ENV': JSON.stringify('production'),
         'config.development': `config.${ENVIRONMENT}`
