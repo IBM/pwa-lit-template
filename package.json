@@ -21,8 +21,7 @@
     "serve": "web-dev-server --app-index index.html --node-resolve --watch",
     "start": "npm run serve",
     "test": "echo \"Error: no test specified\"",
-    "typescript:compile": "rimraf \"src/**/*.{d.ts,js,js.map}\" && tsc",
-    "typescript:type-checking": "rimraf \"src/**/*.{d.ts,js,js.map}\" && tsc --noEmit && npm run lit:type-checking"
+    "typescript:type-checking": "tsc --noEmit && npm run lit:type-checking"
   },
   "dependencies": {
     "@vaadin/router": "^1.7.2",
