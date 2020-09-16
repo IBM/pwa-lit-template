@@ -5,13 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+/* eslint-disable wc/guard-super-call */
+
 import { setMetaTag, removeMetaTag } from '../helpers/html-meta-manager/utils';
 
 import { PageElement } from '../helpers/page-element';
 
 export class PageElementNotFound extends PageElement {
   connectedCallback() {
-    super.connectedCallback?.();
+    super.connectedCallback();
 
     setMetaTag('name', 'render:status_code', '404');
   }
@@ -19,6 +21,6 @@ export class PageElementNotFound extends PageElement {
   disconnectedCallback() {
     removeMetaTag('name', 'render:status_code');
 
-    super.disconnectedCallback?.();
+    super.disconnectedCallback();
   }
 }
