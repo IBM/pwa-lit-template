@@ -6,14 +6,13 @@
  */
 
 import { html, css, customElement } from 'lit-element';
-import { setMetaTag, removeMetaTag } from '../helpers/html-meta-manager/utils';
 
 import { urlForName } from '../router';
 
-import { PageElement } from '../helpers/page-element';
+import { PageElementNotFound } from '../helpers/page-element-not-found';
 
 @customElement('page-not-found')
-export class PageNotFound extends PageElement {
+export class PageNotFound extends PageElementNotFound {
   static styles = css`
     :host {
       display: block;
@@ -32,17 +31,5 @@ export class PageNotFound extends PageElement {
         </p>
       </section>
     `;
-  }
-
-  connectedCallback() {
-    super.connectedCallback?.();
-
-    setMetaTag('name', 'render:status_code', '404');
-  }
-
-  disconnectedCallback() {
-    removeMetaTag('name', 'render:status_code');
-
-    super.disconnectedCallback?.();
   }
 }
