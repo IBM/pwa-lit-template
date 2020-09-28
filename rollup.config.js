@@ -6,6 +6,7 @@
  */
 
 import { createSpaConfig } from '@open-wc/building-rollup';
+import typescript from '@rollup/plugin-typescript';
 import replace from '@rollup/plugin-replace';
 import copy from 'rollup-plugin-copy';
 import merge from 'deepmerge';
@@ -49,6 +50,11 @@ const config = merge(
   {
     input: 'index.html',
     plugins: [
+      typescript({
+        declaration: false,
+        sourceMap: false,
+        inlineSources: false
+      }),
       replace({
         'process.env.NODE_ENV': JSON.stringify('production'),
         'config.development': `config.${ENVIRONMENT}`

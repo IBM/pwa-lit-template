@@ -15,7 +15,7 @@ This project helps you to build Progressive Web Applications following the moder
 - Small and powerful client-side router for Web Components with [Vaadin Router](https://vaadin.com/router).
 - All the benefits from a PWA (manifest, service worker, offline UI) thanks to [Workbox](https://developers.google.com/web/tools/workbox) and [pwa-helpers](https://github.com/thepassle/pwa-helpers).
 - SEO friendly thanks to the `PageElement` custom element and the `html-meta-manager`.
-- A development server with auto-reload to serve the application without bundling with [`es-dev-server`](https://open-wc.org/developing/es-dev-server.html).
+- A development server with auto-reload to serve the application without bundling with [`@web/dev-server`](https://modern-web.dev/docs/dev-server/).
 - Simple build flow thanks to [Rollup](https://rollupjs.org) and [`@open-wc/building-rollup`](https://open-wc.org/building/building-rollup.html) initial configuration.
 - Easy deployment over to [prpl-server](https://github.com/Polymer/prpl-server) or any static hosting.
 
