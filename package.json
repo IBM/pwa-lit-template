@@ -5,6 +5,7 @@
   "description": "A template for building Progressive Web Applications using LitElement and Vaadin Router",
   "license": "MIT",
   "repository": "github:IBM/pwa-lit-template",
+  "type": "module",
   "engines": {
     "node": ">=12.0.0"
   },
