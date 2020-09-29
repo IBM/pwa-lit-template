@@ -1,9 +1,4 @@
 {
   "editor.formatOnSave": true,
-  "files.exclude": {
-    "src/**/*.d.ts": true,
-    "src/**/*.js": true,
-    "src/**/*.js.map": true
-  },
   "lit-plugin.strict": true
 }
