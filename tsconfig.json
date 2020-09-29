@@ -19,8 +19,7 @@
     "baseUrl": "src/",
     "paths": {
       "@types-graphql/*": ["@types/__generated__/*"]
-    },
-    "outDir": "src-js/"
+    }
   },
   "include": ["src/**/*"]
 }

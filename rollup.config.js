@@ -6,6 +6,7 @@
  */
 
 import { createSpaConfig } from '@open-wc/building-rollup';
+import typescript from '@rollup/plugin-typescript';
 import replace from '@rollup/plugin-replace';
 import copy from 'rollup-plugin-copy';
 import commonjs from '@rollup/plugin-commonjs';
@@ -19,6 +20,7 @@ const DIST_PATH = 'server/dist/';
 
 const workboxConfig = {
   mode: 'production',
+  sourcemap: false,
   globDirectory: DIST_PATH,
   runtimeCaching: [
     {
@@ -49,17 +51,16 @@ const config = merge(
   {
     input: 'index.html',
     plugins: [
+      typescript({
+        declaration: false,
+        sourceMap: false,
+        inlineSources: false
+      }),
       replace({
         'process.env.NODE_ENV': JSON.stringify('production'),
         'config.development': `config.${ENVIRONMENT}`
       }),
-      commonjs({
-        include: [
-          '**/fast-json-stable-stringify/**/*',
-          '**/graphql-tag/**/*',
-          '**/zen-observable/**/*'
-        ]
-      }),
+      commonjs(),
       copy({
         hook: 'buildStart',
         targets: [

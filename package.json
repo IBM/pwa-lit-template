@@ -9,8 +9,7 @@
     "node": ">=12.0.0"
   },
   "scripts": {
-    "build": "npm-run-all typescript:compile build:rollup",
-    "build:rollup": "rimraf server/dist/ && rollup --config",
+    "build": "rimraf server/dist/ && rollup --config",
     "format": "npm-run-all format:*",
     "format:prettier": "prettier --write \"**/*{html,js,json,md,ts,webmanifest}\"",
     "format:stylelint": "stylelint \"src/{components,pages}/**/*.ts\" --fix",
@@ -19,13 +18,11 @@
     "lint:stylelint": "stylelint \"src/{components,pages}/**/*.ts\"",
     "lit:type-checking": "lit-analyzer \"src/{components,pages}/**/*.ts\" --strict",
     "postinstall": "patch-package",
-    "serve": "es-dev-server --app-index index.html --node-resolve --watch",
-    "start": "npm-run-all --parallel typescript:compile-watch serve",
+    "serve": "web-dev-server --app-index index.html --node-resolve --watch",
+    "start": "npm run serve",
     "test": "echo \"Error: no test specified\"",
-    "typescript:compile": "rimraf src-js/ && tsc",
-    "typescript:compile-watch": "tsc --watch",
     "typescript:generate-types": "rimraf src/@types/__generated__/ && apollo client:codegen --target typescript --outputFlat src/@types/__generated__/",
-    "typescript:type-checking": "rimraf src-js/ && tsc --noEmit && npm run lit:type-checking"
+    "typescript:type-checking": "tsc --noEmit && npm run lit:type-checking"
   },
   "dependencies": {
     "@apollo/client": "^3.2.1",
@@ -41,13 +38,14 @@
     "@open-wc/building-rollup": "^1.9.1",
     "@rollup/plugin-commonjs": "^15.1.0",
     "@rollup/plugin-replace": "^2.3.3",
+    "@rollup/plugin-typescript": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^4.3.0",
     "@typescript-eslint/parser": "^4.3.0",
+    "@web/dev-server": "~0.0.12",
+    "@web/dev-server-esbuild": "~0.2.4",
     "apollo": "^2.31.0",
     "chalk": "^4.1.0",
     "deepmerge": "^4.2.2",
-    "es-dev-server": "^1.57.5",
-    "es-dev-server-rollup": "0.0.8",
     "eslint": "^7.10.0",
     "eslint-config-ibmresearch": "^0.16.0",
     "eslint-plugin-lit": "^1.2.2",
