@@ -5,17 +5,19 @@
   "description": "A template for building Progressive Web Applications using LitElement and Vaadin Router",
   "license": "MIT",
   "repository": "github:IBM/pwa-lit-template",
+  "type": "module",
   "engines": {
     "node": ">=12.0.0"
   },
   "scripts": {
     "build": "rimraf server/dist/ && rollup --config",
     "format": "npm-run-all format:*",
-    "format:prettier": "prettier --write \"**/*{html,js,json,md,ts,webmanifest}\"",
-    "format:stylelint": "stylelint \"src/{components,pages}/**/*.ts\" --fix",
+    "format:eslint": "npm run lint:eslint -- --fix",
+    "format:prettier": "prettier \"**/*{html,js,json,md,ts,webmanifest}\" --write --ignore-path .gitignore",
+    "format:stylelint": "npm run lint:stylelint -- --fix",
     "lint": "npm-run-all --parallel lint:*",
-    "lint:eslint": "eslint \"**/*.{js,ts}\"",
-    "lint:stylelint": "stylelint \"src/{components,pages}/**/*.ts\"",
+    "lint:eslint": "eslint \"**/*.{js,ts}\" --ignore-path .gitignore",
+    "lint:stylelint": "stylelint \"src/{components,pages}/**/*.ts\" --ignore-path .gitignore",
     "lit:type-checking": "lit-analyzer \"src/{components,pages}/**/*.ts\" --strict",
     "postinstall": "patch-package",
     "serve": "web-dev-server --app-index index.html --node-resolve --watch",
@@ -25,7 +27,7 @@
     "typescript:type-checking": "tsc --noEmit && npm run lit:type-checking"
   },
   "dependencies": {
-    "@apollo/client": "^3.2.1",
+    "@apollo/client": "^3.2.2",
     "@vaadin/router": "^1.7.2",
     "graphql": "^15.3.0",
     "lit-element": "^2.4.0",
@@ -35,7 +37,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/plugin-proposal-decorators": "^7.10.5",
-    "@open-wc/building-rollup": "^1.9.1",
+    "@open-wc/building-rollup": "^1.9.2",
     "@rollup/plugin-commonjs": "^15.1.0",
     "@rollup/plugin-replace": "^2.3.3",
     "@rollup/plugin-typescript": "^6.0.0",
@@ -56,7 +58,7 @@
     "npm-run-all": "^4.1.5",
     "patch-package": "^6.2.2",
     "prettier": "~2.1.2",
-    "prettier-plugin-package": "^1.0.0",
+    "prettier-plugin-package": "^1.1.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.28.2",
     "rollup-plugin-copy": "^3.3.0",
@@ -93,9 +95,9 @@
     }
   },
   "lint-staged": {
-    "**/*.{html,js,json,md,ts,webmanifest}": "prettier --write",
-    "**/*.{js,ts}": "eslint --fix",
-    "src/{components,pages}/**/*.ts": "stylelint --fix"
+    "**/*.{html,js,json,md,ts,webmanifest}": "prettier --write --ignore-path .gitignore",
+    "**/*.{js,ts}": "eslint --ignore-path .gitignore --fix",
+    "src/{components,pages}/**/*.ts": "stylelint --ignore-path .gitignore --fix"
   },
   "prettier": {
     "singleQuote": true,
