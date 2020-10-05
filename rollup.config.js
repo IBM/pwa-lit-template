@@ -74,9 +74,8 @@ const config = merge(
   }
 );
 
-console.log(black.bgWhite(' Build information'.padEnd(60, ' ')));
-console.log();
-console.log(`${blue('Environment')} \t\t ${ENVIRONMENT}`);
-console.log(`${blue('Version')} \t\t v${packageJson.version}`);
+console.log(black.bgWhite(' Build information'.padEnd(60, ' ')), '\n');
+console.log(`${blue('Environment')}       ${ENVIRONMENT}`);
+console.log(`${blue('Version')}           v${packageJson.version}`);
 
 export default config;
