@@ -8,7 +8,7 @@
 import { createSpaConfig } from '@open-wc/building-rollup';
 import typescript from '@rollup/plugin-typescript';
 import replace from '@rollup/plugin-replace';
-import copy from 'rollup-plugin-copy';
+import { copy } from '@web/rollup-plugin-copy';
 import commonjs from '@rollup/plugin-commonjs';
 import merge from 'deepmerge';
 import { black, blue } from 'chalk';
@@ -62,23 +62,15 @@ const config = merge(
       }),
       commonjs(),
       copy({
-        hook: 'buildStart',
-        targets: [
-          {
-            // Copy all the static files
-            src: ['images', 'manifest.webmanifest', 'robots.txt'],
-            dest: DIST_PATH
-          }
-        ],
-        flatten: false
+        // Copy all the static files
+        patterns: ['images/**/*', 'manifest.webmanifest', 'robots.txt']
       })
     ]
   }
 );
 
-console.log(black.bgWhite(' Build information'.padEnd(60, ' ')));
-console.log();
-console.log(`${blue('Environment')} \t\t ${ENVIRONMENT}`);
-console.log(`${blue('Version')} \t\t v${packageJson.version}`);
+console.log(black.bgWhite(' Build information'.padEnd(60, ' ')), '\n');
+console.log(`${blue('Environment')}       ${ENVIRONMENT}`);
+console.log(`${blue('Version')}           v${packageJson.version}`);
 
 export default config;
