@@ -24,10 +24,10 @@ router.setRoutes([
   ...routes
 ]);
 
-export const attachRouter = (outlet: Node | null): void => {
+export const attachRouter = (outlet: Node) => {
   router.setOutlet(outlet);
 };
 
-export const urlForName = (name: string, params?: Params | null): string => {
+export const urlForName = (name: string, params?: Params) => {
   return router.urlForName(name, params);
 };
