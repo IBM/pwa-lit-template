@@ -19,12 +19,12 @@ jobs:
           node-version: "12.x"
       - run: npm ci
       - run: npm run lint
-      - run: npm run typescript:type-checking
+      - run: npm run type-checking
       - run: NODE_ENV=production npm run build
       - run: npm test
 
       - name: Deploying to IBM Cloud
-        uses: carbon-design-system/action-ibmcloud-cf@v1.2.0
+        uses: carbon-design-system/action-ibmcloud-cf@v1.3.0
         with:
           cloud-api-key: ${{ secrets.IBMCLOUD_API_KEY }}
           cf-org: ${{ secrets.IBMCLOUD_CF_ORGANIZATION }}

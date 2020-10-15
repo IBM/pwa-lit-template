@@ -23,11 +23,11 @@
     "serve": "web-dev-server --app-index index.html --node-resolve --watch",
     "start": "npm run serve",
     "test": "echo \"Error: no test specified\"",
-    "typescript:generate-types": "rimraf src/@types/__generated__/ && apollo client:codegen --target typescript --outputFlat src/@types/__generated__/",
-    "typescript:type-checking": "tsc --noEmit && npm run lit:type-checking"
+    "type-checking": "tsc --noEmit && npm run lit:type-checking",
+    "typescript:generate-types": "rimraf src/@types/__generated__/ && apollo client:codegen --target typescript --outputFlat src/@types/__generated__/"
   },
   "dependencies": {
-    "@apollo/client": "^3.2.2",
+    "@apollo/client": "^3.2.4",
     "@vaadin/router": "^1.7.2",
     "graphql": "^15.3.0",
     "lit-element": "^2.4.0",
