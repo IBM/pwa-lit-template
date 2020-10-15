@@ -23,7 +23,7 @@
     "serve": "web-dev-server --app-index index.html --node-resolve --watch",
     "start": "npm run serve",
     "test": "echo \"Error: no test specified\"",
-    "typescript:type-checking": "tsc --noEmit && npm run lit:type-checking"
+    "type-checking": "tsc --noEmit && npm run lit:type-checking"
   },
   "dependencies": {
     "@vaadin/router": "^1.7.2",
