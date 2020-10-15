@@ -19,7 +19,7 @@ jobs:
           node-version: "12.x"
       - run: npm ci
       - run: npm run lint
-      - run: npm run typescript:type-checking
+      - run: npm run type-checking
       - run: NODE_ENV=production npm run build
       - run: npm test
 
