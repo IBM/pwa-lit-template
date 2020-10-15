@@ -24,7 +24,7 @@ router.setRoutes([
   ...routes
 ]);
 
-export const attachRouter = (outlet: Node) => {
+export const attachRouter = (outlet: HTMLElement) => {
   router.setOutlet(outlet);
 };
 
