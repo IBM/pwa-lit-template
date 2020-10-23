@@ -13,15 +13,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Use Node.js 12.x
-        uses: actions/setup-node@v1
+      - uses: actions/setup-node@v1
         with:
           node-version: "12.x"
+
       - run: npm ci
-      - run: npm run lint
-      - run: npm run type-checking
       - run: NODE_ENV=production npm run build
-      - run: npm test
 
       - name: Deploying to IBM Cloud
         uses: carbon-design-system/action-ibmcloud-cf@v1.3.0
