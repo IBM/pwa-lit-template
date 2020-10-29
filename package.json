@@ -49,6 +49,7 @@
     "deepmerge": "^4.2.2",
     "eslint": "^7.12.1",
     "eslint-config-ibmresearch": "^0.16.0",
+    "eslint-plugin-chai-expect": "^2.2.0",
     "eslint-plugin-lit": "^1.2.4",
     "eslint-plugin-mocha": "^8.0.0",
     "eslint-plugin-wc": "^1.2.0",
@@ -82,7 +83,8 @@
   "eslintConfig": {
     "extends": [
       "ibmresearch",
-      "plugin:mocha/recommended"
+      "plugin:mocha/recommended",
+      "plugin:chai-expect/recommended"
     ],
     "overrides": [
       {
