@@ -14,7 +14,8 @@
     "noUnusedParameters": true,
     "experimentalDecorators": true,
     "allowJs": true,
-    "maxNodeModuleJsDepth": 2
+    "maxNodeModuleJsDepth": 2,
+    "esModuleInterop": true
   },
   "include": ["src/**/*"],
   "exclude": ["tests/**/*"]

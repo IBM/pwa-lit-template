@@ -1,5 +1,5 @@
-const { chromium } = require('playwright');
-const { expect } = require('chai');
+import { chromium } from 'playwright';
+import { expect } from 'chai';
 
 let browser, page;
 
