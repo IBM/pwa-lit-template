@@ -5,7 +5,6 @@
   "description": "A template for building Progressive Web Applications using LitElement and Vaadin Router",
   "license": "MIT",
   "repository": "github:IBM/pwa-lit-template",
-  "type": "module",
   "engines": {
     "node": ">=12.0.0"
   },
@@ -22,7 +21,7 @@
     "postinstall": "patch-package",
     "serve": "web-dev-server --app-index index.html --node-resolve --watch",
     "start": "npm run serve",
-    "test": "echo \"Error: no test specified\"",
+    "test": "mocha --timeout 15000 tests/**/*.test.js",
     "type-checking": "tsc --noEmit && npm run lit:type-checking"
   },
   "dependencies": {
@@ -42,17 +41,21 @@
     "@web/dev-server": "~0.0.15",
     "@web/dev-server-esbuild": "~0.2.6",
     "@web/rollup-plugin-copy": "^0.2.0",
+    "chai": "^4.2.0",
     "chalk": "^4.1.0",
     "deepmerge": "^4.2.2",
     "eslint": "^7.12.1",
     "eslint-config-ibmresearch": "^0.16.0",
     "eslint-plugin-lit": "^1.2.4",
+    "eslint-plugin-mocha": "^8.0.0",
     "eslint-plugin-wc": "^1.2.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.4.2",
     "lit-analyzer": "^1.2.1",
+    "mocha": "^8.2.0",
     "npm-run-all": "^4.1.5",
     "patch-package": "^6.2.2",
+    "playwright": "^1.5.2",
     "prettier": "~2.1.2",
     "prettier-plugin-package": "^1.2.0",
     "rimraf": "^3.0.2",
@@ -73,7 +76,10 @@
     ]
   },
   "eslintConfig": {
-    "extends": "ibmresearch",
+    "extends": [
+      "ibmresearch",
+      "plugin:mocha/recommended"
+    ],
     "overrides": [
       {
         "files": "src/**/*",
@@ -82,7 +88,10 @@
           "@typescript-eslint/no-non-null-assertion": "off"
         }
       }
-    ]
+    ],
+    "env": {
+      "mocha": true
+    }
   },
   "husky": {
     "hooks": {
