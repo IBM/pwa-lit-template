@@ -59,4 +59,31 @@ describe('routing tests', function () {
     const title = await page.title();
     expect(title).to.equal('Error | MyApplication');
   });
+
+  it('home page should have the right description', async function () {
+    await page.goto(createUrl('/'));
+    const description = await getDescription(page);
+    expect(description).to.equal('MyApplication description');
+  });
+
+  it('about page should have the right description', async function () {
+    await page.goto(createUrl('/about'));
+    const description = await getDescription(page);
+    expect(description).to.equal('About page description');
+  });
+
+  it('not found page should have the right description', async function () {
+    await page.goto(createUrl('/not-found'));
+    const description = await getDescription(page);
+    expect(description).to.equal('');
+  });
 });
+
+const getDescription = async (page) => {
+  const description = await page.$eval(
+    'meta[name="description"]',
+    (element) => element.content
+  );
+
+  return description;
+};
