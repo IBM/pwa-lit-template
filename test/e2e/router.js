@@ -6,10 +6,11 @@
  */
 
 const path = require('path');
-const { chromium } = require('playwright');
+const { chromium, webkit, firefox } = require('playwright');
 const { expect } = require('chai');
 const { startDevServer } = require('@web/dev-server');
 
+const browserName = process.env.BROWSER || 'chromium';
 const port = 4444;
 const baseUrl = `http://localhost:${port}`;
 const createUrl = (path) => `${baseUrl}${path}`;
@@ -25,7 +26,7 @@ describe('routing tests', function () {
       }
     });
 
-    browser = await chromium.launch();
+    browser = await { chromium, webkit, firefox }[browserName].launch();
   });
 
   after(async function () {
