@@ -38,7 +38,7 @@
     "@rollup/plugin-typescript": "^6.1.0",
     "@typescript-eslint/eslint-plugin": "^4.7.0",
     "@typescript-eslint/parser": "^4.7.0",
-    "@web/dev-server": "~0.0.19",
+    "@web/dev-server": "~0.0.20",
     "@web/dev-server-esbuild": "~0.2.6",
     "@web/rollup-plugin-copy": "^0.2.0",
     "chalk": "^4.1.0",
