@@ -13,7 +13,6 @@ import { PageElement } from '../helpers/page-element';
 export class PageAbout extends PageElement {
   static styles = css`
     :host {
-      display: block;
       padding: 1rem;
     }
   `;
