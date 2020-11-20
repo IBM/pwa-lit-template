@@ -58,6 +58,7 @@ export class AppIndex extends LitElement {
     main > * {
       display: flex;
       flex: 1;
+      flex-direction: column;
     }
 
     main:empty ~ footer {
