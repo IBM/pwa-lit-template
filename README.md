@@ -7,7 +7,7 @@
 
 # pwa-lit-template
 
-##### [Getting started](#getting-started) | [Build for production](#build-for-production) | [Create a new page](#create-a-new-page) | [Configuration files](#configuration-files) | [Browser support](#browser-support)
+##### [Getting started](#getting-started) | [Build for production](#build-for-production) | [Create a new page](#create-a-new-page) | [Environment configuration](#environment-configuration) | [Browser support](#browser-support)
 
 This project helps you to build Progressive Web Applications following the modern web standards, best practices and providing you with tools for that purpose. Out of the box, provides you with the following features:
 
@@ -130,7 +130,7 @@ Note: If you need to add static files to the build, like the `images` folder or 
 
 With SEO in mind, this project offers you the `PageElement` base class to help you to deal with it; it has a `metadata()` method that edits the HTML meta tags of the specific page with the `metadata` property defined in the route. And if you need dynamic information, you also can override the `metadata()` method.
 
-### Configuration files
+### Environment configuration
 
 This project allows different configurations per environment. The files that manage that configuration can be found in `src/config/` and the structure that we follow here is the next one:
 
