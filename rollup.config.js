@@ -12,9 +12,11 @@ import { copy } from '@web/rollup-plugin-copy';
 import merge from 'deepmerge';
 import { black, blue } from 'chalk';
 
-import packageJson from './package.json';
+import {
+  envVariables,
+  injectEnvVariablesToWindow
+} from './inject-env-variables-to-window.mjs';
 
-const ENVIRONMENT = process.env.NODE_ENV || 'development';
 const DIST_PATH = 'server/dist/';
 
 const workboxConfig = {
@@ -44,6 +46,9 @@ const config = merge(
     outputDir: DIST_PATH,
     legacyBuild: true,
     developmentMode: process.env.ROLLUP_WATCH === 'true',
+    html: {
+      transform: [(html) => injectEnvVariablesToWindow(html)]
+    },
     workbox: workboxConfig,
     injectServiceWorker: true
   }),
@@ -56,8 +61,7 @@ const config = merge(
         inlineSources: false
       }),
       replace({
-        'process.env.NODE_ENV': JSON.stringify('production'),
-        'config.development': `config.${ENVIRONMENT}`
+        'process.env.NODE_ENV': JSON.stringify('production')
       }),
       copy({
         // Copy all the static files
@@ -68,7 +72,7 @@ const config = merge(
 );
 
 console.log(black.bgWhite(' Build information'.padEnd(60, ' ')), '\n');
-console.log(`${blue('Environment')}       ${ENVIRONMENT}`);
-console.log(`${blue('Version')}           v${packageJson.version}`);
+console.log(`${blue('Environment')}       ${envVariables.ENVIRONMENT}`);
+console.log(`${blue('Version')}           v${envVariables.VERSION}`);
 
 export default config;

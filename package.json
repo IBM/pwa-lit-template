@@ -43,6 +43,7 @@
     "@web/rollup-plugin-copy": "^0.2.0",
     "chalk": "^4.1.0",
     "deepmerge": "^4.2.2",
+    "dotenv": "^8.2.0",
     "eslint": "^7.14.0",
     "eslint-config-ibmresearch": "^0.17.1",
     "eslint-plugin-lit": "^1.2.4",

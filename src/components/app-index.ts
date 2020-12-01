@@ -7,7 +7,6 @@
 
 import { LitElement, html, css, customElement, query } from 'lit-element';
 
-import { config } from '../config';
 import { attachRouter, urlForName } from '../router';
 
 import 'pwa-helper-components/pwa-install-button.js';
@@ -93,12 +92,20 @@ export class AppIndex extends LitElement {
       <main role="main"></main>
 
       <footer>
-        <span>Environment: ${config.environment}</span>
+        <span>Environment: ${window.env.ENVIRONMENT}</span>
       </footer>
     `;
   }
 
   firstUpdated() {
     attachRouter(this.main);
+  }
+}
+
+declare global {
+  interface Window {
+    env: {
+      [key: string]: string;
+    };
   }
 }

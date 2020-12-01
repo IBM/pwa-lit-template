@@ -6,9 +6,13 @@
  */
 
 import { esbuildPlugin } from '@web/dev-server-esbuild';
+import { injectEnvVariablesToWindowPlugin } from './inject-env-variables-to-window.mjs';
 
 export default {
   appIndex: 'index.html',
   nodeResolve: true,
-  plugins: [esbuildPlugin({ ts: true })]
+  plugins: [
+    esbuildPlugin({ ts: true }),
+    injectEnvVariablesToWindowPlugin()
+  ]
 };
