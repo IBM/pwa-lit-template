@@ -9,8 +9,6 @@ import { LitElement, internalProperty } from 'lit-element';
 import type { PropertyValues } from 'lit-element';
 import type { Route, RouterLocation } from '@vaadin/router';
 
-import { config } from '../config';
-
 import { updateMetadata } from './html-meta-manager';
 import type { MetadataOptions } from './html-meta-manager';
 
@@ -25,7 +23,7 @@ export class PageElement extends LitElement {
   @internalProperty()
   protected location = {} as RouterLocation;
 
-  private defaultTitleTemplate = `%s | ${config.name}`;
+  private defaultTitleTemplate = `%s | ${process.env.APP_NAME}`;
 
   private getTitleTemplate(titleTemplate?: string | null) {
     return titleTemplate || titleTemplate === null

@@ -6,9 +6,16 @@
  */
 
 import { esbuildPlugin } from '@web/dev-server-esbuild';
+import { fromRollup } from '@web/dev-server-rollup';
+import rollupDotenv from 'rollup-plugin-dotenv';
+
+const dotenv = fromRollup(rollupDotenv.default);
 
 export default {
   appIndex: 'index.html',
   nodeResolve: true,
-  plugins: [esbuildPlugin({ ts: true })]
+  plugins: [
+    esbuildPlugin({ ts: true }),
+    dotenv()
+  ]
 };
