@@ -5,14 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { config as environmentConfig } from './config.development';
-
-const sharedConfig = {
-  name: 'MyApplication',
-  description: 'MyApplication description'
-};
+import environmentConfig from './config.development';
 
 export const config = {
-  ...sharedConfig,
+  name: 'MyApplication',
+  description: 'MyApplication description',
   ...environmentConfig
 };
