@@ -25,7 +25,7 @@ export class PageElement extends LitElement {
   @internalProperty()
   protected location = {} as RouterLocation;
 
-  private defaultTitleTemplate = `%s | ${config.name}`;
+  private defaultTitleTemplate = `%s | ${config.appName}`;
 
   private getTitleTemplate(titleTemplate?: string | null) {
     return titleTemplate || titleTemplate === null

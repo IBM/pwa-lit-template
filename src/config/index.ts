@@ -8,7 +8,7 @@
 import environmentConfig from './config.development';
 
 export const config = {
-  name: 'MyApplication',
-  description: 'MyApplication description',
+  appName: 'MyApplication',
+  appDescription: 'MyApplication description',
   ...environmentConfig
 };
