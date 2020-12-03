@@ -136,13 +136,13 @@ This project allows different configurations per environment. The files that man
 
 ```
 ├─ src/config/
-|  ├─ config.{ENVIRONMENT}.ts
+|  ├─ config.{NODE_ENV}.ts
 |  └─ index.ts
 ```
 
-Before the build all the variables are shared between `index.ts` and `config.development.ts` but in the build process inside `rollup.config.js` the `import` of that last file is changed by the file related with the target environment following the rule `config.{ENVIRONMENT}.ts` and loading the expected configuration file.
+Before the build all the variables are shared between `index.ts` and `config.development.ts` but in the build process the `import` of that last file is changed by the file related with the target environment following the rule `config.{NODE_ENV}.ts` and loading the expected configuration file.
 
-Lastly, the way to use that configuration is quite simple. You only need to import it in your `.ts` file:
+Lastly, the way to use that configuration is quite simple. You only need to import it:
 
 ```typescript
 import { config } from '../config';
