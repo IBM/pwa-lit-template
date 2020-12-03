@@ -7,12 +7,8 @@
 
 import environmentConfig from './config.development';
 
-const sharedConfig = {
-  name: 'MyApplication',
-  description: 'MyApplication description'
-};
-
 export const config = {
-  ...sharedConfig,
+  name: 'MyApplication',
+  description: 'MyApplication description',
   ...environmentConfig
 };
