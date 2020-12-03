@@ -56,7 +56,10 @@ const config = merge(
         inlineSources: false
       }),
       replace({
-        'process.env.NODE_ENV': JSON.stringify('production'),
+        'process.env.NODE_ENV': JSON.stringify('production')
+      }),
+      replace({
+        include: 'src/config/index.ts',
         'config.development': `config.${ENVIRONMENT}`
       }),
       copy({
