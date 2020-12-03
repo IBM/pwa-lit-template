@@ -56,8 +56,12 @@ const config = merge(
         inlineSources: false
       }),
       replace({
-        'process.env.NODE_ENV': JSON.stringify('production'),
-        'config.development': `config.${ENVIRONMENT}`
+        'process.env.NODE_ENV': JSON.stringify('production')
+      }),
+      replace({
+        include: 'src/components/app-index.ts',
+        // Replace vars
+        development: 'ENVIRONMENT'
       }),
       copy({
         // Copy all the static files
