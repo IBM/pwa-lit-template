@@ -7,7 +7,7 @@
 
 import environmentConfig from './config.development';
 
-export const config = {
+export default {
   appName: 'MyApplication',
   appDescription: 'MyApplication description',
   ...environmentConfig

@@ -7,7 +7,7 @@
 
 import type { Route } from '@vaadin/router';
 
-import { config } from '../config';
+import config from '../config';
 
 export const routes: Route[] = [
   {
