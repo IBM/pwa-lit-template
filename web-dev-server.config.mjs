@@ -9,16 +9,20 @@ import { esbuildPlugin } from '@web/dev-server-esbuild';
 import { fromRollup } from '@web/dev-server-rollup';
 import replace from '@rollup/plugin-replace';
 
-const ENVIRONMENT = process.env.NODE_ENV || 'development';
-
 export default {
   appIndex: 'index.html',
   nodeResolve: true,
   plugins: [
     esbuildPlugin({ ts: true }),
-    fromRollup(replace)({
-      include: 'src/config.ts',
-      'config.development': `config.${ENVIRONMENT}`
-    })
+    ...(process.env.NODE_ENV
+      ? [
+          fromRollup(replace)({
+            include: 'src/**/*.ts',
+            exclude: 'src/config.*.ts',
+            delimiters: ['', ''],
+            './config': `./config.${process.env.NODE_ENV}`
+          })
+        ]
+      : [])
   ]
 };

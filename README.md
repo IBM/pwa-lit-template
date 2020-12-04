@@ -49,15 +49,15 @@ This command serves the app at `http://localhost:8000`:
 │  ├─ components/
 │  │  ├─ app-index.ts
 │  │  └─ ···
-│  ├─ config/
 │  ├─ helpers/
 │  │  ├─ page-element.ts
 │  │  └─ ···
 │  ├─ pages/
 │  │  ├─ page-home.ts
 │  │  └─ ···
-│  └─ router/
-│     └─ routes.ts
+│  ├─ router/
+│  │  └─ routes.ts
+│  └─ config.ts
 ├─ index.html
 ├─ manifest.webmanifest
 ├─ package.json
@@ -71,10 +71,10 @@ This command serves the app at `http://localhost:8000`:
 - `server`: contains the logic to serve the application. And is where you are going to create your `dist/` folder containing the bundle of your application.
 - `src`
   - `components`: contains your custom Web Components. Inside this folder you will find the `app-index.ts` file, main root of your application following the PRPL patern.
-  - `config`: stores the configuration (handles the environment at the build time).
   - `helpers`: contains two interesting features: `PageElement` and `html-meta-manager`. Go more in-depth with them [here](#create-a-new-page).
   - `pages`: where you create the pages for your application.
   - `router`: where you create the routes for your application.
+  - `config.ts`: stores the configuration (handles the environment at the build time).
 - `index.html`: the application entry point.
 
 ## Guides

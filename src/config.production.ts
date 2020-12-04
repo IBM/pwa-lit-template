@@ -5,6 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import config from './config';
+
 export default {
+  ...config,
   environment: 'production'
 };
