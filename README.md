@@ -145,7 +145,7 @@ Before the build all the variables are shared between `index.ts` and `config.dev
 Lastly, the way to use that configuration is quite simple. You only need to import it:
 
 ```typescript
-import { config } from '../config';
+import config from '../config';
 ```
 
 And use it where you need it:
