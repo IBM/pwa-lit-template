@@ -17,7 +17,7 @@ export default {
   plugins: [
     esbuildPlugin({ ts: true }),
     fromRollup(replace)({
-      include: 'src/config/index.ts',
+      include: 'src/config.ts',
       'config.development': `config.${ENVIRONMENT}`
     })
   ]

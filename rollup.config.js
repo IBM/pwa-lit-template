@@ -57,7 +57,7 @@ const config = merge(
         'process.env.NODE_ENV': JSON.stringify('production')
       }),
       replace({
-        include: 'src/config/index.ts',
+        include: 'src/config.ts',
         'config.development': `config.${ENVIRONMENT}`
       }),
       copy({
