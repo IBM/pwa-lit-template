@@ -68,8 +68,10 @@ const config = merge(
   }
 );
 
-console.log(black.bgWhite(' Build information'.padEnd(60, ' ')), '\n');
-console.log(`${blue('Environment')}       ${ENVIRONMENT}`);
-console.log(`${blue('Version')}           v${process.env.npm_package_version}`);
+console.log(`${black.bgWhite(' Build information'.padEnd(60, ' '))}
+
+${blue('Name')}                   ${process.env.npm_package_name}
+${blue('Environment')}            ${ENVIRONMENT}
+${blue('Version')}                v${process.env.npm_package_version}`);
 
 export default config;
