@@ -49,15 +49,15 @@ This command serves the app at `http://localhost:8000`:
 │  ├─ components/
 │  │  ├─ app-index.ts
 │  │  └─ ···
-│  ├─ config/
 │  ├─ helpers/
 │  │  ├─ page-element.ts
 │  │  └─ ···
 │  ├─ pages/
 │  │  ├─ page-home.ts
 │  │  └─ ···
-│  └─ router/
-│     └─ routes.ts
+│  ├─ router/
+│  │  └─ routes.ts
+│  └─ config.ts
 ├─ index.html
 ├─ manifest.webmanifest
 ├─ package.json
@@ -71,10 +71,10 @@ This command serves the app at `http://localhost:8000`:
 - `server`: contains the logic to serve the application. And is where you are going to create your `dist/` folder containing the bundle of your application.
 - `src`
   - `components`: contains your custom Web Components. Inside this folder you will find the `app-index.ts` file, main root of your application following the PRPL patern.
-  - `config`: stores the configuration (handles the environment at the build time).
   - `helpers`: contains two interesting features: `PageElement` and `html-meta-manager`. Go more in-depth with them [here](#create-a-new-page).
   - `pages`: where you create the pages for your application.
   - `router`: where you create the routes for your application.
+  - `config.ts`: stores the application configuration variables. Go more in-depth with it [here](#environment-configuration).
 - `index.html`: the application entry point.
 
 ## Guides
@@ -132,15 +132,18 @@ With SEO in mind, this project offers you the `PageElement` base class to help y
 
 ### Environment configuration
 
-This project allows different configurations per environment. The files that manage that configuration can be found in `src/config/` and the structure that we follow here is the next one:
+This project allows different configurations per environment. The file that manages that configuration is `src/config.ts`. If you are interested in overwrite any of the configuration variables depending of the environment, you can create a file following the rule `src/config.{NODE_ENV}.ts`. Take into account that you don't need to replicate all the variables, just change the variable that you need to be different this way:
 
-```
-├─ src/config/
-|  ├─ config.{NODE_ENV}.ts
-|  └─ index.ts
+```typescript
+import config from './config';
+
+export default {
+  ...config,
+  environment: 'staging'
+};
 ```
 
-Before the build all the variables are shared between `index.ts` and `config.development.ts` but in the build process the `import` of that last file is changed by the file related with the target environment following the rule `config.{NODE_ENV}.ts` and loading the expected configuration file.
+In the build process the references in the project (but not in the configuration files) of `./config` will be replaced to `./config.{NODE_ENV}` loading the expected configuration file for the target environment.
 
 Lastly, the way to use that configuration is quite simple. You only need to import it:
 

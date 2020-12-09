@@ -5,10 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import environmentConfig from './config.development';
-
 export default {
+  environment: 'development',
   appName: 'MyApplication',
-  appDescription: 'MyApplication description',
-  ...environmentConfig
+  appDescription: 'MyApplication description'
 };

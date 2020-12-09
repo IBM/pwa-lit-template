@@ -12,7 +12,6 @@ import { copy } from '@web/rollup-plugin-copy';
 import merge from 'deepmerge';
 import { black, blue } from 'chalk';
 
-const ENVIRONMENT = process.env.NODE_ENV || 'development';
 const DIST_PATH = 'server/dist/';
 
 const workboxConfig = {
@@ -56,10 +55,16 @@ const config = merge(
       replace({
         'process.env.NODE_ENV': JSON.stringify('production')
       }),
-      replace({
-        include: 'src/config/index.ts',
-        'config.development': `config.${ENVIRONMENT}`
-      }),
+      ...(process.env.NODE_ENV
+        ? [
+            replace({
+              include: 'src/**/*.ts',
+              exclude: 'src/config.*.ts',
+              delimiters: ['', ''],
+              './config': `./config.${process.env.NODE_ENV}`
+            })
+          ]
+        : []),
       copy({
         // Copy all the static files
         patterns: ['images/**/*', 'manifest.webmanifest', 'robots.txt']
@@ -71,7 +76,7 @@ const config = merge(
 console.log(`${black.bgWhite(' Build information'.padEnd(60, ' '))}
 
 ${blue('Name')}                   ${process.env.npm_package_name}
-${blue('Environment')}            ${ENVIRONMENT}
+${blue('Environment')}            ${process.env.NODE_ENV || 'development'}
 ${blue('Version')}                v${process.env.npm_package_version}`);
 
 export default config;
