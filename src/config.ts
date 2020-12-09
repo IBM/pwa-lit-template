@@ -9,5 +9,5 @@ export default {
   environment: 'development',
   appName: 'MyApplication',
   appDescription: 'MyApplication description',
-  apiUrl: 'http://localhost:1337'
+  apiUrl: 'https://strapi-demo-staging.mybluemix.net'
 };

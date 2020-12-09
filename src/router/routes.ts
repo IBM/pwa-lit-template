@@ -36,6 +36,18 @@ export const routes: Route[] = [
     }
   },
   {
+    path: '/users',
+    name: 'users',
+    component: 'page-users',
+    metadata: {
+      title: 'Users',
+      description: 'Users page description'
+    },
+    action: async () => {
+      await import('../pages/page-users');
+    }
+  },
+  {
     path: '(.*)',
     name: 'not-found',
     component: 'page-not-found',

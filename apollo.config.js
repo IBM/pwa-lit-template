@@ -3,7 +3,7 @@
  */
 
 // TODO: Can we get this URL from `src/config`?
-const apiUrl = 'http://localhost:1337/graphql';
+const apiUrl = 'https://strapi-demo-staging.mybluemix.net/graphql';
 
 module.exports = {
   client: {

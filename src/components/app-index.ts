@@ -78,6 +78,7 @@ export class AppIndex extends LitElement {
         <nav>
           <a href="${urlForName('home')}">Home</a>
           <a href="${urlForName('about')}">About</a>
+          <a href="${urlForName('users')}">Users</a>
         </nav>
 
         <pwa-install-button>
