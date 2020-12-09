@@ -8,6 +8,7 @@
 import { createSpaConfig } from '@open-wc/building-rollup';
 import typescript from '@rollup/plugin-typescript';
 import replace from '@rollup/plugin-replace';
+import commonjs from '@rollup/plugin-commonjs';
 import { copy } from '@web/rollup-plugin-copy';
 import merge from 'deepmerge';
 import { black, blue } from 'chalk';
@@ -65,6 +66,7 @@ const config = merge(
             })
           ]
         : []),
+      commonjs(),
       copy({
         // Copy all the static files
         patterns: ['images/**/*', 'manifest.webmanifest', 'robots.txt']

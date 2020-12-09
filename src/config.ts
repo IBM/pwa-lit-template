@@ -8,5 +8,6 @@
 export default {
   environment: 'development',
   appName: 'MyApplication',
-  appDescription: 'MyApplication description'
+  appDescription: 'MyApplication description',
+  apiUrl: 'http://localhost:1337'
 };

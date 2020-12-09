@@ -7,7 +7,10 @@
 
 import { esbuildPlugin } from '@web/dev-server-esbuild';
 import { fromRollup } from '@web/dev-server-rollup';
+import rollupCommonjs from '@rollup/plugin-commonjs';
 import replace from '@rollup/plugin-replace';
+
+const commonjs = fromRollup(rollupCommonjs);
 
 export default {
   appIndex: 'index.html',
@@ -23,6 +26,7 @@ export default {
             './config': `./config.${process.env.NODE_ENV}`
           })
         ]
-      : [])
+      : []),
+      commonjs()
   ]
 };
