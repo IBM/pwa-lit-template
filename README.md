@@ -139,7 +139,7 @@ This project allows different configurations per environment. The file that mana
 |  └─ config.ts
 ```
 
-If you are interested in overwrite any of the configuration variables depending of the environment you can create a file following the rule `config.{NODE_ENV}.ts`. Take into account that you don't need to replicate all the variables, just change the variable that you need to be different this way:
+If you are interested in overwrite any of the configuration variables depending of the environment you can create a file following the rule `src/config.{NODE_ENV}.ts`. Take into account that you don't need to replicate all the variables, just change the variable that you need to be different this way:
 
 ```typescript
 import config from './config';
