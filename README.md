@@ -132,14 +132,7 @@ With SEO in mind, this project offers you the `PageElement` base class to help y
 
 ### Environment configuration
 
-This project allows different configurations per environment. The file that manages that configuration is `config.ts` and can be found in `src/` following the next structure:
-
-```
-├─ src/
-|  └─ config.ts
-```
-
-If you are interested in overwrite any of the configuration variables depending of the environment you can create a file following the rule `src/config.{NODE_ENV}.ts`. Take into account that you don't need to replicate all the variables, just change the variable that you need to be different this way:
+This project allows different configurations per environment. The file that manages that configuration is `src/config.ts`. If you are interested in overwrite any of the configuration variables depending of the environment, you can create a file following the rule `src/config.{NODE_ENV}.ts`. Take into account that you don't need to replicate all the variables, just change the variable that you need to be different this way:
 
 ```typescript
 import config from './config';
