@@ -74,7 +74,7 @@ This command serves the app at `http://localhost:8000`:
   - `helpers`: contains two interesting features: `PageElement` and `html-meta-manager`. Go more in-depth with them [here](#create-a-new-page).
   - `pages`: where you create the pages for your application.
   - `router`: where you create the routes for your application.
-  - `config.ts`: stores the configuration (handles the environment at the build time).
+  - `config.ts`: stores the application configuration variables. Go more in-depth with it [here](#environment-configuration).
 - `index.html`: the application entry point.
 
 ## Guides
@@ -132,15 +132,25 @@ With SEO in mind, this project offers you the `PageElement` base class to help y
 
 ### Environment configuration
 
-This project allows different configurations per environment. The files that manage that configuration can be found in `src/config/` and the structure that we follow here is the next one:
+This project allows different configurations per environment. The file that manages that configuration is `config.ts` and can be found in `src/` following the next structure:
 
 ```
-├─ src/config/
-|  ├─ config.{NODE_ENV}.ts
-|  └─ index.ts
+├─ src/
+|  └─ config.ts
 ```
 
-Before the build all the variables are shared between `index.ts` and `config.development.ts` but in the build process the `import` of that last file is changed by the file related with the target environment following the rule `config.{NODE_ENV}.ts` and loading the expected configuration file.
+If you are interested in overwrite any of the configuration variables depending of the environment you can create a file following the rule `config.{NODE_ENV}.ts`. Take into account that you don't need to replicate all the variables, just change the variable that you need to be different this way:
+
+```typescript
+import config from './config';
+
+export default {
+  ...config,
+  environment: 'staging'
+};
+```
+
+In the build process the references in the project (but not in the configuration files) of `./config` will be replaced to `./config.{NODE_ENV}` loading the expected configuration file for the target environment.
 
 Lastly, the way to use that configuration is quite simple. You only need to import it:
 
