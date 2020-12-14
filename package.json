@@ -40,7 +40,7 @@
     "@typescript-eslint/parser": "^4.9.1",
     "@web/dev-server": "~0.0.29",
     "@web/dev-server-esbuild": "~0.2.8",
-    "@web/dev-server-rollup": "~0.2.12",
+    "@web/dev-server-rollup": "~0.2.13",
     "@web/rollup-plugin-copy": "~0.2.0",
     "chalk": "^4.1.0",
     "deepmerge": "^4.2.2",
