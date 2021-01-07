@@ -28,7 +28,7 @@
     "@vaadin/router": "^1.7.2",
     "lit-element": "^2.4.0",
     "pwa-helper-components": "~0.2.10",
-    "tslib": "^2.0.3"
+    "tslib": "^2.1.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.12.1",
