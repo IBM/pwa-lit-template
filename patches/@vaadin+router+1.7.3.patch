@@ -1,5 +1,5 @@
 diff --git a/node_modules/@vaadin/router/dist/vaadin-router.js b/node_modules/@vaadin/router/dist/vaadin-router.js
-index c0dc354..0fdc91e 100644
+index 3e031dd..c16b6d8 100644
 --- a/node_modules/@vaadin/router/dist/vaadin-router.js
 +++ b/node_modules/@vaadin/router/dist/vaadin-router.js
 @@ -244,6 +244,8 @@ function vaadinRouterGlobalClickHandler(event) {
