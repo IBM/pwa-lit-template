@@ -7,7 +7,7 @@
 
 import { LitElement, html, css, customElement, query } from 'lit-element';
 
-import { config } from '../config';
+import config from '../config';
 import { attachRouter, urlForName } from '../router';
 
 import 'pwa-helper-components/pwa-install-button.js';
@@ -54,8 +54,11 @@ export class AppIndex extends LitElement {
       color: #bbb;
     }
 
-    main {
+    main,
+    main > * {
+      display: flex;
       flex: 1;
+      flex-direction: column;
     }
 
     main:empty ~ footer {

@@ -7,7 +7,7 @@
 
 # pwa-lit-template
 
-##### [Getting started](#getting-started) | [Build for production](#build-for-production) | [Create a new page](#create-a-new-page) | [Browser support](#browser-support)
+##### [Getting started](#getting-started) | [Build for production](#build-for-production) | [Create a new page](#create-a-new-page) | [Environment configuration](#environment-configuration) | [Browser support](#browser-support)
 
 This project helps you to build Progressive Web Applications following the modern web standards, best practices and providing you with tools for that purpose. Out of the box, provides you with the following features:
 
@@ -49,15 +49,15 @@ This command serves the app at `http://localhost:8000`:
 │  ├─ components/
 │  │  ├─ app-index.ts
 │  │  └─ ···
-│  ├─ config/
 │  ├─ helpers/
 │  │  ├─ page-element.ts
 │  │  └─ ···
 │  ├─ pages/
 │  │  ├─ page-home.ts
 │  │  └─ ···
-│  └─ router/
-│     └─ routes.ts
+│  ├─ router/
+│  │  └─ routes.ts
+│  └─ config.ts
 ├─ index.html
 ├─ manifest.webmanifest
 ├─ package.json
@@ -71,10 +71,10 @@ This command serves the app at `http://localhost:8000`:
 - `server`: contains the logic to serve the application. And is where you are going to create your `dist/` folder containing the bundle of your application.
 - `src`
   - `components`: contains your custom Web Components. Inside this folder you will find the `app-index.ts` file, main root of your application following the PRPL patern.
-  - `config`: stores the configuration (handles the environment at the build time).
   - `helpers`: contains two interesting features: `PageElement` and `html-meta-manager`. Go more in-depth with them [here](#create-a-new-page).
   - `pages`: where you create the pages for your application.
   - `router`: where you create the routes for your application.
+  - `config.ts`: stores the application configuration variables. Go more in-depth with it [here](#environment-configuration).
 - `index.html`: the application entry point.
 
 ## Guides
@@ -129,6 +129,39 @@ Note: If you need to add static files to the build, like the `images` folder or 
    ```
 
 With SEO in mind, this project offers you the `PageElement` base class to help you to deal with it; it has a `metadata()` method that edits the HTML meta tags of the specific page with the `metadata` property defined in the route. And if you need dynamic information, you also can override the `metadata()` method.
+
+### Environment configuration
+
+This project allows different configurations per environment. The file that manages that configuration is `src/config.ts`. If you are interested in overwrite any of the configuration variables depending of the environment, you can create a file following the rule `src/config.{NODE_ENV}.ts`. Take into account that you don't need to replicate all the variables, just change the variable that you need to be different this way:
+
+```typescript
+import config from './config';
+
+export default {
+  ...config,
+  environment: 'staging'
+};
+```
+
+In the build process the references in the project (but not in the configuration files) of `./config` will be replaced to `./config.{NODE_ENV}` loading the expected configuration file for the target environment.
+
+Lastly, the way to use that configuration is quite simple. You only need to import it:
+
+```typescript
+import config from '../config';
+```
+
+And use it where you need it:
+
+```typescript
+render() {
+  return html`
+    <footer>
+      <span>Environment: ${config.environment}</span>
+    </footer>
+  `;
+}
+```
 
 ## Browser support
 

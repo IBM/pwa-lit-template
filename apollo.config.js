@@ -5,8 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-// TODO: Can we get this URL from `src/config/`?
-const apiUrl = 'http://localhost:1337/graphql';
+// TODO: Can we get this URL from `src/config.ts`?
+const apiUrl = 'https://strapi-demo-staging.mybluemix.net/graphql';
 
 module.exports = {
   client: {

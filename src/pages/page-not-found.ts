@@ -15,7 +15,6 @@ import { PageElementNotFound } from '../helpers/page-element-not-found';
 export class PageNotFound extends PageElementNotFound {
   static styles = css`
     :host {
-      display: block;
       padding: 1rem;
       text-align: center;
     }

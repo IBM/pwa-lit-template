@@ -5,6 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export const config = {
-  environment: 'development'
+export default {
+  environment: 'development',
+  appName: 'MyApplication',
+  appDescription: 'MyApplication description',
+  apiUrl: 'https://strapi-demo-staging.mybluemix.net/graphql'
 };

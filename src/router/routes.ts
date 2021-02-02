@@ -7,15 +7,17 @@
 
 import type { Route } from '@vaadin/router';
 
+import config from '../config';
+
 export const routes: Route[] = [
   {
     path: '/',
     name: 'home',
     component: 'page-home',
     metadata: {
-      title: 'MyApplication',
+      title: config.appName,
       titleTemplate: null,
-      description: 'MyApplication description'
+      description: config.appDescription
     },
     action: async () => {
       await import('../pages/page-home');

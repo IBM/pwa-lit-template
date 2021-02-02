@@ -13,9 +13,6 @@ import commonjs from '@rollup/plugin-commonjs';
 import merge from 'deepmerge';
 import { black, blue } from 'chalk';
 
-import packageJson from './package.json';
-
-const ENVIRONMENT = process.env.NODE_ENV || 'development';
 const DIST_PATH = 'server/dist/';
 
 const workboxConfig = {
@@ -57,9 +54,18 @@ const config = merge(
         inlineSources: false
       }),
       replace({
-        'process.env.NODE_ENV': JSON.stringify('production'),
-        'config.development': `config.${ENVIRONMENT}`
+        'process.env.NODE_ENV': JSON.stringify('production')
       }),
+      ...(process.env.NODE_ENV
+        ? [
+            replace({
+              include: 'src/**/*.ts',
+              exclude: 'src/config.*.ts',
+              delimiters: ['', ''],
+              './config': `./config.${process.env.NODE_ENV}`
+            })
+          ]
+        : []),
       commonjs(),
       copy({
         // Copy all the static files
@@ -69,8 +75,10 @@ const config = merge(
   }
 );
 
-console.log(black.bgWhite(' Build information'.padEnd(60, ' ')), '\n');
-console.log(`${blue('Environment')}       ${ENVIRONMENT}`);
-console.log(`${blue('Version')}           v${packageJson.version}`);
+console.log(`${black.bgWhite(' Build information'.padEnd(60, ' '))}
+
+${blue('Name')}                   ${process.env.npm_package_name}
+${blue('Environment')}            ${process.env.NODE_ENV || 'development'}
+${blue('Version')}                v${process.env.npm_package_version}`);
 
 export default config;

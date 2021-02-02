@@ -9,7 +9,7 @@ import { ApolloClient, InMemoryCache } from '@apollo/client/core';
 import type { OperationVariables } from '@apollo/client/core';
 export { gql } from '@apollo/client/core';
 
-import { config } from './config';
+import config from './config';
 import { ConnectApolloMixin } from './helpers/connect-apollo-mixin';
 import type { Constructor } from './helpers/connect-apollo-mixin';
 
