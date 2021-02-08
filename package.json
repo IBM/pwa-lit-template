@@ -38,7 +38,7 @@
     "@rollup/plugin-typescript": "^8.1.1",
     "@typescript-eslint/eslint-plugin": "^4.14.2",
     "@typescript-eslint/parser": "^4.14.2",
-    "@web/dev-server": "~0.1.5",
+    "@web/dev-server": "~0.1.6",
     "@web/dev-server-esbuild": "~0.2.11",
     "@web/dev-server-rollup": "~0.3.2",
     "@web/rollup-plugin-copy": "~0.2.0",
