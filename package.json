@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": "github:IBM/pwa-lit-template",
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=v14.15.5"
   },
   "scripts": {
     "build": "rimraf server/dist/ && rollup --config",
