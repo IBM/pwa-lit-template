@@ -172,11 +172,3 @@ render() {
 
 To run on other browsers, you need to use a combination of polyfills and transpilation.
 This step is automated by the [build for production command](#build-for-production).
-
----
-
-### Things to be aware
-
-- There is a [patch](patches/@vaadin+router+1.7.2.patch) that modifies the `@vaadin/router`'s scroll standard behavior to have a more consistent scroll; now when you perform a `click` event, the scroll will be reset to the top position.
-
-  Related issue: [#1: Remove the Vaadin Router patch](https://github.com/IBM/pwa-lit-template/issues/1)
