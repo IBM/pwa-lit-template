@@ -25,7 +25,7 @@
     "typescript:generate-types": "rimraf src/@types/__generated__/ && apollo client:codegen --target typescript --outputFlat src/@types/__generated__/"
   },
   "dependencies": {
-    "@apollo/client": "^3.3.7",
+    "@apollo/client": "^3.3.9",
     "@vaadin/router": "^1.7.4",
     "graphql": "^15.5.0",
     "lit-element": "^2.4.0",
