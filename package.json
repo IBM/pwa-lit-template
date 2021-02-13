@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": "github:IBM/pwa-lit-template",
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=14.0.0"
   },
   "scripts": {
     "build": "rimraf server/dist/ && rollup --config",
@@ -18,7 +18,6 @@
     "lint:eslint": "eslint \"**/*.{js,ts}\" --ignore-path .gitignore",
     "lint:stylelint": "stylelint \"src/{components,pages}/**/*.ts\" --ignore-path .gitignore",
     "lit:type-checking": "lit-analyzer \"src/{components,pages}/**/*.ts\" --strict",
-    "postinstall": "patch-package",
     "serve": "web-dev-server --watch",
     "start": "npm run serve",
     "test": "echo \"Error: no test specified\"",
@@ -27,45 +26,44 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.7",
-    "@vaadin/router": "^1.7.3",
+    "@vaadin/router": "^1.7.4",
     "graphql": "^15.5.0",
     "lit-element": "^2.4.0",
     "pwa-helper-components": "~0.2.10",
     "tslib": "^2.1.0"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.12.1",
-    "@babel/plugin-proposal-decorators": "^7.12.12",
+    "@babel/plugin-proposal-class-properties": "^7.12.13",
+    "@babel/plugin-proposal-decorators": "^7.12.13",
     "@open-wc/building-rollup": "^1.9.4",
     "@rollup/plugin-commonjs": "^17.1.0",
     "@rollup/plugin-replace": "^2.3.4",
     "@rollup/plugin-typescript": "^8.1.1",
-    "@typescript-eslint/eslint-plugin": "^4.14.2",
-    "@typescript-eslint/parser": "^4.14.2",
-    "@web/dev-server": "~0.1.5",
+    "@typescript-eslint/eslint-plugin": "^4.15.0",
+    "@typescript-eslint/parser": "^4.15.0",
+    "@web/dev-server": "~0.1.7",
     "@web/dev-server-esbuild": "~0.2.11",
     "@web/dev-server-rollup": "~0.3.2",
     "@web/rollup-plugin-copy": "~0.2.0",
     "apollo": "^2.32.1",
     "chalk": "^4.1.0",
     "deepmerge": "^4.2.2",
-    "eslint": "^7.19.0",
+    "eslint": "^7.20.0",
     "eslint-config-ibmresearch": "~0.19.0",
     "eslint-plugin-lit": "^1.3.0",
     "eslint-plugin-lit-a11y": "^1.0.1",
     "eslint-plugin-wc": "^1.2.0",
     "husky": "^4.3.8",
-    "lint-staged": "^10.5.3",
+    "lint-staged": "^10.5.4",
     "lit-analyzer": "^1.2.1",
     "npm-run-all": "^4.1.5",
-    "patch-package": "^6.2.2",
     "prettier": "~2.2.1",
     "prettier-plugin-package": "^1.3.0",
     "rimraf": "^3.0.2",
-    "rollup": "^2.38.4",
-    "stylelint": "^13.9.0",
+    "rollup": "^2.39.0",
+    "stylelint": "^13.10.0",
     "stylelint-config-ibmresearch": "~0.6.1",
-    "typescript": "~4.1.3"
+    "typescript": "~4.1.5"
   },
   "babel": {
     "plugins": [
