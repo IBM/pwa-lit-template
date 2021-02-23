@@ -1,7 +1,7 @@
 {
   "private": true,
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=v14.16.0"
   },
   "scripts": {
     "start": "prpl-server --root dist/ --config prpl.config.json --host 0.0.0.0 --https-redirect --bot-proxy https://render-tron.appspot.com/render"
