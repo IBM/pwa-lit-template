@@ -60,17 +60,6 @@
     "stylelint-config-ibmresearch": "~0.6.2",
     "typescript": "~4.2.2"
   },
-  "babel": {
-    "plugins": [
-      "@babel/plugin-proposal-class-properties",
-      [
-        "@babel/plugin-proposal-decorators",
-        {
-          "decoratorsBeforeExport": true
-        }
-      ]
-    ]
-  },
   "eslintConfig": {
     "extends": "ibmresearch",
     "overrides": [
