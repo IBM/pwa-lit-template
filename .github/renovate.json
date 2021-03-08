@@ -11,5 +11,8 @@
       "matchCurrentVersion": "!/^0/",
       "automerge": true
     }
-  ]
+  ],
+  "lockFileMaintenance": {
+    "automerge": true
+  }
 }
