@@ -17,10 +17,13 @@ export default {
     ...(process.env.NODE_ENV
       ? [
           fromRollup(replace)({
+            preventAssignment: true,
             include: 'src/**/*.ts',
             exclude: 'src/config.*.ts',
             delimiters: ['', ''],
-            './config': `./config.${process.env.NODE_ENV}`
+            values: {
+              './config': `./config.${process.env.NODE_ENV}`
+            }
           })
         ]
       : [])
