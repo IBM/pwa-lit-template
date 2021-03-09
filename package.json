@@ -7,7 +7,7 @@
   "repository": "github:IBM/pwa-lit-template",
   "engines": {
     "node": ">=14.0.0",
-    "npm": ">=7.0.0"
+    "npm": ">=7.6.2"
   },
   "scripts": {
     "build": "rimraf server/dist/ && rollup --config",
