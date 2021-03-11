@@ -53,15 +53,21 @@ const config = merge(
         inlineSources: false
       }),
       replace({
-        'process.env.NODE_ENV': JSON.stringify('production')
+        preventAssignment: true,
+        values: {
+          'process.env.NODE_ENV': JSON.stringify('production')
+        }
       }),
       ...(process.env.NODE_ENV
         ? [
             replace({
+              preventAssignment: true,
               include: 'src/**/*.ts',
               exclude: 'src/config.*.ts',
               delimiters: ['', ''],
-              './config': `./config.${process.env.NODE_ENV}`
+              values: {
+                './config': `./config.${process.env.NODE_ENV}`
+              }
             })
           ]
         : []),
