@@ -15,7 +15,6 @@
     "format:eslint": "npm run lint:eslint -- --fix",
     "format:prettier": "prettier \"**/*{html,js,json,md,ts,webmanifest}\" --ignore-path .gitignore --write",
     "format:stylelint": "npm run lint:stylelint -- --fix",
-    "husky-pre-commit": "lint-staged",
     "lint": "npm-run-all --parallel lint:*",
     "lint:eslint": "eslint \"**/*.{js,ts}\" --ignore-path .gitignore",
     "lint:stylelint": "stylelint \"src/{components,pages}/**/*.ts\" --ignore-path .gitignore",
