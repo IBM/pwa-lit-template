@@ -35,7 +35,7 @@ jobs:
           node-version: "14.x"
 
       - run: npm ci
-      - run: npm run type-checking
+      - run: npm run types:check
 
   build:
     name: Build
