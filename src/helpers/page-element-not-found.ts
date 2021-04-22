@@ -8,7 +8,6 @@
 /* eslint-disable wc/guard-super-call */
 
 import { setMetaTag, removeMetaTag } from '../helpers/html-meta-manager/utils';
-
 import { PageElement } from '../helpers/page-element';
 
 export class PageElementNotFound extends PageElement {

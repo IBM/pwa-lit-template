@@ -5,12 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import type { Route, RouterLocation } from '@vaadin/router';
 import { LitElement, internalProperty } from 'lit-element';
 import type { PropertyValues } from 'lit-element';
-import type { Route, RouterLocation } from '@vaadin/router';
 
 import config from '../config';
-
 import { updateMetadata } from './html-meta-manager';
 import type { MetadataOptions } from './html-meta-manager';
 
