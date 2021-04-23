@@ -7,7 +7,7 @@
 
 import { html, css, customElement } from 'lit-element';
 
-import { PageElement } from '../helpers/page-element';
+import { PageElement } from '../helpers/page-element.js';
 
 @customElement('page-home')
 export class PageHome extends PageElement {

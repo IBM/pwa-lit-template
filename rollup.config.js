@@ -66,7 +66,7 @@ const config = merge(
               exclude: 'src/config.*.ts',
               delimiters: ['', ''],
               values: {
-                './config': `./config.${process.env.NODE_ENV}`
+                './config.js': `./config.${process.env.NODE_ENV}.js`
               }
             })
           ]

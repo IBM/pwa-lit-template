@@ -7,9 +7,9 @@
 
 /* eslint-disable wc/guard-super-call */
 
-import { setMetaTag, removeMetaTag } from '../helpers/html-meta-manager/utils';
+import { setMetaTag, removeMetaTag } from './html-meta-manager/utils.js';
 
-import { PageElement } from '../helpers/page-element';
+import { PageElement } from './page-element.js';
 
 export class PageElementNotFound extends PageElement {
   connectedCallback() {
