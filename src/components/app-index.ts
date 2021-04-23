@@ -7,8 +7,8 @@
 
 import { LitElement, html, css, customElement, query } from 'lit-element';
 
-import config from '../config';
-import { attachRouter, urlForName } from '../router';
+import config from '../config.js';
+import { attachRouter, urlForName } from '../router/index.js';
 
 import 'pwa-helper-components/pwa-install-button.js';
 import 'pwa-helper-components/pwa-update-available.js';

@@ -8,7 +8,7 @@
 import { Router } from '@vaadin/router';
 import type { Params } from '@vaadin/router';
 
-import { routes } from './routes';
+import { routes } from './routes.js';
 
 const router = new Router();
 

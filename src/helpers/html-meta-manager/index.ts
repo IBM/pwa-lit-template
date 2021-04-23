@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { setMetaTag, setLinkTag } from './utils';
+import { setMetaTag, setLinkTag } from './utils.js';
 
 interface ImageMetadataOptions {
   url: string;

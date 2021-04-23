@@ -7,9 +7,9 @@
 
 import { html, css, customElement } from 'lit-element';
 
-import { urlForName } from '../router';
+import { urlForName } from '../router/index.js';
 
-import { PageElementNotFound } from '../helpers/page-element-not-found';
+import { PageElementNotFound } from '../helpers/page-element-not-found.js';
 
 @customElement('page-not-found')
 export class PageNotFound extends PageElementNotFound {

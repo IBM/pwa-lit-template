@@ -9,10 +9,10 @@ import { LitElement, internalProperty } from 'lit-element';
 import type { PropertyValues } from 'lit-element';
 import type { Route, RouterLocation } from '@vaadin/router';
 
-import config from '../config';
+import config from '../config.js';
 
-import { updateMetadata } from './html-meta-manager';
-import type { MetadataOptions } from './html-meta-manager';
+import { updateMetadata } from './html-meta-manager/index.js';
+import type { MetadataOptions } from './html-meta-manager/index.js';
 
 // Add metadata options to the @vaadin/router BaseRoute
 declare module '@vaadin/router/dist/vaadin-router' {

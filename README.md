@@ -7,7 +7,7 @@
 
 # pwa-lit-template
 
->[Getting started](#getting-started) | [Build for production](#build-for-production) | [Create a new page](#create-a-new-page) | [Environment configuration](#environment-configuration) | [Browser support](#browser-support)
+> [Getting started](#getting-started) | [Build for production](#build-for-production) | [Create a new page](#create-a-new-page) | [Environment configuration](#environment-configuration) | [Browser support](#browser-support)
 
 This project helps you to build Progressive Web Applications following the modern web standards, best practices and providing you with tools for that purpose. Out of the box, provides you with the following features:
 
@@ -98,7 +98,7 @@ Note: If you need to add static files to the build, like the `images` folder or 
    ```typescript
    import { html, customElement } from 'lit-element';
 
-   import { PageElement } from '../helpers/page-element';
+   import { PageElement } from '../helpers/page-element.js';
 
    @customElement('page-explore')
    export class PageExplore extends PageElement {
@@ -135,7 +135,7 @@ With SEO in mind, this project offers you the `PageElement` base class to help y
 This project allows different configurations per environment. The file that manages that configuration is `src/config.ts`. If you are interested in overwrite any of the configuration variables depending of the environment, you can create a file following the rule `src/config.{NODE_ENV}.ts`. Take into account that you don't need to replicate all the variables, just change the variable that you need to be different this way:
 
 ```typescript
-import config from './config';
+import config from './config.js';
 
 export default {
   ...config,
@@ -148,7 +148,7 @@ In the build process the references in the project (but not in the configuration
 Lastly, the way to use that configuration is quite simple. You only need to import it:
 
 ```typescript
-import config from '../config';
+import config from '../config.js';
 ```
 
 And use it where you need it:
