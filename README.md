@@ -123,7 +123,7 @@ Note: If you need to add static files to the build, like the `images` folder or 
        description: 'Explore page description'
      },
      action: async () => {
-       await import('../pages/page-explore');
+       await import('../pages/page-explore.js');
      }
    },
    ```

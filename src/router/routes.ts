@@ -20,7 +20,7 @@ export const routes: Route[] = [
       description: config.appDescription
     },
     action: async () => {
-      await import('../pages/page-home');
+      await import('../pages/page-home.js');
     }
   },
   {
@@ -32,7 +32,7 @@ export const routes: Route[] = [
       description: 'About page description'
     },
     action: async () => {
-      await import('../pages/page-about');
+      await import('../pages/page-about.js');
     }
   },
   {
@@ -45,7 +45,7 @@ export const routes: Route[] = [
       image: null
     },
     action: async () => {
-      await import('../pages/page-not-found');
+      await import('../pages/page-not-found.js');
     }
   }
 ];
