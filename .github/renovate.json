@@ -2,6 +2,8 @@
   "extends": [
     "config:base",
     ":separateMultipleMajorReleases",
+    ":separatePatchReleases",
+    ":widenPeerDependencies",
     ":maintainLockFilesWeekly"
   ],
   "rangeStrategy": "bump",
@@ -12,11 +14,13 @@
     },
     {
       "matchUpdateTypes": ["minor", "patch"],
-      "matchCurrentVersion": "!/^0/",
-      "automerge": true
+      "matchCurrentVersion": "!/^[~^]?0/",
+      "automerge": true,
+      "automergeType": "branch"
     }
   ],
   "lockFileMaintenance": {
-    "automerge": true
+    "automerge": true,
+    "automergeType": "branch"
   }
 }
