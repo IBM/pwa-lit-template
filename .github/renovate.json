@@ -3,7 +3,6 @@
     "config:base",
     ":separateMultipleMajorReleases",
     ":separatePatchReleases",
-    ":widenPeerDependencies",
     ":maintainLockFilesWeekly"
   ],
   "rangeStrategy": "bump",
