@@ -2,6 +2,7 @@
   "extends": [
     "config:base",
     ":separateMultipleMajorReleases",
+    ":separatePatchReleases",
     ":maintainLockFilesWeekly"
   ],
   "rangeStrategy": "bump",
@@ -11,8 +12,13 @@
       "enabled": false
     },
     {
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchUpdateTypes": ["minor"],
       "matchCurrentVersion": "!/^[~^]?0/",
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
+      "matchUpdateTypes": ["patch"],
       "automerge": true,
       "automergeType": "branch"
     }
