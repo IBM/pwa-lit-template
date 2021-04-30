@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { LitElement, html, css, customElement, query } from 'lit-element';
+import { LitElement, html, css } from 'lit';
+import { customElement, query } from 'lit/decorators.js';
 
 import config from '../config.js';
 import { attachRouter, urlForName } from '../router/index.js';
