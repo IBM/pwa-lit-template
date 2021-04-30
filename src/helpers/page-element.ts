@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { LitElement, internalProperty } from 'lit-element';
+import { LitElement, state } from 'lit-element';
 import type { PropertyValues } from 'lit-element';
 import type { Route, RouterLocation } from '@vaadin/router';
 
@@ -22,7 +22,7 @@ declare module '@vaadin/router/dist/vaadin-router' {
 }
 
 export class PageElement extends LitElement {
-  @internalProperty()
+  @state()
   protected location = {} as RouterLocation;
 
   private defaultTitleTemplate = `%s | ${config.appName}`;
