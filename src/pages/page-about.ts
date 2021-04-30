@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { html, css, customElement } from 'lit-element';
+import { html, css } from 'lit';
+import { customElement } from 'lit/decorators.js';
 
 import { PageElement } from '../helpers/page-element.js';
 

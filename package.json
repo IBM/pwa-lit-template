@@ -2,7 +2,7 @@
   "name": "pwa-lit-template",
   "version": "0.1.0",
   "private": true,
-  "description": "A template for building Progressive Web Applications using LitElement and Vaadin Router",
+  "description": "A template for building Progressive Web Applications using Lit and Vaadin Router",
   "license": "MIT",
   "repository": "github:IBM/pwa-lit-template",
   "engines": {
@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@vaadin/router": "^1.7.4",
-    "lit-element": "^2.5.1",
+    "lit": "2.0.0-rc.1",
     "pwa-helper-components": "~0.2.10",
     "tslib": "^2.3.1"
   },
