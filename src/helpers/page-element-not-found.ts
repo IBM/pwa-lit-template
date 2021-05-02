@@ -5,8 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-/* eslint-disable wc/guard-super-call */
-
 import { setMetaTag, removeMetaTag } from './html-meta-manager/utils.js';
 
 import { PageElement } from './page-element.js';
