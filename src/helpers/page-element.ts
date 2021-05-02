@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { LitElement, state } from 'lit-element';
+import { LitElement, property } from 'lit-element';
 import type { PropertyValues } from 'lit-element';
 import type { Route, RouterLocation } from '@vaadin/router';
 
@@ -22,17 +22,21 @@ declare module '@vaadin/router/dist/vaadin-router' {
 }
 
 export class PageElement extends LitElement {
-  @state()
-  protected location = {} as RouterLocation;
+  @property({ type: Object })
+  location?: RouterLocation;
 
   private defaultTitleTemplate = `%s | ${config.appName}`;
 
-  private getTitleTemplate(titleTemplate?: string | null) {
-    return titleTemplate || titleTemplate === null
-      ? titleTemplate
-      : this.defaultTitleTemplate;
+  protected get defaultMetadata() {
+    return {
+      url: window.location.href,
+      titleTemplate: this.defaultTitleTemplate
+    };
   }
 
+  /**
+   * The page can override this method to customize the metadata
+   */
   protected metadata(route: Route) {
     return route.metadata;
   }
@@ -40,24 +44,22 @@ export class PageElement extends LitElement {
   private updateMetadata(route: Route) {
     const metadata = this.metadata(route);
 
-    if (metadata) {
-      const defaultMetadata = {
-        url: window.location.href,
-        titleTemplate: this.getTitleTemplate(metadata.titleTemplate)
-      };
-
-      updateMetadata({
-        ...defaultMetadata,
-        ...metadata
-      });
+    if (!metadata) {
+      return;
     }
+
+    updateMetadata({
+      ...this.defaultMetadata,
+      ...(metadata.titleTemplate && { titleTemplate: metadata.titleTemplate }),
+      ...metadata
+    });
   }
 
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
 
-    if (this.location.route) {
-      this.updateMetadata(this.location.route);
+    if (changedProperties.has('location') && this.location!.route) {
+      this.updateMetadata(this.location!.route);
     }
   }
 }
