@@ -40,7 +40,7 @@ export const routes: Route[] = [
     name: 'not-found',
     component: 'page-not-found',
     metadata: {
-      title: 'Error',
+      title: 'Error: Page not found',
       description: null,
       image: null
     },
