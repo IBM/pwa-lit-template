@@ -41,25 +41,19 @@ export class PageElement extends LitElement {
     return route.meta;
   }
 
-  private updateMeta(route: Route) {
-    const meta = this.meta(route);
-
-    if (!meta) {
-      return;
-    }
-
-    updateMeta({
-      ...this.defaultMeta,
-      ...(meta.titleTemplate && { titleTemplate: meta.titleTemplate }),
-      ...meta
-    });
-  }
-
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
 
-    if (changedProperties.has('location') && this.location!.route) {
-      this.updateMeta(this.location!.route);
+    if (this.location?.route) {
+      const meta = this.meta(this.location.route);
+
+      if (meta) {
+        updateMeta({
+          ...this.defaultMeta,
+          ...(meta.titleTemplate && { titleTemplate: meta.titleTemplate }),
+          ...meta
+        });
+      }
     }
   }
 }
