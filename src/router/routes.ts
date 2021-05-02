@@ -20,7 +20,7 @@ export const routes: Route[] = [
     path: '/',
     name: 'home',
     component: 'page-home',
-    metadata: {
+    meta: {
       title: config.appName,
       titleTemplate: null,
       description: config.appDescription
@@ -33,7 +33,7 @@ export const routes: Route[] = [
     path: '/about',
     name: 'about',
     component: 'page-about',
-    metadata: {
+    meta: {
       title: 'About',
       description: 'About page description'
     },
@@ -45,7 +45,7 @@ export const routes: Route[] = [
     path: '(.*)',
     name: 'not-found',
     component: 'page-not-found',
-    metadata: pageNotFoundMeta,
+    meta: pageNotFoundMeta,
     action: async () => {
       await import('../pages/page-not-found.js');
     }

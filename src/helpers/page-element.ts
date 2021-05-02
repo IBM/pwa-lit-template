@@ -11,13 +11,13 @@ import type { Route, RouterLocation } from '@vaadin/router';
 
 import config from '../config.js';
 
-import { updateMetadata } from './html-meta-manager/index.js';
-import type { MetadataOptions } from './html-meta-manager/index.js';
+import { updateMeta } from './html-meta-manager/index.js';
+import type { MetaOptions } from './html-meta-manager/index.js';
 
-// Add metadata options to the @vaadin/router BaseRoute
+// Add meta options to the @vaadin/router BaseRoute
 declare module '@vaadin/router/dist/vaadin-router' {
   export interface BaseRoute {
-    metadata?: MetadataOptions;
+    meta?: MetaOptions;
   }
 }
 
@@ -27,7 +27,7 @@ export class PageElement extends LitElement {
 
   private defaultTitleTemplate = `%s | ${config.appName}`;
 
-  protected get defaultMetadata() {
+  protected get defaultMeta() {
     return {
       url: window.location.href,
       titleTemplate: this.defaultTitleTemplate
@@ -35,23 +35,23 @@ export class PageElement extends LitElement {
   }
 
   /**
-   * The page can override this method to customize the metadata
+   * The page can override this method to customize the meta
    */
-  protected metadata(route: Route) {
-    return route.metadata;
+  protected meta(route: Route) {
+    return route.meta;
   }
 
-  private updateMetadata(route: Route) {
-    const metadata = this.metadata(route);
+  private updateMeta(route: Route) {
+    const meta = this.meta(route);
 
-    if (!metadata) {
+    if (!meta) {
       return;
     }
 
-    updateMetadata({
-      ...this.defaultMetadata,
-      ...(metadata.titleTemplate && { titleTemplate: metadata.titleTemplate }),
-      ...metadata
+    updateMeta({
+      ...this.defaultMeta,
+      ...(meta.titleTemplate && { titleTemplate: meta.titleTemplate }),
+      ...meta
     });
   }
 
@@ -59,7 +59,7 @@ export class PageElement extends LitElement {
     super.updated(changedProperties);
 
     if (changedProperties.has('location') && this.location!.route) {
-      this.updateMetadata(this.location!.route);
+      this.updateMeta(this.location!.route);
     }
   }
 }

@@ -6,7 +6,7 @@
  */
 
 import { pageNotFoundMeta } from '../router/routes.js';
-import { updateMetadata } from './html-meta-manager/index.js';
+import { updateMeta } from './html-meta-manager/index.js';
 import { setMetaTag, removeMetaTag } from './html-meta-manager/utils.js';
 
 import { PageElement } from './page-element.js';
@@ -17,8 +17,8 @@ export class PageElementNotFound extends PageElement {
 
     setMetaTag('name', 'render:status_code', '404');
 
-    updateMetadata({
-      ...this.defaultMetadata,
+    updateMeta({
+      ...this.defaultMeta,
       ...pageNotFoundMeta
     });
   }
