@@ -37,13 +37,7 @@ export class PageElement extends LitElement {
     return route.metadata;
   }
 
-  private updateMetadata() {
-    const { route } = this.location;
-
-    if (!route) {
-      return;
-    }
-
+  private updateMetadata(route: Route) {
     const metadata = this.metadata(route);
 
     if (metadata) {
@@ -59,9 +53,11 @@ export class PageElement extends LitElement {
     }
   }
 
-  updated(_changedProperties: PropertyValues) {
-    super.updated(_changedProperties);
+  updated(changedProperties: PropertyValues<this>) {
+    super.updated(changedProperties);
 
-    this.updateMetadata();
+    if (this.location.route) {
+      this.updateMetadata(this.location.route);
+    }
   }
 }
