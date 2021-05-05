@@ -8,7 +8,6 @@
 import { pageNotFoundMeta } from '../router/routes.js';
 import { updateMeta } from './html-meta-manager/index.js';
 import { setMetaTag, removeMetaTag } from './html-meta-manager/utils.js';
-
 import { PageElement } from './page-element.js';
 
 export class PageElementNotFound extends PageElement {

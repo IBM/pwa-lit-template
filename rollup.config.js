@@ -6,11 +6,11 @@
  */
 
 import { createSpaConfig } from '@open-wc/building-rollup';
-import typescript from '@rollup/plugin-typescript';
 import replace from '@rollup/plugin-replace';
+import typescript from '@rollup/plugin-typescript';
 import { copy } from '@web/rollup-plugin-copy';
-import merge from 'deepmerge';
 import { black, blue } from 'chalk';
+import merge from 'deepmerge';
 
 const DIST_PATH = 'server/dist/';
 
