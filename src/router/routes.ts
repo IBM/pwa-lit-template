@@ -9,12 +9,18 @@ import type { Route } from '@vaadin/router';
 
 import config from '../config.js';
 
+export const pageNotFoundMeta = {
+  title: 'Error: Page not found',
+  description: null,
+  image: null
+};
+
 export const routes: Route[] = [
   {
     path: '/',
     name: 'home',
     component: 'page-home',
-    metadata: {
+    meta: {
       title: config.appName,
       titleTemplate: null,
       description: config.appDescription
@@ -27,7 +33,7 @@ export const routes: Route[] = [
     path: '/about',
     name: 'about',
     component: 'page-about',
-    metadata: {
+    meta: {
       title: 'About',
       description: 'About page description'
     },
@@ -39,11 +45,7 @@ export const routes: Route[] = [
     path: '(.*)',
     name: 'not-found',
     component: 'page-not-found',
-    metadata: {
-      title: 'Error: Page not found',
-      description: null,
-      image: null
-    },
+    meta: pageNotFoundMeta,
     action: async () => {
       await import('../pages/page-not-found.js');
     }

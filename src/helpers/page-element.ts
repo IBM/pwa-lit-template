@@ -5,63 +5,55 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { LitElement, state } from 'lit-element';
+import { LitElement, property } from 'lit-element';
 import type { PropertyValues } from 'lit-element';
 import type { Route, RouterLocation } from '@vaadin/router';
 
 import config from '../config.js';
 
-import { updateMetadata } from './html-meta-manager/index.js';
-import type { MetadataOptions } from './html-meta-manager/index.js';
+import { updateMeta } from './html-meta-manager/index.js';
+import type { MetaOptions } from './html-meta-manager/index.js';
 
-// Add metadata options to the @vaadin/router BaseRoute
+// Add meta options to the @vaadin/router BaseRoute
 declare module '@vaadin/router/dist/vaadin-router' {
   export interface BaseRoute {
-    metadata?: MetadataOptions;
+    meta?: MetaOptions;
   }
 }
 
 export class PageElement extends LitElement {
-  @state()
-  protected location = {} as RouterLocation;
+  @property({ type: Object })
+  location?: RouterLocation;
 
   private defaultTitleTemplate = `%s | ${config.appName}`;
 
-  private getTitleTemplate(titleTemplate?: string | null) {
-    return titleTemplate || titleTemplate === null
-      ? titleTemplate
-      : this.defaultTitleTemplate;
+  protected get defaultMeta() {
+    return {
+      url: window.location.href,
+      titleTemplate: this.defaultTitleTemplate
+    };
   }
 
-  protected metadata(route: Route) {
-    return route.metadata;
+  /**
+   * The page can override this method to customize the meta
+   */
+  protected meta(route: Route) {
+    return route.meta;
   }
 
-  private updateMetadata() {
-    const { route } = this.location;
+  updated(changedProperties: PropertyValues<this>) {
+    super.updated(changedProperties);
 
-    if (!route) {
-      return;
+    if (this.location?.route) {
+      const meta = this.meta(this.location.route);
+
+      if (meta) {
+        updateMeta({
+          ...this.defaultMeta,
+          ...(meta.titleTemplate && { titleTemplate: meta.titleTemplate }),
+          ...meta
+        });
+      }
     }
-
-    const metadata = this.metadata(route);
-
-    if (metadata) {
-      const defaultMetadata = {
-        url: window.location.href,
-        titleTemplate: this.getTitleTemplate(metadata.titleTemplate)
-      };
-
-      updateMetadata({
-        ...defaultMetadata,
-        ...metadata
-      });
-    }
-  }
-
-  updated(_changedProperties: PropertyValues) {
-    super.updated(_changedProperties);
-
-    this.updateMetadata();
   }
 }

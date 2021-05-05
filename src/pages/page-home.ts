@@ -12,7 +12,7 @@ import { PageElement } from '../helpers/page-element.js';
 @customElement('page-home')
 export class PageHome extends PageElement {
   static styles = css`
-    :host {
+    section {
       padding: 1rem;
     }
   `;
