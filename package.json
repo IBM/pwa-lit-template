@@ -13,10 +13,10 @@
     "build": "rimraf server/dist/ && rollup --config",
     "format": "npm-run-all format:*",
     "format:eslint": "npm run lint:eslint -- --fix",
-    "format:prettier": "prettier \"**/*{html,js,json,md,ts,webmanifest}\" --ignore-path .gitignore --write",
+    "format:prettier": "prettier . --ignore-path .gitignore --write",
     "format:stylelint": "npm run lint:stylelint -- --fix",
     "lint": "npm-run-all --parallel lint:*",
-    "lint:eslint": "eslint \"**/*.{js,ts}\" --ignore-path .gitignore",
+    "lint:eslint": "eslint . --ignore-path .gitignore",
     "lint:stylelint": "stylelint \"src/{components,pages}/**/*.ts\" --ignore-path .gitignore",
     "prepare": "husky install",
     "serve": "web-dev-server --watch",
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@vaadin/router": "^1.7.4",
-    "lit-element": "^2.4.0",
+    "lit-element": "^2.5.0",
     "pwa-helper-components": "~0.2.10",
     "tslib": "^2.2.0"
   },
@@ -36,15 +36,15 @@
     "@open-wc/building-rollup": "^1.10.0",
     "@rollup/plugin-replace": "^2.4.2",
     "@rollup/plugin-typescript": "^8.2.1",
-    "@typescript-eslint/eslint-plugin": "^4.22.0",
-    "@typescript-eslint/parser": "^4.22.0",
-    "@web/dev-server": "~0.1.14",
+    "@typescript-eslint/eslint-plugin": "^4.22.1",
+    "@typescript-eslint/parser": "^4.22.1",
+    "@web/dev-server": "~0.1.17",
     "@web/dev-server-esbuild": "~0.2.12",
     "@web/dev-server-rollup": "~0.3.3",
     "@web/rollup-plugin-copy": "~0.2.0",
     "chalk": "^4.1.1",
     "deepmerge": "^4.2.2",
-    "eslint": "^7.24.0",
+    "eslint": "^7.25.0",
     "eslint-config-ibmresearch": "~0.20.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-lit": "^1.3.0",
@@ -57,9 +57,9 @@
     "prettier": "~2.2.1",
     "prettier-plugin-package": "^1.3.0",
     "rimraf": "^3.0.2",
-    "rollup": "^2.45.2",
-    "stylelint": "^13.12.0",
-    "stylelint-config-ibmresearch": "~0.6.2",
+    "rollup": "^2.47.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-ibmresearch": "~0.7.0",
     "typescript": "~4.2.4"
   },
   "eslintConfig": {
@@ -94,7 +94,7 @@
     ]
   },
   "lint-staged": {
-    "**/*.{html,js,json,md,ts,webmanifest}": "prettier --ignore-path .gitignore --write",
+    "**/*.{html,js,json,md,ts,webmanifest,yml}": "prettier --ignore-path .gitignore --write",
     "**/*.{js,ts}": "eslint --ignore-path .gitignore --fix",
     "src/{components,pages}/**/*.ts": "stylelint --ignore-path .gitignore --fix"
   },
@@ -111,6 +111,6 @@
     ]
   },
   "stylelint": {
-    "extends": "stylelint-config-ibmresearch"
+    "extends": "stylelint-config-ibmresearch/lit"
   }
 }

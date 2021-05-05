@@ -5,24 +5,24 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { setMetaTag, setLinkTag } from './utils';
+import { setMetaTag, setLinkTag } from './utils.js';
 
-interface ImageMetadataOptions {
+interface ImageMetaOptions {
   url: string;
   alt?: string;
   width?: string;
   height?: string;
 }
 
-export interface MetadataOptions {
+export interface MetaOptions {
   title?: string;
   titleTemplate?: string | null;
   description?: string | null;
-  image?: ImageMetadataOptions | null;
+  image?: ImageMetaOptions | null;
   url?: string;
 }
 
-export const updateMetadata = (options: MetadataOptions) => {
+export const updateMeta = (options: MetaOptions) => {
   const { title, titleTemplate, description, image, url } = options;
 
   if (title) {
