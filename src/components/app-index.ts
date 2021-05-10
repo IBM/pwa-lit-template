@@ -61,14 +61,14 @@ export class AppIndex extends LitElement {
       flex-direction: column;
     }
 
-    main:empty ~ footer {
-      display: none;
-    }
-
     footer {
       padding: 1rem;
       text-align: center;
       background-color: #eee;
+    }
+
+    main:empty ~ footer {
+      display: none;
     }
   `;
 
