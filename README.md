@@ -139,7 +139,7 @@ import config from './config.js';
 
 export default {
   ...config,
-  environment: 'staging'
+  environment: 'staging',
 };
 ```
 

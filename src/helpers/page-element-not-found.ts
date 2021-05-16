@@ -18,7 +18,7 @@ export class PageElementNotFound extends PageElement {
 
     updateMeta({
       ...this.defaultMeta,
-      ...pageNotFoundMeta
+      ...pageNotFoundMeta,
     });
   }
 

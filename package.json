@@ -79,10 +79,9 @@
   },
   "prettier": {
     "singleQuote": true,
-    "trailingComma": "none",
     "overrides": [
       {
-        "files": "*.yml",
+        "files": "*.{yaml,yml}",
         "options": {
           "singleQuote": false
         }

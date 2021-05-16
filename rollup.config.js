@@ -26,14 +26,14 @@ const workboxConfig = {
         cacheName: 'images',
         expiration: {
           maxEntries: 60,
-          maxAgeSeconds: 30 * 24 * 60 * 60 // 30 Days
-        }
-      }
-    }
+          maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+        },
+      },
+    },
   ],
   navigateFallback: 'index.html',
   skipWaiting: false,
-  clientsClaim: false
+  clientsClaim: false,
 };
 
 const config = merge(
@@ -42,7 +42,7 @@ const config = merge(
     legacyBuild: true,
     developmentMode: process.env.ROLLUP_WATCH === 'true',
     workbox: workboxConfig,
-    injectServiceWorker: true
+    injectServiceWorker: true,
   }),
   {
     input: 'index.html',
@@ -50,13 +50,13 @@ const config = merge(
       typescript({
         declaration: false,
         sourceMap: false,
-        inlineSources: false
+        inlineSources: false,
       }),
       replace({
         preventAssignment: true,
         values: {
-          'process.env.NODE_ENV': JSON.stringify('production')
-        }
+          'process.env.NODE_ENV': JSON.stringify('production'),
+        },
       }),
       ...(process.env.NODE_ENV
         ? [
@@ -66,16 +66,16 @@ const config = merge(
               exclude: 'src/config.*.ts',
               delimiters: ['', ''],
               values: {
-                './config.js': `./config.${process.env.NODE_ENV}.js`
-              }
-            })
+                './config.js': `./config.${process.env.NODE_ENV}.js`,
+              },
+            }),
           ]
         : []),
       copy({
         // Copy all the static files
-        patterns: ['images/**/*', 'manifest.webmanifest', 'robots.txt']
-      })
-    ]
+        patterns: ['images/**/*', 'manifest.webmanifest', 'robots.txt'],
+      }),
+    ],
   }
 );
 

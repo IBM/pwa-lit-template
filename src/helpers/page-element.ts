@@ -5,13 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import type { Route, RouterLocation } from '@vaadin/router';
 import { LitElement, property } from 'lit-element';
-import type { PropertyValues } from 'lit-element';
 
 import config from '../config.js';
 import { updateMeta } from './html-meta-manager/index.js';
+
 import type { MetaOptions } from './html-meta-manager/index.js';
+import type { Route, RouterLocation } from '@vaadin/router';
+import type { PropertyValues } from 'lit-element';
 
 // Add meta options to the @vaadin/router BaseRoute
 declare module '@vaadin/router/dist/vaadin-router' {
@@ -29,7 +30,7 @@ export class PageElement extends LitElement {
   protected get defaultMeta() {
     return {
       url: window.location.href,
-      titleTemplate: this.defaultTitleTemplate
+      titleTemplate: this.defaultTitleTemplate,
     };
   }
 
@@ -50,7 +51,7 @@ export class PageElement extends LitElement {
         updateMeta({
           ...this.defaultMeta,
           ...(meta.titleTemplate && { titleTemplate: meta.titleTemplate }),
-          ...meta
+          ...meta,
         });
       }
     }

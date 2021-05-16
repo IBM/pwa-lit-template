@@ -22,10 +22,10 @@ export default {
             exclude: 'src/config.*.ts',
             delimiters: ['', ''],
             values: {
-              './config': `./config.${process.env.NODE_ENV}`
-            }
-          })
+              './config': `./config.${process.env.NODE_ENV}`,
+            },
+          }),
         ]
-      : [])
-  ]
+      : []),
+  ],
 };

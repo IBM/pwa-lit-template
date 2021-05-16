@@ -6,9 +6,10 @@
  */
 
 import { Router } from '@vaadin/router';
-import type { Params } from '@vaadin/router';
 
 import { routes } from './routes.js';
+
+import type { Params } from '@vaadin/router';
 
 const router = new Router();
 
@@ -19,9 +20,9 @@ router.setRoutes([
     action: (context, commands) => {
       const newPath = context.pathname.slice(0, -1);
       return commands.redirect(newPath);
-    }
+    },
   },
-  ...routes
+  ...routes,
 ]);
 
 export const attachRouter = (outlet: HTMLElement) => {
