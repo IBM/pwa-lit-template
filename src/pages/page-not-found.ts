@@ -7,7 +7,10 @@
 
 import { html, css, customElement } from 'lit-element';
 
-import { PageElementNotFound } from '../helpers/page-element-not-found.js';
+import {
+  PageElementNotFound,
+  pageNotFoundMeta,
+} from '../helpers/page-element-not-found.js';
 import { urlForName } from '../router/index.js';
 
 @customElement('page-not-found')
@@ -33,5 +36,9 @@ export class PageNotFound extends PageElementNotFound {
         </p>
       </section>
     `;
+  }
+
+  meta() {
+    return pageNotFoundMeta;
   }
 }

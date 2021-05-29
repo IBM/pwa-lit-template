@@ -31,4 +31,11 @@ export class PageAbout extends PageElement {
       </section>
     `;
   }
+
+  meta() {
+    return {
+      title: 'About',
+      description: 'About page description',
+    };
+  }
 }

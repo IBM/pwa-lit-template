@@ -5,24 +5,17 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import type { Route, RouterLocation } from '@vaadin/router';
-import { LitElement, property } from 'lit-element';
+import type { RouterLocation } from '@vaadin/router';
+import { LitElement, state } from 'lit-element';
 import type { PropertyValues } from 'lit-element';
 
 import config from '../config.js';
 import { updateMeta } from './html-meta-manager/index.js';
 import type { MetaOptions } from './html-meta-manager/index.js';
 
-// Add meta options to the @vaadin/router BaseRoute
-declare module '@vaadin/router/dist/vaadin-router' {
-  export interface BaseRoute {
-    meta?: MetaOptions;
-  }
-}
-
 export class PageElement extends LitElement {
-  @property({ type: Object })
-  location?: RouterLocation;
+  @state()
+  protected location?: RouterLocation;
 
   private defaultTitleTemplate = `%s | ${config.appName}`;
 
@@ -34,25 +27,25 @@ export class PageElement extends LitElement {
   }
 
   /**
-   * The page can override this method to customize the meta
+   * The page must override this method to customize the meta
    */
-  protected meta(route: Route) {
-    return route.meta;
+  protected meta(): MetaOptions | undefined {
+    return;
   }
 
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
 
-    if (this.location?.route) {
-      const meta = this.meta(this.location.route);
+    const meta = this.meta();
 
-      if (meta) {
-        updateMeta({
-          ...this.defaultMeta,
-          ...(meta.titleTemplate && { titleTemplate: meta.titleTemplate }),
-          ...meta,
-        });
-      }
+    if (meta) {
+      updateMeta({
+        ...this.defaultMeta,
+        ...((meta.titleTemplate || meta.titleTemplate === null) && {
+          titleTemplate: meta.titleTemplate,
+        }),
+        ...meta,
+      });
     }
   }
 }
