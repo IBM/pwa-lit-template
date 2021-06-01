@@ -5,10 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { pageNotFoundMeta } from '../router/routes.js';
 import { updateMeta } from './html-meta-manager/index.js';
 import { setMetaTag, removeMetaTag } from './html-meta-manager/utils.js';
 import { PageElement } from './page-element.js';
+
+export const pageNotFoundMeta = {
+  title: 'Error: Page not found',
+  description: null,
+  image: null,
+};
 
 export class PageElementNotFound extends PageElement {
   connectedCallback() {

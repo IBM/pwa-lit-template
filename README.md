@@ -108,6 +108,13 @@ Note: If you need to add static files to the build, like the `images` folder or 
          <p>My new explore page!</p>
        `;
      }
+
+     meta() {
+       return {
+         title: 'Explore',
+         description: 'Explore page description',
+       };
+     }
    }
    ```
 
@@ -118,17 +125,13 @@ Note: If you need to add static files to the build, like the `images` folder or 
      path: '/explore',
      name: 'explore',
      component: 'page-explore',
-     meta: {
-       title: 'Explore',
-       description: 'Explore page description'
-     },
      action: async () => {
        await import('../pages/page-explore.js');
      }
    },
    ```
 
-With SEO in mind, this project offers you the `PageElement` base class to help you to deal with it; it has a `meta()` method that edits the HTML meta tags of the specific page with the `meta` property defined in the route. And if you need dynamic information, you also can override the `meta()` method.
+With SEO in mind, this project offers you the `PageElement` base class to help you to deal with it; it has a `meta()` method that edits the HTML meta tags of the specific page. You must override that method to provide the data.
 
 ### Environment configuration
 

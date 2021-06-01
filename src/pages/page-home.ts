@@ -7,6 +7,7 @@
 
 import { html, css, customElement } from 'lit-element';
 
+import config from '../config.js';
 import { PageElement } from '../helpers/page-element.js';
 
 @customElement('page-home')
@@ -39,5 +40,13 @@ export class PageHome extends PageElement {
         <p>Here you can see <a href="/error">the not found page</a>.</p>
       </section>
     `;
+  }
+
+  meta() {
+    return {
+      title: config.appName,
+      titleTemplate: null,
+      description: config.appDescription,
+    };
   }
 }
