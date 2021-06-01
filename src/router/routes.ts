@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import config from '../config.js';
-
 import type { Route } from '@vaadin/router';
+
+import config from '../config.js';
 
 export const pageNotFoundMeta = {
   title: 'Error: Page not found',

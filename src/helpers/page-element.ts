@@ -5,14 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import type { Route, RouterLocation } from '@vaadin/router';
 import { LitElement, property } from 'lit-element';
+import type { PropertyValues } from 'lit-element';
 
 import config from '../config.js';
 import { updateMeta } from './html-meta-manager/index.js';
-
 import type { MetaOptions } from './html-meta-manager/index.js';
-import type { Route, RouterLocation } from '@vaadin/router';
-import type { PropertyValues } from 'lit-element';
 
 // Add meta options to the @vaadin/router BaseRoute
 declare module '@vaadin/router/dist/vaadin-router' {

@@ -6,10 +6,9 @@
  */
 
 import { Router } from '@vaadin/router';
+import type { Params } from '@vaadin/router';
 
 import { routes } from './routes.js';
-
-import type { Params } from '@vaadin/router';
 
 const router = new Router();
 

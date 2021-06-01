@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import replace from '@rollup/plugin-replace';
 import { esbuildPlugin } from '@web/dev-server-esbuild';
 import { fromRollup } from '@web/dev-server-rollup';
-import replace from '@rollup/plugin-replace';
 
 export default {
   appIndex: 'index.html',
