@@ -13,6 +13,7 @@ import { black, blue } from 'chalk';
 import merge from 'deepmerge';
 
 const DIST_PATH = 'server/dist/';
+const GENERATE_SERVICE_WORKER = false;
 
 const workboxConfig = {
   mode: 'production',
@@ -41,8 +42,10 @@ const config = merge(
     outputDir: DIST_PATH,
     legacyBuild: true,
     developmentMode: process.env.ROLLUP_WATCH === 'true',
-    workbox: workboxConfig,
-    injectServiceWorker: true,
+    ...(GENERATE_SERVICE_WORKER && {
+      workbox: workboxConfig,
+      injectServiceWorker: true,
+    }),
   }),
   {
     input: 'index.html',
