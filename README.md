@@ -7,7 +7,7 @@
 
 # pwa-lit-template
 
-> [Getting started](#getting-started) | [Build for production](#build-for-production) | [Create a new page](#create-a-new-page) | [Environment configuration](#environment-configuration) | [Browser support](#browser-support)
+> [Getting started](#getting-started) | [Build for production](#build-for-production) | [Create a new page](#create-a-new-page) | [Environment configuration](#environment-configuration) | [Service worker](#service-worker) | [Browser support](#browser-support)
 
 This project helps you to build Progressive Web Applications following the modern web standards, best practices and providing you with tools for that purpose. Out of the box, provides you with the following features:
 
@@ -165,6 +165,10 @@ render() {
   `;
 }
 ```
+
+## Service worker
+
+This project supports service worker but it is disable by default. To enable it you just need to configure the variable `GENERATE_SERVICE_WORKER` in the rollup configuration file: `rollup.config.js`. The variable has the **false** value, but you can change it and enable the service worker introduction in the build step. Furthermore you can change the default service worker configuration too modifying the variable `workboxConfig` in that same file.
 
 ## Browser support
 
