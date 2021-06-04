@@ -58,7 +58,7 @@
     "rollup": "^2.50.6",
     "stylelint": "^13.13.1",
     "stylelint-config-ibmresearch": "~0.8.0",
-    "typescript": "~4.3.2"
+    "typescript": "~4.2.4"
   },
   "eslintConfig": {
     "extends": "ibmresearch",
