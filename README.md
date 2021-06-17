@@ -166,9 +166,11 @@ render() {
 }
 ```
 
-## Service worker
+### Service worker
 
-This project supports service worker but it is disable by default. To enable it you just need to configure the variable `GENERATE_SERVICE_WORKER` in the rollup configuration file: `rollup.config.js`. The variable has the **false** value, but you can change it and enable the service worker introduction in the build step. Furthermore you can change the default service worker configuration too modifying the variable `workboxConfig` in that same file.
+This project has configured the generation and injection of a service worker in the build process. But it is disabled by default. To enable it you just need to change the variable `GENERATE_SERVICE_WORKER` in the `rollup.config.js` to `true`.
+
+Also you can change the Workbox configuration too modifying the variable `workboxConfig` in that same file.
 
 ## Browser support
 
