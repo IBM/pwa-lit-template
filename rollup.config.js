@@ -21,7 +21,7 @@ const workboxConfig = {
   globDirectory: DIST_PATH,
   runtimeCaching: [
     {
-      urlPattern: 'images/**/*',
+      urlPattern: /images\/.*$/,
       handler: 'CacheFirst',
       options: {
         cacheName: 'images',
