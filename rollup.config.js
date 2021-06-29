@@ -12,6 +12,7 @@ import { copy } from '@web/rollup-plugin-copy';
 import { black, blue } from 'chalk';
 import merge from 'deepmerge';
 
+const NODE_ENV = process.env.NODE_ENV || 'development';
 const DIST_PATH = 'server/dist/';
 const GENERATE_SERVICE_WORKER = false;
 
@@ -59,7 +60,7 @@ const config = merge(
           'process.env.NODE_ENV': JSON.stringify('production'),
         },
       }),
-      ...(process.env.NODE_ENV
+      ...(NODE_ENV !== 'development'
         ? [
             replace({
               preventAssignment: true,
@@ -67,7 +68,7 @@ const config = merge(
               exclude: 'src/config.*.ts',
               delimiters: ['', ''],
               values: {
-                './config.js': `./config.${process.env.NODE_ENV}.js`,
+                './config.js': `./config.${NODE_ENV}.js`,
               },
             }),
           ]
@@ -83,7 +84,7 @@ const config = merge(
 console.log(`${black.bgWhite(' Build information'.padEnd(60, ' '))}
 
 ${blue('Name')}                   ${process.env.npm_package_name}
-${blue('Environment')}            ${process.env.NODE_ENV || 'development'}
+${blue('Environment')}            ${NODE_ENV}
 ${blue('Service Worker')}         ${GENERATE_SERVICE_WORKER}
 ${blue('Version')}                v${process.env.npm_package_version}`);
 

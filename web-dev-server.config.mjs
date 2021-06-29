@@ -9,12 +9,14 @@ import replace from '@rollup/plugin-replace';
 import { esbuildPlugin } from '@web/dev-server-esbuild';
 import { fromRollup } from '@web/dev-server-rollup';
 
+const NODE_ENV = process.env.NODE_ENV || 'development';
+
 export default {
   appIndex: 'index.html',
   nodeResolve: true,
   plugins: [
     esbuildPlugin({ ts: true }),
-    ...(process.env.NODE_ENV
+    ...(NODE_ENV !== 'development'
       ? [
           fromRollup(replace)({
             preventAssignment: true,
@@ -22,7 +24,7 @@ export default {
             exclude: 'src/config.*.ts',
             delimiters: ['', ''],
             values: {
-              './config': `./config.${process.env.NODE_ENV}`,
+              './config.js': `./config.${NODE_ENV}.js`,
             },
           }),
         ]
