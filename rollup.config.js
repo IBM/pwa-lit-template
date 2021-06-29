@@ -18,10 +18,9 @@ const GENERATE_SERVICE_WORKER = false;
 const workboxConfig = {
   mode: 'production',
   sourcemap: false,
-  globDirectory: DIST_PATH,
   runtimeCaching: [
     {
-      urlPattern: 'images/**/*',
+      urlPattern: /images\/.*$/,
       handler: 'CacheFirst',
       options: {
         cacheName: 'images',
@@ -32,7 +31,6 @@ const workboxConfig = {
       },
     },
   ],
-  navigateFallback: 'index.html',
   skipWaiting: false,
   clientsClaim: false,
 };
