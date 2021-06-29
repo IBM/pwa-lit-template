@@ -84,6 +84,7 @@ console.log(`${black.bgWhite(' Build information'.padEnd(60, ' '))}
 
 ${blue('Name')}                   ${process.env.npm_package_name}
 ${blue('Environment')}            ${process.env.NODE_ENV || 'development'}
+${blue('Service Worker')}         ${GENERATE_SERVICE_WORKER}
 ${blue('Version')}                v${process.env.npm_package_version}`);
 
 export default config;
