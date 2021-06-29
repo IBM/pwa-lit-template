@@ -16,8 +16,12 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 const DIST_PATH = 'server/dist/';
 const GENERATE_SERVICE_WORKER = false;
 
+const absoluteBaseUrl =
+  NODE_ENV === 'production'
+    ? 'https://pwa-lit-template.mybluemix.net'
+    : 'http://localhost:8000';
+
 const workboxConfig = {
-  mode: 'production',
   sourcemap: false,
   runtimeCaching: [
     {
@@ -39,6 +43,10 @@ const workboxConfig = {
 const config = merge(
   createSpaConfig({
     outputDir: DIST_PATH,
+    html: {
+      absoluteBaseUrl,
+      extractAssets: false,
+    },
     legacyBuild: true,
     developmentMode: process.env.ROLLUP_WATCH === 'true',
     ...(GENERATE_SERVICE_WORKER && {
