@@ -21,6 +21,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
 
       - run: npm ci
       - run: npm run lint
@@ -36,6 +37,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
 
       - run: npm ci
       - run: npm run types:check
@@ -51,6 +53,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
 
       - run: npm ci
       - run: npm run build
