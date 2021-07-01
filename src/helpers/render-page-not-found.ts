@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { html } from 'lit-element';
+import { html } from 'lit';
 
 // TODO: Review this issue https://github.com/vaadin/vaadin-router/issues/408
 

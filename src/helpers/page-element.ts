@@ -6,8 +6,9 @@
  */
 
 import type { RouterLocation } from '@vaadin/router';
-import { LitElement, state } from 'lit-element';
-import type { PropertyValues } from 'lit-element';
+import { LitElement } from 'lit';
+import type { PropertyValues } from 'lit';
+import { state } from 'lit/decorators.js';
 
 import config from '../config.js';
 import { updateMeta } from './html-meta-manager/index.js';

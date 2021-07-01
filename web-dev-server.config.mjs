@@ -13,7 +13,9 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 
 export default {
   appIndex: 'index.html',
-  nodeResolve: true,
+  nodeResolve: {
+    exportConditions: ['development']
+  },
   plugins: [
     esbuildPlugin({ ts: true }),
     ...(NODE_ENV !== 'development'
