@@ -12,20 +12,24 @@ import { routes } from './routes.js';
 
 const router = new Router();
 
-router.setRoutes([
-  // Redirect to URL without trailing slash
-  {
-    path: '(.*)/',
-    action: (context, commands) => {
-      const newPath = context.pathname.slice(0, -1);
-      return commands.redirect(newPath);
+router.setRoutes(
+  [
+    // Redirect to URL without trailing slash
+    {
+      path: '(.*)/',
+      action: (context, commands) => {
+        const newPath = context.pathname.slice(0, -1);
+        return commands.redirect(newPath);
+      },
     },
-  },
-  ...routes,
-]);
+    ...routes,
+  ],
+  true
+);
 
 export const attachRouter = (outlet: HTMLElement) => {
   router.setOutlet(outlet);
+  router.render(window.location, true);
 };
 
 export const urlForName = (name: string, params?: Params) => {
