@@ -40,6 +40,18 @@ const config = merge(
   createSpaConfig({
     outputDir: DIST_PATH,
     legacyBuild: true,
+    polyfillsLoader: {
+      polyfills: {
+        custom: [
+          {
+            name: 'lit-polyfill-support',
+            path: 'node_modules/lit/polyfill-support.js',
+            test: "!('attachShadow' in Element.prototype)",
+            module: false,
+          },
+        ],
+      },
+    },
     developmentMode: process.env.ROLLUP_WATCH === 'true',
     workbox: GENERATE_SERVICE_WORKER && workboxConfig,
     injectServiceWorker: GENERATE_SERVICE_WORKER,
