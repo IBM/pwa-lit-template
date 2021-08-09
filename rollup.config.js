@@ -41,10 +41,8 @@ const config = merge(
     outputDir: DIST_PATH,
     legacyBuild: true,
     developmentMode: process.env.ROLLUP_WATCH === 'true',
-    ...(GENERATE_SERVICE_WORKER && {
-      workbox: workboxConfig,
-      injectServiceWorker: true,
-    }),
+    workbox: GENERATE_SERVICE_WORKER && workboxConfig,
+    injectServiceWorker: GENERATE_SERVICE_WORKER,
   }),
   {
     input: 'index.html',
