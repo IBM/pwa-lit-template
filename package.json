@@ -29,7 +29,7 @@
     "@vaadin/router": "^1.7.4",
     "lit-element": "^2.5.1",
     "pwa-helper-components": "~0.2.10",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.1"
   },
   "devDependencies": {
     "@open-wc/building-rollup": "^1.10.0",
