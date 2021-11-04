@@ -27,6 +27,5 @@
   "lockFileMaintenance": {
     "automerge": true,
     "automergeType": "branch"
-  },
-  "ignoreDeps": ["typescript"]
+  }
 }
