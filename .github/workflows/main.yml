@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: IBM/pwa-lit-template/.github/workflows/setup.yml
+      - uses: IBM/pwa-lit-template/.github/workflows/setup.yml@reusing-workflows
       - run: npm run lint
 
   type-checking:
@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: IBM/pwa-lit-template/.github/workflows/setup.yml
+      - uses: IBM/pwa-lit-template/.github/workflows/setup.yml@reusing-workflows
       - run: npm run types:check
 
   build:
@@ -31,5 +31,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: IBM/pwa-lit-template/.github/workflows/setup.yml
+      - uses: IBM/pwa-lit-template/.github/workflows/setup.yml@reusing-workflows
       - run: npm run build
