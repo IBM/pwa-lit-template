@@ -10,6 +10,8 @@ jobs:
   lint:
     name: Lint
 
+    runs-on: ubuntu-latest
+
     steps:
       - uses: ./setup.yml
       - run: npm run lint
@@ -17,12 +19,16 @@ jobs:
   type-checking:
     name: Type checking
 
+    runs-on: ubuntu-latest
+
     steps:
       - uses: ./setup.yml
       - run: npm run types:check
 
   build:
     name: Build
+
+    runs-on: ubuntu-latest
 
     steps:
       - uses: ./setup.yml
