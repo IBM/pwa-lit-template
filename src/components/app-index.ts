@@ -64,8 +64,8 @@ export class AppIndex extends LitElement {
 
     footer {
       padding: 1rem;
-      text-align: center;
       background-color: #eee;
+      text-align: center;
     }
 
     main:empty ~ footer {
