@@ -8,8 +8,8 @@ env:
   NODE_VERSION: "16.x"
 
 jobs:
-  deploy:
-    name: Deploy
+  production:
+    name: Production
 
     runs-on: ubuntu-latest
 
