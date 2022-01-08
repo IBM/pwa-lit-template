@@ -76,15 +76,7 @@
     "src/{components,pages}/**/*.ts": "stylelint --ignore-path .gitignore --fix"
   },
   "prettier": {
-    "singleQuote": true,
-    "overrides": [
-      {
-        "files": "*.{yaml,yml}",
-        "options": {
-          "singleQuote": false
-        }
-      }
-    ]
+    "singleQuote": true
   },
   "stylelint": {
     "customSyntax": "postcss-lit",
