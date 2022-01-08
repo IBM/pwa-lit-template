@@ -2,9 +2,10 @@ name: Verify
 
 on:
   push:
-    branches: [main, renovate/**]
+    branches:
+      - main
+      - "renovate/**"
   pull_request:
-    branches: [main]
 
 env:
   NODE_VERSION: "16.x"
