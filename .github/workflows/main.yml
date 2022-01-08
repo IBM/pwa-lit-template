@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 env:
-  NODE_VERSION: "14.x"
+  NODE_VERSION: "16.x"
 
 jobs:
   lint:

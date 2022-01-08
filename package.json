@@ -5,9 +5,6 @@
   "description": "A template for building Progressive Web Applications using Lit and Vaadin Router",
   "license": "MIT",
   "repository": "github:IBM/pwa-lit-template",
-  "engines": {
-    "node": ">=14.0.0"
-  },
   "scripts": {
     "build": "rimraf server/dist/ && rollup --config",
     "format": "npm-run-all format:*",
