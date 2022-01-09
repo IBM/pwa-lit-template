@@ -182,3 +182,13 @@ Also you can change the Workbox configuration too modifying the variable `workbo
 
 To run on other browsers, you need to use a combination of polyfills and transpilation.
 This step is automated by the [build for production command](#build-for-production).
+
+## ShortCuts
+
+```
+npm run build => npm run b
+npm run format => npm run f
+npm run lint => npm run l
+npm run serve => npm run s
+npm run types:check => npm run tc
+```

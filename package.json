@@ -6,6 +6,11 @@
   "license": "MIT",
   "repository": "github:IBM/pwa-lit-template",
   "scripts": {
+    "b":"npm run build",
+    "f":"npm run format",
+    "l":"npm run lint",
+    "s":"npm run serve",
+    "tc":"npm run types:check",
     "build": "rimraf server/dist/ && rollup --config",
     "format": "npm-run-all format:*",
     "format:eslint": "npm run lint:eslint -- --fix",
