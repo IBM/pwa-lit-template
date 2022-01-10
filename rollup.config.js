@@ -9,8 +9,8 @@ import { createSpaConfig } from '@open-wc/building-rollup';
 import replace from '@rollup/plugin-replace';
 import typescript from '@rollup/plugin-typescript';
 import { copy } from '@web/rollup-plugin-copy';
-import { black, blue } from 'chalk';
 import merge from 'deepmerge';
+import { black, blue, bgWhite } from 'picocolors';
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const DIST_PATH = 'server/dist/';
@@ -99,7 +99,7 @@ const config = merge(
   }
 );
 
-console.log(`${black.bgWhite(' Build information'.padEnd(60, ' '))}
+console.log(`${bgWhite(black(' Build information'.padEnd(60, ' ')))}
 
 ${blue('Name')}                   ${process.env.npm_package_name}
 ${blue('Environment')}            ${NODE_ENV}
