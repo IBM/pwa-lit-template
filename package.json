@@ -9,7 +9,7 @@
     "build": "rimraf server/dist/ && rollup --config",
     "format": "npm-run-all format:*",
     "format:eslint": "npm run lint:eslint -- --fix",
-    "format:prettier": "prettier . --ignore-path .gitignore --write",
+    "format:prettier": "prettier '**/*' --ignore-unknown --ignore-path .gitignore --write",
     "format:stylelint": "npm run lint:stylelint -- --fix",
     "lint": "npm-run-all --parallel lint:*",
     "lint:eslint": "eslint . --ignore-path .gitignore",
@@ -71,7 +71,7 @@
     ]
   },
   "lint-staged": {
-    "**/*.{html,js,json,md,ts,webmanifest,yml}": "prettier --ignore-path .gitignore --write",
+    "**/*": "prettier --ignore-unknown --ignore-path .gitignore --write",
     "**/*.{js,ts}": "eslint --ignore-path .gitignore --fix",
     "src/{components,pages}/**/*.ts": "stylelint --ignore-path .gitignore --fix"
   },
