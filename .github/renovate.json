@@ -1,6 +1,14 @@
 {
   "extends": ["config:base", ":separateMultipleMajorReleases"],
   "rangeStrategy": "bump",
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchCurrentVersion": "!/^[~^]?0/",
+      "automerge": true,
+      "automergeType": "branch"
+    }
+  ],
   "lockFileMaintenance": {
     "enabled": true,
     "automerge": true,
