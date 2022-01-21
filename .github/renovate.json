@@ -1,17 +1,11 @@
 {
   "extends": [
     "config:base",
-    "schedule:weekly",
     ":separateMultipleMajorReleases",
-    ":separatePatchReleases",
-    ":maintainLockFilesWeekly"
+    ":separatePatchReleases"
   ],
   "rangeStrategy": "bump",
   "packageRules": [
-    {
-      "matchDepTypes": ["engines"],
-      "enabled": false
-    },
     {
       "matchUpdateTypes": ["minor"],
       "matchCurrentVersion": "!/^[~^]?0/",
@@ -25,6 +19,7 @@
     }
   ],
   "lockFileMaintenance": {
+    "enabled": true,
     "automerge": true,
     "automergeType": "branch"
   }
