@@ -55,7 +55,7 @@
     "prettier-plugin-package": "^1.3.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.70.1",
-    "stylelint": "^14.6.0",
+    "stylelint": "^14.6.1",
     "stylelint-config-ibmresearch": "~0.13.1",
     "typescript": "~4.5.5"
   },
