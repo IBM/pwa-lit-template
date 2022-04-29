@@ -55,7 +55,7 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.70.2",
     "simple-git-hooks": "^2.7.0",
-    "stylelint": "^14.8.0",
+    "stylelint": "^14.8.1",
     "stylelint-config-ibmresearch": "~0.13.1",
     "typescript": "~4.5.5"
   },
