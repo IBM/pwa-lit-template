@@ -54,7 +54,7 @@
     "prettier-plugin-package": "^1.3.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.75.1",
-    "simple-git-hooks": "^2.7.0",
+    "simple-git-hooks": "^2.8.0",
     "stylelint": "^14.8.5",
     "stylelint-config-ibmresearch": "~0.13.1",
     "typescript": "~4.5.5"
