@@ -5,6 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { fileURLToPath } from 'url';
+
 import replace from '@rollup/plugin-replace';
 import { esbuildPlugin } from '@web/dev-server-esbuild';
 import { fromRollup } from '@web/dev-server-rollup';
@@ -17,7 +19,10 @@ export default {
     exportConditions: ['development'],
   },
   plugins: [
-    esbuildPlugin({ ts: true }),
+    esbuildPlugin({
+      ts: true,
+      tsconfig: fileURLToPath(new URL('./tsconfig.json', import.meta.url)),
+    }),
     ...(NODE_ENV !== 'development'
       ? [
           fromRollup(replace)({
