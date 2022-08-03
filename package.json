@@ -42,7 +42,7 @@
     "eslint": "^8.21.0",
     "eslint-config-ibmresearch": "~0.25.1",
     "eslint-plugin-lit": "^1.6.1",
-    "eslint-plugin-lit-a11y": "^2.2.1",
+    "eslint-plugin-lit-a11y": "^2.2.2",
     "eslint-plugin-wc": "^1.3.2",
     "lit-analyzer": "^1.2.1",
     "nano-staged": "^0.8.0",
