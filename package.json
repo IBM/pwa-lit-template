@@ -29,7 +29,7 @@
     "tslib": "^2.4.0"
   },
   "devDependencies": {
-    "@open-wc/building-rollup": "^2.0.1",
+    "@open-wc/building-rollup": "^2.0.2",
     "@rollup/plugin-replace": "^4.0.0",
     "@rollup/plugin-typescript": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.32.0",
