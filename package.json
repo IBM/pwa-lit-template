@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@vaadin/router": "^1.7.4",
-    "lit": "^2.6.0",
+    "lit": "^2.6.1",
     "pwa-helper-components": "~0.2.10",
     "tslib": "^2.4.1"
   },
