@@ -36,7 +36,7 @@
     "@typescript-eslint/parser": "^5.48.1",
     "@web/dev-server": "~0.1.35",
     "@web/dev-server-esbuild": "~0.3.3",
-    "@web/dev-server-rollup": "~0.3.20",
+    "@web/dev-server-rollup": "~0.3.21",
     "@web/rollup-plugin-copy": "~0.3.0",
     "deepmerge": "^4.2.2",
     "eslint": "^8.31.0",
