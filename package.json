@@ -57,7 +57,7 @@
     "simple-git-hooks": "^2.8.1",
     "stylelint": "^14.16.1",
     "stylelint-config-ibmresearch": "~0.16.0",
-    "typescript": "~4.9.4"
+    "typescript": "~4.9.5"
   },
   "eslintConfig": {
     "extends": "ibmresearch",
