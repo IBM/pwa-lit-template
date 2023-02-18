@@ -1,7 +1,3 @@
-> 🛠 **Status: Experimental**
->
-> This project is currently in development.
-
 [![CI](https://github.com/IBM/pwa-lit-template/workflows/CI/badge.svg)](https://github.com/IBM/pwa-lit-template/actions)
 [![Built with pwa-lit-template](https://img.shields.io/badge/built%20with-pwa--lit--template-blue)](https://github.com/IBM/pwa-lit-template 'Built with pwa-lit-template')
 
