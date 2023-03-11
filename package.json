@@ -39,7 +39,7 @@
     "@web/dev-server-rollup": "~0.3.21",
     "@web/rollup-plugin-copy": "~0.3.0",
     "deepmerge": "^4.3.0",
-    "eslint": "^8.35.0",
+    "eslint": "^8.36.0",
     "eslint-config-ibmresearch": "~0.25.1",
     "eslint-plugin-lit": "^1.8.2",
     "eslint-plugin-lit-a11y": "^2.3.0",
