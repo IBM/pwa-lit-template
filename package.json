@@ -31,7 +31,7 @@
   "devDependencies": {
     "@open-wc/building-rollup": "^2.2.2",
     "@rollup/plugin-replace": "^4.0.0",
-    "@rollup/plugin-typescript": "^8.5.0",
+    "@rollup/plugin-typescript": "^10.0.1",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "@web/dev-server": "~0.1.37",
